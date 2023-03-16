@@ -1,0 +1,549 @@
+// 29.02.16
+// Pesagem dos caminhoes no 'balanção'
+
+unit pesagemcaminhao;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ACBrDFe, ACBrNFe, ACBrBase, ACBrBAL, ExtCtrls, Grids, SqlDtg,
+  StdCtrls, Mask, SQLEd, Buttons, SQLBtn, alabel, SQLGrid, SqlExpr, AcbrDevice,
+  AcbrDeviceSerial;
+
+type
+  TFPesagemCaminhao = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bSair: TSQLBtn;
+    bpesoinicial: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    Edunidade: TSQLEd;
+    EdUnid_codigo: TSQLEd;
+    Edtermino: TSQLEd;
+    EdInicio: TSQLEd;
+    EdTran_codigo: TSQLEd;
+    EdTran_nome: TSQLEd;
+    pgrid: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    EdNumeronotas: TSQLEd;
+    SetEdCOLA_NOME: TSQLEd;
+    EdMoes_cola_codigo01: TSQLEd;
+    EdMoes_cola_codigo02: TSQLEd;
+    EdPesoNotas: TSQLEd;
+    SQLEd1: TSQLEd;
+    bpesofinal: TSQLBtn;
+    EdPesoInicial: TSQLEd;
+    EdPesoFinal: TSQLEd;
+    ACBrBAL1: TACBrBAL;
+    Eddif: TSQLEd;
+    EdCarga: TSQLEd;
+    procedure bpesoinicialClick(Sender: TObject);
+    procedure ACBrBAL1LePeso(Peso: Double; Resposta: AnsiString);
+    procedure bpesofinalClick(Sender: TObject);
+    procedure EdTran_codigoValidate(Sender: TObject);
+    procedure EdCargaValidate(Sender: TObject);
+    procedure bSairClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdPesoInicialExitEdit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    function GetPesoBalancaSaida(xcarga:integer):currency;
+    function LiberaCaminhao:boolean;
+    procedure SetaCargas(Ed:TSqled);
+    procedure SetaPlacas(Ed:TSqled);
+    procedure ConfiguraTeclas( Key: Word );
+end;
+
+
+var
+  FPesagemCaminhao: TFPesagemCaminhao;
+  tiposdemovimento,tiposnao,tiposdevolucao,op:string;
+  Q,QC:TSqlquery;
+  xCarga:integer;
+  novapesagem:boolean;
+
+const Tipomov:string='SA';
+
+implementation
+
+uses Geral, Unidades, fornece, SqlFun, SqlSis, montagemcarga;
+
+{$R *.dfm}
+
+procedure TFPesagemCaminhao.Execute;
+/////////////////////////////////////////////////////////////
+
+  function GetStopBitsAcBR(stopbit:integer;Serial:TAcbrbal):TAcbrSerialStop;
+  ////////////////////////////////////////////////////////////////////////
+  begin
+        case StopBit of
+             10: result:=s1;
+             15: result:=s1eMeio;
+             20: result:=s2;
+        end;
+  end;
+
+  function GetParidadeAcBR(paridade:string):TAcbrSerialParity;
+  /////////////////////////////////////////////////
+  begin
+       if Paridade='N' then result:=pNone
+       else if Paridade='P' then result:=pEven
+       else if Paridade='M' then result:=pMark
+       else if Paridade='I' then result:=pOdd
+       else if Paridade='S' then result:=pSpace;
+  end;
+
+begin
+
+  tiposdemovimento:=Global.TiposSaida+';'+Global.CodDevolucaoCompra+';'+Global.CodCompraProdutor+';'+
+                    Global.CodDrawBackEnt+';'+Global.CodDevolucaoIgualVenda+';'+Global.CodEntradaImobilizado+';'+
+                    Global.CodCompraProdutorReclassifica+';'+Global.CodDevolucaoSimbolicaConsig+';'+Global.CodVendasemFinan+';'+
+                    Global.CodCompraConsignado+';'+Global.CodDevolucaodeRemessa+';'+Global.CodDevolucaoRoman+';'+
+                    Global.CodNotaRemessaaOrdem+';'+Global.CodEstornoNFeSai+';'+Global.CodDevolucaoTributada+';'+
+                    Global.CodRemessaConserto+';'+Global.CodNfeComplementoQtde+';'+
+                    FGeral.GetConfig1AsString('TIPOSENUMSAIDA'); // 18.05.11
+  tiposnao:=Global.TiposNaoFiscal+';'+Global.CodPrestacaoServicos+';'+Global.CodVendaInterna;
+  TiposDevolucao:=Global.CodDevolucaoCompra+';'+Global.CodDevolucaoCompraSemEstoque+';'+
+                  Global.CodDevolucaoIgualVenda+';'+Global.CodDevolucaoInd+';'+
+                  Global.CodDevolucaoSimbolicaConsig+';'+
+                  Global.CodDevolucaodeRemessa+';'+
+                  Global.CodDevolucaoRoman+';'+
+                  Global.CodDevolucaoTributada;
+  Show;
+  if AcbrBal1.Ativo then AcbrBal1.Desativar;
+{  -- 18.07 - ver pra crfiar config. para balanca veiculos
+  if FGeral.GetConfig1AsString('PORTASERIAL2')<>'' then
+    AcbrBal1.Device.porta:=FGeral.GetConfig1AsString('PORTASERIAL2');
+  if FGeral.GetConfig1AsInteger('velocidadebal2')>0 then
+    AcbrBal1.Device.Baud := FGeral.GetConfig1AsInteger('velocidadebal2');
+  if FGeral.GetConfig1AsInteger('databitsbal2')>0 then
+    AcbrBal1.Device.Data :=FGeral.GetConfig1AsInteger('databitsbal2');
+  if FGeral.GetConfig1AsInteger('stopbitsbal2')>0 then
+    AcbrBal1.Device.Stop :=GetStopBitsAcBR( FGeral.GetConfig1AsInteger('stopbitsbal2'),AcbrBal1);
+  if FGeral.GetConfig1AsString('paridade2')<>'' then
+    AcbrBal1.Device.Parity:=GetParidadeAcbr(FGeral.GetConfig1AsString('paridade2'));
+}
+
+   ACBrBAL1.Modelo           := TACBrBALModelo( balFilizola );
+   ACBrBAL1.Device.HandShake := TACBrHandShake( hsNenhum );
+
+  Grid.clear;
+  EdTran_codigo.clearall(self,99);
+  EdUnid_codigo.text:=Global.CodigoUnidade;
+  EdInicio.setdate(sistema.hoje-3);
+  EdTermino.setdate(sistema.hoje);
+  FGeral.ConfiguraColorEditsNaoEnabled(FPesagemCaminhao);
+  xcarga:=0;
+//  EdTran_codigo.ShowForm:='FTransp';
+  SetaPlacas(EdTran_codigo);
+  EdTran_codigo.SetFirstEd;
+  EdPesoinicial.enabled:=Global.Usuario.OutrosAcessos[0513];
+
+    if not Global.Usuario.OutrosAcessos[0513] then begin
+      try
+        Acbrbal1.Ativar;
+      except
+        Avisoerro('Problemas para abrir a porta '+AcbrBal1.Porta);
+//        exit;
+      end;
+    end  ;
+
+//  EdPesofinal.enabled:=Global.Usuario.OutrosAcessos[0513];
+
+end;
+
+procedure TFPesagemCaminhao.bpesoinicialClick(Sender: TObject);
+//////////////////////////////////////////////////////////////////
+var NumeroCarga:integer;
+    difpermitida,dif:currency;
+begin
+    if EdTran_codigo.isempty then begin
+      Avisoerro('Informe o codigo do veículo');
+      exit;
+    end;
+    if (EdPesoInicial.ascurrency=0) and (  Global.Usuario.OutrosAcessos[0513] ) then begin
+      Avisoerro('Informe o PESO');
+      exit;
+    end;
+    difpermitida:=10;
+    dif:=abs( EdPesoInicial.AsCurrency-EdTran_codigo.ResultFind.fieldbyname('tran_tara').ascurrency );
+{
+    if (dif  > difpermitida) and  ( EdTran_codigo.ResultFind.fieldbyname('tran_tara').ascurrency>0 ) then begin
+      Avisoerro('Diferença de peso maior que o permitido.   Diferença : '+FGeral.formatavalor(dif,f_cr));
+      if not LiberaCaminhao then begin
+         Avisoerro('Usuário sem permissão para liberar peso. Pedir liberação.');
+         if not LiberaCaminhao then begin
+           Avisoerro('Usuário AINDA sem permissão para liberar peso.');
+           exit;
+         end;
+      end;
+    end;
+}
+/////////////////////
+{
+    if not Global.Usuario.OutrosAcessos[0513] then begin
+      try
+        Acbrbal1.Ativar;
+      except
+        Avisoerro('Problemas para abrir a porta '+AcbrBal1.Porta);
+        exit;
+      end;
+//////////////////////////
+}
+    if not Global.Usuario.OutrosAcessos[0513] then begin
+      op:='I';
+      AcbrBal1.lepeso;
+    end;
+    if (Qc.fieldbyname('movc_pesoi').ascurrency>0) and
+       (EdPesoinicial.ascurrency>0) and
+       (Qc.fieldbyname('movc_pesoi').ascurrency>=EdPesoinicial.ascurrency) then begin
+         Avisoerro('Peso Inicial : '+fGeral.Formatavalor(Qc.fieldbyname('movc_pesoi').ascurrency,f_cr));
+         exit;
+    end;
+
+    if not Confirma('Confirma peso ?') then exit;
+
+    if novapesagem then begin
+      NumeroCarga:=FGeral.GetContador('CARGA'+EdUnid_codigo.text,false);
+      Sistema.insert('movcargas');
+      Sistema.setfield('movc_status','N');
+      Sistema.setfield('movc_numero',NumeroCarga);
+      Sistema.setfield('movc_data',Sistema.Hoje);
+      Sistema.setfield('movc_datamvto',Sistema.Hoje);
+      Sistema.setfield('movc_unid_codigo',Edunid_codigo.text);
+      Sistema.setfield('movc_usua_codigo',Global.Usuario.codigo);
+      Sistema.setfield('movc_pesoi',EdPesoINicial.AsCurrency);
+    //    Sistema.setfield('movc_pesof',0);
+    //    Sistema.setfield('movc_difpeso',0);
+      Sistema.setfield('movc_tran_codigo',EdTran_codigo.text);
+      Sistema.setfield('movc_cola_codigo01',EdMoes_cola_codigo01.text);
+      Sistema.setfield('movc_cola_codigo02',EdMoes_cola_codigo02.text);
+      Sistema.setfield('movc_pesonotas',EdPesoNotas.AsCurrency);
+      Sistema.post();
+    end else if Qc.fieldbyname('movc_pesoi').ascurrency=0 then begin
+      NumeroCarga:=Qc.fieldbyname('movc_numero').asinteger;
+      Sistema.edit('movcargas');
+      Sistema.setfield('movc_pesoi',Edpesoinicial.ascurrency);
+      Sistema.Post('movc_status='+stringtosql('N')+
+                 ' and movc_unid_codigo='+EdUnid_codigo.assql+
+                 ' and movc_tran_codigo='+Edtran_codigo.assql+
+                 ' and movc_numero = '+inttostr(NumeroCarga));
+    end else if Qc.fieldbyname('movc_pesoi').ascurrency>0 then begin
+      NumeroCarga:=Qc.fieldbyname('movc_numero').asinteger;
+      Sistema.edit('movcargas');
+      Sistema.setfield('movc_pesof',Edpesoinicial.ascurrency);
+      Sistema.Post('movc_status='+stringtosql('N')+
+                 ' and movc_unid_codigo='+EdUnid_codigo.assql+
+                 ' and movc_tran_codigo='+Edtran_codigo.assql+
+                 ' and movc_numero = '+inttostr(NumeroCarga));
+    end;
+    sistema.commit;
+//    FGeral.GravaConfig1('libcaminhao','C','N');
+//    if Acbrbal1.Ativo then Acbrbal1.Desativar;
+    Aviso('Peso gravado');
+    EdTran_codigo.setfocus;
+////    bpesoinicial.Enabled:=false;
+end;
+
+procedure TFPesagemCaminhao.ACBrBAL1LePeso(Peso: Double; Resposta: AnsiString);
+/////////////////////////////////////////////////////////////////////////////////
+var valid,
+    posid         : integer;
+    xResposta,outra:string;
+begin
+//   xResposta := copy( Resposta,5,06)  ;
+//   xResposta := copy( Resposta,5,07)  ;
+//   if FGeral.GetConfig1AsInteger('DIVBALANCA')>0 then
+//        peso:=Texttovalor(xresposta)/FGeral.GetConfig1AsInteger('DIVBALANCA')
+//   else
+//        peso:=Texttovalor(xresposta);
+
+    xResposta := copy( Resposta,3,15)  ;
+
+    if pos('-',xresposta)>0 then peso:=0;
+    if op='I' then
+      EdPesoinicial.setvalue(peso)
+    else
+      EdPesoFinal.setvalue(peso);
+    PMens.Caption := resposta+' - '+xresposta;
+    begin
+      valid := Trunc(AcbrBal1.UltimoPesoLido);
+//      {
+      case valid of
+         0 : PMens.Caption := 'TimeOut !'+sLineBreak+
+                                 'Coloque o produto sobre a Balança!' ;
+        -1 : PMens.Caption := 'Peso Instavel ! ' +sLineBreak+
+                                 'Tente Nova Leitura' ;
+        -2 : PMens.Caption := 'Peso Negativo !' ;
+       -10 : PMens.Caption := 'Sobrepeso !' ;
+      end;
+//      }
+     end;
+
+end;
+
+procedure TFPesagemCaminhao.bpesofinalClick(Sender: TObject);
+////////////////////////////////////////////////////////////////
+begin
+    if EdTran_codigo.isempty then begin
+      Avisoerro('Informe o codigo do veículo');
+      exit;
+    end;
+    if bpesoinicial.Enabled then begin
+      Avisoerro('Falta o peso inicial');
+      exit;
+    end;
+    if EdPesoFinal.ascurrency=0 then begin
+      Avisoerro('Informe o PESO FINAL');
+      exit;
+    end;
+    op:='F';
+    if not Global.Usuario.OutrosAcessos[0513] then begin
+         AcbrBal1.lepeso;
+    end;
+
+    if not Confirma('Confirma peso ?') then exit;
+    Sistema.edit('movcargas');
+    Sistema.setfield('movc_pesof',Edpesofinal.ascurrency);
+    Sistema.Post('movc_status='+stringtosql('N')+
+                 ' and movc_unid_codigo='+EdUnid_codigo.assql+
+                 ' and movc_tran_codigo='+Edtran_codigo.assql+
+                 ' and movc_numero = '+inttostr(QC.fieldbyname('movc_numero').asinteger));
+    sistema.commit;
+    Acbrbal1.Desativar;
+    bpesofinal.Enabled:=false;
+//    EdDif.setvalue(EdPesoFinal.ascurrency-EdPesoinicial.ascurrency);
+end;
+
+function TFPesagemCaminhao.GetPesoBalancaSaida(xcarga: integer): currency;
+/////////////////////////////////////////////////////////////////////////
+var QN:TSqlquery;
+    p:integer;
+    pesob:currency;
+    xtrans:string;
+begin
+
+  pesob:=0;
+  for p:=0 to grid.RowCount do begin
+  // dai buscar as pesagens pelo numero da transacao no pedido mestre
+     xtrans:=trim(Grid.cells[Grid.getcolumn('moes_transacao'),p]);
+     if xtrans<>'' then begin
+       QN:=sqltoquery('select * from movabatedet inner join movabate on (mova_transacao=movd_transacao'+
+                      ' and mova_tipomov = movd_tipomov )'+
+                      ' where mova_tipomov = '+Stringtosql(Tipomov)+
+                      ' and mova_status = '+stringtosql('N')+
+                      ' and mova_unid_codigo = '+EdUnid_codigo.assql+
+                      ' and movd_status = '+stringtosql('N')+
+                      ' and movd_unid_codigo = '+EdUnid_codigo.assql+
+                      ' and mova_transacaogerada = '+stringtosql(xtrans));
+
+       while not QN.eof do begin
+          pesob:=pesob + QN.fieldbyname('movd_pesobalanca').ascurrency;
+          QN.Next;
+       end;
+       FGeral.FechaQuery(QN);
+     end;
+  end;
+  result:=pesob;
+end;
+
+// 27.06.16
+// 27.06.16
+function TFPesagemCaminhao.LiberaCaminhao: boolean;
+/////////////////////////////////////////////////////////
+begin
+  result:=(FGeral.GetConfig1AsString('libcaminhao')='S');
+end;
+
+// 29.06.16
+procedure TFPesagemCaminhao.SetaCargas(Ed: TSqled);
+//////////////////////////////////////////////////////
+var Qx:TSqlquery;
+begin
+   Qx:=sqltoquery('select movc_tran_codigo,movc_numero,tran_placa from movcargas'+
+                 ' inner join transportadores on ( tran_codigo=movc_tran_codigo )'+
+                 ' where movc_status='+stringtosql('N')+
+                 ' and movc_tran_codigo='+EdTran_codigo.assql+
+                 ' and movc_unid_codigo='+EdUnid_codigo.assql+
+                 ' and movc_data >= '+Datetosql(Sistema.hoje-1));
+   Ed.Items.Clear;
+   while not QX.eof do begin
+     Ed.Items.Add(Qx.fieldbyname('movc_numero').asstring);
+     QX.Next;
+   end;
+   FGeral.FechaQuery(Qx);
+end;
+
+procedure TFPesagemCaminhao.EdTran_codigoValidate(Sender: TObject);
+////////////////////////////////////////////////////////////////////////
+begin
+//    SetaCargas(EdCarga);
+end;
+
+// 29.06.16
+procedure TFPesagemCaminhao.EdCargaValidate(Sender: TObject);
+///////////////////////////////////////////////////////////////////////////////
+var sqltran,x,sqlcarga1,sqlcarga2:string;
+    p:integer;
+    pesonotas:currency;
+
+begin
+
+//   xcarga:=EdCarga.asinteger;
+//   if xcarga>0 then begin
+//     sqlcarga1:=' and mova_carga = '+inttostr(xcarga);
+//     sqlcarga2:=' and movc_numero = '+inttostr(xcarga);
+//   end else begin
+     sqlcarga1:=' and mova_carga = 999999';   //para dar eof
+     sqlcarga2:=' and movc_pesoi>0 and ( (movc_pesof=0) or (movc_pesof is null) )';
+//   end;
+   sqltran:=' and '+FGeral.Getin('moes_tran_codigo',EdTran_codigo.text,'C');
+{
+// aqui tem q buscar a carga montada deste veiculo nesta data se houver
+   Q:=sqltoquery('select movabate.*,clie_razaosocial,clie_endres from movabate inner join clientes on (clie_codigo=mova_tipo_codigo)'+
+                      ' where mova_status = ''N'''+
+                      ' and '+FGeral.Getin('mova_unid_codigo',Global.CodigoUnidade,'C')+
+                      sqlcarga1+
+                      ' and mova_dtabate >= '+Datetosql(Sistema.hoje-1)+
+                      ' and mova_tipomov = '+Stringtosql(Tipomov) );
+}
+
+   QC:=sqltoquery('select * from movcargas where movc_status='+stringtosql('N')+
+                 ' and movc_unid_codigo='+EdUnid_codigo.assql+
+                 ' and movc_tran_codigo='+EdTran_codigo.assql+
+                 sqlcarga2+
+                 ' and movc_data = '+Datetosql(Sistema.hoje));
+ {
+  if QC.eof then begin
+    Avisoerro('Não encontrado carga montada para pesagem');
+    exit;
+  end;
+  }
+  bpesoinicial.Enabled:=true;
+///////////////////////  bpesofinal.Enabled:=true;
+////////////  novapesagem:=(EdCarga.asinteger=0);
+  novapesagem:=false;
+//////////////////////  Grid.Clear;
+  p:=1;
+  pesonotas:=0;
+  if not Qc.eof then begin
+    novapesagem:=false;
+    if Qc.fieldbyname('movc_pesoi').AsCurrency>0 then begin
+//       bpesoinicial.Enabled:=false;
+//       EdPesoinicial.Enabled:=false;
+    end;
+    if Qc.fieldbyname('movc_pesof').AsCurrency>0 then begin
+//      bpesofinal.Enabled:=false;
+//      EdPesofinal.Enabled:=false;
+    end;
+    if (Qc.fieldbyname('movc_pesoi').AsCurrency>0 ) and ( Qc.fieldbyname('movc_pesof').AsCurrency>0 ) then
+      novapesagem:=true;
+   if (novapesagem) then begin
+     EdPesoinicial.clear;
+     bpesoinicial.Enabled:=true;
+     EdPesoinicial.enabled:=Global.Usuario.OutrosAcessos[0513];
+   end else begin
+//      EdMoes_cola_codigo01.text:=Qc.fieldbyname('movc_cola_codigo01').AsString;
+//      EdMoes_cola_codigo02.text:=Qc.fieldbyname('movc_cola_codigo02').AsString;
+//      EdPesoinicial.setvalue(Qc.fieldbyname('movc_pesoi').ascurrency);
+ //     EdPesofinal.setvalue(Qc.fieldbyname('movc_pesof').ascurrency);
+//      EdMoes_cola_codigo01.validfind;
+//      EdMoes_cola_codigo02.validfind;
+   end;
+  end else begin
+//    EdMOes_cola_codigo01.Clear;
+//    EdMOes_cola_codigo02.Clear;
+    EdPesoinicial.clear;
+    EdPesofinal.clear;
+//    EdPesonotas.clear;
+//    EdNumeronotas.clear;
+    if Global.Usuario.OutrosAcessos[0513] then begin
+      EdPesoinicial.enabled:=true;
+      EdPesoinicial.setfocus;
+    end;
+    novapesagem:=true;
+  end;
+//  EdDif.setvalue(EdPesoFinal.ascurrency-EdPesoinicial.ascurrency);
+ {
+ //////////////////////////////////////////////////
+  while (not Q.eof) and (not novapesagem) do begin
+    Grid.Cells[Grid.GetColumn('moes_numerodoc'),p]:=Q.fieldbyname('mova_numerodoc').asstring;
+    Grid.Cells[Grid.GetColumn('moes_dataemissao'),p]:=FGeral.FormataData( Q.fieldbyname('mova_dtabate').asdatetime );
+//    Grid.Cells[Grid.GetColumn('moes_vlrtotal'),p]:=floattostr(Q.fieldbyname('moes_vlrtotal').Ascurrency);
+    Grid.Cells[Grid.GetColumn('moes_tipo_codigo'),p]:=Q.fieldbyname('mova_tipo_codigo').asstring;
+    Grid.Cells[Grid.GetColumn('clie_razaosocial'),p]:= Q.fieldbyname('clie_razaosocial').asstring;
+    Grid.Cells[Grid.GetColumn('clie_endres'),p]:=Q.fieldbyname('clie_endres').asstring;
+//      Grid.Cells[Grid.GetColumn('clie_uf'),p]:=Q.fieldbyname('clie_uf').asstring
+    Grid.Cells[Grid.GetColumn('moes_transacao'),p]:=Q.fieldbyname('mova_transacao').asstring;
+//    Grid.Cells[Grid.GetColumn('retorno'),p]:=Q.fieldbyname('moes_retornonfe').asstring;
+//    Grid.Cells[Grid.GetColumn('marcado'),p]:='OK';
+//    Grid.Cells[Grid.GetColumn('moes_pesoliq'),p]:=Q.fieldbyname('moes_pesoliq').AsString;
+    Grid.AppendRow;
+    inc(p);
+    Q.Next;
+  end;
+  Q.First;
+  EdNumeronotas.setvalue( p-1 );
+  pesonotas:=GetPesoBalancaSaida(Qc.fieldbyname('movc_numero').asinteger);
+  EdPesonotas.setvalue( pesonotas );
+//////////////////////////////////////////////////////  
+  }
+
+end;
+
+// 28.02.20 - para poder testar a impressao digitando o peso
+procedure TFPesagemCaminhao.EdPesoInicialExitEdit(Sender: TObject);
+////////////////////////////////////////////////////////////////////////
+begin
+
+   bpesoinicialClick(self);
+
+end;
+
+// 01.07.16
+procedure TFPesagemCaminhao.SetaPlacas(Ed: TSqled);
+//////////////////////////////////////////////////////
+var Qx:TSqlquery;
+begin
+   Qx:=sqltoquery('select tran_codigo,tran_placa from transportadores where tran_placa is not null'+
+                  ' and tran_proprio = ''S'''+
+                  ' order by tran_placa');
+   Ed.Items.Clear;
+   while not QX.eof do begin
+     if ( copy(Qx.fieldbyname('tran_placa').asstring,4,4)<>'' ) and ( copy(Qx.fieldbyname('tran_placa').asstring,4,4)<>'0000' ) then
+       Ed.Items.Add(Qx.fieldbyname('tran_codigo').asstring+' | '+copy(Qx.fieldbyname('tran_placa').asstring,1,3)+'-'+copy(Qx.fieldbyname('tran_placa').asstring,4,4));
+     QX.Next;
+   end;
+   FGeral.FechaQuery(Qx);
+end;
+
+procedure TFPesagemCaminhao.ConfiguraTeclas(Key: Word);
+begin
+ if key = vk_f4 then bpesoinicialClick(self)
+// else if key = vk_f5 then bimpetqClick(self)
+ else if key = vk_f6 then bsairClick(self)
+
+end;
+
+procedure TFPesagemCaminhao.bSairClick(Sender: TObject);
+begin
+  if AcbrBal1.Ativo then AcbrBal1.Desativar;
+  close;
+  if Global.Usuario.OutrosAcessos[0060] then Application.Terminate;
+end;
+
+procedure TFPesagemCaminhao.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   ConfiguraTeclas(key);
+
+end;
+
+end.

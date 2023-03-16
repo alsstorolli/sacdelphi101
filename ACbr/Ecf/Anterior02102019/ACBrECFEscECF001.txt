@@ -1,0 +1,11 @@
+COO=17
+DataHora=30102017215020 
+VendaBruta=471550
+NumSerie=BE10EMULADOR00000000
+NumUltItem=1
+TotalItem=100
+SubTotal=100
+NumPagtos=1
+Pagto1=1|1|7
+TotalAPagar=000
+TotalPago=100

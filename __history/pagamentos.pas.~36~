@@ -1,0 +1,815 @@
+// 30.04.20
+// Pagamentos via envio de arquivo ao banco
+
+unit pagamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ACBrMail, Data.DB, Datasnap.DBClient,
+  SimpleDS, SqlSis, ACBrBase, ACBrBoleto, Vcl.Grids, SqlDtg, Vcl.StdCtrls,
+  Vcl.Mask, SQLEd, Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid, SqlExpr;
+
+type
+  TFPagamentos = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bSair: TSQLBtn;
+    bgeraremessa: TSQLBtn;
+    brelatorio: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    PRemessa: TSQLPanelGrid;
+    bmarcatodos: TSQLBtn;
+    bdesmarcatodos: TSQLBtn;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdDtinicio: TSQLEd;
+    EdDtFim: TSQLEd;
+    PCheques: TSQLPanelGrid;
+    GridPedidos: TSqlDtGrid;
+    Edtotalmarcado: TSQLEd;
+    EdValorpedidos: TSQLEd;
+    EdCheq_bcoemitente: TSQLEd;
+    EdPort_codigo: TSQLEd;
+    Edbanco: TSQLEd;
+    EdBanco_descricao: TSQLEd;
+    EdInstrucaoCob: TSQLEd;
+    EdSoma: TSQLEd;
+    EdTodos: TSQLEd;
+    EdNumeros: TSQLEd;
+    EdVencimento: TSQLEd;
+    Salvar: TSaveDialog;
+    ACBrMail1: TACBrMail;
+    procedure EdbancoKeyPress(Sender: TObject; var Key: Char);
+    procedure EdbancoValidate(Sender: TObject);
+    procedure EdDtFimValidate(Sender: TObject);
+    procedure EdDtFimExitEdit(Sender: TObject);
+    procedure bmarcatodosClick(Sender: TObject);
+    procedure bdesmarcatodosClick(Sender: TObject);
+    procedure bgeraremessaClick(Sender: TObject);
+    procedure GridPedidosClick(Sender: TObject);
+    procedure EdPort_codigoValidate(Sender: TObject);
+    procedure brelatorioClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     procedure Execute;
+     procedure ListaPagamentos;
+
+  end;
+
+var
+  FPagamentos: TFPagamentos;
+  QBanco            : TSqlquery;
+  sqlaberto,
+  sqltodos,
+  sqldata,
+  sqlunidades,
+  sqldatacont,
+  sqlportador       : string;
+  Chequesmarcados,
+  tamcontacorrente,
+  tamagencia,
+  seq              :integer;
+
+
+implementation
+
+uses Geral, SqlFun, Unidades,Plano , portador, sintegra, cadcli, SqlRel;
+
+{$R *.dfm}
+
+    function UltimoDigito(s:string):Char;
+    ////////////////////////////////////
+    var i:integer;
+    begin
+      result:='0';
+      for i:=1 to length(s) do begin
+        if s[i]<>'' then
+          result:=s[i];
+      end;
+
+    end;
+
+{ TFPagamentos }
+
+procedure TFPagamentos.bdesmarcatodosClick(Sender: TObject);
+/////////////////////////////////////////////////////////////////////////////
+var x:integer;
+begin
+  for x:=0 to GridPedidos.rowcount do begin
+    if trim( GridPedidos.cells[GridPedidos.getcolumn('pend_numerodcto'),x] ) <> '' then begin
+        GridPedidos.cells[GridPedidos.getcolumn('marcado'),x]:='';
+    end;
+  end;
+  Edtotalmarcado.setvalue(0);
+  Chequesmarcados:=0;
+
+end;
+
+procedure TFPagamentos.bgeraremessaClick(Sender: TObject);
+///////////////////////////////////////////////////////////
+var  GeracaoRemessa : boolean;
+     xsta,
+     op,
+     nomearq        : string;
+     p,
+     lote,
+     nlotes,
+     loteseq,
+     lotepag        : integer;
+     Q              : TSqlquery;
+     Lista,
+     ListaPag       : TStringList;
+     totalpag       : currency;
+
+
+// ver como tratar 'adequadamente'..
+     function GetFormadePagamento( xbanco,xportador:string ):string;
+     ////////////////////////////////////////////////////////////////////////
+     begin
+
+         result:='30';
+         if xbanco = '341' then begin
+//            if AnsiPos( xtipomov,Global.CodCompra+';'+Global.CodCompra100+';'+
+//                                 Global.CodCompraMatConsumo+';'+
+//                                 Global.CodPrestacaoServicosE ) > 0 then
+            if trim(xportador)<>'' then begin
+
+              if AnsiPos(  'ITAU', Uppercase(FPortadores.getdescricao(xportador)) ) > 0  then
+                 result := '30'
+              else
+                 result := '31';
+
+            end else  result := '31'
+
+         end;
+
+     end;
+
+
+     procedure GeraHeader;
+     ////////////////////
+     var w : string;
+     begin
+
+        w := QBanco.fieldbyname('Plan_codigobanco').asstring +
+             strzero(lote,4) +
+             '0' +
+             space(06) +
+             '081' +
+             '2'   +  // fixo cnpj ...
+             EdUNid_codigo.ResultFind.FieldByName('unid_cnpj').AsString +
+             space(20)+
+             strzero( strtoint(copy(QBanco.fieldbyname('Plan_agencia').asstring,1,4)) ,5) +
+             ' ' +
+// strzero(0,12) fica com tamanho 11 no arquivo..talvez por ser inteiro
+             '0' + strzero( strtoint(copy(QBanco.fieldbyname('Plan_contacorrente').asstring,1,tamcontacorrente)) ,11  ) +
+             ' ' +
+             copy(QBanco.fieldbyname('Plan_agencia').asstring,tamagencia+1 ,1 ) +
+             strspace( EdUNid_codigo.ResultFind.FieldByName('unid_razaosocial').AsString, 30 ) +
+             strspace( QBanco.FieldByName('Plan_descricao').AsString, 30 ) +
+             space(10) +
+             '1' +  // remessa
+             FormatDateTime('ddmmyyyy',Sistema.Hoje) +
+             FormatDateTime('HHMMSS',Sistema.Hoje) +
+             strzero(0,9) +
+             strzero(0,5) +
+             space(69) ;
+             Lista.Add( w );
+
+             inc(lote);
+
+
+     end;
+
+
+     procedure GeraHeaderLote;
+     //////////////////////////
+     var w       : string;
+         xnumero : integer;
+
+     begin
+
+{ tipos de pagamentos
+10 Dividendos
+15 Debêntures
+20 Fornecedores
+22 TRIBUTOS
+30 Salários
+40 Fundos de Investimentos
+50 Sinistros DE Seguros
+60 Despesas Viajante em Trânsito
+80 Representantes Autorizados
+90 Benefícios
+98 Diversos
+}
+
+{
+30 PAGAMENTO DE TÍTULOS EM COBRANÇA NO ITAÚ
+31 PAGAMENTO DE TÍTULOS EM COBRANÇA EM OUTROS BANCOS
+}
+        if strtointdef(FSintegra.GetNumerodoEndereco( EdUNid_codigo.ResultFind.FieldByName('unid_endereco').AsString ),0) >0 then
+           xnumero := strtointdef(FSintegra.GetNumerodoEndereco( EdUNid_codigo.ResultFind.FieldByName('unid_endereco').AsString ),0)
+        else
+           xnumero := 0;
+
+        w := QBanco.fieldbyname('Plan_codigobanco').asstring +
+             strzero(lote,4) +
+             '1' +   // fixo header de lote
+             'C' +   // crédito
+             '20' +  // tabela de tipos de pagamento 20-fornecedores
+             GetFormadePagamento( QBanco.fieldbyname('Plan_codigobanco').asstring,EdPort_codigo.Text ) + // tabela de formas de pagamento
+             '030' +    // versao do laytou do lote
+             ' ' +
+             '2' +   //  cnpj
+             EdUNid_codigo.ResultFind.FieldByName('unid_cnpj').AsString +
+             space(20)+
+             strzero( strtoint(copy(QBanco.fieldbyname('Plan_agencia').asstring,1,4)) ,5) +
+             ' ' +
+             '0' + strzero( strtoint(copy(QBanco.fieldbyname('Plan_contacorrente').asstring,1,tamcontacorrente)) ,11) +
+             ' ' +
+             copy(QBanco.fieldbyname('Plan_agencia').asstring,tamagencia+1 ,1 ) +
+             strspace( EdUNid_codigo.ResultFind.FieldByName('unid_razaosocial').AsString, 30 ) +
+             space(30) +  // finalidade do lote - especifico para folha , contas de invenstimentos, etc
+             space(10) +  // historico de c/c - ....
+             strspace(EdUNid_codigo.ResultFind.FieldByName('unid_endereco').AsString,30) +
+             strzero( xnumero ,5 ) +
+             space(15)  +   // complemento do endereco
+             strspace( EdUNid_codigo.ResultFind.FieldByName('unid_municipio').AsString,20) +
+             strspace( EdUNid_codigo.ResultFind.FieldByName('unid_cep').AsString,08) +
+             strspace( EdUNid_codigo.ResultFind.FieldByName('unid_uf').AsString,02) +
+             space(08) +   // complemento de registro
+             space(10) ;   // codigo de ocorrencias para o retorno
+
+             Lista.Add( w );
+             inc( nlotes );
+
+     end;
+
+     procedure GeraTrailerLote;
+     ////////////////////////////
+     var w   : string;
+     begin
+
+        w := QBanco.fieldbyname('Plan_codigobanco').asstring +
+             strzero(lote,4) +
+             '5' +   // fixo trailer de lote
+             space(09)+
+             strzero( trunc(ListaPag.Count/2) + 1,6 ) +   // total segmento J e J52 e div 2 + 1 do proprio trailer de lote
+             FGeral.Exportanumeros(totalpag,18,2) +
+             strzero( 0,18 ) +
+             space(171) +
+             space(10) ;
+
+             Lista.Add( w );
+
+     end;
+
+     procedure GeraTrailerArquivo;
+     ////////////////////////////
+     var w   : string;
+     begin
+
+        w := QBanco.fieldbyname('Plan_codigobanco').asstring +
+             '9999'+
+             '9' +   // fixo trailer de arquivo
+             space(09)+
+             strzero( nlotes,6) +
+             strzero( ListaPag.Count + 4,6 ) +  // ver caso tiver mais de um lote no arquivo
+             space(211) ;
+
+             Lista.Add( w );
+
+     end;
+
+
+     procedure GeraPagamento( xQ:TSqlquery );
+     ////////////////////////////////////////
+     var w,
+        codbarra :string;
+
+         function GetNomeFavorecido(xcodigo:integer;xtipocad:string):string;
+         ///////////////////////////////////////////////////////////////////////
+         begin
+
+               if xtipocad = 'F' then result:=Q.FieldByName('forn_razaosocial').AsString
+               else                   result:=FGeral.GetNomeRazaoSocialEntidade(xcodigo,xtipocad,'R');
+
+         end;
+
+         function GetBancoFav(xcodbarra:string):string;
+         ////////////////////////////////////////
+         begin
+
+            result := copy(xcodbarra,01,3);
+
+         end;
+
+         function GetDV(xcodbarra:string):string;
+         ////////////////////////////////////////
+         begin
+
+            result := copy(xcodbarra,05,1);
+
+         end;
+
+         function GetFatorV(xcodbarra:string):string;
+         ////////////////////////////////////////
+         begin
+
+            result := copy(xcodbarra,06,4);
+
+         end;
+
+         function GetValor(xcodbarra:string):string;
+         ////////////////////////////////////////
+         begin
+
+            result := copy(xcodbarra,10,08)+copy(xcodbarra,18,02);
+
+         end;
+
+         function GetCampoLivre(xcodbarra:string):string;
+         ////////////////////////////////////////
+         begin
+
+            result := strspace( copy(xcodbarra,20,25) , 25 ) ;
+
+         end;
+
+         // retorna tipo(1) numero(15) nome(40)
+         function GetDadosBeneficiario( xcodigo:integer;xtipocad:string ):string;
+         ////////////////////////////////////////////////////////////////////////
+         var xcnpjcpf : string;
+
+         begin
+
+            if xtipocad = 'F' then begin
+
+               xcnpjcpf := Q.FieldByName('forn_cnpjcpf').AsString;
+               if length(trim(xcnpjcpf))=11 then    // CPF
+
+                  result := '1' + xcnpjcpf + '0000'
+
+               else
+
+                  result := '2' + '0' + xcnpjcpf;
+
+               result := result + strspace(Q.FieldByName('forn_razaosocial').AsString ,40);
+
+            end else begin
+
+               xcnpjcpf := FCadcli.GetCnpjCpf(xcodigo);
+               if length(trim(xcnpjcpf))=11 then    // CPF
+
+                  result := '1' + xcnpjcpf + '0000'
+
+               else
+
+                  result := '2' + '0' + xcnpjcpf;
+
+               result := result + strspace(FGeral.GetNomeRazaoSocialEntidade(xcodigo,xtipocad,'R'),40);
+
+            end;
+
+
+
+         end;
+
+     begin
+
+           codbarra := Q.FieldByName('pend_codbarra').asstring;
+           w := QBanco.fieldbyname('Plan_codigobanco').asstring +
+             strzero(lote,4) +
+             '3' +   // tipo de registro  3 - detalhe
+             strzero(seq,5) +  // sequencial de registro de lote
+             'J' +             // segmento
+             '000' +           // tabela de tipos de movimento 000 - inclusao de pagamento
+             GetBancoFav(codbarra) +                  // banco favorecido  +  moeda + dv + vencimento + valor + campolivre
+             '9' +             // moeda 9-real
+             GetDV(codbarra) + // digito verif. cod barra
+             GetFatorV(codbarra) + // fator de vencimento
+             GetValor(codbarra) +
+             GetCampoLivre(codbarra) + // varios campos 'distribuido' o codigo de barras
+             strspace( GetNomeFavorecido(Q.FieldByName('pend_tipo_codigo').AsInteger,Q.FieldByName('pend_tipocad').AsString),30) +  // nome do favorecido
+             FormatDateTime('ddmmyyyy',Q.FieldByName('pend_datavcto').AsDateTime) +
+             FGeral.Exportanumeros(Q.FieldByName('pend_valor').AsCurrency,15,2) +
+             FGeral.Exportanumeros(Q.FieldByName('pend_descontos').AsCurrency,15,2) +
+             FGeral.Exportanumeros(Q.FieldByName('pend_acrescimos').AsCurrency,15,2) +
+             FormatDateTime('ddmmyyyy',Sistema.Hoje) +
+             FGeral.Exportanumeros(Q.FieldByName('pend_valor').AsCurrency-
+                                   Q.FieldByName('pend_descontos').AsCurrency+
+                                   Q.FieldByName('pend_acrescimos').AsCurrency
+                                   ,15,2) +
+             strzero(0,15) +
+             strspace( Q.FieldByName('pend_numerodcto').AsString,20) +
+             space( 13 ) +
+             space( 15 ) +   // nosso numero na remessa vai em branco
+             space( 10) ;
+
+             ListaPag.Add( w );
+// registro J52
+//////////////////////////////////
+               inc( seq );
+
+           w := QBanco.fieldbyname('Plan_codigobanco').asstring +
+             strzero(lote,4) +
+             '3' +   // tipo de registro  3 - detalhe
+             strzero(seq,5) +  // sequencial de registro de lote
+             'J' +             // segmento
+             '000' +           // tabela de tipos de movimento 000 - inclusao de pagamento
+             '52' +
+             '2' +             // tipo de inscricao do pagador
+             '0' + EdUNid_codigo.ResultFind.FieldByName('unid_cnpj').AsString +
+             strspace(EdUNid_codigo.ResultFind.FieldByName('unid_razaosocial').AsString,40) +
+             GetDadosBeneficiario( Q.FieldByName('pend_tipo_codigo').AsInteger,Q.FieldByName('pend_tipocad').AsString) +
+// sacador = beneficiario.. ?
+             GetDadosBeneficiario( Q.FieldByName('pend_tipo_codigo').AsInteger,Q.FieldByName('pend_tipocad').AsString) +
+             space(53) ;
+
+             ListaPag.Add( w );
+             totalpag := totalpag + Q.FieldByName('pend_valor').AsCurrency;
+             inc( seq );
+
+
+     end;
+
+
+
+begin
+
+  GeracaoRemessa:=False;
+  Sistema.Beginprocess('Gerando arquivo');
+  xsta:='N';
+  if EdTodos.Text='B' then xsta:='B;K';
+  Lista    := TStringList.Create;
+  ListaPag := TStringList.Create;
+  tamcontacorrente := 5;   // Itau
+  tamagencia       := 4;
+  seq      := 1;
+  loteseq  := GetSequencia('LotePag'+EdUNid_codigo.Text,false) + 1;
+  lote     := 1;
+  totalpag := 0;
+  nlotes   := 0;
+
+  for p:=1 to GridPedidos.RowCount do begin
+
+    op:=GridPedidos.Cells[GridPedidos.getcolumn('pend_operacao'),p];
+    if (trim(op)<>'') and (trim(GridPedidos.Cells[GridPedidos.getcolumn('marcado'),p])<>'') then begin
+
+      Q:=sqltoquery('select * from pendencias inner join fornecedores on ( forn_codigo=pend_tipo_codigo )'+
+                   ' where '+FGeral.GetIN('pend_status',xsta,'C')+
+                   ' and '+FGeral.GetIN('pend_tipocad','C;F','C')+
+                   ' and pend_operacao='+stringtosql(op));
+      if (not Q.eof) and ( trim(Q.FieldByName('pend_codbarra').AsString)<>'' ) then begin
+
+         GeraPagamento(Q);
+         lotepag := lote;   // para usar no trailer de lote
+         inc( lote );
+         Geracaoremessa := true;
+         if Lote>0 then begin
+
+           Sistema.edit('pendencias');
+           Sistema.SetField('pend_opantecipa',strzero(loteseq,4));
+           Sistema.SetField('pend_lotecnab',loteseq);
+           Sistema.post('pend_operacao='+Stringtosql(op));
+           Sistema.Commit;
+
+         end;
+
+      end else if (not Q.eof) and ( trim(Q.FieldByName('pend_codbarra').AsString)='' ) then begin
+
+         Aviso('Não será enviado a operação '+op+' por não ter codigo de barras');
+
+      end;
+
+      FGeral.FechaQuery(Q);
+
+    end;
+
+  end;
+
+  if Geracaoremessa then begin
+
+     lote := 0 ;
+     GeraHeader;
+     GeraHeaderLote;
+
+     p:=0;
+     for p := 0 to ListaPag.Count-1 do Lista.Add( ListaPag[p] );
+
+     lote := lotepag;
+     GeraTrailerLote;
+     GeraTrailerArquivo;
+
+     nomearq := QBanco.fieldbyname('Plan_codigobanco').asstring+
+                strzero(loteseq,3)+'_'+
+                FormatDatetime('dd',Sistema.Hoje)+
+                '.TXT';
+     Lista.SaveToFile( nomearq  );
+     ListaPag.Free;
+     Lista.Free;
+// atualiza o contador de lotes no banco de dados
+     loteseq := GetSequencia('LotePag'+EdUNid_codigo.Text,true);
+     Sistema.Endprocess('Gerado arquivo '+nomearq);
+
+  end else
+
+     Sistema.endprocess('NENHUM arquivo gerado');
+
+end;
+
+procedure TFPagamentos.bmarcatodosClick(Sender: TObject);
+////////////////////////////////////////////////////////
+var x:integer;
+begin
+
+  for x:=0 to GridPedidos.rowcount do begin
+    if trim( GridPedidos.cells[GridPedidos.getcolumn('pend_numerodcto'),x] ) <> '' then begin
+        GridPedidos.cells[GridPedidos.getcolumn('marcado'),x]:='Ok';
+        inc(Chequesmarcados)
+    end;
+  end;
+  Edtotalmarcado.setvalue(EdValorpedidos.ascurrency);
+
+end;
+
+procedure TFPagamentos.brelatorioClick(Sender: TObject);
+///////////////////////////////////////////////////////////
+var marc,
+    i    :integer;
+
+begin
+
+  if Edtotalmarcado.ascurrency=0 then exit;
+  Sistema.BeginProcess('Gerando relatório');
+  FRel.Init('RelPagamentosEletronico');
+  FRel.AddTit('Unidade '+EdUNid_codigo.text+' - '+SetEdUnid_nome.text);
+  FRel.AddTit('Relação de Pagamentos Enviados vai Remessa para Conta '+EdBanco.text+' - '+EdBanco_descricao.text );
+  FRel.AddCol( 50,1,'D','' ,''              ,'Emissão'    ,''         ,'',false);
+  FRel.AddCol( 70,1,'D','' ,''              ,'Vencimento'    ,''         ,'',false);
+  FRel.AddCol( 80,3,'N','+',f_cr            ,'Valor'           ,''         ,'',False);
+  FRel.AddCol( 70,0,'N','' ,''              ,'Documento'   ,''         ,'',False);
+  FRel.AddCol( 60,1,'N','' ,''              ,'Cliente/Forn.'   ,''         ,'',false);
+  FRel.AddCol(150,1,'C','' ,''              ,'Nome'   ,''         ,'',false);
+  marc:=0;
+  for i:=1 to GridPedidos.rowcount do begin
+    if GridPedidos.Cells[GridPedidos.getcolumn('marcado'),i]='Ok' then begin
+          FRel.AddCel(GridPedidos.cells[GridPedidos.getcolumn('pend_dataemissao'),i] );
+          FRel.AddCel(GridPedidos.cells[GridPedidos.getcolumn('pend_datavcto'),i] );
+          FRel.AddCel(GridPedidos.cells[GridPedidos.getcolumn('pend_valor'),i] );
+          FRel.AddCel(GridPedidos.cells[GridPedidos.getcolumn('pend_numerodcto'),i] );
+          FRel.AddCel(GridPedidos.cells[GridPedidos.getcolumn('pend_tipo_codigo'),i] );
+          FRel.AddCel(GridPedidos.cells[GridPedidos.getcolumn('clie_descricao'),i] );
+          inc(marc);
+    end;
+  end;
+  if marc>0 then
+    FRel.Video;
+  Sistema.endProcess('');
+
+end;
+
+procedure TFPagamentos.EdbancoKeyPress(Sender: TObject; var Key: Char);
+begin
+   FGeral.LimpaEdit(Edbanco,key);
+
+end;
+
+procedure TFPagamentos.EdbancoValidate(Sender: TObject);
+///////////////////////////////////////////////////////////
+
+begin
+
+ QBanco:=sqltoquery('select * from plano where plan_conta='+EdBanco.assql);
+ GridPedidos.CanFind:=true;
+ if not QBanco.eof then begin
+    EdBanco_descricao.text:=QBanco.fieldbyname('plan_descricao').asstring;
+    if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='' then
+      EdBAnco.invalid('Codigo do Banco não configurado nas contas gerenciais');
+
+    if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='748' then begin
+
+      GridPedidos.CanFind:=false;
+
+    end;
+
+ end else
+
+    EdBAnco.invalid('Banco não encontrado');
+
+end;
+
+procedure TFPagamentos.EdDtFimExitEdit(Sender: TObject);
+///////////////////////////////////////////////////////////
+begin
+
+   Chequesmarcados :=0;
+   ListaPagamentos;
+
+end;
+
+procedure TFPagamentos.EdDtFimValidate(Sender: TObject);
+//////////////////////////////////////////////////////////
+begin
+  if EdDtfim.asdate<EdDtinicio.asdate then
+    EdDtfim.Invalid('Data final tem que ser maior que inicial');
+
+end;
+
+procedure TFPagamentos.EdPort_codigoValidate(Sender: TObject);
+///////////////////////////////////////////////////////////////
+begin
+
+  EdBanco.Enabled:=true;
+
+  if not EdPort_codigo.IsEmpty then begin
+
+     if EdPort_codigo.ResultFind<>nil then begin
+
+        if EdPort_codigo.ResultFind.FieldByName('port_plan_conta').AsInteger>0 then begin
+
+           EdBanco.Text:=EdPort_codigo.ResultFind.FieldByName('port_plan_conta').AsString;
+           EdBanco.Valid;
+           EdBanco.Enabled:=false;
+
+        end;
+
+     end;
+
+  end;
+
+end;
+
+procedure TFPagamentos.Execute;
+////////////////////////////////
+begin
+
+   FGeral.ConfiguraColorEditsNaoEnabled(FPagamentos);
+   FGeral.EstiloForm(FPagamentos);
+   Show;
+
+   if EdDtinicio.isempty then
+     EdDtinicio.setdate(sistema.hoje);
+   if EdDtFim.isempty then
+     EdDtFim.setdate(sistema.hoje);
+   FPlano.SetaItems(EdBanco,EdBanco_descricao,'B','','','S');
+   FUnidades.SetaItems(EdUnid_codigo,SetEdUNid_nome,Global.Usuario.UnidadesMvto);
+   EdUnid_codigo.setfocus;
+
+   GridPedidos.Clear;
+
+end;
+
+procedure TFPagamentos.GridPedidosClick(Sender: TObject);
+///////////////////////////////////////////////////////////////
+var valor:currency;
+begin
+
+   if GridPedidos.col=GridPedidos.getcolumn('marcado') then begin
+     valor:=texttovalor(GridPedidos.cells[GridPedidos.getcolumn('pend_valor'),GridPedidos.row]);
+     if GridPedidos.cells[GridPedidos.getcolumn('marcado'),GridPedidos.row]='Ok' then begin
+       GridPedidos.cells[GridPedidos.getcolumn('marcado'),GridPedidos.row]:='';
+       if Edtotalmarcado.ascurrency>0 then begin
+           Edtotalmarcado.setvalue( EdTotalmarcado.ascurrency - valor );
+       end;
+     end else begin
+       GridPedidos.cells[GridPedidos.getcolumn('marcado'),GridPedidos.row]:='Ok';
+       Edtotalmarcado.setvalue( EdTotalmarcado.ascurrency + valor );
+     end;
+   end;
+
+end;
+
+procedure TFPagamentos.ListaPagamentos;
+////////////////////////////////////////
+var QPedidos:TMemoryQuery;
+    SqlOrder,sqlcliente,w,xstatus,sqlnumeros:string;
+
+
+    procedure ChequestoGrid;
+    ////////////////////////
+    var  ListaPedidos:TStringlist;
+         x:integer;
+         vlrpedidos:currency;
+         condicao  :boolean;
+
+    begin
+
+       vlrpedidos:=0;
+       GridPedidos.clear;
+       ListaPedidos:=TStringlist.create;
+       x:=1;
+       condicao := true;
+       if not EdPort_codigo.IsEmpty then
+
+          condicao := ( QPedidos.FieldByName('pend_port_codigo').AsString = EdPort_codigo.Text );
+//          condicao := ( AnsiPos(  'ITAU', Uppercase(FPortadores.getdescricao(QPedidos.FieldByName('pend_port_codigo').AsString) ) ) = 0 )
+
+       while not QPedidos.eof do begin
+
+
+          if condicao  then begin
+
+             ListaPedidos.add(Qpedidos.fieldbyname('pend_transacao').asstring);
+             GridPedidos.cells[GridPedidos.getcolumn('pend_Numerodcto'),x]:=QPedidos.fieldbyname('pend_numerodcto').asstring;
+             GridPedidos.cells[GridPedidos.getcolumn('pend_tipo_codigo'),x]:=QPedidos.fieldbyname('pend_tipo_codigo').asstring;
+//             GridPedidos.cells[GridPedidos.getcolumn('clie_descricao'),x]:=QPedidos.fieldbyname('clie_razaosocial').asstring;
+// 23.09.11
+             GridPedidos.cells[GridPedidos.getcolumn('clie_descricao'),x]:=FGeral.GetNomeRazaoSocialEntidade( QPedidos.fieldbyname('pend_tipo_codigo').asinteger,QPedidos.fieldbyname('pend_tipocad').asstring,'R') ;
+             GridPedidos.cells[GridPedidos.getcolumn('pend_dataemissao'),x]:=FGeral.FormataData( QPedidos.fieldbyname('pend_dataemissao').asdatetime );
+             GridPedidos.cells[GridPedidos.getcolumn('pend_datavcto'),x]:=formatdatetime('dd/mm/yy',QPedidos.fieldbyname('pend_datavcto').asdatetime);
+             GridPedidos.cells[GridPedidos.getcolumn('pend_valor'),x]:=floattostr(QPedidos.fieldbyname('pend_valor').asfloat);
+//             GridPedidos.cells[GridPedidos.getcolumn('pend_transacao'),x]:=QPedidos.fieldbyname('pend_transacao').asstring;
+             GridPedidos.cells[GridPedidos.getcolumn('pend_operacao'),x]:=QPedidos.fieldbyname('pend_operacao').asstring;
+// 28.04.18
+             GridPedidos.cells[GridPedidos.getcolumn('pend_opantecipa'),x]:=QPedidos.fieldbyname('pend_opantecipa').asstring;
+             GridPedidos.cells[GridPedidos.getcolumn('pend_codbarra'),x]:=QPedidos.fieldbyname('pend_codbarra').asstring;
+             GridPedidos.cells[GridPedidos.getcolumn('portador'),x]:=FPortadores.GetDescricao( QPedidos.fieldbyname('pend_port_codigo').asstring);
+             inc(x);
+             vlrpedidos:=vlrpedidos+QPedidos.fieldbyname('pend_valor').asfloat;
+             GridPedidos.AppendRow;
+             EdValorpedidos.setvalue(vlrpedidos);
+
+          end;
+
+          QPedidos.next;
+
+       end;
+
+
+    end;
+
+
+begin
+//////////////////
+    GridPedidos.clear;
+    GridPedidos.setfocus;
+    Edtotalmarcado.setvalue(0);
+    Sistema.Beginprocess('Lendo documentos no periodo');
+    sqlaberto:=' and pend_rp=''P''';
+    xstatus:='N';
+// 14.07.17
+    sqltodos:='';
+    if Edtodos.Text='N' then sqltodos:=' and pend_opantecipa is null'
+    else if EdTodos.Text='B' then begin
+       sqltodos := ' and pend_databaixa is not null';
+       xstatus:='B;K';
+    end;
+//    sqlcliente:='';
+//    if not Edcliente.IsEmpty then sqlcliente:=' and pend_tipo_codigo = '+Edcliente.AsSql;
+// 22.09.17
+//    sqlnumeros:='';
+//    if (not EdNUmeros.IsEmpty) and ( EdTodos.Text='B' ) then sqlnumeros:= ' and '+FGeral.GetIN('pend_numerodcto',EdNumeros.Text,'C');
+
+    sqldata:=' and pend_datavcto >='+EdDtinicio.assql+' and pend_datavcto <='+EdDtfim.assql;
+    sqlunidades:=' and '+FGeral.Getin('pend_unid_codigo',EdUnid_codigo.text,'C');
+// 16.04.14 - Metallum - Fran
+    if Global.Usuario.OutrosAcessos[0721] then
+        sqldatacont:=''
+    else
+      sqldatacont:=' and pend_datacont > '+DatetoSql(Global.DataMenorBanco);
+    sqlportador:='';
+    if not EdPort_codigo.IsEmpty then
+
+       sqlportador:=' and pend_port_codigo='+EdPort_codigo.assql;
+
+    sqlorder:=' order by pend_numerodcto,pend_datavcto';
+// 04.08.11
+    if QBanco.FieldByName('Plan_codigobanco').asstring='748' then
+      sqlorder:=' order by pend_lotecnab';
+
+
+    w:='select * from pendencias inner join fornecedores on ( forn_codigo=pend_tipo_codigo )'+
+                  ' where '+FGeral.GetIN('pend_status',xstatus,'C')+
+                  ' and '+FGeral.GetIn('pend_tipocad','C;F','C')+
+                   sqlportador+sqltodos+
+                   sqldatacont+sqlaberto+sqldata+sqlunidades+
+                   sqlorder ;
+    QPedidos:=sqltomemoryquery( w );
+
+
+    if QPedidos.eof then begin
+
+      Avisoerro('Não encontrado documentos em aberto no periodo OU remessa já enviada');
+      EdDtfim.setfocus;
+
+    end else begin
+
+      ChequestoGrid;
+//      bmarcatodosclick(self);
+    end;
+
+    Sistema.endprocess('');
+
+
+end;
+
+end.

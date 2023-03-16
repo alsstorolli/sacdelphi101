@@ -1,0 +1,202 @@
+unit colaboradores;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, SQLGrid, StdCtrls, Mask, SQLEd, ExtCtrls,
+  Buttons, SQLBtn, alabel, SqlSis;
+
+type
+  TFColaboradores = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    DSCadastros: TDataSource;
+    EdCola_codigo: TSQLEd;
+    EdCola_descricao: TSQLEd;
+    EdCola_usua_codigo: TSQLEd;
+    EdCola_seto_codigo: TSQLEd;
+    EdCola_cpf: TSQLEd;
+    bexporta: TSQLBtn;
+    sd: TSaveDialog;
+    procedure FormActivate(Sender: TObject);
+    procedure bIncluirClick(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure EdCola_seto_codigoExitEdit(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure GridNewRecord(Sender: TObject);
+    procedure EdCola_cpfValidate(Sender: TObject);
+    procedure bexportaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function GetDescricao(Codigo:String):String;
+    function GetCPF(Codigo:String):String;
+    procedure Execute;
+  end;
+
+var
+  FColaboradores: TFColaboradores;
+  Campo:TDicionario;
+
+implementation
+
+uses Arquiv,SqlFun,SqlExpr, Geral, SQLRel;
+
+{$R *.dfm}
+
+{ TFColaboradores }
+
+procedure TFColaboradores.Execute;
+/////////////////////////////////////
+begin
+
+   FGeral.ConfiguraColorEditsNaoEnabled(Fcolaboradores);
+   campo:=Sistema.GetDicionario('colaboradores','cola_cpf');
+   if trim(campo.tipo)='' then begin
+       Edcola_cpf.enabled:=false;
+       Edcola_cpf.tablename:='';
+       Edcola_cpf.group:=7;
+   end else begin
+       Edcola_cpf.enabled:=true;
+       Edcola_cpf.tablename:='colaboradores';
+       Edcola_cpf.TableField:='cola_cpf';
+       Edcola_cpf.group:=0;
+   end;
+   FColaboradores.Show;
+
+end;
+
+function TFColaboradores.GetCPF(Codigo: String): String;
+/////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+
+    Q := sqltoquery('select cola_cpf from colaboradores where cola_codigo = '+stringtosql(codigo));
+    if not Q.eof then Result:=Q.FieldByName('Cola_cpf').AsString;
+
+  end;
+
+end;
+
+function TFColaboradores.GetDescricao(Codigo: String): String;
+//////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+
+    Q := sqltoquery('select cola_descricao from colaboradores where cola_codigo = '+stringtosql(codigo));
+    if not Q.eof then Result:=Q.FieldByName('Cola_descricao').AsString;
+    FGeral.FechaQuery( Q );
+
+  end;
+
+end;
+
+procedure TFColaboradores.FormActivate(Sender: TObject);
+begin
+  if not Arq.TColaboradores.Active then Arq.TColaboradores.Open;
+  Fgeral.ColunasGrid(Grid,Self);
+
+end;
+
+procedure TFColaboradores.bexportaClick(Sender: TObject);
+////////////////////////////////////////////////////////////
+var Lista :TStringList;
+    Q     :Tsqlquery;
+    linha : string;
+
+begin
+
+  if not sd.Execute then exit;
+  Q:=sqltoquery('select * from colaboradores order by cola_codigo');
+  if Q.Eof then exit;
+  Lista:=TStringList.Create;
+
+  while not Q.Eof do begin
+
+     linha := Q.FieldByName('cola_codigo').AsString + ';' +Q.FieldByName('cola_descricao').AsString;
+     Lista.Add( linha );
+     Q.Next;
+
+  end;
+  FGeral.FechaQuery(Q);
+  Lista.SaveToFile( Sd.FileName );
+  Aviso(' Arquivo '+Sd.FileName+' gerado');
+
+end;
+
+procedure TFColaboradores.bIncluirClick(Sender: TObject);
+begin
+  Grid.Insert(EdCola_Descricao);
+  EdCola_codigo.text:=strzero(FGeral.getsequencial(1,'cola_codigo','C','colaboradores'),EdCola_codigo.MaxLength);
+end;
+
+procedure TFColaboradores.bRelatorioClick(Sender: TObject);
+begin
+  FRel.Reportfromsql('select * from colaboradores','CadColaboradores','Relação Dos Colaboradores Cadastrados');
+
+end;
+
+procedure TFColaboradores.EdCola_cpfValidate(Sender: TObject);
+begin
+   if not EdCola_cpf.IsEmpty then FGeral.ValidaCNPJCPF(EdCola_cpf);
+
+end;
+
+procedure TFColaboradores.EdCola_seto_codigoExitEdit(Sender: TObject);
+begin
+  EdCola_Usua_codigo.setvalue(Global.Usuario.Codigo);
+  Grid.PostInsert(EdCola_Descricao);
+  Arq.TColaboradores.Refresh;
+  EdCola_codigo.text:=strzero(FGeral.getsequencial(1,'cola_codigo','C','colaboradores'),EdCola_codigo.MaxLength);
+
+end;
+
+procedure TFColaboradores.bExcluirClick(Sender: TObject);
+var Q:TSqlQuery;
+begin
+    Q:=SqlToQuery('SELECT Count(*) AS Registros FROM Movesto WHERE moes_cola_Codigo='+Stringtosql(Arq.TColaboradores.FieldByName('Cola_Codigo').AsString));
+    if Q.FieldByName('Registros').AsInteger>0 then begin
+       AvisoErro('Encontrado entradas lançadas ; ao colaborador selecionado');
+    end else begin
+       Grid.Delete;
+    end;
+    Q.Close;Q.Free;
+end;
+
+procedure TFColaboradores.GridNewRecord(Sender: TObject);
+begin
+  EdCola_codigo.GetFields(FColaboradores,99);
+end;
+
+end.

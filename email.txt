@@ -1,0 +1,1517 @@
+<html>
+  <head>
+    <title> - SAC 1.92s2</title>
+  </head>
+  <body>
+<table border=1 width=100%>
+<caption><font face="MS Sans Serif" size=1><b>
+Relação de Tipos de Movimento do Sistema<br>
+</b></font></caption>
+</table>
+    <table border=0 width=1018>
+<tr>
+<th width=80 align=left><font face="MS Sans Serif" size=1><b>
+Tipo
+</b></font></th>
+<th width=220 align=left><font face="MS Sans Serif" size=1><b>
+Tipo de Movimento
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Entrada/Saida
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Cliente/Fornecedor
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Movimenta Estoque
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Gera financeiro
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Gera Fiscal
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Calcula Icms
+</b></font></th>
+<th width=100 align=center><font face="MS Sans Serif" size=1><b>
+Calcula Substit.
+</b></font></th>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>PS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Prestação Serviços</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>PA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Prestação Serviços - Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa de Consignação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa de Pronta Entrega</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>MC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa Consignação Mercantil</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RI</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa p/ Industrialização</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RH</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa Industrialização Própria</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa para Conserto</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RG</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa em Demonstração</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RJ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa em Demonstração (Clientes)</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RK</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Remessa Contra Ordem (Clientes)</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RO</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Romaneio de Remessa a Ordem</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CQ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Complemento de Quantidade</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>C1</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada Complemento de Valor NF Produtor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CV</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada Complemento de Valor NF Compra</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>IC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Complemento de Icms</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>IE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Complemento de Icms - Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>C2</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Complemento de Icms - Entrada - Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>IP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Complemento de IPI</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução de Consignação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>MR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Consignação Mercantil</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CD</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução de Compra</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DI</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Industrialização</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RQ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Mercadoria Depósito</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Pronta Entrega</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução de Troca</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Romaneio Ambulante</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DV</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Venda</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DB</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Venda Consignada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Consignação Mercantil</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DX</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Igual Venda</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução de Compra Sem Estoque</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DJ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DK</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Imobilizado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DL</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Sem Financeiro</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DN</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Compra de Produtor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DQ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Simbólica de Consignação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DT</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução de Remessa</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DU</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução com Crédito Icms/IPI</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DZ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução com Crédito Icms/IPI para cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DY</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Remessa em Bonificação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Romaneio de Retorno Serie 4</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>D5</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Devolução Romaneio de Retorno Serie 5</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Mostruário</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RD</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Remessa para Conserto</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>EV</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Estorno de NF-e de Venda não cancelada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VD</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Direta</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VZ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda de Imobilizado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VB</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Brinde</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>SM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Mostruário</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VX</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Contrato</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VY</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Contrato Nota</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DO</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Contrato Doação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VH</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Contrato Entrega</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>SG</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Saida Produtos em Garantia</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Consignada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Pronta Entrega</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VF</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Pronta Entrega Fechamento</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Sem Mov.Estoque - Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Magazine</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VI</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Internet</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Romaneio de Saida para Venda Ambulante</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Ambulante</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VN</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Total Serie 4</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VL</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Líquida Serie 4</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>MV</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Consignação Mercantil</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>PP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Peça Problema</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Parcial Série 4</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RF</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Final Série 4</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RB</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Brinde Série 4</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>BC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Brinde Consignado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VT</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Transferência</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda sem Financeiro</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VO</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda Mostruário com Financeiro</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VJ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda para Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VQ</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Nota de Remessa a Ordem</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>VU</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Venda a Ordem</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>PC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Pedido de Venda de Mostruário Consignada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CO</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Mercadoria</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Mercadoria</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>EI</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Sem Itens da Nota</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CX</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Mercadoria X</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CT</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Conhecimento de Frete</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>NT</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Conhecimento de Frete Emitido(Saida)</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Sem Mov.Estoque - Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CI</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Imobilizado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>ET</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada Imobilizado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Mat. Uso e Consumo</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CF</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra sem Financeiro</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>NP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra de Produtor Rural</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra de Produtor Rural sem Contra Nota</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>NR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra de Produtor Rural Reclassificação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>NM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra de Produtor Rural Merenda</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>NE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada de NFP-e Produtor Rural</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Indústria</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CG</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Futura</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CL</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Futura Entrega</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>CS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Compra Produto Consignado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>EN</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada para Industrialização</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>EB</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada Bonificação, Brinde ou Doação</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>FA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Conta de Água</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>AE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Acerto Est. - Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>AS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Acerto Est. - Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>MS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Mov Matéria Prima - Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>ME</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Mov Matéria Prima - Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>BE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Contagem Balanço Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>BS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Contagem Balanço Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TN</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Entrada sem movimento</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Saida sem movimento</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TI</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transf. Imobilizado Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TM</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transf. Imobilizado Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>XE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Temporada Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>XS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Temporada Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>YE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Retorno Temporada Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>YS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transferência - Retorno Temporada Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transf. Material Consumo-Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>TD</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Transf. Material Consumo-Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>SR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Simples Remessa</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>KE</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Montagem Kit Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>KS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Montagem Kit Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RN</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Indust. sem serviço no fiscal</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>ES</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Retorno Serviço Industrialização</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DF</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Drawback Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DS</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Drawback Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DG</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Desossa Entrada</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>DH</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Desossa Saida</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>RA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Requisição Almoxarifado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>SA</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Saida do Almoxarifado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>EP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada Estoque em Processo</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>SP</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Saida Estoque em Processo</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Cliente</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>AC</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Entrada de Produto Acabado</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+</tr>
+<tr>
+<td align=left><font face="MS Sans Serif" size=1>PR</font></td>
+<td align=left><font face="MS Sans Serif" size=1>Cédula de Produto Rural - CPR</font></td>
+<td align=center><font face="MS Sans Serif" size=1>E</font></td>
+<td align=center><font face="MS Sans Serif" size=1>Fornecedor</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>S</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+<td align=center><font face="MS Sans Serif" size=1>N</font></td>
+</tr>
+    </table>
+  </body>
+</html>

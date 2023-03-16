@@ -1,0 +1,59 @@
+unit cadccustos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  SQLGrid, Vcl.StdCtrls, Vcl.Mask, SQLEd, Vcl.ExtCtrls, Vcl.Buttons, SQLBtn,
+  alabel;
+
+type
+  TFCCustos = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    EdPort_codigo: TSQLEd;
+    EdPort_descricao: TSQLEd;
+    EdPort_Plan_conta: TSQLEd;
+    EdPlan_descricao: TSQLEd;
+    Grid: TSQLGrid;
+    DSCadastros: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCCustos: TFCCustos;
+
+implementation
+
+uses Arquiv,SqlFun,SqlExpr, Geral, SQLRel;
+
+{$R *.dfm}
+
+end.

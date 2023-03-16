@@ -1,0 +1,66 @@
+unit baias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  SQLGrid, Vcl.StdCtrls, Vcl.Mask, SQLEd, Vcl.ExtCtrls, Vcl.Buttons, SQLBtn,
+  alabel;
+
+type
+  TFBaias = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    batuprecos: TSQLBtn;
+    breajuste: TSQLBtn;
+    EdGRUPOSPRECO: TSQLEd;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    EdGrup_codigo: TSQLEd;
+    EdGrup_descricao: TSQLEd;
+    EdGrup_valorarroba: TSQLEd;
+    EdGrup_comissao: TSQLEd;
+    EdGrup_markup: TSQLEd;
+    EdFaixacustoi: TSQLEd;
+    Edgrup_faixacustof: TSQLEd;
+    EdGrup_margem: TSQLEd;
+    EdGrup_Faix_codigo: TSQLEd;
+    EdGrup_SomenteCodBarra: TSQLEd;
+    Grid: TSQLGrid;
+    Dts: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FBaias: TFBaias;
+
+implementation
+
+{$R *.dfm}
+
+end.

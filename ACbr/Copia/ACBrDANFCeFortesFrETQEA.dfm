@@ -1,0 +1,149 @@
+object frmACBrDANFCeFortesFrETQEA: TfrmACBrDANFCeFortesFrETQEA
+  Left = 500
+  Top = 134
+  Width = 724
+  Height = 522
+  Caption = 'frmACBrDANFCeFortesFrETQEA'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object rlReportA4: TRLReport
+    Left = 0
+    Top = 2
+    Width = 340
+    Height = 340
+    AdjustableMargins = True
+    Borders.Style = bsClear
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    Margins.LeftMargin = 0.000000000000000000
+    Margins.TopMargin = 0.000000000000000000
+    Margins.RightMargin = 0.000000000000000000
+    Margins.BottomMargin = 0.000000000000000000
+    PageSetup.PaperSize = fpCustom
+    PageSetup.PaperWidth = 90.000000000000000000
+    PageSetup.PaperHeight = 90.000000000000000000
+    AfterPrint = rlReportA4AfterPrint
+    OnDataRecord = rlReportA4DataRecord
+    object RLBand1: TRLBand
+      Left = 16
+      Top = 16
+      Width = 308
+      Height = 210
+      AutoExpand = False
+      BandType = btTitle
+      object RLLabel2: TRLLabel
+        Left = 239
+        Top = 136
+        Width = 31
+        Height = 16
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Layout = tlCenter
+        ParentFont = False
+        BeforePrint = RLLabel2BeforePrint
+      end
+      object RLBarcode1: TRLBarcode
+        Left = 96
+        Top = 119
+        Width = 107
+        Height = 58
+        AutoSize = False
+        BarcodeType = bcCode128C
+        Margins.LeftMargin = 1.000000000000000000
+        Margins.RightMargin = 1.000000000000000000
+        Orientation = boTopToBottom
+        ShowText = boCode
+      end
+      object RLote: TRLAngleLabel
+        Left = 188
+        Top = 1
+        Width = 16
+        Height = 41
+        Angle = 270.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        BeforePrint = RLoteBeforePrint
+      end
+      object RDescricaoProduto: TRLAngleLabel
+        Left = 152
+        Top = 2
+        Width = 16
+        Height = 125
+        Angle = 270.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        BeforePrint = RDescricaoProdutoBeforePrint
+      end
+      object RPeso: TRLAngleLabel
+        Left = 115
+        Top = 8
+        Width = 22
+        Height = 64
+        Angle = 270.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -19
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        BeforePrint = RPesoBeforePrint
+      end
+      object REndereco: TRLAngleLabel
+        Left = 171
+        Top = 1
+        Width = 16
+        Height = 68
+        Angle = 270.000000000000000000
+        BeforePrint = REnderecoBeforePrint
+      end
+    end
+    object RNomeFantasia: TRLAngleLabel
+      Left = 209
+      Top = 19
+      Width = 16
+      Height = 104
+      Angle = 270.000000000000000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      BeforePrint = RNomeFantasiaBeforePrint
+    end
+  end
+  object RLPDFFilter1: TRLPDFFilter
+    DocumentInfo.Creator = 'Projeto ACBr'
+    DisplayName = 'Documento PDF'
+    Left = 818
+    Top = 79
+  end
+  object RLHTMLFilter1: TRLHTMLFilter
+    DocumentStyle = dsCSS2
+    DisplayName = 'HTML'
+    Left = 821
+    Top = 131
+  end
+end

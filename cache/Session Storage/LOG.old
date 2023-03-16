@@ -1,0 +1,8 @@
+2023/03/12-21:30:42.450 5304 Reusing MANIFEST C:\ProjetosDelphi101\Sac\Programa\cache\Session Storage/MANIFEST-000001
+2023/03/12-21:30:42.456 5304 Recovering log #19
+2023/03/12-21:30:42.457 5304 Level-0 table #22: started
+2023/03/12-21:30:42.461 5304 Level-0 table #22: 74202 bytes OK
+2023/03/12-21:30:42.464 5304 Recovering log #22
+2023/03/12-21:30:42.465 5304 Reusing old log C:\ProjetosDelphi101\Sac\Programa\cache\Session Storage/000022.log 
+2023/03/12-21:30:42.466 5304 Delete type=0 #19
+2023/03/12-21:30:42.466 5304 Delete type=2 #23

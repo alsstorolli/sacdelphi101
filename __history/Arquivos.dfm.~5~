@@ -1,0 +1,33 @@
+object Arq: TArq
+  OldCreateOrder = False
+  Height = 325
+  Width = 431
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'DriverID=PG'
+      'Database=sac'
+      'User_Name=sac')
+    LoginPrompt = False
+    Left = 48
+    Top = 40
+  end
+  object Transacao: TFDTransaction
+    Connection = Conexao
+    Left = 120
+    Top = 40
+  end
+  object TPortadores: TFDTable
+    Connection = Conexao
+    Transaction = Transacao
+    UpdateOptions.UpdateTableName = 'portadores'
+    TableName = 'portadores'
+    Left = 208
+    Top = 40
+  end
+  object DriverLink: TFDPhysPgDriverLink
+    VendorHome = 'D:\DelphiSeattleProjetos\Sac\Programa'
+    VendorLib = 'libpq.dll'
+    Left = 304
+    Top = 40
+  end
+end

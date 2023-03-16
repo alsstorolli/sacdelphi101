@@ -1,0 +1,172 @@
+unit rateio;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, SqlDtg, Buttons, SQLBtn, ExtCtrls, SQLGrid, StdCtrls,
+  Mask, SQLEd , Sqlfun, SqlExpr;
+
+type
+  TFRateio = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    bSair: TSQLBtn;
+    GridRateio: TSqlDtGrid;
+    EdCodigo: TSQLEd;
+    Edvalor: TSQLEd;
+    procedure GridRateioKeyPress(Sender: TObject; var Key: Char);
+    procedure EdCodigoExitEdit(Sender: TObject);
+    procedure EdvalorExitEdit(Sender: TObject);
+    procedure bSairClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute(xcaption,xtabela,xcodigo:string; xvalornota:currency;xtrans:string);
+  end;
+
+var
+  FRateio  : TFRateio;
+  valornota:currency;
+  transacao,
+  tabela   :string;
+
+implementation
+
+{$R *.dfm}
+
+{ TFRateio }
+
+// 25.05.15
+procedure TFRateio.Execute(xcaption, xtabela, xcodigo: string ; xvalornota:currency ; xtrans:string);
+////////////////////////////////////////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+    Lista,ListaSetor:TStringList;
+    p:integer;
+begin
+
+   caption:=xcaption;
+   tabela := xtabela;
+   Edcodigo.FindTable:=xtabela;
+   Edcodigo.FindField:=xcodigo;
+   if xtabela='setores' then
+     EdCodigo.showform:='FSetores'
+   else if xtabela='plano' then
+     EdCodigo.showform:='FPlano'
+   else
+     EdCodigo.showform:='';
+
+   GridRateio.cells[0,0]:='Codigo';
+   GridRateio.cells[1,0]:='Valor';
+
+   transacao:=xtrans;
+
+   if transacao<>'' then begin
+
+      Q:=sqltoquery('select moes_remessas,moes_devolucoes from movesto where moes_transacao='+Stringtosql(transacao));
+
+      if not Q.eof then begin
+
+         Lista:=TStringList.create;
+// 20.08.20 - Novicarnes - Ketlen
+         if xtabela='plano' then
+
+            strtolista(Lista,Q.fieldbyname('moes_devolucoes').asstring,'|',true)
+
+         else
+
+            strtolista(Lista,Q.fieldbyname('moes_remessas').asstring,'|',true);
+
+         for p:=0 to Lista.count-1 do begin
+
+           ListaSetor:=TStringList.create;
+           strtolista(ListaSetor,Lista[p],';',true);
+           if ListaSetor.count>=2 then begin
+             GridRateio.cells[GridRateio.getcolumn('codigo'),p+1]:=ListaSetor[0];
+             GridRateio.cells[GridRateio.getcolumn('valor'),p+1]:=ListaSetor[1];
+           end;
+           ListaSetor.free;
+
+         end;
+         Lista.free;
+
+      end;
+
+   end;
+
+   valornota:=xvalornota;
+   ShowModal;
+
+end;
+
+procedure TFRateio.GridRateioKeyPress(Sender: TObject; var Key: Char);
+/////////////////////////////////////////////////////////////////////////////
+begin
+  if key=#13 then begin
+    if GridRateio.Col=Gridrateio.GetColumn('codigo') then begin
+      EdCodigo.Top:=Gridrateio.TopEdit;
+      EdCodigo.Left:=Gridrateio.LeftEdit;
+      Edcodigo.visible:=true;
+      Edcodigo.enabled:=true;
+      Edcodigo.text:='';
+      EdCodigo.setfocus;
+    end else if GridRateio.Col=Gridrateio.GetColumn('valor') then begin
+      Edvalor.Top:=Gridrateio.TopEdit;
+      Edvalor.Left:=Gridrateio.LeftEdit;
+      Edvalor.visible:=true;
+      Edvalor.enabled:=true;
+      Edvalor.text:='';
+      Edvalor.setfocus;
+    end;
+  end;
+end;
+
+procedure TFRateio.EdCodigoExitEdit(Sender: TObject);
+////////////////////////////////////////////////////////////////////////////
+begin
+   Edcodigo.visible:=false;
+   Edcodigo.enabled:=false;
+   GridRateio.cells[Gridrateio.GetColumn('codigo'),GridRateio.row]:=EdCodigo.text;
+   if (tabela = 'plano') and  ( EdCodigo.resultfind <> nil )  then
+
+      GridRateio.cells[Gridrateio.GetColumn('descricao'),GridRateio.row]:=EdCodigo.resultfind.fieldbyname('plan_descricao').asstring;
+
+   GridRateio.setfocus;
+end;
+
+procedure TFRateio.EdvalorExitEdit(Sender: TObject);
+////////////////////////////////////////////////////////////////////////////
+begin
+  EdValor.enabled:=false;
+  EdValor.visible:=false;
+  GridRateio.cells[Gridrateio.GetColumn('valor'),GridRateio.row]:=EdValor.text;
+  GridRateio.setfocus;
+end;
+
+procedure TFRateio.bSairClick(Sender: TObject);
+/////////////////////////////////////////////////////
+begin
+   Close;
+end;
+
+// 26.05.15
+procedure TFRateio.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+////////////////////////////////////////////////////////////////////////////
+var p:integer;
+    xvalor:currency;
+    condicao : boolean;
+begin
+  xvalor:=0;
+  for p:=0 to GridRateio.RowCount do xvalor:=xvalor + Texttovalor(  GridRateio.cells[Gridrateio.GetColumn('valor'),p] );
+  condicao := (xvalor > valornota);
+  if tabela = 'plano' then condicao := (xvalor = valornota) ;
+
+  if condicao  then begin
+    Avisoerro(' Soma dos valores informados diferere do total de produtos da nota');
+    canclose:=false;
+  end;
+end;
+
+end.

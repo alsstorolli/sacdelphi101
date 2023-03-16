@@ -1,0 +1,43 @@
+unit exclusaoetiq;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, SQLEd,
+  Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid;
+
+type
+  TFExclusaoEtiqueta = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    EdCaoc_codigo: TSQLEd;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdDtdesossa: TSQLEd;
+    EdNumeroDoc: TSQLEd;
+    EdProduto: TSQLEd;
+    SetEdESTO_DESCRICAO: TSQLEd;
+    Edqtde: TSQLEd;
+    EdPecas: TSQLEd;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FExclusaoEtiqueta: TFExclusaoEtiqueta;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,645 @@
+unit Unidades;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, DB, Grids, DBGrids, SQLGrid, ExtCtrls,
+  Buttons, SQLBtn, alabel;
+
+type
+  TFUnidades = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    DSCadastro: TDataSource;
+    EdUnid_codigo: TSQLEd;
+    EdUnid_Empr_codigo: TSQLEd;
+    EdUnid_nome: TSQLEd;
+    EdUnid_reduzido: TSQLEd;
+    EdUnid_razaosocial: TSQLEd;
+    EdUnid_cnpj: TSQLEd;
+    EdUnid_inscricaoestadual: TSQLEd;
+    EdUnid_inscricaomunicipal: TSQLEd;
+    EdUnid_regjuntacomercial: TSQLEd;
+    EdUnid_atividade: TSQLEd;
+    EdUnid_identatividade: TSQLEd;
+    EdUnid_responsavel: TSQLEd;
+    EdUnid_cargo: TSQLEd;
+    EdUnid_endereco: TSQLEd;
+    EdUnid_bairro: TSQLEd;
+    EdUnid_cep: TSQLEd;
+    EdUnid_cxpostal: TSQLEd;
+    EdUnid_muni_codigo: TSQLEd;
+    EdUnid_Muni_Nome: TSQLEd;
+    EdUnid_uf: TSQLEd;
+    EdUnid_fone: TSQLEd;
+    EdUnid_fax: TSQLEd;
+    EdUnid_email: TSQLEd;
+    bEditar: TSQLBtn;
+    EdUnid_Contador: TSQLEd;
+    EdUnid_contacontabil: TSQLEd;
+    EdUnid_dtdespachojunta: TSQLEd;
+    EdUnid_cpfcontador: TSQLEd;
+    EdUnid_crccontador: TSQLEd;
+    EdUnid_cpfresponsavel: TSQLEd;
+    EdUnid_empresa1: TSQLEd;
+    EdUnid_filial1: TSQLEd;
+    EdUnid_empresa2: TSQLEd;
+    EdUnid_filial2: TSQLEd;
+    PExportacao: TSQLPanelGrid;
+    EdUnid_vendaavistga: TSQLEd;
+    StaticText2: TStaticText;
+    Edunid_vendaaprazo: TSQLEd;
+    Edunid_clientes: TSQLEd;
+    EdUnid_transentrada: TSQLEd;
+    Edunid_transsaida: TSQLEd;
+    Edunid_caixa: TSQLEd;
+    Edunid_compras: TSQLEd;
+    Edunid_comprasavista: TSQLEd;
+    EdUnid_simples: TSQLEd;
+    EdUnid_serie: TSQLEd;
+    Edunid_containss: TSQLEd;
+    EdUnid_ctbtransnume: TSQLEd;
+    EdUnid_ctbfrete: TSQLEd;
+    EdEsto_sitt_codestado: TSQLEd;
+    EdUnid_cfis_codigoest: TSQLEd;
+    EdEsto_icmsestado: TSQLEd;
+    SetEdsitt_cst: TSQLEd;
+    EdEsto_sitt_forestado: TSQLEd;
+    SetEd: TSQLEd;
+    EdEsto_icmsforaestado: TSQLEd;
+    EdUnid_cfis_codigoforaest: TSQLEd;
+    EdUnid_especie: TSQLEd;
+    Edunid_fornecedores: TSQLEd;
+    Edunid_devovenda: TSQLEd;
+    Edunid_devocompra: TSQLEd;
+    EdUnid_cnaefiscal: TSQLEd;
+    Edunid_nroseriecertif: TSQLEd;
+    Edunid_contagta: TSQLEd;
+    Edunid_comprasNS: TSQLEd;
+    Edunid_contapisret: TSQLEd;
+    Edunid_contacofret: TSQLEd;
+    Edunid_contairret: TSQLEd;
+    Edunid_contacsllret: TSQLEd;
+    EdUnid_ctbtransnumecre: TSQLEd;
+    EdUnid_contaissret: TSQLEd;
+    Edunid_contaservicos: TSQLEd;
+    Edunid_containssret: TSQLEd;
+    procedure FormActivate(Sender: TObject);
+    procedure bIncluirClick(Sender: TObject);
+    procedure EdUnid_emailExitEdit(Sender: TObject);
+    procedure GridNewRecord(Sender: TObject);
+    procedure bCancelarClick(Sender: TObject);
+    procedure bEditarClick(Sender: TObject);
+    procedure EdUnid_muni_codigoValidate(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure EdUnid_cnpjValidate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure SetaItems(Edit,EditNomeUnidade:TSqlEd;UnidadesValidas:String);
+    function GetNome(Codigo:String):String;
+    function GetReduzido(Codigo:String):String;
+    function GetUF(Codigo:String):String;
+    procedure GetListaUnidades(Lista:TStringList);
+    function GetEmpresa(Codigo:String):String;
+// 20.06.16
+    function GetEmpresaContax(Codigo:String):Integer;
+    procedure Open;
+    function GetCidaCodigo(Codigo:String):integer;
+    function GetRazaoSocial(Codigo:String):String;
+    function GetCnpjcpf(Codigo:String):String;
+    function GetInsEst(Codigo:String):String;
+    function GetSerie(Codigo:String):String;
+    function GetContaCaixa(Codigo:String):Integer;
+// 21.11.07
+    function GetSittFora(unidade:string):integer;
+    function GetSittDentro(unidade:string):integer;
+    function GetFiscalFora(unidade:string):string;
+    function GetFiscalDentro(unidade:string):string;
+// 01.07.10
+    function GetEndereco(Codigo:String):String;
+// 09.11.11
+    function GetSimples(Codigo:String):String;
+// 04.03.12
+    function GetMatrizeFiliais(Unid_codigo:string):string;
+// 23.09.2021
+    function GetIEST(Codigo:String):String;
+
+  end;
+
+var
+  FUnidades: TFUnidades;
+
+implementation
+
+uses Arquiv, Geral,SqlFun,SqlExpr, SQLRel, SqlSis;
+
+{$R *.dfm}
+
+var Op:String;
+    campo:TDicionario;
+
+procedure TFUnidades.FormActivate(Sender: TObject);
+/////////////////////////////////////////////////////////
+begin
+  if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+  FGeral.ColunasGrid(Grid,self);
+  Grid.Cancel;
+  EdUnid_Codigo.ClearAll(Self,99);
+  PEdits.DisableEdits;
+  if not Arq.TUnidades.IsEmpty then Arq.TUnidades.GetFields(Self,0);
+  FGeral.ConfiguraColorEditsNaoEnabled(FUnidades);
+end;
+
+procedure TFUnidades.Open;
+begin
+  if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+end;
+
+procedure TFUnidades.bIncluirClick(Sender: TObject);
+//////////////////////////////////////////////////////
+begin
+  Op:='I';
+  EdUnid_Codigo.SetStatusEdits(Self,99,seEdit);
+  PEdits.EnableEdits;
+  EdUnid_muni_Nome.Enabled:=False;
+  EdUnid_UF.Enabled:=False;
+  Grid.Cancel;
+  EdUnid_Codigo.ClearAll(Self,99);
+// 12.05.16 - para pode incluir cnpj do escritorio
+  campo:=Sistema.GetDicionario('unidades','unid_cpfcontador');
+  if Campo.Tamanho>11 then
+    EdUNid_cpfcontador.EditMask:=''
+  else
+    EdUNid_cpfcontador.EditMask:='###.###.###-##;0;_';
+  Grid.Insert(EdUNid_codigo);
+////  EdUnid_Codigo.SetFocus;
+end;
+
+procedure TFUnidades.EdUnid_emailExitEdit(Sender: TObject);
+begin
+  if Op='I' then begin
+     Grid.PostInsert(EdUnid_Codigo);
+     EdUnid_vendaavistga.Clearall(FUnidades,99);
+     PExportacao.disableedits;
+  end else begin
+     Arq.TUnidades.Edit;
+     Arq.TUnidades.SetFields(Self,0);
+     Arq.TUnidades.Post;
+     Arq.TUnidades.Commit;
+     Grid.Cancel;
+     PEdits.DisableEdits;
+     PExportacao.disableedits;
+  end;
+end;
+
+procedure TFUnidades.GridNewRecord(Sender: TObject);
+///////////////////////////////////////////////////////////////
+begin
+// 26.06.10
+  campo:=Sistema.GetDicionario('unidades','unid_nroseriecertif');
+  if Campo.Tipo<>'' then begin
+    EdUnid_nroseriecertif.Enabled:=true;
+    EdUnid_nroseriecertif.Group:=0;
+  end else begin
+    EdUnid_nroseriecertif.Enabled:=false;
+    EdUnid_nroseriecertif.Group:=24;
+  end;
+///////////////////; - 15.09.15
+  campo:=Sistema.GetDicionario('unidades','unid_contagta');
+  if Campo.Tipo<>'' then begin
+    EdUnid_contagta.Enabled:=true;
+    EdUnid_contagta.Group:=0;
+  end else begin
+    EdUnid_contagta.Enabled:=false;
+    EdUnid_contagta.Group:=24;
+  end;
+///////////////////; - 06.09.16
+  campo:=Sistema.GetDicionario('unidades','unid_comprasNS');
+  if Campo.Tipo<>'' then begin
+    EdUnid_comprasNS.Enabled:=true;
+    EdUnid_comprasNS.Group:=0;
+  end else begin
+    EdUnid_comprasNS.Enabled:=false;
+    EdUnid_comprasNS.Group:=24;
+  end;
+///////////////////; - 14.09.16
+  campo:=Sistema.GetDicionario('unidades','unid_contacofret');
+  if Campo.Tipo<>'' then begin
+    EdUnid_contacofret.Enabled:=true;
+    EdUnid_contacofret.Group:=0;
+    EdUnid_contapisret.Enabled:=true;
+    EdUnid_contapisret.Group:=0;
+    EdUnid_contairret.Enabled:=true;
+    EdUnid_contairret.Group:=0;
+    EdUnid_contacsllret.Enabled:=true;
+    EdUnid_contacsllret.Group:=0;
+    EdUnid_contaissret.Enabled:=true;
+    EdUnid_contaissret.Group:=0;
+  end else begin
+    EdUnid_contacofret.Enabled:=false;
+    EdUnid_contacofret.Group:=24;
+    EdUnid_contapisret.Enabled:=false;
+    EdUnid_contapisret.Group:=24;
+    EdUnid_contairret.Enabled:=false;
+    EdUnid_contairret.Group:=24;
+    EdUnid_contacsllret.Enabled:=false;
+    EdUnid_contacsllret.Group:=24;
+    EdUnid_contaissret.Enabled:=false;
+    EdUnid_contaissret.Group:=24;
+  end;
+// 12.05.16
+  if trim(Arq.TUnidades.fieldbyname('unid_cpfcontador').asstring)='' then
+    EdUNid_cpfcontador.EditMask:=''
+  else if length(trim(Arq.TUnidades.fieldbyname('unid_cpfcontador').asstring))=14 then
+    EdUNid_cpfcontador.EditMask:='##.###.###/####-##;0;_'
+  else
+    EdUNid_cpfcontador.EditMask:='###.###.###-##;0;_';
+///////////////////; - 05.12.16
+  campo:=Sistema.GetDicionario('unidades','Unid_ctbtransnumecre');
+  if Campo.Tipo<>'' then begin
+    EdUnid_ctbtransnumecre.Enabled:=true;
+    EdUnid_ctbtransnumecre.Group:=0;
+  end else begin
+    EdUnid_ctbtransnumecre.Enabled:=false;
+    EdUnid_ctbtransnumecre.Group:=24;
+  end;
+
+// 08.07.20
+  campo:=Sistema.GetDicionario('unidades','unid_contaservicos');
+  if Campo.Tipo<>'' then begin
+
+    EdUnid_contaservicos.Enabled:=true;
+    EdUnid_contaservicos.Group:=0;
+
+  end else begin
+
+    EdUnid_contaservicos.Enabled:=false;
+    EdUnid_contaservicos.Group:=24;
+
+  end;
+
+// 10.08.20
+  campo:=Sistema.GetDicionario('unidades','unid_containssret');
+  if Campo.Tipo<>'' then begin
+
+    EdUnid_containssret.Enabled:=true;
+    EdUnid_containssret.Group:=0;
+
+  end else begin
+
+    EdUnid_containssret.Enabled:=false;
+    EdUnid_containssret.Group:=24;
+
+  end;
+
+  if not Arq.TUnidades.IsEmpty then Arq.TUnidades.GetFields(Self,0);
+
+end;
+
+procedure TFUnidades.bCancelarClick(Sender: TObject);
+begin
+  EdUnid_Codigo.ClearAll(Self,99);
+  Grid.Cancel;
+  PEdits.DisableEdits;
+  if not Arq.TUnidades.IsEmpty then Arq.TUnidades.GetFields(Self,0);
+end;
+
+procedure TFUnidades.bEditarClick(Sender: TObject);
+begin
+  Op:='E';
+  Grid.Cancel;
+  EdUnid_Codigo.SetStatusEdits(Self,99,seEditAll);
+  PEdits.Visible:=true;
+  PEdits.EnableEdits;
+  PExportacao.EnableEdits;
+  EdUnid_Muni_Nome.Enabled:=False;
+  EdUnid_UF.Enabled:=False;
+  EdUnid_Codigo.Enabled:=False;
+  EdUnid_Empr_codigo.SetFocus;
+end;
+
+procedure TFUnidades.EdUnid_muni_codigoValidate(Sender: TObject);
+begin
+  EdUnid_UF.Text:=EdUnid_Muni_Codigo.ResultFind.FieldByName('Cida_UF').AsString;
+end;
+
+procedure TFUnidades.bRelatorioClick(Sender: TObject);
+begin
+//  Grid.Report('CadUnidades','Relação Das Unidades Cadastradas','','');
+//  FRel.ReportfromSql('CadUnidades','Relação Das Unidades Cadastradas','','');
+  FRel.Reportfromsql('select * from unidades','CadUnidades','Relação Das Unidades Cadastradas');
+end;
+
+
+procedure TFUnidades.GetListaUnidades(Lista:TStringList);
+begin
+  Lista.Clear;
+  if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+  Arq.TUnidades.BeginProcess;
+  Arq.TUnidades.First;
+  while not Arq.TUnidades.Eof do begin
+    Lista.Add(Arq.TUnidades.FieldByName('Unid_Codigo').AsString+' - '+Trim(Arq.TUnidades.FieldByName('Unid_Reduzido').AsString));
+    Arq.TUnidades.Next;
+  end;
+  Arq.TUnidades.EndProcess;
+  Lista.Sort;
+end;
+
+
+
+procedure TFUnidades.SetaItems(Edit,EditNomeUnidade:TSqlEd;UnidadesValidas:String);
+////////////////////////////////////////////////////////////////////////////////////////
+begin
+  Edit.Items.Clear;
+  if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+  Arq.TUnidades.BeginProcess;
+  Arq.TUnidades.First;
+  while not Arq.TUnidades.Eof do begin
+    if (UnidadesValidas='') or (Pos(Arq.TUnidades.FieldByName('Unid_Codigo').AsString,UnidadesValidas)>0) then begin
+       Edit.Items.Add(Arq.TUnidades.FieldByName('Unid_Codigo').AsString+' - '+Trim(Arq.TUnidades.FieldByName('Unid_Reduzido').AsString));
+    end;
+    Arq.TUnidades.Next;
+  end;
+  Arq.TUnidades.EndProcess;
+  if Edit.Items.Count=1 then begin
+     Edit.Text:=LeftStr(Edit.Items[0],3);
+     if EditNomeUnidade<>nil then EditNomeUnidade.Text:=FinalStr(Edit.Items[0],7);
+  end;
+end;
+
+function TFUnidades.GetNome(Codigo:String):String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_Nome').AsString;
+  end;
+end;
+
+function TFUnidades.GetUF(Codigo:String):String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_UF').AsString;
+  end;
+end;
+
+function TFUnidades.GetCidaCodigo(Codigo:String):integer;
+begin
+  Result:=0;
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_Cida_codigo').AsInteger;
+  end;
+end;
+
+
+function TFUnidades.GetReduzido(Codigo:String):String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_Reduzido').AsString;
+  end;
+end;
+
+function TFUnidades.GetEmpresa(Codigo:String):String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_Empr_Codigo').AsString;
+  end;
+end;
+
+
+
+procedure TFUnidades.bExcluirClick(Sender: TObject);
+var Cod:String;
+    Found:Boolean;
+
+    function FoundTabela(Tabela,Campo,Msg:String):Boolean;
+    var Q:TSqlQuery;
+    begin
+      Q:=SqlToQuery('SELECT Count(*) AS Registros FROM '+Tabela+' WHERE '+Campo+'='+Cod);
+      Result:=Q.FieldByName('Registros').AsInteger>0;
+      if Result then AvisoErro('Encontrado lançamentos com a unidade escolhida na tabela: '+Msg);
+      Q.Close;Q.Free;
+    end;
+
+
+begin
+  Cod:=StringToSql(Arq.TUnidades.FieldByName('Unid_Codigo').AsString);
+  Found:=FoundTabela('Movesto','Moes_Unid_Codigo','Movimento Mestre De Estoque');
+//  if not Found then Found:=FoundTabela('MovGer','Mger_Unid_Codigo','Movimento Gerencial');
+  if not Found then Grid.Delete;
+end;
+
+procedure TFUnidades.EdUnid_cnpjValidate(Sender: TObject);
+begin
+  FGeral.ValidaCNPJCPF(TSQLEd(Sender));
+end;
+
+procedure TFUnidades.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FGeral.LiberaCadastro(Grid);
+end;
+
+function TFUnidades.GetRazaoSocial(Codigo: String): String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_RazaoSocial').AsString;
+  end;
+
+end;
+
+function TFUnidades.GetCnpjcpf(Codigo: String): String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_cnpj').AsString;
+  end;
+
+end;
+
+
+// 23.09.2021 - campo da inscrição municipal usado pra colocar a IE ref. ST - Substituição Tributaria
+function TFUnidades.GetIEST(Codigo: String): String;
+//////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+
+  Q:=sqltoquery('select Unid_inscricaomunicipal from unidades where unid_codigo='+stringtosql(codigo));
+  if not Q.eof then
+    result:=Q.fieldbyname('Unid_inscricaomunicipal').asstring
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+
+end;
+
+function TFUnidades.GetInsEst(Codigo: String): String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_inscricaoestadual').AsString;
+  end;
+
+end;
+
+function TFUnidades.GetSerie(Codigo: String): String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_Serie').AsString;
+  end;
+
+end;
+
+function TFUnidades.GetContaCaixa(Codigo: String): Integer;
+begin
+  Result:=0;
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+    if Arq.TUnidades.Locate('Unid_Codigo',Codigo,[]) then Result:=Arq.TUnidades.FieldByName('Unid_contacontabil').AsInteger;
+  end;
+
+end;
+
+function TFUnidades.GetFiscalDentro(unidade: string): string;
+////////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select unid_cfis_codigoest from unidades where unid_codigo='+stringtosql(unidade));
+  if not Q.eof then
+    result:=Q.fieldbyname('unid_cfis_codigoest').asstring
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+end;
+
+
+function TFUnidades.GetFiscalFora(unidade: string): string;
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select unid_cfis_codigoforaest from unidades where unid_codigo='+stringtosql(unidade));
+  if not Q.eof then
+    result:=Q.fieldbyname('unid_cfis_codigoforaest').asstring
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+end;
+
+function TFUnidades.GetSittDentro(unidade: string): integer;
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select unid_sitt_codestado from unidades where unid_codigo='+stringtosql(unidade));
+  if not Q.eof then
+    result:=Q.fieldbyname('unid_sitt_codestado').asinteger
+  else
+    result:=0;
+  FGeral.Fechaquery(Q);
+end;
+
+function TFUnidades.GetSittFora(unidade: string): integer;
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select unid_sitt_forestado from unidades where unid_codigo='+stringtosql(unidade));
+  if not Q.eof then
+    result:=Q.fieldbyname('unid_sitt_forestado').asinteger
+  else
+    result:=0;
+  FGeral.Fechaquery(Q);
+end;
+
+
+function TFUnidades.GetEndereco(Codigo: String): String;
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select unid_endereco from unidades where unid_codigo='+stringtosql(codigo));
+  if not Q.eof then
+    result:=Q.fieldbyname('unid_endereco').asstring
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+end;
+
+function TFUnidades.GetSimples(Codigo: String): String;
+/////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select unid_simples from unidades where unid_codigo='+stringtosql(codigo));
+  if not Q.eof then
+    result:=Q.fieldbyname('unid_simples').asstring
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+
+end;
+
+// 04.03.12
+//////////////
+function TFUnidades.GetMatrizeFiliais(Unid_codigo: string): string;
+//////////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+    empresa,unidades:string;
+begin
+  empresa:=GetEmpresa(unid_codigo);
+  unidades:='';
+  Q:=sqltoquery('select unid_codigo from unidades where unid_empr_codigo='+STringtosql(empresa)+
+                ' order by unid_codigo');
+  while not Q.eof do begin
+    unidades:=unidades+Q.fieldbyname('unid_codigo').asstring+';';
+    Q.Next;
+  end;
+  FGeral.fechaquery(Q);
+  if ( trim(unidades)='' ) or ( trim(unidades)=';' ) then unidades:=unid_codigo;
+  result:=unidades;
+end;
+
+// 20.06.16
+function TFUnidades.GetEmpresaContax(Codigo: String): Integer;
+////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=Sqltoquery('select unid_empresa1 from unidades where unid_codigo = '+Stringtosql(codigo));
+  if not Q.eof then Result:=Q.fieldbyname('unid_empresa1').asinteger else result:=0;
+  Q.close;Q.free;
+end;
+
+end.
+

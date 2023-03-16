@@ -1,0 +1,31 @@
+unit Periodos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, SQLGrid, Vcl.StdCtrls,
+  Vcl.Mask, SQLEd;
+
+type
+  TFPeriodos = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    StaticText5: TStaticText;
+    EdDttermino: TSQLEd;
+    EdDtterminotas: TSQLEd;
+    EdDtinicionotas: TSQLEd;
+    EdDtinicio: TSQLEd;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FPeriodos: TFPeriodos;
+
+implementation
+
+{$R *.dfm}
+
+end.

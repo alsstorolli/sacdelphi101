@@ -1,0 +1,261 @@
+unit Emitentes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, SQLGrid, StdCtrls, Mask, SQLEd, ExtCtrls,
+  Buttons, SQLBtn, alabel;
+
+type
+  TFEmitentes = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    Dts: TDataSource;
+    EdEmit_banco: TSQLEd;
+    EdEmit_agencia: TSQLEd;
+    EdEmit_conta: TSQLEd;
+    EdEmit_descricao: TSQLEd;
+    EdEmit_cheq_cnpjcpf: TSQLEd;
+    procedure EdEmit_contaValidate(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure GridNewRecord(Sender: TObject);
+    procedure bIncluirClick(Sender: TObject);
+    procedure bAlterarClick(Sender: TObject);
+    procedure EdEmit_descricaoExitEdit(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure bCancelarClick(Sender: TObject);
+    procedure EdEmit_cheq_cnpjcpfValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure SetaBancos(Edit:TSqled);
+    procedure Execute;
+// 15.07.2021
+    function BuscaBanco(codigo:string; Ed:TSqled):string;
+
+  end;
+
+var
+  FEmitentes: TFEmitentes;
+  OP:String;
+
+
+implementation
+
+uses Geral, Arquiv, SQLRel, SqlExpr, Sqlfun, Sqlsis ;
+
+{$R *.dfm}
+
+{ TFEmitentes }
+
+procedure TFEmitentes.Execute;
+begin
+   Setabancos(Edemit_banco);
+   if not Arq.TEmitentes.active then Arq.TEmitentes.open;
+   Fgeral.ColunasGrid(Grid,Self);
+   OP:='C';
+// 03.10.08
+   EdEmit_Cheq_cnpjcpf.Enabled:=Global.Topicos[1258];
+   show;
+end;
+
+procedure TFEmitentes.SetaBancos(Edit: TSqled);
+begin
+   Edit.Items.clear;
+   Edit.Items.add('001 - BRASIL');
+   Edit.Items.add('341 - ITAU');
+   Edit.Items.add('041 - BANRISUL');
+   Edit.Items.add('399 - HSBC');
+   Edit.Items.add('748 - SICREDI');
+   Edit.Items.add('027 - BESC');
+   Edit.Items.add('104 - CEF');
+   Edit.Items.add('237 - BRADESCO');
+   Edit.Items.add('756 - SICOOB');
+   Edit.Items.add('409 - UNIBANCO');
+   Edit.Items.add('008 - SANTANDER');
+   Edit.Items.add('356 - REAL');
+   Edit.Items.add('033 - SANTANDER/BANESPA');
+   Edit.Items.add('389 - MERCANTIL BRASIL');
+   Edit.Items.add('347 - SUDAMERIS');
+   Edit.Items.add('151 - NOSSA CAIXA');
+// 18.05.15 - Devereda Uniprime norte do PR
+   Edit.Items.add('099 - UNIPRIME');
+// 03.06.15 - Devereda
+   Edit.Items.add('010 - CREDICOAMO');
+// 22.02.18 -novicarnes
+   Edit.Items.add('745 - CITIBANK');
+// 28.02.19 -  FAma - Janina
+   Edit.Items.add('133 - CRESOL');
+// 15.07.2021 - 'bancos financeiros'  - gs cred
+   Edit.Items.add('997 - FACTA');
+
+   Edit.Items.add('998 - CHEQ.DEVOLVIDO');
+   Edit.Items.add('999 - JUROS');
+end;
+
+procedure TFEmitentes.EdEmit_contaValidate(Sender: TObject);
+var Q:Tsqlquery;
+begin
+   Q:=sqltoquery('select * from emitentes where emit_banco='+EdEmit_banco.Assql+
+                 ' and emit_agencia='+Edemit_agencia.assql+' and emit_conta='+EdEmit_conta.assql);
+   if not Q.eof then begin
+     if OP='I' then
+       EdEmit_conta.invalid('Banco, agencia e conta já cadastrados no emitente '+Q.fieldbyname('emit_descricao').asstring)
+     else
+       EdEmit_descricao.text:=Q.fieldbyname('emit_descricao').asstring;
+   end else begin
+     if OP='A' then
+       EdEmit_conta.invalid('Banco, agencia e conta não encontrados');
+   end;
+end;
+
+procedure TFEmitentes.bExcluirClick(Sender: TObject);
+var Q:Tsqlquery;
+begin
+   OP:='E';
+   Q:=sqltoquery('select * from cheques where cheq_emit_banco='+EdEmit_banco.Assql+
+                 ' and cheq_emit_agencia='+Edemit_agencia.assql+' and cheq_emit_conta='+EdEmit_conta.assql);
+   if not Q.eof then begin
+     Avisoerro('Conta usada no cheque '+Q.fieldbyname('cheq_cheq').asstring+' emissão '+
+                FGeral.formatadata(Q.fieldbyname('cheq_emissao').asdatetime)+
+                Q.fieldbyname('cheq_bcoemitente').asstring );
+     exit;
+   end;
+   FGeral.Fechaquery(Q);
+
+end;
+
+procedure TFEmitentes.GridNewRecord(Sender: TObject);
+begin
+   Arq.TEmitentes.getfields(FEmitentes,99);
+
+end;
+
+procedure TFEmitentes.bIncluirClick(Sender: TObject);
+begin
+  PEdits.visible:=true;
+  EdEmit_agencia.text:='';
+  EdEmit_conta.text:='';
+  EdEmit_descricao.text:='';
+  OP:='I';
+  EdEmit_banco.setfocus;
+end;
+
+procedure TFEmitentes.bAlterarClick(Sender: TObject);
+begin
+  PEdits.visible:=true;
+  Arq.TEmitentes.getfields(FEmitentes,99);
+  OP:='A';
+  EdEmit_banco.enabled:=false;
+  EdEmit_agencia.enabled:=false;
+  EdEmit_conta.enabled:=false;
+  EdEmit_Descricao.setfocus;
+end;
+
+procedure TFEmitentes.EdEmit_descricaoExitEdit(Sender: TObject);
+begin
+   if not confirma('Confirma gravação ?') then exit;
+   if op='I' then begin
+     Sistema.Insert('Emitentes');
+     Sistema.Setfield('emit_banco',EdEmit_banco.text);
+     Sistema.Setfield('emit_agencia',EdEmit_agencia.asinteger);
+     Sistema.Setfield('emit_conta',EdEmit_conta.asinteger);
+     Sistema.Setfield('emit_descricao',EdEmit_descricao.text);
+     if Global.Topicos[1258] then
+       Sistema.Setfield('emit_cheq_cnpjcpf',EdEmit_cheq_cnpjcpf.text);
+
+   end else begin
+     Sistema.Edit('Emitentes');
+     Sistema.Setfield('emit_descricao',EdEmit_descricao.text);
+     if Global.Topicos[1258] then
+       Sistema.Setfield('emit_cheq_cnpjcpf',EdEmit_cheq_cnpjcpf.text);
+   end;
+   if op='I' then
+     Sistema.post
+   else
+     Sistema.post('emit_banco='+EdEmit_banco.Assql+
+                 ' and emit_agencia='+Edemit_agencia.assql+' and emit_conta='+EdEmit_conta.assql);
+   Sistema.commit;
+   Arq.TEmitentes.Refresh;
+   if OP='I' then begin
+     EdEmit_banco.clearall(FEmitentes,99);
+     EdEmit_banco.setfocus;
+   end else
+     Bcancelarclick(self);
+end;
+
+procedure TFEmitentes.bRelatorioClick(Sender: TObject);
+begin
+   FRel.ReportFromSQL('select * from emitentes order by emit_descricao','RelEmitentesCheque','Relação de Emitentes');
+end;
+
+// 15.07.2021
+function TFEmitentes.BuscaBanco(codigo: string; Ed:TSqled): string;
+//////////////////////////////////////////////////////////
+var p:integer;
+
+begin
+
+   result := '';
+   for p := 0 to Ed.Items.count-1 do begin
+
+       if codigo = copy( Ed.Items.strings[p],1,3) then begin
+
+          result := copy( Ed.Items.strings[p],7,30) ;
+          break;
+
+       end;
+
+   end;
+
+end;
+
+procedure TFEmitentes.bCancelarClick(Sender: TObject);
+begin
+  if OP<>'A' then begin
+    EdEmit_banco.enabled:=true;
+    EdEmit_agencia.enabled:=true;
+    EdEmit_conta.enabled:=true;
+  end else begin
+    PEdits.visible:=false;
+    grid.setfocus;
+  end;
+  
+end;
+
+procedure TFEmitentes.EdEmit_cheq_cnpjcpfValidate(Sender: TObject);
+var Ed:TSQLEd;
+begin
+  Ed:=TSQLEd(Sender);
+  if not Global.Topicos[1102] and Ed.IsEmpty then Ed.Invalid('Não permitido vazio');
+  if not Global.Topicos[1102] and not Ed.IsEmpty then FGeral.ValidaCNPJCPF(Ed);
+
+end;
+
+end.

@@ -1,0 +1,250 @@
+unit codigosfis;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, SQLGrid, StdCtrls, Mask, SQLEd, ExtCtrls,
+  Buttons, SQLBtn, alabel;
+
+type
+  TFCodigosFiscais = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    EdCfis_codigo: TSQLEd;
+    EdCfis_imposto: TSQLEd;
+    EdCfis_aliquota: TSQLEd;
+    Grid: TSQLGrid;
+    DS: TDataSource;
+    Edcfis_percbase: TSQLEd;
+    EdCfis_perctran: TSQLEd;
+    Edcfis_redubase: TSQLEd;
+    EdCfis_pis: TSQLEd;
+    EdCfis_cofins: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure EdCfis_aliquotaExitEdit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function GetPercBaseSubs(codigo:string):currency;
+    function GetPercTransf(codigo:string):currency;
+    function GetAliquota(codigo:string):currency;
+    procedure Execute;
+    function GetAliquotaRedBase(codigo:string ; revenda:string='N' ; produto:string=''; uf:string=''):currency;
+    function GetAliquotaPis(codigo:string):currency;
+    function GetAliquotaCofins(codigo:string):currency;
+// 10.08.09
+    function GetQualImposto(codigo:string):String;
+// 15.10.10 - pra importacao da NFe
+    function GetCodigoFis(imposto:string;aliquota,reducao:currency):String;
+
+  end;
+
+var
+  FCodigosFiscais: TFCodigosFiscais;
+
+implementation
+
+uses Arquiv, SQLRel, SqlExpr, Geral, Sqlfun, Unidades;
+
+{$R *.dfm}
+
+procedure TFCodigosFiscais.bIncluirClick(Sender: TObject);
+begin
+  Grid.Insert(EdCfis_codigo);
+end;
+
+procedure TFCodigosFiscais.bRelatorioClick(Sender: TObject);
+begin
+//  Grid.Report('RelCodigosFiscais','Relação de Codigos Fiscais','','');
+  Frel.Reportfromsql('select * from codigosfis','RelCodigosFiscais','Relação de Codigos Fiscais');
+end;
+
+procedure TFCodigosFiscais.FormActivate(Sender: TObject);
+begin
+  if not Arq.TCodigosFiscais.Active then Arq.TCodigosFiscais.Open;
+  FGeral.ColunasGrid(Grid,Self);
+end;
+
+procedure TFCodigosFiscais.EdCfis_aliquotaExitEdit(Sender: TObject);
+begin
+  Grid.PostInsert(EdCfis_codigo);
+end;
+
+procedure TFCodigosFiscais.Execute;
+begin
+  ShowModal;
+end;
+
+function TFCodigosFiscais.GetPercBaseSubs(codigo: string): currency;
+///////////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cfis_percbase from codigosfis where cfis_codigo='+stringtosql(codigo));
+  if not Q.eof then
+    Result:=Q.fieldbyname('cfis_percbase').AsCurrency
+  else
+    Result:=0;
+  FGeral.Fechaquery(Q);
+end;
+
+function TFCodigosFiscais.GetPercTransf(codigo: string): currency;
+var Q:TSqlquery;
+begin
+{
+  if not Arq.TCodigosfiscais.active then Arq.TCodigosfiscais.Open;
+  result:=0;
+  if Arq.Tcodigosfiscais.locate('cfis_codigo',codigo,[]) then
+    result:=Arq.TCodigosfiscais.fieldbyname('Cfis_PercTran').AsCurrency;
+}
+  Q:=sqltoquery('select cfis_perctran from codigosfis where cfis_codigo='+stringtosql(codigo));
+  if not Q.eof then
+    Result:=Q.fieldbyname('cfis_perctran').AsCurrency
+  else
+    Result:=0;
+  FGeral.Fechaquery(Q);
+
+end;
+
+function TFCodigosFiscais.GetAliquota(codigo: string): currency;
+var Qx:TSqlquery;
+begin
+{
+  if not Arq.TCodigosfiscais.active then Arq.TCodigosfiscais.Open;
+  result:=0;
+  if Arq.Tcodigosfiscais.locate('cfis_codigo',codigo,[]) then
+    result:=Arq.TCodigosfiscais.fieldbyname('Cfis_aliquota').AsCurrency;
+}
+  Qx:=sqltoquery('select cfis_aliquota from codigosfis where cfis_codigo='+stringtosql(codigo));
+  if not Qx.eof then
+    Result:=Qx.fieldbyname('cfis_aliquota').AsCurrency
+  else
+    Result:=0;
+  FGeral.Fechaquery(Qx);
+
+
+end;
+
+function TFCodigosFiscais.GetAliquotaRedBase(codigo: string ; revenda:string='N' ; produto:string='' ; uf:string=''): currency;
+///////////////////////////////////////////////////////////////////////////////
+var Q,QGrupo:TSqlquery;
+    xcodigo:string;
+begin
+  xcodigo:=codigo;
+  if revenda='R' then begin
+    Result:=0;
+    Q:=sqltoquery('select esto_sugr_codigo from estoque where esto_codigo='+stringtosql(produto));
+    if not Q.eof then begin
+      QGrupo:=sqltoquery('select * from subgrupos where sugr_codigo='+Q.fieldbyname('esto_sugr_codigo').asstring);
+      if not QGrupo.eof then begin
+        if Global.UFUnidade=uf then
+          xcodigo:=QGrupo.fieldbyname('sugr_cfis_codigoest').asstring
+        else
+          xcodigo:=QGrupo.fieldbyname('sugr_cfis_codigoforaest').asstring;
+      end;
+      FGeral.fechaquery(QGrupo);
+    end;
+    FGeral.fechaquery(q);
+  end;
+// 05.08.08
+  Q:=sqltoquery('select cfis_redubase from codigosfis where cfis_codigo='+stringtosql(xcodigo));
+  if not Q.eof then
+    Result:=Q.fieldbyname('cfis_redubase').AsCurrency
+  else
+    Result:=0;
+  FGeral.Fechaquery(Q);
+
+end;
+
+function TFCodigosFiscais.GetAliquotaPis(codigo: string): currency;
+/////////////////////////////////////////////////////////////////////////
+var Qx:TSqlquery;
+begin
+  if ( trim(codigo)='' ) or ( trim(codigo)='0' ) then begin
+// 14.03.16 - pra prever fama q por algum motivo nao tem os itens cadastrados no estoqueqtde
+   codigo:=FUnidades.GetFiscalDentro(Global.CodigoUnidade);
+  end;
+    Qx:=sqltoquery('select cfis_pis from codigosfis where cfis_codigo='+stringtosql(codigo));
+    if not Qx.eof then
+      Result:=Qx.fieldbyname('cfis_pis').AsCurrency
+    else
+      Result:=0;
+    FGeral.Fechaquery(Qx);
+end;
+
+function TFCodigosFiscais.GetAliquotaCofins(codigo: string): currency;
+//////////////////////////////////////////////////////////////////////
+var Qx:TSqlquery;
+begin
+  if ( trim(codigo)='' ) or ( trim(codigo)='0' ) then begin
+// 14.03.16 - pra prever fama q por algum motivo nao tem os itens cadastrados no estoqueqtde
+   codigo:=FUnidades.GetFiscalDentro(Global.CodigoUnidade);
+  end;
+  Qx:=sqltoquery('select cfis_cofins from codigosfis where cfis_codigo='+stringtosql(codigo));
+  if not Qx.eof then
+    Result:=Qx.fieldbyname('cfis_cofins').AsCurrency
+  else
+    Result:=0;
+  FGeral.Fechaquery(Qx);
+end;
+
+function TFCodigosFiscais.GetQualImposto(codigo: string): String;
+var Qx:TSqlquery;
+begin
+  Qx:=sqltoquery('select cfis_imposto from codigosfis where cfis_codigo='+stringtosql(codigo));
+  if not Qx.eof then
+    Result:=Qx.fieldbyname('cfis_imposto').AsString
+  else
+    Result:='';
+  FGeral.Fechaquery(Qx);
+end;
+
+function TFCodigosFiscais.GetCodigoFis(imposto: string; aliquota,  reducao: currency): String;
+///////////////////////////////////////////////////////////////////////////////
+var Qx:TSqlquery;
+    reducaosac:currency;
+begin
+  Qx:=sqltoquery('select * from codigosfis where cfis_imposto='+stringtosql(imposto) );
+
+  result:='';
+  if reducao>0 then
+    reducaosac:=100-reducao
+  else
+    reducaosac:=0;
+//  reducaosac:=reducao;
+  while not Qx.eof do begin
+    if ( Qx.fieldbyname('cfis_aliquota').ascurrency=aliquota ) and
+       ( abs(Qx.fieldbyname('cfis_redubase').ascurrency-reducaosac)<=0.02 ) then
+      Result:=Qx.fieldbyname('cfis_codigo').AsString;
+    Qx.Next;
+  end;
+  FGeral.Fechaquery(Qx);
+end;
+
+end.

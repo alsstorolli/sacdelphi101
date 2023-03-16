@@ -1,0 +1,48 @@
+object FGeraPdf: TFGeraPdf
+  Left = 0
+  Top = 0
+  Caption = 'Gera PDF'
+  ClientHeight = 368
+  ClientWidth = 447
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PRPage1: TPRPage
+    Left = 8
+    Top = 8
+    Width = 596
+    Height = 842
+    MarginTop = 32
+    MarginLeft = 32
+    MarginRight = 32
+    MarginBottom = 32
+    object PRLayoutPanel1: TPRLayoutPanel
+      Left = 168
+      Top = 56
+      Width = 185
+      Height = 100
+      object PRJpegImage1: TPRJpegImage
+        Left = 64
+        Top = 40
+        Width = 100
+        Height = 30
+        SharedImage = True
+      end
+    end
+  end
+  object PReport1: TPReport
+    FileName = 'default.pdf'
+    CreationDate = 43902.639627534720000000
+    UseOutlines = False
+    ViewerPreference = []
+    Left = 80
+    Top = 40
+  end
+end

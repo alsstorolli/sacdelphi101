@@ -1,0 +1,47 @@
+unit entradadecupim;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ACBrBase, ACBrDFe, ACBrNFe, Vcl.Grids,
+  SqlDtg, Vcl.StdCtrls, Vcl.Mask, SQLEd, Vcl.Buttons, SQLBtn, alabel,
+  Vcl.ExtCtrls, SQLGrid;
+
+type
+  TForm2 = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    betiqueta: TSQLBtn;
+    EdCaoc_codigo: TSQLEd;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdDtdesossa: TSQLEd;
+    EdNumeroDoc: TSQLEd;
+    EdProduto: TSQLEd;
+    SetEdESTO_DESCRICAO: TSQLEd;
+    Edqtde: TSQLEd;
+    EdPecas: TSQLEd;
+    Grid: TSqlDtGrid;
+    ACBrNFe1: TACBrNFe;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,719 @@
+object FGrUsuarios: TFGrUsuarios
+  Left = 133
+  Top = 153
+  BorderStyle = bsDialog
+  Caption = 'Cadastro De Grupos De Usu'#225'rios'
+  ClientHeight = 433
+  ClientWidth = 782
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PCadastro: TPanel
+    Left = 0
+    Top = 0
+    Width = 782
+    Height = 433
+    Align = alClient
+    BevelOuter = bvLowered
+    TabOrder = 0
+    object PBotoes: TSQLPanelGrid
+      Left = 681
+      Top = 1
+      Width = 100
+      Height = 404
+      Align = alRight
+      BevelOuter = bvLowered
+      Color = clSilver
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      SQLGrid = Grid
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+      object APHeadLabel1: TAPHeadLabel
+        Left = 1
+        Top = 1
+        Width = 98
+        Height = 402
+        Align = alClient
+        AutoBounds = False
+        BoundLines = []
+        Gradient.EndColor = clGray
+        Gradient.StartColor = clSilver
+        SubCaption.Ellipsis = False
+        SubCaption.Style = []
+      end
+      object bIncluir: TSQLBtn
+        Left = 3
+        Top = 3
+        Width = 95
+        Height = 25
+        Hint = 'Inclui um novo registro'
+        Caption = '&Incluir'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        OnClick = bIncluirClick
+        Operation = fbInsert
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bAlterar: TSQLBtn
+        Left = 3
+        Top = 28
+        Width = 95
+        Height = 25
+        Hint = 'Altera o campo selecionado'
+        Caption = '&Alterar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        Operation = fbEdit
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bExcluir: TSQLBtn
+        Left = 3
+        Top = 53
+        Width = 95
+        Height = 25
+        Hint = 'Exclui o registro selecionado'
+        Caption = '&Excluir'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        OnClick = bExcluirClick
+        Operation = fbDelete
+        Grid = Grid
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bCancelar: TSQLBtn
+        Left = 3
+        Top = 78
+        Width = 95
+        Height = 25
+        Hint = 'Cancela a opera'#231#227'o em andamento'
+        Caption = '&Cancelar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        Operation = fbCancel
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bSair: TSQLBtn
+        Left = 3
+        Top = 203
+        Width = 95
+        Height = 25
+        Hint = 'Abandona a tela'
+        Caption = '&Sair'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        Operation = fbExit
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bRestaurar: TSQLBtn
+        Left = 3
+        Top = 153
+        Width = 95
+        Height = 25
+        Hint = 'Recupera todos os registros do servidor'
+        Caption = 'Res&taurar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        Operation = fbRestaurar
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bGravar: TSQLBtn
+        Left = 3
+        Top = 103
+        Width = 95
+        Height = 25
+        Hint = 'Grava os acessos determinados para o grupo de usu'#225'rios'
+        Caption = '&Gravar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bGravarClick
+        Operation = fbDefault
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bGrade: TSQLBtn
+        Left = 3
+        Top = 128
+        Width = 95
+        Height = 25
+        Hint = 'Acesso '#224' grade de grupos de usu'#225'rios'
+        Caption = 'Gra&de'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bGradeClick
+        Operation = fbDefault
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object BTopicos: TSQLBtn
+        Left = 3
+        Top = 178
+        Width = 95
+        Height = 25
+        Hint = 'Acesso aos t'#243'picos em tela expandida (Ou "Barra De Espa'#231'os")'
+        Caption = 'E&xpandir'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = BTopicosClick
+        Operation = fbDefault
+        Grid = Grid
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+    end
+    object PMens: TSQLPanelGrid
+      Left = 1
+      Top = 405
+      Width = 780
+      Height = 27
+      Align = alBottom
+      Alignment = taLeftJustify
+      BevelInner = bvLowered
+      Color = clGray
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      SQLGrid = Grid
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+    end
+    object Panel1: TPanel
+      Left = 1
+      Top = 1
+      Width = 324
+      Height = 404
+      Align = alLeft
+      BevelOuter = bvLowered
+      Caption = 'Panel1'
+      TabOrder = 2
+      object PEdits: TSQLPanelGrid
+        Left = 1
+        Top = 361
+        Width = 322
+        Height = 42
+        Align = alBottom
+        BevelOuter = bvLowered
+        Color = clSilver
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        Visible = False
+        SQLGrid = Grid
+        HeightLimite = 0
+        WidthLimite = 0
+        FixedVisible = False
+        object EdGusu_codigo: TSQLEd
+          Left = 5
+          Top = 15
+          Width = 30
+          Height = 21
+          TabStop = False
+          Alignment = taRightJustify
+          MaxLength = 2
+          TabOrder = 0
+          Text = ''
+          Visible = True
+          Empty = False
+          CloseForm = False
+          CloseFormEsc = False
+          ColorFocus = clBlack
+          ColorTextFocus = clWhite
+          ColorNotEnabled = clGray
+          ColorTextNotEnabled = clWhite
+          Title = 'C'#243'digo'
+          TitlePos = tppTop
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+          TitlePixels = 0
+          MessageStr = 'C'#243'digo do grupo de usu'#225'rios'
+          TypeValue = tvInteger
+          ValueNegative = False
+          Decimals = 0
+          CharUpperLower = False
+          OpGrids = [ogFilter, ogFind]
+          ItemsMultiples = False
+          ItemsValid = True
+          ItemsWidth = 0
+          ItemsHeight = 0
+          ItemsLength = 0
+          Duplicity = 2
+          MinLength = 0
+          Group = 0
+          Table = Arq.TGrUsuarios
+          TableName = 'GRUPOUSU'
+          TableField = 'Grus_codigo'
+          PanelMessages = PMens
+        end
+        object EdGusu_descricao: TSQLEd
+          Left = 44
+          Top = 15
+          Width = 243
+          Height = 21
+          TabStop = False
+          Alignment = taLeftJustify
+          MaxLength = 40
+          TabOrder = 1
+          Text = ''
+          Visible = True
+          Empty = False
+          CloseForm = False
+          CloseFormEsc = False
+          OnExitEdit = EdGusu_descricaoExitEdit
+          ColorFocus = clBlack
+          ColorTextFocus = clWhite
+          ColorNotEnabled = clGray
+          ColorTextNotEnabled = clWhite
+          Title = 'Descri'#231#227'o Grupo Usu'#225'rios'
+          TitlePos = tppTop
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+          TitlePixels = 0
+          MessageStr = 'Descri'#231#227'o do grupo de usu'#225'rios'
+          TypeValue = tvString
+          ValueNegative = False
+          Decimals = 0
+          CharUpperLower = True
+          ItemsMultiples = False
+          ItemsValid = True
+          ItemsWidth = 0
+          ItemsHeight = 0
+          ItemsLength = 0
+          Duplicity = 2
+          MinLength = 0
+          Group = 0
+          Table = Arq.TGrUsuarios
+          TableName = 'GRUPOUSU'
+          TableField = 'Grus_descricao'
+          PanelMessages = PMens
+        end
+      end
+      object Grid: TSQLGrid
+        Left = 1
+        Top = 1
+        Width = 322
+        Height = 360
+        Align = alClient
+        Color = clWhite
+        DataSource = DSCadastro
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = [fsBold]
+        ColumnInitial = 0
+        Reduce = 0
+        FieldTransport = 'Grus_Codigo'
+        OnNewRecord = GridNewRecord
+        PanelInsert = PEdits
+        PanelMessage = PMens
+        PanelButtons = PBotoes
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'GRUS_CODIGO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'GRUS_DESCRICAO'
+            Visible = True
+          end>
+      end
+    end
+    object Page: TPageControl
+      Left = 325
+      Top = 1
+      Width = 356
+      Height = 404
+      ActivePage = PgAcessos1
+      Align = alClient
+      TabOrder = 3
+      OnChange = PageChange
+      object PgAcessos1: TTabSheet
+        Caption = 'Acessos &1'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object Panel4: TPanel
+          Left = 0
+          Top = 0
+          Width = 348
+          Height = 376
+          Align = alClient
+          BevelOuter = bvLowered
+          TabOrder = 0
+          object Topicos1: TTreeView
+            Left = 1
+            Top = 1
+            Width = 346
+            Height = 374
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Images = Imagens
+            Indent = 19
+            ParentFont = False
+            ReadOnly = True
+            StateImages = Imagens
+            TabOrder = 0
+            OnKeyDown = Topicos1KeyDown
+          end
+        end
+      end
+      object PgAcessos2: TTabSheet
+        Caption = 'Acessos &2'
+        ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object Panel3: TPanel
+          Left = 0
+          Top = 0
+          Width = 348
+          Height = 376
+          Align = alClient
+          BevelOuter = bvLowered
+          TabOrder = 0
+          object Topicos2: TTreeView
+            Left = 1
+            Top = 1
+            Width = 346
+            Height = 374
+            Align = alClient
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Images = Imagens
+            Indent = 19
+            ParentFont = False
+            ReadOnly = True
+            StateImages = Imagens
+            TabOrder = 0
+            OnKeyDown = Topicos2KeyDown
+          end
+        end
+      end
+    end
+  end
+  object DSCadastro: TDataSource
+    DataSet = Arq.TGrUsuarios
+    Left = 200
+    Top = 104
+  end
+  object Imagens: TImageList
+    Left = 593
+    Top = 96
+    Bitmap = {
+      494C0101020004000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000001000000001002000000000000010
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000BDBDC600000000000000000000000000BDBDC6000000
+      000000000000BDBDC60000000000000000000000000000000000000000000000
+      00000000000000000000C6C6BD00000000000000000000000000C6C6BD000000
+      000000000000C6C6BD0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000BDBDC600000000000000000000000000BDBDC600000000000000
+      0000BDBDC6000000000000000000000000000000000000000000000000000000
+      000000000000C6C6BD00000000000000000000000000C6C6BD00000000000000
+      0000C6C6BD000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000BDBD
+      C60000000000947BC6003110730018005A0018005A0031107300634A9C00BDBD
+      C60000000000000000000000000000000000000000000000000000000000C6C6
+      BD000000000084C67B0018731000085A0000085A000018731000529C4A00C6C6
+      BD00000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00008463CE0021006B0021006B0018005A0018004A0018004A0018004A004A31
+      8C00000000000000000000000000000000000000000000000000000000000000
+      000073CE6300086B0000086B0000085A0000084A0000084A0000084A0000398C
+      3100000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000947B
+      C6002900940029009C002900940029008400210073001800630010004A001800
+      4A00634A9C0000000000000000000000000000000000000000000000000084C6
+      7B0010940000109C000010940000108400000873000010630000084A0000084A
+      0000529C4A000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000006B42
+      CE003900BD003900BD003100BD003100AD0029009C002900840021005A001800
+      4A0031107300BDBDC600000000000000000000000000000000000000000052CE
+      420018BD000018BD000018BD000018AD0000109C000010840000085A0000084A
+      000018731000C6C6BD0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000004A10
+      CE004200DE004200E7004200DE003900CE003100B50029009C00290084001800
+      630018005A0000000000BDBDC6000000000000000000000000000000000029CE
+      100018DE000018E7000018DE000018CE000018B50000109C0000108400001063
+      0000085A000000000000C6C6BD00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000004A10
+      CE004A00FF005208FF007B31FF006321FF004208D6003900BD0029009C002900
+      840018005A0000000000000000000000000000000000000000000000000029CE
+      100021FF000029FF080042FF310039FF210021D6080018BD0000109C00001084
+      0000085A00000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000006B42
+      CE005200FF005208FF00D68CFF00EFA5FF005210FF004200D6003900BD002900
+      94003110840000000000000000000000000000000000000000000000000052CE
+      420018FF000029FF08008CFF9400A5FFB50031FF100018D6000018BD00001094
+      0000188410000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000947B
+      C6003900CE005200FF005A10FF007B31FF005208FF004200E7003900C6002900
+      9C00947BC60000000000000000000000000000000000000000000000000084C6
+      7B0018CE000018FF000031FF100042FF310029FF080018E7000018C60000109C
+      000084C67B000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00007B63CE004200D6005200FF005200FF004A00FF004200EF003900C6007B63
+      CE00000000000000000000000000000000000000000000000000000000000000
+      000073CE630018D6000018FF000018FF000021FF000021EF000018C6000073CE
+      6300000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000008C7BC6006B42CE004A10CE004A10CE006B42CE008C7BC6000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000084C67B0052CE420029CE100029CE100052CE420084C67B000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000424D3E000000000000003E000000
+      2800000040000000100000000100010000000000800000000000000000000000
+      000000000000000000000000FFFFFF00FFFFFFFF00000000FDDBFDDB00000000
+      FBB7FBB700000000E80FE80F00000000F00FF00F00000000E007E00700000000
+      E003E00300000000E005E00500000000E007E00700000000E007E00700000000
+      E007E00700000000F00FF00F00000000F81FF81F00000000FFFFFFFF00000000
+      FFFFFFFF00000000FFFFFFFF0000000000000000000000000000000000000000
+      000000000000}
+  end
+end

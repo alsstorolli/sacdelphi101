@@ -1,0 +1,969 @@
+-- 30/10 19:02:00:676 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:02:00:676 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:02:00:684 
+-- 30/10 19:02:03:698 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:02:03:704 
+-- 30/10 19:02:06:715 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:03:04:062 -- Ativando a porta: COM2
+-- 30/10 19:03:04:067 CorrigeEstadoErro
+-- 30/10 19:03:07:082 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:03:07:089 
+-- 30/10 19:03:10:098 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:05:09:587 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:05:09:587 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:05:09:596 
+-- 30/10 19:05:12:609 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:05:12:615 
+-- 30/10 19:05:15:622 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:05:53:692 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:05:53:692 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:05:53:697 
+-- 30/10 19:05:56:706 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:05:56:711 
+-- 30/10 19:05:59:722 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:06:41:812 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:06:41:812 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE= MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:06:41:817 
+-- 30/10 19:06:41:824                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:06:44:831    19:06:44:831 RX <- ACK = 0 Falha: 0
+-- 30/10 19:06:44:939                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:06:48:043    19:06:48:043 RX <- ACK = 0 Falha: 1
+-- 30/10 19:06:48:151                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:06:51:259    19:06:51:259 RX <- ACK = 0 Falha: 2
+-- 30/10 19:06:51:265     RX <- 
+-- 30/10 19:06:51:272 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:06:51:279 
+-- 30/10 19:06:51:286                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:06:54:294    19:06:54:294 RX <- ACK = 0 Falha: 0
+-- 30/10 19:06:54:402                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:06:57:408    19:06:57:408 RX <- ACK = 0 Falha: 1
+-- 30/10 19:06:57:515                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:07:00:522    19:07:00:522 RX <- ACK = 0 Falha: 2
+-- 30/10 19:07:00:529     RX <- 
+-- 30/10 19:07:00:535 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:08:12:332 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:08:12:332 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=E STOP=1 HANDSHAKE= MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:08:12:337 
+-- 30/10 19:08:12:343                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:08:15:350    19:08:15:350 RX <- ACK = 0 Falha: 0
+-- 30/10 19:08:15:457                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:08:18:561    19:08:18:561 RX <- ACK = 0 Falha: 1
+-- 30/10 19:08:18:668                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:08:21:674    19:08:21:674 RX <- ACK = 0 Falha: 2
+-- 30/10 19:08:21:680     RX <- 
+-- 30/10 19:08:21:687 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:08:21:696 
+-- 30/10 19:08:21:703                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:08:24:711    19:08:24:711 RX <- ACK = 0 Falha: 0
+-- 30/10 19:08:24:813                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:08:27:814    19:08:27:814 RX <- ACK = 0 Falha: 1
+-- 30/10 19:08:27:916                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:08:30:918    19:08:30:918 RX <- ACK = 0 Falha: 2
+-- 30/10 19:08:30:919     RX <- 
+-- 30/10 19:08:30:920 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:10:33:660 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:10:33:660 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE= MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:10:33:661 
+-- 30/10 19:10:33:661                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:10:36:677    19:10:36:677 RX <- ACK = 0 Falha: 0
+-- 30/10 19:10:36:778                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:10:39:779    19:10:39:779 RX <- ACK = 0 Falha: 1
+-- 30/10 19:10:39:881                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:10:42:883    19:10:42:883 RX <- ACK = 0 Falha: 2
+-- 30/10 19:10:42:883     RX <- 
+-- 30/10 19:10:42:883 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:10:42:884 
+-- 30/10 19:10:42:886                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:10:45:895    19:10:45:895 RX <- ACK = 0 Falha: 0
+-- 30/10 19:10:45:997                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:10:48:998    19:10:48:998 RX <- ACK = 0 Falha: 1
+-- 30/10 19:10:49:100                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:10:52:102    19:10:52:102 RX <- ACK = 0 Falha: 2
+-- 30/10 19:10:52:103     RX <- 
+-- 30/10 19:10:52:104 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:14:57:077 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:14:57:077 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=XON/XOFF SOFTFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:14:57:077 
+-- 30/10 19:14:57:077                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:15:00:078    19:15:00:078 RX <- ACK = 0 Falha: 0
+-- 30/10 19:15:00:179                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:15:03:180    19:15:03:180 RX <- ACK = 0 Falha: 1
+-- 30/10 19:15:03:281                 TX -> [STX][4][NUL][FS][19]/[NUL]
+-- 30/10 19:15:06:283    19:15:06:283 RX <- ACK = 0 Falha: 2
+-- 30/10 19:15:06:284     RX <- 
+-- 30/10 19:15:06:285 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:15:06:285 
+-- 30/10 19:15:06:286                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:15:09:297    19:15:09:297 RX <- ACK = 0 Falha: 0
+-- 30/10 19:15:09:398                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:15:12:399    19:15:12:399 RX <- ACK = 0 Falha: 1
+-- 30/10 19:15:12:501                 TX -> [STX][4][NUL][ESC][19].[NUL]
+-- 30/10 19:15:15:503    19:15:15:503 RX <- ACK = 0 Falha: 2
+-- 30/10 19:15:15:504     RX <- 
+-- 30/10 19:15:15:505 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:15:23:245 -- Ativando a porta: COM2
+-- 30/10 19:15:23:246 CorrigeEstadoErro
+-- 30/10 19:15:23:246                 TX -> [STX][4][NUL][ESC]Fa[NUL]
+-- 30/10 19:15:26:247    19:15:26:247 RX <- ACK = 0 Falha: 0
+-- 30/10 19:15:26:348                 TX -> [STX][4][NUL][ESC]Fa[NUL]
+-- 30/10 19:15:29:349    19:15:29:349 RX <- ACK = 0 Falha: 1
+-- 30/10 19:15:29:451                 TX -> [STX][4][NUL][ESC]Fa[NUL]
+-- 30/10 19:15:32:453    19:15:32:453 RX <- ACK = 0 Falha: 2
+-- 30/10 19:15:32:454     RX <- 
+-- 30/10 19:15:32:455 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:15:32:456 
+-- 30/10 19:15:32:457                 TX -> [STX][4][NUL][ESC][NAK]0[NUL]
+-- 30/10 19:15:42:467    19:15:42:467 RX <- ACK = 0 Falha: 0
+-- 30/10 19:15:42:569                 TX -> [STX][4][NUL][ESC][NAK]0[NUL]
+-- 30/10 19:15:52:571    19:15:52:571 RX <- ACK = 0 Falha: 1
+-- 30/10 19:15:52:673                 TX -> [STX][4][NUL][ESC][NAK]0[NUL]
+-- 30/10 19:16:02:674    19:16:02:674 RX <- ACK = 0 Falha: 2
+-- 30/10 19:16:02:675     RX <- 
+-- 30/10 19:16:02:676 
+----------------- ERRO -----------------
+Impressora Bematech não responde (ACK = 0)
+----------------------------------------
+
+-- 30/10 19:22:07:821 AcharECF:  ProcuraModelo
+-- 30/10 19:22:07:829 AcharPorta( 3 )
+-- 30/10 19:22:07:876 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:22:07:876 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:22:07:881 
+-- 30/10 19:22:10:892 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:22:10:898 
+-- 30/10 19:22:13:914 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:22:20:164 AcharPorta( 3 )
+-- 30/10 19:22:20:239 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:22:20:239 - Modelo: Sweda - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=DTR/DSR MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:22:20:245 
+-- 30/10 19:22:20:251                 TX -> [ESC].271}
+-- 30/10 19:22:23:261 RespostaComando: 
+-- 30/10 19:22:23:267     RX <- 
+-- 30/10 19:22:23:274 
+----------------- ERRO -----------------
+Impressora Sweda não está respondendo
+----------------------------------------
+
+-- 30/10 19:22:23:497 AcharPorta( 3 )
+-- 30/10 19:22:23:570 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:22:23:570 - Modelo: Daruma - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:22:23:576 
+-- 30/10 19:22:26:590 
+----------------- ERRO -----------------
+Impressora Daruma não está em linha
+----------------------------------------
+
+-- 30/10 19:22:32:855 AcharPorta( 3 )
+-- 30/10 19:22:32:915 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:22:32:915 - Modelo: Schalter - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=E STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:22:32:921 
+-- 30/10 19:22:35:928 
+----------------- ERRO -----------------
+Impressora Schalter não está em linha
+----------------------------------------
+
+-- 30/10 19:22:42:183 AcharPorta( 3 )
+-- 30/10 19:22:42:256 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:22:42:256 - Modelo: Mecaf - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:22:42:262 
+-- 30/10 19:22:45:277 
+----------------- ERRO -----------------
+Impressora Mecaf não está em linha
+----------------------------------------
+
+-- 30/10 19:22:51:524 AcharPorta( 3 )
+-- 30/10 19:22:51:589 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:22:51:589 - Modelo: Yanco - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:22:51:596 
+-- 30/10 19:22:54:615 
+----------------- ERRO -----------------
+Impressora Yanco não está em linha
+----------------------------------------
+
+-- 30/10 19:23:00:861 AcharPorta( 3 )
+-- 30/10 19:23:00:927 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:23:00:927 - Modelo: DataRegis - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=DTR/DSR MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:23:00:933 
+-- 30/10 19:23:00:938                 TX -> [254][SOH]P[SOH]S[164]
+-- 30/10 19:23:03:950 RespostaComando: 
+-- 30/10 19:23:03:956     RX <- 
+-- 30/10 19:23:03:963 
+----------------- ERRO -----------------
+Impressora DataRegis não está respondendo
+----------------------------------------
+
+-- 30/10 19:23:03:977 
+-- 30/10 19:23:03:984                 TX -> [254][STX]l[NUL]l
+-- 30/10 19:23:06:997 RespostaComando: 
+-- 30/10 19:23:07:004     RX <- 
+-- 30/10 19:23:07:010 
+----------------- ERRO -----------------
+Impressora DataRegis não está respondendo
+----------------------------------------
+
+-- 30/10 19:23:07:011 
+-- 30/10 19:23:07:011                 TX -> [254][ETX]P[SOH]A[146]
+-- 30/10 19:23:10:020 RespostaComando: 
+-- 30/10 19:23:10:021     RX <- 
+-- 30/10 19:23:10:021 
+----------------- ERRO -----------------
+Impressora DataRegis não está respondendo
+----------------------------------------
+
+-- 30/10 19:23:10:237 AcharPorta( 3 )
+-- 30/10 19:23:10:303 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:23:10:303 - Modelo: Urano - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:23:10:304 
+-- 30/10 19:23:13:309 
+----------------- ERRO -----------------
+Impressora Urano não está em linha
+----------------------------------------
+
+-- 30/10 19:23:29:932 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:23:29:932 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:23:29:933 
+-- 30/10 19:23:32:942 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:23:32:942 
+-- 30/10 19:23:35:944 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:23:57:086 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:23:57:086 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:23:57:086 
+-- 30/10 19:24:00:091 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:24:00:091 
+-- 30/10 19:24:03:092 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:24:55:613 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:24:55:613 - Modelo: Bematech - Porta: COM5 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:25:10:716 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:25:10:716 - Modelo: Bematech - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=RTS/CTS HARDFLOW MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:25:10:717 
+-- 30/10 19:25:13:717 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:25:13:717 
+-- 30/10 19:25:16:726 
+----------------- ERRO -----------------
+Impressora Bematech não está em linha
+----------------------------------------
+
+-- 30/10 19:26:20:020 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 19:26:20:020 - Modelo: EscECF - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=DTR/DSR MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 19:26:20:021     Sincronismo TX -> [22]
+-- 30/10 19:26:20:139     Sincronismo RX <- [22][255]
+-- 30/10 19:26:20:140 
+-- 30/10 19:26:20:140                 TX -> [SOH][NUL][26][NUL][ENQ][NUL]15|0|[173]
+-- 30/10 19:26:20:142                 RX <- [ACK]
+-- 30/10 19:26:20:143          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:147                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:20:198          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:198                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:20:251          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:251                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:20:302          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:303                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 19:26:20:355          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:356             Resposta: SEQ:0 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:269 BRS:"BEMATECH|MP-4200 TH FI||BE10EMULADOR00000000|001|-------------|-------------|82373077000171||ISENTO|R$|02|06|01.00.00|IMPRESSORA FISCAL BEMATECH MP-4200 TH FI|      APENAS PARA DESENVOLVIMENTO|            SEM VALOR FISCAL|QWERTYUIOP|-------------|02.00|PR||0|null|null|" CHK:230
+-- 30/10 19:26:20:457     RX <- [SOH][NUL][26][NUL][NUL][SOH][NUL][NUL][NUL][CR][SOH]BEMATECH|MP-4200 TH FI||BE10EMULADOR00000000|001|-------------|-------------|82373077000171||ISENTO|R$|02|06|01.00.00|IMPRESSORA FISCAL BEMATECH MP-4200 TH FI|      APENAS PARA DESENVOLVIMENTO|            SEM VALOR FISCAL|QWERTYUIOP|-------------|02.00|PR||0|null|null|[230]
+-- 30/10 19:26:20:458 Estado
+-- 30/10 19:26:20:458                 TX -> [SOH][SOH][26][NUL][ENQ][NUL]16|5|[180]
+-- 30/10 19:26:20:556                 RX <- [ACK]
+-- 30/10 19:26:20:556          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:558                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:20:611          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:611                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:20:663          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:664                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:20:716          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:716                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 19:26:20:767          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:767             Resposta: SEQ:1 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:202
+-- 30/10 19:26:20:868     RX <- [SOH][SOH][26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|[202]
+-- 30/10 19:26:20:868 
+-- 30/10 19:26:20:869                 TX -> [SOH][STX][26][NUL][ENQ][NUL]16|4|[180]
+-- 30/10 19:26:20:968                 RX <- [ACK]
+-- 30/10 19:26:20:969          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:20:970                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:21:023          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:023                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:21:075          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:075                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:21:126          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:126             Resposta: SEQ:2 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:203
+-- 30/10 19:26:21:228     RX <- [SOH][STX][26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|[203]
+-- 30/10 19:26:21:228 
+-- 30/10 19:26:21:229                 TX -> [SOH][ETX][26][NUL][4][NUL]8|0|[129]
+-- 30/10 19:26:21:327                 RX <- [ACK]
+-- 30/10 19:26:21:327          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:328                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:21:379          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:379                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:21:431          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:431                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:21:483          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:484                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 19:26:21:535          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:535             Resposta: SEQ:3 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:25 BRS:"00000000|0|000000001|000|" CHK:24
+-- 30/10 19:26:21:637     RX <- [SOH][ETX][26][NUL][NUL][SOH][NUL][NUL][NUL][25][NUL]00000000|0|000000001|000|[24]
+-- 30/10 19:26:21:640 IdentificaOperador()
+-- 30/10 19:26:21:640                 TX -> [SOH][4][26][NUL][ACK][NUL]99|05|[243]
+-- 30/10 19:26:21:737                 RX <- [ACK]
+-- 30/10 19:26:21:738          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:740                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:21:791          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:791                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:21:843          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:844                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:21:895          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:21:896             Resposta: SEQ:4 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:7 BRS:"001||||" CHK:167
+-- 30/10 19:26:21:998     RX <- [SOH][4][26][NUL][NUL][SOH][NUL][NUL][NUL][7][NUL]001||||[167]
+-- 30/10 19:26:22:007 Estado
+-- 30/10 19:26:22:008                 TX -> [SOH][ENQ][26][NUL][ENQ][NUL]16|5|[184]
+-- 30/10 19:26:22:098                 RX <- [ACK]
+-- 30/10 19:26:22:099          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:102                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:22:154          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:155                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:22:207          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:208                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:22:259          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:260             Resposta: SEQ:5 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:206
+-- 30/10 19:26:22:361     RX <- [SOH][ENQ][26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|[206]
+-- 30/10 19:26:22:361 
+-- 30/10 19:26:22:362                 TX -> [SOH][ACK][26][NUL][ENQ][NUL]16|4|[184]
+-- 30/10 19:26:22:470                 RX <- [ACK]
+-- 30/10 19:26:22:470          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:471                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:22:524          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:524                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:22:576          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:577             Resposta: SEQ:6 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:207
+-- 30/10 19:26:22:679     RX <- [SOH][ACK][26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|[207]
+-- 30/10 19:26:22:679 
+-- 30/10 19:26:22:680                 TX -> [SOH][7][26][NUL][4][NUL]8|0|[133]
+-- 30/10 19:26:22:778                 RX <- [ACK]
+-- 30/10 19:26:22:778          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:780                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:22:831          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:831                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:22:884          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:885                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:22:936          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:22:938             Resposta: SEQ:7 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:25 BRS:"00000000|0|000000001|000|" CHK:28
+-- 30/10 19:26:23:040     RX <- [SOH][7][26][NUL][NUL][SOH][NUL][NUL][NUL][25][NUL]00000000|0|000000001|000|[FS]
+-- 30/10 19:26:30:398 LeituraX
+-- 30/10 19:26:30:399                 TX -> [SOH][BS][20][NUL][STX][NUL]0|[202]
+-- 30/10 19:26:30:399                 RX <- [ACK]
+-- 30/10 19:26:30:399          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:401                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:30:452          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:452                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:30:503          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:503                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:30:554          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:554                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 19:26:30:606          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:606                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (5)
+-- 30/10 19:26:30:657          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:657                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (6)
+-- 30/10 19:26:30:709          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:709                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (7)
+-- 30/10 19:26:30:760          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:760                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (8)
+-- 30/10 19:26:30:811          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:811                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (9)
+-- 30/10 19:26:30:862          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:862                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (10)
+-- 30/10 19:26:30:913          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:913                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (11)
+-- 30/10 19:26:30:964          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:30:964                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (12)
+-- 30/10 19:26:31:015          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:015                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (13)
+-- 30/10 19:26:31:066          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:066                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (14)
+-- 30/10 19:26:31:118          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:118                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (15)
+-- 30/10 19:26:31:169          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:169                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (16)
+-- 30/10 19:26:31:220          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:220                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (17)
+-- 30/10 19:26:31:271          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:271             Resposta: SEQ:8 CMD:20 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:0 BRS:"" CHK:29
+-- 30/10 19:26:31:373     RX <- [SOH][BS][20][NUL][NUL][SOH][NUL][NUL][NUL][NUL][NUL][GS]
+-- 30/10 19:26:31:376 NumCupom
+-- 30/10 19:26:31:377                 TX -> [SOH][TAB][26][NUL][4][NUL]1|1|[129]
+-- 30/10 19:26:31:484                 RX <- [ACK]
+-- 30/10 19:26:31:485          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:486                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:31:537          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:538                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:31:589          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:590                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:31:642          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:643             Resposta: SEQ:9 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:12 BRS:"1|000000005|" CHK:14
+-- 30/10 19:26:31:744     RX <- [SOH][TAB][26][NUL][NUL][SOH][NUL][NUL][NUL][FF][NUL]1|000000005|[14]
+-- 30/10 19:26:31:864 Estado
+-- 30/10 19:26:31:865                 TX -> [SOH][LF][26][NUL][ENQ][NUL]16|5|[189]
+-- 30/10 19:26:31:872                 RX <- [ACK]
+-- 30/10 19:26:31:872          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:873                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:31:924          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:924                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:31:975          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:31:975                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:32:027          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:027             Resposta: SEQ:10 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:211
+-- 30/10 19:26:32:128     RX <- [SOH][LF][26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|[211]
+-- 30/10 19:26:32:128 
+-- 30/10 19:26:32:129                 TX -> [SOH][11][26][NUL][ENQ][NUL]16|4|[189]
+-- 30/10 19:26:32:228                 RX <- [ACK]
+-- 30/10 19:26:32:229          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:231                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:32:283          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:283                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:32:334          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:334                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:32:386          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:386             Resposta: SEQ:11 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:212
+-- 30/10 19:26:32:487     RX <- [SOH][11][26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|[212]
+-- 30/10 19:26:32:487 
+-- 30/10 19:26:32:488                 TX -> [SOH][FF][26][NUL][4][NUL]8|0|[138]
+-- 30/10 19:26:32:598                 RX <- [ACK]
+-- 30/10 19:26:32:598          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:599                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 19:26:32:652          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:652                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 19:26:32:703          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:703                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 19:26:32:755          Status TX -> [ENQ][NUL]
+-- 30/10 19:26:32:755             Resposta: SEQ:12 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:25 BRS:"00000000|0|000000001|000|" CHK:33
+-- 30/10 19:26:32:857     RX <- [SOH][FF][26][NUL][NUL][SOH][NUL][NUL][NUL][25][NUL]00000000|0|000000001|000|!
+-- 30/10 21:50:05:028 
+--------------------------------------------------------------------------------
+ATIVAR - 30/10/17 21:50:05:028 - Modelo: EscECF - Porta: COM2 - TimeOut: 3
+         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE=DTR/DSR MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+-- 30/10 21:50:05:042     Sincronismo TX -> [22]
+-- 30/10 21:50:05:201     Sincronismo RX <- [22]\
+-- 30/10 21:50:05:207 
+-- 30/10 21:50:05:215                 TX -> [SOH]][26][NUL][ENQ][NUL]15|0|[LF]
+-- 30/10 21:50:05:222                 RX <- [ACK]
+-- 30/10 21:50:05:229          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:238                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:05:292          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:299                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:05:356          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:362                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:05:419          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:427             Resposta: SEQ:93 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:269 BRS:"BEMATECH|MP-4200 TH FI||BE10EMULADOR00000000|001|-------------|-------------|82373077000171||ISENTO|R$|02|06|01.00.00|IMPRESSORA FISCAL BEMATECH MP-4200 TH FI|      APENAS PARA DESENVOLVIMENTO|            SEM VALOR FISCAL|QWERTYUIOP|-------------|02.00|PR||0|null|null|" CHK:67
+-- 30/10 21:50:05:533     RX <- [SOH]][26][NUL][NUL][SOH][NUL][NUL][NUL][CR][SOH]BEMATECH|MP-4200 TH FI||BE10EMULADOR00000000|001|-------------|-------------|82373077000171||ISENTO|R$|02|06|01.00.00|IMPRESSORA FISCAL BEMATECH MP-4200 TH FI|      APENAS PARA DESENVOLVIMENTO|            SEM VALOR FISCAL|QWERTYUIOP|-------------|02.00|PR||0|null|null|C
+-- 30/10 21:50:05:539 Estado
+-- 30/10 21:50:05:546                 TX -> [SOH]^[26][NUL][ENQ][NUL]16|5|[WAK]
+-- 30/10 21:50:05:626                 RX <- [ACK]
+-- 30/10 21:50:05:632          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:640                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:05:696          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:702                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:05:761          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:767             Resposta: SEQ:94 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:39
+-- 30/10 21:50:05:874     RX <- [SOH]^[26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|'
+-- 30/10 21:50:05:880 
+-- 30/10 21:50:05:887                 TX -> [SOH]_[26][NUL][ENQ][NUL]16|4|[WAK]
+-- 30/10 21:50:05:968                 RX <- [ACK]
+-- 30/10 21:50:05:974          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:05:981                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:06:038          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:044                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:06:103          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:110             Resposta: SEQ:95 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:40
+-- 30/10 21:50:06:218     RX <- [SOH]_[26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|(
+-- 30/10 21:50:06:224 
+-- 30/10 21:50:06:231                 TX -> [SOH]`[26][NUL][4][NUL]8|0|[222]
+-- 30/10 21:50:06:323                 RX <- [ACK]
+-- 30/10 21:50:06:329          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:336                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:06:394          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:395                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:06:446          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:447                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:06:498          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:499             Resposta: SEQ:96 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:25 BRS:"30102017|1|000000001|000|" CHK:132
+-- 30/10 21:50:06:601     RX <- [SOH]`[26][NUL][NUL][SOH][NUL][NUL][NUL][25][NUL]30102017|1|000000001|000|[132]
+-- 30/10 21:50:06:603 IdentificaOperador()
+-- 30/10 21:50:06:604                 TX -> [SOH]a[26][NUL][ACK][NUL]99|05|P
+-- 30/10 21:50:06:700                 RX <- [ACK]
+-- 30/10 21:50:06:701          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:703                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:06:754          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:754                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:06:806          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:806                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:06:857          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:06:857             Resposta: SEQ:97 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:7 BRS:"001||||" CHK:4
+-- 30/10 21:50:06:958     RX <- [SOH]a[26][NUL][NUL][SOH][NUL][NUL][NUL][7][NUL]001||||[4]
+-- 30/10 21:50:06:974 Estado
+-- 30/10 21:50:06:975                 TX -> [SOH]b[26][NUL][ENQ][NUL]16|5|[NAK]
+-- 30/10 21:50:07:058                 RX <- [ACK]
+-- 30/10 21:50:07:059          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:062                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:07:113          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:113                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:07:164          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:164                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:07:216          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:216             Resposta: SEQ:98 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:43
+-- 30/10 21:50:07:317     RX <- [SOH]b[26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|+
+-- 30/10 21:50:07:317 
+-- 30/10 21:50:07:318                 TX -> [SOH]c[26][NUL][ENQ][NUL]16|4|[NAK]
+-- 30/10 21:50:07:417                 RX <- [ACK]
+-- 30/10 21:50:07:418          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:420                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:07:471          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:472                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:07:524          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:525                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:07:576          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:577             Resposta: SEQ:99 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:44
+-- 30/10 21:50:07:679     RX <- [SOH]c[26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|,
+-- 30/10 21:50:07:680 
+-- 30/10 21:50:07:680                 TX -> [SOH]d[26][NUL][4][NUL]8|0|[226]
+-- 30/10 21:50:07:779                 RX <- [ACK]
+-- 30/10 21:50:07:779          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:781                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:07:833          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:834                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:07:885          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:885                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:07:937          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:07:938             Resposta: SEQ:100 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:25 BRS:"30102017|1|000000001|000|" CHK:136
+-- 30/10 21:50:08:039     RX <- [SOH]d[26][NUL][NUL][SOH][NUL][NUL][NUL][25][NUL]30102017|1|000000001|000|[136]
+-- 30/10 21:50:17:546 AbreCupom( teste, ,  )
+-- 30/10 21:50:17:546                 TX -> [SOH]e[SOH][NUL][ETX][NUL]|||[221]
+-- 30/10 21:50:17:590                 RX <- [ACK]
+-- 30/10 21:50:17:590          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:17:604                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:17:655          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:17:656                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:17:708          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:17:709                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:17:760          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:17:860                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:17:911          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:17:960                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (5)
+-- 30/10 21:50:18:012          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:012             Resposta: SEQ:101 CMD:1 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:47 BRS:"17|30102017214929 |471450|BE10EMULADOR00000000|" CHK:205
+-- 30/10 21:50:18:113     RX <- [SOH]e[SOH][NUL][NUL][SOH][NUL][NUL][NUL]/[NUL]17|30102017214929 |471450|BE10EMULADOR00000000|[205]
+-- 30/10 21:50:18:116 NumCupom
+-- 30/10 21:50:18:117                 TX -> [SOH]f[26][NUL][4][NUL]1|1|[222]
+-- 30/10 21:50:18:213                 RX <- [ACK]
+-- 30/10 21:50:18:213          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:215                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:18:266          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:266                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:18:318          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:318                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:18:369          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:370             Resposta: SEQ:102 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:12 BRS:"1|000000017|" CHK:110
+-- 30/10 21:50:18:471     RX <- [SOH]f[26][NUL][NUL][SOH][NUL][NUL][NUL][FF][NUL]1|000000017|n
+-- 30/10 21:50:18:615 Estado
+-- 30/10 21:50:18:616                 TX -> [SOH]g[26][NUL][ENQ][NUL]16|5|[26]
+-- 30/10 21:50:18:616                 RX <- [ACK]
+-- 30/10 21:50:18:616          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:617                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:18:668          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:668                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:18:720          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:721                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:18:772          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:773                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:18:824          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:18:824             Resposta: SEQ:103 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:3 BRS:"10|" CHK:98
+-- 30/10 21:50:18:925     RX <- [SOH]g[26][NUL][NUL][SOH][NUL][NUL][NUL][ETX][NUL]10|b
+-- 30/10 21:50:29:590 CarregaAliquotas
+-- 30/10 21:50:29:590                 TX -> [SOH]h[26][NUL][4][NUL]5|0|[227]
+-- 30/10 21:50:29:676                 RX <- [ACK]
+-- 30/10 21:50:29:677          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:29:681                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:29:732          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:29:733                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:29:786          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:29:787                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:29:838          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:29:839                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:29:890          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:29:891             Resposta: SEQ:104 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:0 BRS:"" CHK:131
+-- 30/10 21:50:29:992     RX <- [SOH]h[26][NUL][NUL][SOH][NUL][NUL][NUL][NUL][NUL][131]
+-- 30/10 21:50:29:992 CarregaTotalizadoresNaoTributados
+-- 30/10 21:50:29:992                 TX -> [SOH]i[26][NUL][4][NUL]6|0|[229]
+-- 30/10 21:50:30:092                 RX <- [ACK]
+-- 30/10 21:50:30:092          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:094                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:30:147          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:147                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:30:198          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:198                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:30:249          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:249             Resposta: SEQ:105 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:45 BRS:"F1|000|I1|000|N1|000|FS1|000|IS1|000|NS1|000|" CHK:186
+-- 30/10 21:50:30:350     RX <- [SOH]i[26][NUL][NUL][SOH][NUL][NUL][NUL]-[NUL]F1|000|I1|000|N1|000|FS1|000|IS1|000|NS1|000|[186]
+-- 30/10 21:50:30:351 
+-- 30/10 21:50:30:351                 TX -> [SOH]j[STX][NUL]0[NUL]111222333|TESTE DE PRODUTO|N1|UN|1000|3|100|2|T|b
+-- 30/10 21:50:30:463                 RX <- [ACK]
+-- 30/10 21:50:30:463          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:464                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:30:515          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:515                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:30:568          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:569                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:30:620          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:620                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:30:672          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:683             Resposta: SEQ:106 CMD:2 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:10 BRS:"1|100|100|" CHK:62
+-- 30/10 21:50:30:784     RX <- [SOH]j[STX][NUL][NUL][SOH][NUL][NUL][NUL][LF][NUL]1|100|100|>
+-- 30/10 21:50:30:785 
+-- 30/10 21:50:30:785                 TX -> [SOH]k[26][NUL][4][NUL]4|2|[231]
+-- 30/10 21:50:30:873                 RX <- [ACK]
+-- 30/10 21:50:30:873          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:874                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:30:925          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:925                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:30:976          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:30:976                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:31:028          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:31:029                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:31:081          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:31:093             Resposta: SEQ:107 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:9 BRS:"2|471550|" CHK:239
+-- 30/10 21:50:31:194     RX <- [SOH]k[26][NUL][NUL][SOH][NUL][NUL][NUL][TAB][NUL]2|471550|[239]
+-- 30/10 21:50:31:213 Estado
+-- 30/10 21:50:31:214                 TX -> [SOH]l[26][NUL][ENQ][NUL]16|5|[31]
+-- 30/10 21:50:31:283                 RX <- [ACK]
+-- 30/10 21:50:31:283          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:31:284                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:31:335          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:31:335                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:31:386          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:31:386                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:31:438          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:31:438             Resposta: SEQ:108 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:3 BRS:"10|" CHK:103
+-- 30/10 21:50:31:540     RX <- [SOH]l[26][NUL][NUL][SOH][NUL][NUL][NUL][ETX][NUL]10|g
+-- 30/10 21:50:41:260 Estado
+-- 30/10 21:50:41:260                 TX -> [SOH]m[26][NUL][ENQ][NUL]16|5| 
+-- 30/10 21:50:41:299                 RX <- [ACK]
+-- 30/10 21:50:41:299          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:41:300                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:41:351          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:41:351                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:41:402          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:41:402                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:41:455          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:41:456                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:41:507          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:41:507             Resposta: SEQ:109 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:3 BRS:"10|" CHK:104
+-- 30/10 21:50:41:610     RX <- [SOH]m[26][NUL][NUL][SOH][NUL][NUL][NUL][ETX][NUL]10|h
+-- 30/10 21:50:50:661 Estado
+-- 30/10 21:50:50:662                 TX -> [SOH]n[26][NUL][ENQ][NUL]16|5|!
+-- 30/10 21:50:50:760                 RX <- [ACK]
+-- 30/10 21:50:50:760          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:50:768                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:50:820          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:50:821                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:50:872          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:50:872                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:50:923          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:50:924             Resposta: SEQ:110 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:3 BRS:"10|" CHK:105
+-- 30/10 21:50:51:026     RX <- [SOH]n[26][NUL][NUL][SOH][NUL][NUL][NUL][ETX][NUL]10|i
+-- 30/10 21:50:51:046 CarregaFormasPagamento
+-- 30/10 21:50:51:047                 TX -> [SOH]o[26][NUL][ENQ][NUL]14|0|[ESC]
+-- 30/10 21:50:51:124                 RX <- [ACK]
+-- 30/10 21:50:51:125          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:51:127                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:51:178          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:51:179                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:51:231          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:51:232                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:51:283          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:51:283             Resposta: SEQ:111 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:24 BRS:"1|Dinheiro|0|2|CARTAO|1|" CHK:58
+-- 30/10 21:50:51:384     RX <- [SOH]o[26][NUL][NUL][SOH][NUL][NUL][NUL][24][NUL]1|Dinheiro|0|2|CARTAO|1|:
+-- 30/10 21:50:57:091 TotalPago
+-- 30/10 21:50:57:092                 TX -> [SOH]p[4][NUL][11][NUL]1|100|1||7|[NAK]
+-- 30/10 21:50:57:109                 RX <- [ACK]
+-- 30/10 21:50:57:109          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:111                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:57:162          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:162                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:57:213          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:213                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:57:265          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:265                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:57:316          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:316             Resposta: SEQ:112 CMD:4 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:4 BRS:"000|" CHK:133
+-- 30/10 21:50:57:417     RX <- [SOH]p[4][NUL][NUL][SOH][NUL][NUL][NUL][4][NUL]000|[133]
+-- 30/10 21:50:57:446 Estado
+-- 30/10 21:50:57:447                 TX -> [SOH]q[26][NUL][ENQ][NUL]16|5|$
+-- 30/10 21:50:57:517                 RX <- [ACK]
+-- 30/10 21:50:57:518          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:520                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:50:57:571          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:571                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:50:57:623          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:624                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:50:57:676          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:677                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:50:57:728          Status TX -> [ENQ][NUL]
+-- 30/10 21:50:57:729             Resposta: SEQ:113 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:3 BRS:"13|" CHK:111
+-- 30/10 21:50:57:830     RX <- [SOH]q[26][NUL][NUL][SOH][NUL][NUL][NUL][ETX][NUL]13|o
+-- 30/10 21:51:08:020 FechaCupom( MD-5:12345678901234567890123456789012PV000000000[LF]3DAV0000000001DAV-OS0000000002NF:123456[LF]Trib aprox R$:0,60 Fed, 0,40 Est e 0,23 Mun[LF]Fonte:IBPT/FECOMERCIO (aWd7S8)[LF]Componentes ACBr[LF]http://acbr.sourceforge.net[LF] )
+-- 30/10 21:51:08:021                 TX -> [SOH]r[ENQ][NUL][220][NUL]0|1|MD-5:12345678901234567890123456789012PV000000000[CR][LF]3DAV0000000001DAV-OS0000000002NF:123456[CR][LF]Trib aprox R$:0,60 Fed, 0,40 Est e 0,23 Mun[CR][LF]Fonte:IBPT/FECOMERCIO (aWd7S8)[CR][LF]Componentes ACBr[CR][LF]http://acbr.sourceforge.net[CR][LF]|[192]
+-- 30/10 21:51:08:027                 RX <- [ACK]
+-- 30/10 21:51:08:028          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:028                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:51:08:080          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:080                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:51:08:131          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:131                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:51:08:183          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:183                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:51:08:234          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:234                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (5)
+-- 30/10 21:51:08:286          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:286                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (6)
+-- 30/10 21:51:08:337          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:337                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (7)
+-- 30/10 21:51:08:388          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:388                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (8)
+-- 30/10 21:51:08:439          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:439                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (9)
+-- 30/10 21:51:08:490          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:490                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (10)
+-- 30/10 21:51:08:541          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:541                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (11)
+-- 30/10 21:51:08:592          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:592                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (12)
+-- 30/10 21:51:08:643          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:643                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (13)
+-- 30/10 21:51:08:694          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:694                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (14)
+-- 30/10 21:51:08:745          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:745                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (15)
+-- 30/10 21:51:08:796          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:796                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (16)
+-- 30/10 21:51:08:847          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:847                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (17)
+-- 30/10 21:51:08:898          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:898                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (18)
+-- 30/10 21:51:08:949          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:08:949                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (19)
+-- 30/10 21:51:09:001          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:001             Resposta: SEQ:114 CMD:5 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:26 BRS:"17|30102017215020 |471550|" CHK:124
+-- 30/10 21:51:09:102     RX <- [SOH]r[ENQ][NUL][NUL][SOH][NUL][NUL][NUL][26][NUL]17|30102017215020 |471550||
+-- 30/10 21:51:09:133 Estado
+-- 30/10 21:51:09:135                 TX -> [SOH]s[26][NUL][ENQ][NUL]16|5|&
+-- 30/10 21:51:09:201                 RX <- [ACK]
+-- 30/10 21:51:09:202          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:205                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:51:09:257          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:257                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:51:09:308          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:309                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:51:09:361          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:362                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (4)
+-- 30/10 21:51:09:413          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:414             Resposta: SEQ:115 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:60
+-- 30/10 21:51:09:515     RX <- [SOH]s[26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|<
+-- 30/10 21:51:09:516 
+-- 30/10 21:51:09:517                 TX -> [SOH]t[26][NUL][ENQ][NUL]16|4|&
+-- 30/10 21:51:09:615                 RX <- [ACK]
+-- 30/10 21:51:09:616          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:618                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:51:09:670          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:670                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:51:09:722          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:722                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:51:09:773          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:773             Resposta: SEQ:116 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:2 BRS:"0|" CHK:61
+-- 30/10 21:51:09:874     RX <- [SOH]t[26][NUL][NUL][SOH][NUL][NUL][NUL][STX][NUL]0|=
+-- 30/10 21:51:09:874 
+-- 30/10 21:51:09:875                 TX -> [SOH]u[26][NUL][4][NUL]8|0|[243]
+-- 30/10 21:51:09:974                 RX <- [ACK]
+-- 30/10 21:51:09:975          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:09:977                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (1)
+-- 30/10 21:51:10:029          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:10:030                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (2)
+-- 30/10 21:51:10:081          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:10:081                 RX <- [WAK][NUL][SOH][NUL][NUL][NUL] (3)
+-- 30/10 21:51:10:132          Status TX -> [ENQ][NUL]
+-- 30/10 21:51:10:132             Resposta: SEQ:117 CMD:26 EXT:0 CAT:0 RET:[SOH][NUL][NUL][NUL] TBR:25 BRS:"30102017|1|000000001|000|" CHK:153
+-- 30/10 21:51:10:234     RX <- [SOH]u[26][NUL][NUL][SOH][NUL][NUL][NUL][25][NUL]30102017|1|000000001|000|[153]

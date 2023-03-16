@@ -1,0 +1,363 @@
+unit codigosipi;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, SQLGrid, StdCtrls, Mask, SQLEd, ExtCtrls,
+  Buttons, SQLBtn, alabel, Sqlfun, SqlSis ;
+
+type
+  TFCodigosipi = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    Dts: TDataSource;
+    EdCipi_codigo: TSQLEd;
+    EdCipi_descricao: TSQLEd;
+    EdCipi_codfiscal: TSQLEd;
+    EdCipi_aliquota: TSQLEd;
+    EdCipi_fabricap: TSQLEd;
+    EdCipi_cst: TSQLEd;
+    EdCipi_cstent: TSQLEd;
+    Edcipi_cest: TSQLEd;
+    Edcipi_cstpis: TSQLEd;
+    Edcipi_cstcofins: TSQLEd;
+    Edcipi_pise: TSQLEd;
+    Edcipi_cofinse: TSQLEd;
+    EdCipi_cbenef: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure EdCipi_aliquotaExitEdit(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure SetaCSTPisCofins(Ed:TSqlEd);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    function GetDescricao(codigo:integer):string;
+    function GetCst(codigo:integer):string;
+    function NcmtoCodigo(xNCM:string):integer;
+    function GetCstPis(codigo:integer):string;
+    function GetCstCofins(codigo:integer):string;
+    function GetPerPis(codigo:integer):currency;
+    function GetPerCofins(codigo:integer):currency;
+// 10.10.18
+    function GetPerII(ncm:string):currency;
+// 15.10.18
+    function GetPerIPI(ncm:string):currency;
+
+  end;
+
+var
+  FCodigosipi: TFCodigosipi;
+  campo:TDicionario;
+
+implementation
+
+uses Arquiv, SQLRel , SqlExpr , Geral;
+
+
+{$R *.dfm}
+
+{ TFCodigosipi }
+
+procedure TFCodigosipi.Execute;
+///////////////////////////////
+begin
+  fGeral.ConfiguraColorEditsNaoEnabled(FCodigosipi);
+  SetaCSTPisCofins(Edcipi_cstpis);
+  SetaCSTPisCofins(Edcipi_cstcofins);
+  Show;
+
+end;
+
+function TFCodigosipi.GetDescricao(codigo: integer): string;
+var Q:Tsqlquery;
+begin
+  Q:=sqltoquery('select cipi_descricao from codigosipi where cipi_codigo='+inttostr(codigo));
+  if not q.eof then
+    result:=q.fieldbyname('cipi_descricao').asstring
+  else
+    result:='';
+  q.close;
+  freeandnil(q);
+end;
+
+procedure TFCodigosipi.bIncluirClick(Sender: TObject);
+begin
+  Grid.Insert(EdCipi_Codigo);
+  EdCipi_codigo.setfirsted;
+
+end;
+
+procedure TFCodigosipi.EdCipi_aliquotaExitEdit(Sender: TObject);
+var Q:Tsqlquery;
+    proximo:integer;
+begin
+  Q:=sqltoquery('select max(cipi_codigo) as maior from codigosipi');
+  proximo:=Q.fieldbyname('maior').asinteger+1;
+  EdCipi_codigo.setvalue(proximo);
+  Grid.PostInsert(EdCipi_descricao);
+
+end;
+
+procedure TFCodigosipi.bRelatorioClick(Sender: TObject);
+begin
+  Frel.Reportfromsql('select * from codigosipi','RelCodigosIpi','Relação de Classificação Fiscal de IPI');
+
+end;
+
+procedure TFCodigosipi.FormActivate(Sender: TObject);
+//////////////////////////////////////////////////////////
+begin
+
+  campo:=Sistema.GetDicionario('codigosipi','cipi_cst');
+  if Campo.Tipo<>'' then begin
+    EdCipi_cst.Enabled:=true;
+    EdCipi_cst.Group:=0;
+  end else begin
+    EdCipi_cst.Enabled:=false;
+    EdCipi_cst.Group:=24;
+    EdCipi_cst.Table:=nil;
+    EdCipi_cst.TableName:='';
+  end;
+// 23.04.12
+  campo:=Sistema.GetDicionario('codigosipi','cipi_cstent');
+  if Campo.Tipo<>'' then begin
+    EdCipi_cstent.Enabled:=true;
+    EdCipi_cstent.Group:=0;
+  end else begin
+    EdCipi_cstent.Enabled:=false;
+    EdCipi_cstent.Group:=24;
+    EdCipi_cstent.Table:=nil;
+    EdCipi_cstent.TableName:='';
+  end;
+// 26.03.16
+  campo:=Sistema.GetDicionario('codigosipi','cipi_cest');
+  if Campo.Tipo<>'' then begin
+    EdCipi_cest.Enabled:=true;
+    EdCipi_cest.Group:=0;
+  end else begin
+    EdCipi_cest.Enabled:=false;
+    EdCipi_cest.Group:=24;
+    EdCipi_cest.Table:=nil;
+    EdCipi_cest.TableName:='';
+  end;
+// 19.08.16 - Novicarnes
+  campo:=Sistema.GetDicionario('codigosipi','cipi_cstpis');
+  if Campo.Tipo<>'' then begin
+    EdCipi_cstpis.Enabled:=true;
+    EdCipi_cstpis.Group:=0;
+    EdCipi_cstcofins.Enabled:=true;
+    EdCipi_cstcofins.Group:=0;
+    EdCipi_cofinse.Enabled:=true;
+    EdCipi_cofinse.Group:=0;
+    EdCipi_pise.Enabled:=true;
+    EdCipi_pise.Group:=0;
+  end else begin
+    EdCipi_cstpis.Enabled:=false;
+    EdCipi_cstpis.Group:=24;
+    EdCipi_cstpis.TableName:='';
+    EdCipi_cstcofins.Enabled:=false;
+    EdCipi_cstcofins.Group:=24;
+    EdCipi_cstcofins.TableName:='';
+    EdCipi_cofinse.Enabled:=false;
+    EdCipi_cofinse.Group:=24;
+    EdCipi_cofinse.TableName:='';
+    EdCipi_pise.Enabled:=false;
+    EdCipi_pise.Group:=24;
+    EdCipi_pise.TableName:='';
+  end;
+// 19.02.20 - Novicarnes
+  campo:=Sistema.GetDicionario('codigosipi','cipi_cbenef');
+  if Campo.Tipo<>'' then begin
+
+     EdCipi_cbenef.Enabled:=true;
+     EdCipi_cbenef.Group:=0;
+
+  end else begin
+
+     EdCipi_cbenef.Enabled:=false;
+     EdCipi_cbenef.Group:=24;
+
+  end;
+  if not Arq.TCodigosIpi.Active then Arq.TCodigosIpi.Open;
+// 26.10.16
+  SetaCSTPisCofins(Edcipi_cstpis);
+  SetaCSTPisCofins(Edcipi_cstcofins);
+  FGeral.ColunasGrid(Grid,Self);
+
+end;
+
+procedure TFCodigosipi.bExcluirClick(Sender: TObject);
+///////////////////////////////////////////////////////////////
+var Cod:String;
+    Found:Boolean;
+
+    function FoundTabela(Tabela,Campo,Msg,Chave:String):Boolean;
+    var Q:TSqlQuery;
+    begin
+      Q:=SqlToQuery('SELECT '+chave+' as Codigo FROM '+Tabela+' WHERE '+Campo+'='+Cod );
+      Result:=not Q.eof;
+      if Result then AvisoErro('Encontrado vínculo na tabela '+tabela+' ref. '+Msg+' codigo '+Q.fieldbyname('codigo').asstring);
+      Q.Close;Freeandnil(Q);
+    end;
+
+begin
+////////////////
+  Cod:=IntToStr(Arq.TCodigosIpi.FieldByName('cipi_Codigo').AsInteger);
+  Found:=FoundTabela('Estoque','Esto_cipi_Codigo','Cadastro do estoque','Esto_codigo');
+  if not Found then Grid.Delete;
+end;
+
+function TFCodigosipi.GetCst(codigo: integer): string;
+////////////////////////////////////////////////////////
+var Q:Tsqlquery;
+begin
+  Q:=sqltoquery('select cipi_cst from codigosipi where cipi_codigo='+inttostr(codigo));
+  if not q.eof then
+    result:=q.fieldbyname('cipi_cst').asstring
+  else
+    result:='';
+  q.close;
+  freeandnil(q);
+end;
+
+///////////////////////////////////////////////////////////////
+function TFCodigosipi.NcmtoCodigo(xNCM: string): integer;
+///////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cipi_codigo from codigosipi where cipi_codfiscal='+Stringtosql(xNCM));
+  if not Q.eof then result:=Q.fieldbyname('cipi_codigo').AsInteger else result:=0;
+  FGeral.Fechaquery(q);
+end;
+
+// 23.09.16
+procedure TFCodigosipi.SetaCSTPisCofins(Ed: TSqlEd);
+//////////////////////////////////////////////////////
+begin
+  Ed.Items.Clear;
+  Ed.Items.Add('01 Operação Tributável com Alíquota Básica');
+  Ed.Items.Add('02 Operação Tributável com Alíquota Diferenciada');
+  Ed.Items.Add('03 Operação Tributável com Alíquota por Unidade de Medida de Produto');
+  Ed.Items.Add('04 Operação Tributável Monofásica - Revenda a Alíquota Zero');
+  Ed.Items.Add('05 Operação Tributável por Substituição Tributária');
+  Ed.Items.Add('06 Operação Tributável a Alíquota Zero');
+  Ed.Items.Add('07 Operação Isenta da Contribuição');
+  Ed.Items.Add('08 Operação sem Incidência da Contribuição');
+  Ed.Items.Add('09 Operação com Suspensão da Contribuição');
+  Ed.Items.Add('49 Outras Operações de Saída');
+  Ed.Items.Add('50 Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno');
+  Ed.Items.Add('51 Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno');
+  Ed.Items.Add('52 Operação com Direito a Crédito - Vinculada Exclusivamente a Receita de Exportação');
+  Ed.Items.Add('53 Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno');
+  Ed.Items.Add('54 Operação com Direito a Crédito - Vinculada a Receitas Tributadas no Mercado Interno e de Exportação');
+  Ed.Items.Add('55 Operação com Direito a Crédito - Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação');
+  Ed.Items.Add('56 Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação');
+  Ed.Items.Add('60 Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno');
+  Ed.Items.Add('61 Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno');
+  Ed.Items.Add('62 Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação');
+  Ed.Items.Add('63 Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno');
+  Ed.Items.Add('64 Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação');
+  Ed.Items.Add('65 Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação');
+  Ed.Items.Add('66 Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação');
+  Ed.Items.Add('67 Crédito Presumido - Outras Operações');
+  Ed.Items.Add('70 Operação de Aquisição sem Direito a Crédito');
+  Ed.Items.Add('71 Operação de Aquisição com Isenção');
+  Ed.Items.Add('72 Operação de Aquisição com Suspensão');
+  Ed.Items.Add('73 Operação de Aquisição a Alíquota Zero');
+  Ed.Items.Add('74 Operação de Aquisição sem Incidência da Contribuição');
+  Ed.Items.Add('75 Operação de Aquisição por Substituição Tributária');
+  Ed.Items.Add('98 Outras Operações de Entrada');
+  Ed.Items.Add('99 Outras Operações');
+end;
+
+// 18.10.16
+function TFCodigosipi.GetCstCofins(codigo: integer): string;
+/////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cipi_cstpis from codigosipi where cipi_codigo='+inttostr(codigo));
+  if not Q.Eof then result:=Q.fieldbyname('cipi_cstpis').asstring else result:='';
+  FGeral.FechaQuery(Q);
+end;
+
+function TFCodigosipi.GetCstPis(codigo: integer): string;
+/////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cipi_cstcofins from codigosipi where cipi_codigo='+inttostr(codigo));
+  if not Q.Eof then result:=Q.fieldbyname('cipi_cstcofins').asstring else result:='';
+  FGeral.FechaQuery(Q);
+end;
+
+function TFCodigosipi.GetPerCofins(codigo: integer): currency;
+////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cipi_cofinse from codigosipi where cipi_codigo='+inttostr(codigo));
+  if not Q.Eof then result:=Q.fieldbyname('cipi_cofinse').ascurrency else result:=0;
+  FGeral.FechaQuery(Q);
+end;
+
+// 10.10.18
+function TFCodigosipi.GetPerII(ncm: string): currency;
+/////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cipi_aliII from codigosipi where cipi_codfiscal='+stringtosql(ncm));
+  if not Q.Eof then result:=Q.fieldbyname('cipi_aliII').ascurrency else result:=0;
+  FGeral.FechaQuery(Q);
+
+end;
+
+// 15.10.18
+function TFCodigosipi.GetPerIPI(ncm: string): currency;
+/////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+
+  Q:=sqltoquery('select cipi_aliquota from codigosipi where cipi_codfiscal='+stringtosql(ncm));
+  if not Q.Eof then result:=Q.fieldbyname('cipi_aliquota').ascurrency else result:=0;
+  FGeral.FechaQuery(Q);
+
+  end;
+
+function TFCodigosipi.GetPerPis(codigo: integer): currency;
+/////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select cipi_pise from codigosipi where cipi_codigo='+inttostr(codigo));
+  if not Q.Eof then result:=Q.fieldbyname('cipi_pise').ascurrency else result:=0;
+  FGeral.FechaQuery(Q);
+end;
+
+end.

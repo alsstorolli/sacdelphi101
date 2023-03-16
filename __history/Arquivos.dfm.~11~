@@ -1,0 +1,108 @@
+object Arq: TArq
+  OldCreateOrder = False
+  Height = 325
+  Width = 431
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'DriverID=PG'
+      'Database=sacnovicarnes'
+      'User_Name=sac'
+      'Server=127.0.0.1'
+      'CharacterSet=UTF8')
+    LoginPrompt = False
+    Transaction = Transacao
+    UpdateTransaction = Transacao
+    Left = 48
+    Top = 40
+  end
+  object Transacao: TFDTransaction
+    Connection = Conexao
+    Left = 120
+    Top = 40
+  end
+  object TPortadores: TFDTable
+    IndexFieldNames = 'port_codigo'
+    Connection = Conexao
+    Transaction = Transacao
+    UpdateTransaction = Transacao
+    UpdateOptions.UpdateTableName = 'portadores'
+    TableName = 'portadores'
+    Left = 208
+    Top = 40
+  end
+  object DriverLink: TFDPhysPgDriverLink
+    VendorHome = 'D:\DelphiSeattleProjetos\TesteConexaoFiredac'
+    VendorLib = 'libpq.dll'
+    Left = 304
+    Top = 40
+  end
+  object Sistema: TSQLEnv
+    ShowException = True
+    Btns.FontColorBlack = clBlack
+    Btns.FontColorRed = clRed
+    Btns.FontColorWhite = clWhite
+    Btns.Transparent = True
+    Btns.Flat = True
+    Btns.ShowHint = True
+    Btns.LayOut = blGlyphLeft
+    Btns.Active = True
+    Btns.Margin = 0
+    Btns.Height = 25
+    Btns.Width = 75
+    Btns.Spacing = 2
+    Btns.HintEdit = 'Altera o campo selecionado'
+    Btns.HintInsert = 'Inclui um novo registro'
+    Btns.HintReports = 'Emite o relat'#243'rio'
+    Btns.HintFind = 'Pesquisa pelo campo selecionado'
+    Btns.HintFilter = 'Ativa um filtro para o campo selecionado/Retira filtro'
+    Btns.HintIndex = 'Ordena pelo campo selecionado'
+    Btns.HintDelete = 'Insere marca'#231#227'o para exclus'#227'o do registro'
+    Btns.HintCancel = 'Cancela a opera'#231#227'o em andamento'
+    Btns.HintExit = 'Abandona a tela'
+    Btns.HintPost = 'Efetiva a grava'#231#227'o'
+    Btns.HintNext = 'Seleciona o pr'#243'ximo registro'
+    Btns.HintPrior = 'Seleciona o registro anterior'
+    Btns.HintColor = 'Acesso '#224' configura'#231#227'o de cores'
+    Btns.HintFirst = 'Seleciona o primeiro registro'
+    Btns.HintSaveGrid = 'Grava o formato atual da grade'
+    Btns.HintLoadGrid = 'Restaura o formato padr'#227'o para a grade'
+    Btns.HintLast = 'Seleciona o '#250'ltimo registro'
+    Btns.HintEditAll = 'Edita o registro selecionado'
+    Btns.HintConfirm = 'Efetiva o procedimento'
+    Btns.HintExpColumn = 'Expande a coluna selecionada'
+    Btns.HintRedColumn = 'Reduz a coluna selecionada'
+    Btns.HintDelColumn = 'Apaga a coluna selecionada'
+    Btns.HintRestColumn = 'Restaura todas as colunas'
+    Btns.HintRestColor = 'Restaura padr'#227'o de cores'
+    Btns.HintMoveLeftColumn = 'Move para a esquerda a coluna selecionda'
+    Btns.HintMoveRightColumn = 'Move para a direita a coluna selecionada'
+    Btns.HintRestaurar = 'Recupera todos os registros do servidor'
+    Btns.CaptionEdit = '&Alterar'
+    Btns.CaptionInsert = '&Incluir'
+    Btns.CaptionReports = '&Relat'#243'rio'
+    Btns.CaptionFind = '&Pesquisar'
+    Btns.CaptionFilter = '&Filtrar'
+    Btns.CaptionIndex = '&Ordenar'
+    Btns.CaptionDelete = '&Excluir'
+    Btns.CaptionCancel = '&Cancelar'
+    Btns.CaptionExit = '&Sair'
+    Btns.CaptionPost = '&Gravar'
+    Btns.CaptionNext = 'Pro&ximo'
+    Btns.CaptionPrior = 'A&nterior'
+    Btns.CaptionFirst = 'Pri&meiro'
+    Btns.CaptionLast = '&Ultimo'
+    Btns.CaptionEditAll = 'E&ditar'
+    Btns.CaptionConfirm = 'Confir&mar'
+    Btns.CaptionRestaurar = 'Res&taurar'
+    Btns.Font.Charset = DEFAULT_CHARSET
+    Btns.Font.Color = clWindowText
+    Btns.Font.Height = -11
+    Btns.Font.Name = 'Tahoma'
+    Btns.Font.Style = []
+    DuplicityInstance = False
+    TypeServer = tsOracle
+    Conexao = Sistema.Conexao
+    Left = 72
+    Top = 112
+  end
+end

@@ -1,0 +1,792 @@
+object frmACBrDANFCeFortesFrETQFAT: TfrmACBrDANFCeFortesFrETQFAT
+  Left = 358
+  Top = 34
+  Margins.Right = 0
+  Margins.Bottom = 0
+  Caption = 'frmACBrDANFCeFortesFrETQFAT'
+  ClientHeight = 591
+  ClientWidth = 708
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object rlReportA4: TRLReport
+    Left = 92
+    Top = 39
+    Width = 280
+    Height = 491
+    Margins.LeftMargin = 0.000000000000000000
+    Margins.TopMargin = 0.000000000000000000
+    Margins.RightMargin = 0.000000000000000000
+    Margins.BottomMargin = 0.000000000000000000
+    AdjustableMargins = True
+    Borders.Style = bsClear
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    PageSetup.PaperSize = fpCustom
+    PageSetup.Orientation = poLandscape
+    PageSetup.PaperWidth = 130.000000000000000000
+    PageSetup.PaperHeight = 74.000000000000000000
+    object RLSubDetail2: TRLSubDetail
+      Left = 15
+      Top = 11
+      Width = 250
+      Height = 143
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = False
+      Borders.DrawRight = False
+      Borders.DrawBottom = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      Positioning = btSummary
+      OnDataRecord = RLSubDetail2DataRecord
+      object rlbConsumidor: TRLBand
+        Left = 0
+        Top = 0
+        Width = 250
+        Height = 138
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        BeforePrint = rlbConsumidorBeforePrint
+        object RLBarcode1: TRLBarcode
+          Left = 25
+          Top = 41
+          Width = 189
+          Height = 35
+          Margins.LeftMargin = 1.000000000000000000
+          Margins.RightMargin = 1.000000000000000000
+          BarcodeType = bcCode128C
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Module = 2
+          ParentFont = False
+          ShowText = boCode
+        end
+        object RLPanel1: TRLPanel
+          Left = 1
+          Top = 77
+          Width = 246
+          Height = 47
+          Alignment = taCenter
+          Borders.Sides = sdAll
+          object RLLabel3: TRLLabel
+            Left = 76
+            Top = 17
+            Width = 88
+            Height = 22
+            Alignment = taCenter
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -19
+            Font.Name = 'Arial'
+            Font.Style = []
+            Layout = tlCenter
+            ParentFont = False
+            BeforePrint = RLLabel3Beforerint
+          end
+          object RLLabel8: TRLLabel
+            Left = 79
+            Top = 8
+            Width = 80
+            Height = 14
+            Alignment = taCenter
+            Caption = 'Carne resfriada'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Layout = tlCenter
+            ParentFont = False
+            BeforePrint = RLLabel8BeforePrint
+          end
+          object RLMatadouro: TRLLabel
+            Left = 98
+            Top = -1
+            Width = 46
+            Height = 12
+            Alignment = taCenter
+            Caption = 'Matadouro'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -9
+            Font.Name = 'Arial'
+            Font.Style = []
+            Layout = tlCenter
+            ParentFont = False
+            BeforePrint = RLMatadouroBeforePrint
+          end
+        end
+      end
+      object Labelvalidade: TRLLabel
+        Left = 82
+        Top = 124
+        Width = 92
+        Height = 12
+        Alignment = taCenter
+        Caption = 'Validade'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = []
+        Layout = tlCenter
+        ParentFont = False
+        BeforePrint = LabelvalidadeBeforePrint
+      end
+    end
+    object pGap05: TRLPanel
+      Left = 133
+      Top = 288
+      Width = 132
+      Height = 24
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -9
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      object lSistema: TRLLabel
+        Left = 7
+        Top = 8
+        Width = 118
+        Height = 7
+        Align = faCenter
+        Alignment = taCenter
+        Caption = 'Sistema SAC - Storolli Cia Ltda'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -8
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsItalic]
+        Layout = tlBottom
+        ParentFont = False
+        BeforePrint = lSistemaBeforePrint
+      end
+    end
+    object Labelingr01: TRLLabel
+      Left = 9
+      Top = 295
+      Width = 63
+      Height = 10
+      Caption = 'Qtde por por'#231#227'o'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = Labelingr01BeforePrint
+    end
+    object LabelIngr02: TRLLabel
+      Left = 7
+      Top = 307
+      Width = 62
+      Height = 10
+      Caption = 'Valor energ'#233'tico'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = LabelIngr02BeforePrint
+    end
+    object Labelingr03: TRLLabel
+      Left = 9
+      Top = 318
+      Width = 51
+      Height = 10
+      Caption = 'Carboidratos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = Labelingr03BeforePrint
+    end
+    object LabelIngr04: TRLLabel
+      Left = 9
+      Top = 326
+      Width = 55
+      Height = 12
+      AutoSize = False
+      Caption = 'Proteinas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = LabelIngr04BeforePrint
+    end
+    object LabelIngr05: TRLLabel
+      Left = 9
+      Top = 339
+      Width = 60
+      Height = 12
+      AutoSize = False
+      Caption = 'Gorduras Totais'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = LabelIngr05BeforePrint
+    end
+    object valorproteina: TRLLabel
+      Left = 70
+      Top = 325
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = valorproteinaBeforePrint
+    end
+    object valorgordtotais: TRLLabel
+      Left = 70
+      Top = 337
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = valorgordtotaisBeforePrint
+    end
+    object labelFibraalimentar: TRLLabel
+      Left = 9
+      Top = 360
+      Width = 60
+      Height = 14
+      AutoSize = False
+      Caption = 'Fibra Alimentar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = labelFibraalimentarBeforePrint
+    end
+    object labelfibra: TRLLabel
+      Left = 70
+      Top = 360
+      Width = 30
+      Height = 12
+      AutoSize = False
+      Caption = 'valorfibra'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = labelfibraBeforePrint
+    end
+    object labelsodio: TRLLabel
+      Left = 9
+      Top = 374
+      Width = 56
+      Height = 10
+      AutoSize = False
+      Caption = 'S'#243'dio'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = labelsodioBeforePrint
+    end
+    object valorsodio: TRLLabel
+      Left = 68
+      Top = 371
+      Width = 30
+      Height = 12
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = valorsodioBeforePrint
+    end
+    object LabelData: TRLLabel
+      Left = 141
+      Top = 267
+      Width = 26
+      Height = 14
+      Caption = 'Data'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = LabelDataBeforePrint
+    end
+    object RLLabel2: TRLLabel
+      Left = 89
+      Top = 182
+      Width = 76
+      Height = 10
+      Alignment = taCenter
+      Caption = 'Pesado na presen'#231'a'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = RLLabel2BeforePrint
+    end
+    object RLLabel4: TRLLabel
+      Left = 107
+      Top = 212
+      Width = 62
+      Height = 14
+      Alignment = taCenter
+      Caption = 'Instituicional'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = RLLabel4BeforePrint
+    end
+    object RLLabel6: TRLLabel
+      Left = 29
+      Top = 282
+      Width = 28
+      Height = 10
+      Alignment = taJustify
+      Caption = 'Porcao'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = RLLabel6BeforePrint
+    end
+    object RLLabel7: TRLLabel
+      Left = 101
+      Top = 201
+      Width = 86
+      Height = 14
+      Alignment = taCenter
+      Caption = 'Especie animal'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = RLLabel7BeforePrint
+    end
+    object Rllote: TRLLabel
+      Left = 18
+      Top = 255
+      Width = 28
+      Height = 14
+      Caption = 'Lote'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = RlloteBeforePrint
+    end
+    object rlpercproteira: TRLLabel
+      Left = 98
+      Top = 325
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlpercproteiraBeforePrint
+    end
+    object rlpercgordurastotais: TRLLabel
+      Left = 98
+      Top = 337
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlpercgordurastotaisBeforePrint
+    end
+    object rlpercfibraalimentar: TRLLabel
+      Left = 98
+      Top = 361
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlpercfibraalimentarBeforePrint
+    end
+    object rlpercsodio: TRLLabel
+      Left = 98
+      Top = 372
+      Width = 30
+      Height = 11
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlpercsodioBeforePrint
+    end
+    object rlperccarboidratos: TRLLabel
+      Left = 100
+      Top = 314
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlperccarboidratosBeforePrint
+    end
+    object rlpercvalorenergetico: TRLLabel
+      Left = 101
+      Top = 304
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlpercvalorenergeticoBeforePrint
+    end
+    object rlvalorgordsaturadas: TRLLabel
+      Left = 70
+      Top = 348
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlvalorgordsaturadasBeforePrint
+    end
+    object rlgordurassat: TRLLabel
+      Left = 9
+      Top = 350
+      Width = 60
+      Height = 12
+      AutoSize = False
+      Caption = 'Gorduras Saturadas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlCenter
+      ParentFont = False
+      BeforePrint = rlgordurassatBeforePrint
+    end
+    object rlgordsaturadas: TRLLabel
+      Left = 98
+      Top = 348
+      Width = 30
+      Height = 13
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlBottom
+      ParentFont = False
+      BeforePrint = rlgordsaturadasBeforePrint
+    end
+    object RlImageqrcode: TRLImage
+      Left = 222
+      Top = 25
+      Width = 64
+      Height = 37
+      BeforePrint = RlImageqrcodeBeforePrint
+    end
+    object RLAnglerastreamento: TRLAngleLabel
+      Left = 211
+      Top = 26
+      Width = 10
+      Height = 65
+      Angle = 90.000000000000000000
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -8
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      BeforePrint = RLAnglerastreamentoBeforePrint
+    end
+    object RLImagelogo: TRLImage
+      Left = 222
+      Top = 73
+      Width = 52
+      Height = 39
+      Picture.Data = {
+        0A544A504547496D61676559060000FFD8FFE000104A46494600010101004700
+        470000FFE100224578696600004D4D002A000000080001011200030000000100
+        01000000000000FFDB0043000201010201010202020202020202030503030303
+        030604040305070607070706070708090B0908080A0807070A0D0A0A0B0C0C0C
+        0C07090E0F0D0C0E0B0C0C0CFFDB004301020202030303060303060C0807080C
+        0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C
+        0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0CFFC0001108001D0026030122000211
+        01031101FFC4001F000001050101010101010000000000000000010203040506
+        0708090A0BFFC400B5100002010303020403050504040000017D010203000411
+        05122131410613516107227114328191A1082342B1C11552D1F0243362728209
+        0A161718191A25262728292A3435363738393A434445464748494A5354555657
+        58595A636465666768696A737475767778797A838485868788898A9293949596
+        9798999AA2A3A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2
+        D3D4D5D6D7D8D9DAE1E2E3E4E5E6E7E8E9EAF1F2F3F4F5F6F7F8F9FAFFC4001F
+        0100030101010101010101010000000000000102030405060708090A0BFFC400
+        B511000201020404030407050404000102770001020311040521310612415107
+        61711322328108144291A1B1C109233352F0156272D10A162434E125F1171819
+        1A262728292A35363738393A434445464748494A535455565758595A63646566
+        6768696A737475767778797A82838485868788898A92939495969798999AA2A3
+        A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6D7D8
+        D9DAE2E3E4E5E6E7E8E9EAF2F3F4F5F6F7F8F9FAFFDA000C0301000211031100
+        3F00FDFCACFF00107882CBC2BA1DE6A5A95D4163A769D03DCDCDCCEE238ADE24
+        52CEECC780A141249E8056866BE45FDACBFE0A55F09FC35F16747F84F6F79A97
+        8F7C4ABAA4175E26D27C2FA64BAD3F87F4FB7944B3DC5EF921846913246648FE
+        690AE57CBF9D739D59F2C6FD7A5CE7C56223461CD26976BF57D11E5BFF000549
+        FF0082935CE8BF0064D1FC31A0F8DBC2F6FE24672DE23D72CA7D16C6FB4E8D77
+        4FE4CCAE2EE356DD19919234985B7DA0C2567F24D677FC11F344FDA5AC6EEC75
+        2D6B44934DF83BAB20761E37D426B7D7EE5044561934CD2E0DD6BA4DA2955DB6
+        5B136C6C479B3611C7A9FC7CD23E18FEDC3A8785BC47E24F11785B58F05F85AF
+        6E750D3214D461B9B4D70181963FB8C4B859921B8C28396815704641EABF62AF
+        DB10FC41F13EA3E10F126AB63F6AB38A04D1249C886E351550C8EACCCD8926F9
+        51F0064EE73C81C7B986CD23472EFA9C60A7295DCA4D75BE964BAA56D6EEDEBA
+        9E1D3CBEAD5C6FD62AD56D46DCBCB649F74D6BA7E2FAB3EA01C0A2807228AF1C
+        FA438FF8E9F0A6D7E3BFC19F14F82EF353D7345B5F146973E9926A1A45E35A5F
+        D9096329E7432AF2AEB9C8CE54E30C19490783FD897F607F865FF04FCF854BE1
+        5F873A12D8A4C11B52D52E089B53D665518F36E26C02C7A908A1634DC422A838
+        AFC8DF8A9F09BC5575E32F891F1EAEFC59A55C5CFED087C7FE04D62C068B20BA
+        8F4A934C6B6B3B67B937463962B3FB05ABC616DE3763E707760E9E570DF05FE1
+        65C78BFE16F8B1BC0E7C29F0AE0F137867C3DF03B58B7F0F682D0C3AD0BDBD56
+        B8D6AED167459AEA486DA681B8562976E7CC0473F4D1E19834AABAAB4B2BF2BD
+        1B766B7BEFD52D7C8F9DA99B53F6AA6E9DE5AD9F5B6FA76B9FB1FF00167F603D
+        0FC65ADEA7AB787EE74DF0CEA3AA90F70C9A5447ED0DC64BC8A55DB24672C5B9
+        ACFF000CFF00C12DBE1CE83E3BD1FC417579E26D62EB459E3BB4B7BBBA8BECD3
+        4D1B06577448D4950C01DBBB69E872320FE657C3FF00F8277AFC5DFDA77E1DFE
+        CFBE27F1268937877E14F88FC6DA769135A7842CAEA0B6B4BCB5B4BE16D0DAEA
+        86FE258E198CBE5997CE9155C6240C8AF57749FD93752FD9BBF699D3BE26F85F
+        C6524F63FB3678E340F861E1EB4D62C64BCD5A5D16349EDEEAD8DEACF1C2B1DD
+        1D42EA475FB231422111B22C655E7FB0E17E48D6D6D75EEBEAED1EBD74F4BBED
+        AE91CCED1E674ECAF6DD74577FAFA9FB781F77FB5457E00FEC97FB0FE97FB33F
+        82FE07F8BAD751B3D52E3C59E09F10DADD4116910E8EC8D06B36AAAE6E6C0C17
+        571950062EE69F6F442AA1514AA9F0EABFEEEA732D75B5B66D757E468B377F6A
+        16F9FF00C03FFFD9}
+      BeforePrint = RlImageqrcodeBeforePrint
+    end
+    object RLLabel5: TRLLabel
+      Left = 217
+      Top = 66
+      Width = 58
+      Height = 14
+      AutoSize = False
+      Caption = 'REGISTRADO NA'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -5
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
+    object rlnomeprodutor: TRLLabel
+      Left = 141
+      Top = 279
+      Width = 50
+      Height = 14
+      Caption = 'Validade'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = lNomeFantasiaBeforePrint
+    end
+    object rlabelprodutor: TRLLabel
+      Left = 18
+      Top = 241
+      Width = 52
+      Height = 14
+      Caption = 'Produtor'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = rlabelprodutorBeforePrint
+    end
+    object rlpesopeca: TRLLabel
+      Left = 210
+      Top = 240
+      Width = 43
+      Height = 19
+      Caption = 'Peso'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = pesopeca
+    end
+    object rlpeso: TRLLabel
+      Left = 161
+      Top = 240
+      Width = 43
+      Height = 19
+      Alignment = taRightJustify
+      Caption = 'Peso'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = pesochupeta
+    end
+    object rldesossa: TRLLabel
+      Left = 94
+      Top = 254
+      Width = 59
+      Height = 14
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = rldesossaBeforePrint
+    end
+    object rllabelproduto: TRLLabel
+      Left = 19
+      Top = 226
+      Width = 47
+      Height = 14
+      Caption = 'Produto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      Layout = tlJustify
+      ParentFont = False
+      BeforePrint = rllabelprodutoBeforePrint
+    end
+  end
+  object RLPDFFilter1: TRLPDFFilter
+    DocumentInfo.Creator = 'Projeto ACBr'
+    DisplayName = 'Documento PDF'
+    Left = 818
+    Top = 79
+  end
+  object RLHTMLFilter1: TRLHTMLFilter
+    DocumentStyle = dsCSS2
+    DisplayName = 'HTML'
+    Left = 821
+    Top = 131
+  end
+end

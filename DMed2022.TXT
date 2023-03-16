@@ -1,0 +1,562 @@
+Dmed|2022|2021|N||      |
+RESPO|01868475999|MARCIO ANTONIO DOS SANTOS|46|32254487||||
+DECPJ|07869417000134|MARCIO ANTONIO DOS SANTOS SERVIÇOS MÉDICOS S/S ME|1||7134312|01868475999|N|||
+PSS|
+RPPSS|00028263995|Catarina Albani|12000|
+RPPSS|00118452010|Mauricio Avila|17000|
+RPPSS|00353707937|Vera Lucia Dos Santos|12000|
+RPPSS|00456784993|Ronaldo Balan|10000|
+RPPSS|00558170927|Geni Blos Henning|10000|
+RPPSS|00746160992|Alini Tomaz Martinello|12000|
+RPPSS|00747786925|Maria Elena Ferreira Henrischen|17000|
+RPPSS|00750262958|Sidneia Luza|12000|
+RPPSS|00770168906|Luci De Melo Cezar|10000|
+RPPSS|00775230910|Natalia Wolek Dos Santos|10000|
+RPPSS|00783744994|Luciana Aparecida Da Cruz Patinho|12000|
+RPPSS|00795262922|Sandra Rekssua|12000|
+RPPSS|00812216903|Elielma Cristiane Xavier Colla|12000|
+RPPSS|00842423966|Jovane Spinello|17000|
+RPPSS|00870389947|Maria De Lourdes Bordin|12000|
+RPPSS|00878571035|Caroline Bacelar Hauschild|17000|
+RPPSS|00896919200|Thays Soares Sicsy|12000|
+RPPSS|00940898926|Evandro Barella|10000|
+RPPSS|00994673990|Bruno Emanoel Lopes Bueno|15000|
+RPPSS|01092946292|Jheniffer h Assunçao Da Cruz|12000|
+RPPSS|01293024902|Vitoria Mariano Ruela|10000|
+RPPSS|01448673976|Valdenice Abatti Godoy|12000|
+RPPSS|01472197950|Jose Vilmar Rocha|10000|
+RPPSS|01497130964|Ivair Terezinha Dal Bosco|17000|
+RPPSS|01520410956|Regis Athayde|12000|
+RPPSS|01524030945|Miguelina Martins Guimaraes|12000|
+RPPSS|01532596987|Claudino Lachman|12000|
+RPPSS|01535694920|Maria José Lemos Gritti|10000|
+RPPSS|01543391990|José Nunes Rodrigues|12000|
+RPPSS|01565228960|Olga Noemia Zago|12000|
+RPPSS|01574497936|Rozeli De Fátima Farias De Oliveira|12000|
+RPPSS|01694490920|Nilva Terezinha Ceni Dos Passos|10000|
+RPPSS|01754129951|Sirlei Estacio Dias Da Rosa|17000|
+RPPSS|01762747901|Elenir Salete Cenci Rodrigues De Godoys|17000|
+RPPSS|01837186901|Rudine Nunes Dalmaso|12000|
+RPPSS|01906570906|Solange Terezinha Da Silva Dos Santos|10000|
+RPPSS|01937719936|Dejanira Neckel Dos Santos Walter|10000|
+RPPSS|01946531960|Antonia Marcia De Aguiar|15000|
+RPPSS|01995442984|Itamar Mochnacz|17000|
+RPPSS|01998286959|Luciane Bugoni Dellamerlin|12000|
+RPPSS|02001146973|Marli De Fatima Martins|17000|
+RPPSS|02026610916|Claudio Schreiber|12000|
+RPPSS|02038276943|Sandra Jorge|12000|
+RPPSS|02045767922|Olinda Maria Possamai|17000|
+RPPSS|02096494966|Pedro Barbosa Dos Santos|12000|
+RPPSS|02103509200|Angelo Amaro Dos Santos Furtado Junior|17000|
+RPPSS|02134155930|Rosemari Ruffato Machado|12000|
+RPPSS|02138287238|Laise De Souza De Oliveira|10000|
+RPPSS|02196307980|Neusa Fátima Biazussi|12000|
+RPPSS|02267062909|Eva Aparecida Da Luz|12000|
+RPPSS|02422420907|Neuzeli Mariano Balbinotti|10000|
+RPPSS|02478014963|Ivanete De Britto Chichorro|10000|
+RPPSS|02517318980|Elide Fabian|15000|
+RPPSS|02550371984|Ironi Reolon|10000|
+RPPSS|02596650967|Claudio Osni Ferreira|12000|
+RPPSS|02613327910|Marcio Rocha|15000|
+RPPSS|02651108901|Sidnei Gromnicki|12000|
+RPPSS|02676670948|Daniel Angelo Faggion|12000|
+RPPSS|02682892981|Clevenice Tavares|12000|
+RPPSS|02692105125|Djuliet Ingridi Cora|12000|
+RPPSS|02716622981|Ana Paula Moraes Da Conceição|12000|
+RPPSS|02736575938|Alan Patrique Da Conceição|12000|
+RPPSS|02779983957|Adelita Pandini|17000|
+RPPSS|02794777912|Rosane Antunes Da Silva|17000|
+RPPSS|02805357914|Jucimara Matias Pereira|17000|
+RPPSS|02808304919|Rosani De Souza Moreira|10000|
+RPPSS|02823016902|Adriana Aparecida De Souza Machado Rosse|17000|
+RPPSS|02888534908|Candida Aparecida Philippi|12000|
+RPPSS|02943209970|Lizandra Ferronato|12000|
+RPPSS|02967462900|Suzana Da Conceição Enrique|12000|
+RPPSS|03000626999|Teresinha Julianti|10000|
+RPPSS|03013748990|Gislaine Aparecida Copatti Debarba|16000|
+RPPSS|03103383959|Ariete Massoquetto|10000|
+RPPSS|03135839788|Carla Verônica De Souza Catojo|12000|
+RPPSS|03158265923|Alexandre Alves|12000|
+RPPSS|03158832941|Beloci Ortolan Carini|12000|
+RPPSS|03196777960|Luiz Francisco Gelaski|10000|
+RPPSS|03228696928|Adilio Izaias Maciel|10000|
+RPPSS|03264710900|Josceli t d p Scalzavara|17000|
+RPPSS|03302132964|Thais Regina De Moura Rosa|10000|
+RPPSS|03327806004|Monique Bernardo Azevedo|12000|
+RPPSS|03328526951|Viviane Pussinini|12000|
+RPPSS|03352049963|Marcos Luiza Bernardi|22000|
+RPPSS|03378340916|Adriano Roberto Da Luz|12000|
+RPPSS|03402701952|Anelma Zanella Pereira|12000|
+RPPSS|03425032941|Mariela Moreira|10000|
+RPPSS|03455554148|Marcio Jose Baldo|12000|
+RPPSS|03457732922|James Debrando Ribas Martins|10000|
+RPPSS|03478558140|Aleksandra Acunha|10000|
+RPPSS|03495789901|Maria Klin Pereira|12000|
+RPPSS|03511903092|Pedro Karlos Machado Oliveira|12000|
+RPPSS|03577661992|Tatiana Reiko Shimizu|30000|
+RPPSS|03583810961|Jose Domingos Dos Santos Lima|12000|
+RPPSS|03650784920|Jurandir Freitas Rodrigues|12000|
+RPPSS|03662584948|Marlene Loureiro Gonçalves|34000|
+RPPSS|03767253976|Isabel Schaitel Cardoso|17000|
+RPPSS|03767645033|Camila Vieira Da Silva|17000|
+RPPSS|03799836993|Marcio Leandro Oliveira|12000|
+RPPSS|03838539907|Edivan De Paula Witt|10000|
+RPPSS|03846656917|Cleusa Itamar Cardoso|10000|
+RPPSS|03846742910|Dirce Salete Sutille|10000|
+RPPSS|04073524909|Gecie Fontana Vargas|10000|
+RPPSS|04129888870|Lazara Aparecida Pereira|10000|
+RPPSS|04134193982|Renata Xavier Belende|12000|
+RPPSS|04149411956|Lidiane Fontoura De Freitas|12000|
+RPPSS|04227898951|Edinei Fatima Furigo Oldoni|12000|
+RPPSS|04265493920|Marly Dos Santos Alves|12000|
+RPPSS|04299818997|Fabio Borges Pinheiro|12000|
+RPPSS|04391957990|Marcieli Duarte|12000|
+RPPSS|04434737902|Suzana Zorzan|12000|
+RPPSS|04531928903|Wilian Antonio Stadinik|12000|
+RPPSS|04532846986|Sirlei De Fátima Estolaski Lima Cortese|34000|
+RPPSS|04537247959|Edinei Pedro Alves|24000|
+RPPSS|04766193946|Cleison Luiz Sabadin|17000|
+RPPSS|04777064956|Cristiane Dos Santos|17000|
+RPPSS|04777086925|Josmar Stadnik|17000|
+RPPSS|04862720951|Sandro Pereira Duarte|10000|
+RPPSS|04888775982|Belirde Catarina Wittmann|12000|
+RPPSS|04965618980|Edson Piassa|12000|
+RPPSS|04995301950|Lucas Rodrigues Da Silva|10000|
+RPPSS|05153432939|Cleuza Fortes|12000|
+RPPSS|05182885954|Ronaldo Jardel Trindade|12000|
+RPPSS|05196863907|Lainir Matielo Borguesan|12000|
+RPPSS|05207623982|Suzana Caumo|12000|
+RPPSS|05215917914|Juelcio Coproschi|10000|
+RPPSS|05280985945|Andre Luiz Rodrigues Hamera|12000|
+RPPSS|05326950979|Anderson Luiz Da Silva|12000|
+RPPSS|05356254997|Geordano Padilha Capra|12000|
+RPPSS|05465808900|Tatiane Senger|10000|
+RPPSS|05511611913|Neire De Fatima De Almeida Ferreira|10000|
+RPPSS|05515751906|Eni Maria Ribeiro Da Motta|12000|
+RPPSS|05524846957|Erick Risson Alves Da Silva|12000|
+RPPSS|05551273970|Ana Paula De Melo Kalinoski|10000|
+RPPSS|05559143561|Kevin De Souza Guimaraes|10000|
+RPPSS|05635549918|Agueda Bach|12000|
+RPPSS|05660392903|Cenira Nagel Senger|10000|
+RPPSS|05677841935|Glaci Da Silva|12000|
+RPPSS|05680607921|Andrei Emersom Rezende Da Silva Junior|12000|
+RPPSS|05687095942|Loreni Guedes De Souza|10000|
+RPPSS|05733530936|Marlene De Fátima De Oliveira Marques|12000|
+RPPSS|05753733930|Simone Anschau Bordin|12000|
+RPPSS|05802942932|Gabriela Mariano Da Silva|12000|
+RPPSS|05859399936|Samoel Kalinoski|10000|
+RPPSS|05895416179|Gustavo Thomas Pedroso|10000|
+RPPSS|05898861939|Ricardo Andre Pedralli|12000|
+RPPSS|05931424970|Tatiane Silveira Kulhkomp|10000|
+RPPSS|05999775906|Marilda Raquel Dos Santos De Oliveira|12000|
+RPPSS|06047705960|Vanicleia Ribeiro Soares|12000|
+RPPSS|06076196947|Augusto Antonio Fagundes Da Silva Grigol|10000|
+RPPSS|06085812914|Danielli Cristini Santos Alves|12000|
+RPPSS|06186368971|Lucieli Fabris Dos Santos|14000|
+RPPSS|06288099805|Leo Martignoni|17000|
+RPPSS|06293459962|Mariana Raíssa Bariviera Raspini|12000|
+RPPSS|06321476951|Maria Claudina Ferreira De Andrade|12000|
+RPPSS|06361065944|Leonira Alves Castanha Claudio|10000|
+RPPSS|06363616913|Andre Luis Possamai|12000|
+RPPSS|06405007901|Adriane Dos Santos|17000|
+RPPSS|06417150992|Tharline Bueno Da Silva|17000|
+RPPSS|06417467929|Fabiano Piovesan|10000|
+RPPSS|06451343927|Diego Atilio Schutz|12000|
+RPPSS|06496726906|Ana Paula Antunes Hartmann|12000|
+RPPSS|06583943980|Adriana Kostaneski Da Silva|12000|
+RPPSS|06618422906|Luan Leonardo Botura|12000|
+RPPSS|06694831927|Rosangela Da Silva Vasconcelos Rodrigues|17000|
+RPPSS|06697858907|Irene Farias|10000|
+RPPSS|06707235923|Alison Luis Gonçalves De Lima|12000|
+RPPSS|06772958985|Janete Lopes|10000|
+RPPSS|06823044926|Rosane Sikorski Duarte|12000|
+RPPSS|07021597940|Lucas Antonio Sebben|17000|
+RPPSS|07056268900|Cassio Gobbato|10000|
+RPPSS|07076944936|Vinicius Maia Da Silva e Souza|10000|
+RPPSS|07163249977|Luis Octavio Chicoski|12000|
+RPPSS|07177544992|Karolyne Aparecida Do Amaral|12000|
+RPPSS|07275794950|Willian Albuquerque Fontoura|30000|
+RPPSS|07291456975|Eduar Godoy|10000|
+RPPSS|07318077902|Claison Gregorio Coelho|15000|
+RPPSS|07365072997|Saiane Caroline De Lara|10000|
+RPPSS|07365089962|Cledineia Caumo|12000|
+RPPSS|07481359954|Brunno Henrique Ilkiu|12000|
+RPPSS|07525810907|Bruna Socolovski Siqueira|10000|
+RPPSS|07534474957|Marciel De Almeida|12000|
+RPPSS|07553479942|Pedro Henrique Pastorello|12000|
+RPPSS|07556289931|Leticia De Oliveira Casagrande|10000|
+RPPSS|07575454918|Hellen Passini Soares Gonçalves|10000|
+RPPSS|07595527970|Everaldo Jose Alves De Candido|12000|
+RPPSS|07608023945|Vinicius Ribeiro|12000|
+RPPSS|07631420939|Jociane Teixeira De Camargo|12000|
+RPPSS|07640558956|Lucas Pagotto Taborda|12000|
+RPPSS|07683024988|Ari Roberto Gonçalves|12000|
+RPPSS|07704774964|Elis Copetti Junior|12000|
+RPPSS|07705955962|Dinilda Oldoni Cherobim|17000|
+RPPSS|07718445909|Jocemara Da Silva Pastorello|12000|
+RPPSS|07735956940|Paulo Roberto Cagnini|10000|
+RPPSS|07740515906|Marina Eduarda Bom Da Silva|17000|
+RPPSS|07797038988|Cristiano Hartmann De Oliveira|12000|
+RPPSS|07811920999|Joel Marcos Martins|12000|
+RPPSS|07813564740|Renata Lemos Do Carmo|12000|
+RPPSS|07842787921|Rosenir Alves Dos Santos|12000|
+RPPSS|07917758958|Raquel Aguiar Dos Santos|12000|
+RPPSS|07943705947|Daiane Evenize  Vieira|12000|
+RPPSS|07956279984|Elisandra Bruneto|17000|
+RPPSS|07958800908|Bruna Caroline Verona Prestes|10000|
+RPPSS|08016443990|Laura Bernardi Poletto|12000|
+RPPSS|08082008954|Camila Leticia Tonial|12000|
+RPPSS|08084157949|Loil Witkovski|12000|
+RPPSS|08160421958|Tayane Santos Freitas|16000|
+RPPSS|08232434945|Endrio José Dos Santos Trentin|17000|
+RPPSS|08283246976|Caroline Vigano|10000|
+RPPSS|08294002909|Leandro Teixeira De Camargo|12000|
+RPPSS|08296279959|Josiane Dos Santos Lopes|12000|
+RPPSS|08367045920|Barbara Luiza De Oliveira|12000|
+RPPSS|08451272924|Ana Claudia Fagundes Alves|10000|
+RPPSS|08519555926|Jessica Cararo|10000|
+RPPSS|08544215998|Marcel Fernando Farias|12000|
+RPPSS|08645486997|Sabrina Weber De Souza Netto|12000|
+RPPSS|08801906986|Jose Carlos Bragas Dos Santos|12000|
+RPPSS|08818658930|Luiz Felipe De Freitas|10000|
+RPPSS|08839772901|Suelen Priscila Vas|12000|
+RPPSS|08873594930|Raquel Ferreira Da Silva|10000|
+RPPSS|08939006992|Lester Gean Nogueira|10000|
+RPPSS|09015001944|Gabriel Stadnik|10000|
+RPPSS|09024499909|Henrique Marochi Toledo|12000|
+RPPSS|09038044925|Mario Dal Pizzol Neto|17000|
+RPPSS|09063172907|Thais Milene Vieira|17000|
+RPPSS|09065885960|Erika Leticia Da Silva|17000|
+RPPSS|09120693923|Isabela Ribeiro|12000|
+RPPSS|09122105913|Gilliane Cibeli Machado|12000|
+RPPSS|09128637909|Patricia De Freitas|10000|
+RPPSS|09160039906|Daiane Rosa De Oliveira|12000|
+RPPSS|09165241916|Liliane Aparecida De Souza|10000|
+RPPSS|09169585903|Rafael Roncaglio|12000|
+RPPSS|09196134976|Fernanda De Lima Velozo Da Rosa|15000|
+RPPSS|09229162922|Mauricio Andrade Da Silva|10000|
+RPPSS|09237371977|Tatiani Sandi Morais|10000|
+RPPSS|09258462955|Ana Claudia Mariano|10000|
+RPPSS|09259026911|Naiara Broch|12000|
+RPPSS|09435031919|Waldir Batista De Ramos Junior|12000|
+RPPSS|09453022900|Maria Tereza Alves Dos Santos|10000|
+RPPSS|09493137937|Jean Lucas De Conto|12000|
+RPPSS|09517175965|Rafaelli Zago Rufato|12000|
+RPPSS|09522358975|Anne Caroline Reolon Dalla Costa|10000|
+RPPSS|09562293955|Gabriel Victor Zeni Gomes|17000|
+RPPSS|09595786926|Alice Batistin|12000|
+RPPSS|09634348963|Angela Rodrigues|10000|
+RPPSS|09637413901|Cristian Lattmann|17000|
+RPPSS|09674620966|Nayara Zeferino Santos|10000|
+RPPSS|09759951975|João Victor Biffi Maciel|12000|
+RPPSS|09791858900|Marco Antonio Gonçalves Farias|12000|
+RPPSS|09801568909|Camila Dos Santos|17000|
+RPPSS|09821950957|João Gabriel Schereiner|10000|
+RPPSS|09853004933|Jackson Bueno Da Silva|12000|
+RPPSS|09874053909|Jaine Mireli Scatolin|12000|
+RPPSS|09932327956|Gabriel Renan Gonçalves Da Silva|12000|
+RPPSS|09936029917|Andre Luiz Ribeiro|12000|
+RPPSS|09994971972|Celito Ponsoni|12000|
+RPPSS|10008425922|Saionara Rodrigues De Lima|17000|
+RPPSS|10055928960|Murylo Oliveira Dos Santos|12000|
+RPPSS|10067895964|Guilherme Augusto Groth|10000|
+RPPSS|10098374940|Andrei Antonio Rigo Pociano|12000|
+RPPSS|10109001966|Gustavo Dos Santos Chaves|12000|
+RPPSS|10188615997|Luana Dos Santos Rodrigues|12000|
+RPPSS|10205230938|Jaqueline Aparecida De Ramos Machado|17000|
+RPPSS|10210738901|Eric Ribeiro|12000|
+RPPSS|10225228920|Rayfferson AntÔnio Dos Santos|10000|
+RPPSS|10254802958|Fabricio Rufatto|10000|
+RPPSS|10275574903|Cristian Parhuts De Oliveira|17000|
+RPPSS|10281158908|Mateus Vinicius Oliveira Dos Santos|12000|
+RPPSS|10298706911|Marcos Rodrigo Do Nascimento|10000|
+RPPSS|10300145900|Adriano Hart|12000|
+RPPSS|10339960922|Bruna Brotto Tavares|12000|
+RPPSS|10352060999|Raissa Jhennifer Dos Santos|10000|
+RPPSS|10443135959|Diego Nathan Dos Santos Silveira|17000|
+RPPSS|10444852999|Ana Cristina De Almeida|10000|
+RPPSS|10473626942|Celio Rodrigues Dos Santos Junior|12000|
+RPPSS|10489677940|Adriana Da Silva Vieira|10000|
+RPPSS|10528489909|Heloisa Wronski Ferreira|12000|
+RPPSS|10602465974|Debora Cristina Dos Reis Benites|12000|
+RPPSS|10624134903|Victor Da Silva Miranda|10000|
+RPPSS|10656621907|Daniele Kauane Clein De Souza|10000|
+RPPSS|10690054955|Nilla Gabriela Voitena De Farias|10000|
+RPPSS|10709846983|Pamela Cristina Dlugosz|10000|
+RPPSS|10713098970|Thais Aparecida De Almeida Pancera|10000|
+RPPSS|10755333926|Natali Merlin Filippini|17000|
+RPPSS|10764833995|Isabella Poier Da Costa|10000|
+RPPSS|10772295930|Nicolas Dos Santos Toldo|10000|
+RPPSS|10773522980|Denise De Oliveira Calumby|12000|
+RPPSS|10891532951|João Pedro Tedesco Minosso|17000|
+RPPSS|10896781933|Jhenifer Monteiro Dos Santos|17000|
+RPPSS|10997961996|Rafaella Pereira Duarte|12000|
+RPPSS|11086497937|João Paulo Masquio Dos Santos|12000|
+RPPSS|11167615999|Emily Ane Kruger|17000|
+RPPSS|11189406950|Ana Rosa Copatti Carneiro|10000|
+RPPSS|11282034995|Eduardo Cesar Fernandes|10000|
+RPPSS|11377751902|Beatriz Balan|10000|
+RPPSS|11405216913|Mariana Jacobo Leite|12000|
+RPPSS|11549655973|Ana Barbara Bosio|12000|
+RPPSS|11598555952|Jaqueline Ghisi Sbisigo|10000|
+RPPSS|11630755907|Queren Cristina Bianco Moreira Da Silva|17000|
+RPPSS|11664450971|Larissa Ferrari Da Silva Souza|12000|
+RPPSS|11742614981|Jeovani De Oliveira|17000|
+RPPSS|11823757901|Arthur Eugenio Severo De Oliveira|16000|
+RPPSS|11823787908|Lorenzzo Luca Severo De Oliveira|16000|
+RPPSS|11823806970|Isabella Vitoria Severo De Oliveira|16000|
+RPPSS|11835936946|Aline Franciele m g Cavalheiro|10000|
+RPPSS|12007396980|Otavio Capelin Dal Pupo Ribeiro|12000|
+RPPSS|12035244986|Bruna De Oliveira Ferreira|12000|
+RPPSS|12147854921|Lucas Andre Dos Santos|12000|
+RPPSS|12150075903|Guilherme Vieira De Siqueira|12000|
+RPPSS|12155761961|Pedro Gustavo Pinheiro De Paula|10000|
+RPPSS|12212282770|Rafaela Mota Da Silva|40000|
+RPPSS|12298699992|Gabriel Comunello Antonelo|12000|
+RPPSS|12397200929|Miguel Dlugosz Paloschi|10000|
+RPPSS|12469314941|Camile Rafaela Ramos|12000|
+RPPSS|12477612905|Debora Laura Da Silva|10000|
+RPPSS|12479369960|Maria Eduarda De Mattos Barboza|17000|
+RPPSS|12511335760|Klaus Richter Pereira|10000|
+RPPSS|12615889915|Jacy Bedin|10000|
+RPPSS|12729105980|Gabriela Chenet Da Silva|12000|
+RPPSS|12763185967|Luan Henrique Valkarenqui|17000|
+RPPSS|12778752943|Tammi Duarte Consorte|12000|
+RPPSS|12804215920|Darci Keller|17000|
+RPPSS|12859147918|João Henrique Raulino|17000|
+RPPSS|12868754988|Lohana Chagas Dos Santos|17000|
+RPPSS|12908763982|Raphael Rodrigues Grominicki|12000|
+RPPSS|13053940973|Tulio Mateus Dos Santos Pinguelo|12000|
+RPPSS|13431391982|Bruna Eduarda Da Silva Signore|12000|
+RPPSS|13675839931|Gabrieli Dos Santos Viana|12000|
+RPPSS|13881110984|Thalya Ana Siqueira Frigo|10000|
+RPPSS|13899024982|Heitor Luccheta Machado|12000|
+RPPSS|14065873975|Kaua Martins Lemos|12000|
+RPPSS|14199122915|Delmir Vanin|12000|
+RPPSS|14711167943|Ryane Farias Miranda|17000|
+RPPSS|14712414910|Maria Valentina Farias|12000|
+RPPSS|14734065950|Ana Julia De Oliveira Ferreira|12000|
+RPPSS|15149476927|Breno Martins Dos Santos|12000|
+RPPSS|15340050998|Felipe Emanuel Alves Peron|10000|
+RPPSS|15341450957|Maria Laura Passini Soares Gonçalves|12000|
+RPPSS|15479777955|Glenda Alexsandra Linhares Pereira|17000|
+RPPSS|15533209999|Thuany Luizy Shimizu Somensi|16000|
+RPPSS|16237307249|Valdenir Antonio Malacarne|16000|
+RPPSS|17380189115|Jacira Marassi|12000|
+RPPSS|17746599800|Tervina Antunes|10000|
+RPPSS|19547188968|João De Oliveira|12000|
+RPPSS|20790007991|Pedro Alves Dos Reis|10000|
+RPPSS|21386013900|Vitorio Fabricio Das Neves|12000|
+RPPSS|21613226802|Bianca Ramos De Jesus Dos Santos|12000|
+RPPSS|21776275837|Edvaldo De Souza Moreira|12000|
+RPPSS|23225807915|Nelso Jose Sambugaro|10000|
+RPPSS|24456837934|Otavio Alves Da Silva|10000|
+RPPSS|25597700839|Michelle Francine De Oliveira Haring|10000|
+RPPSS|25941003900|Alexandre Tuchlinowicz|12000|
+RPPSS|27583856000|Ilmo Guedini|12000|
+RPPSS|28550340944|Geny Mello Costa|22000|
+RPPSS|28561139900|Euclides Julho Gonçalves|10000|
+RPPSS|29763070910|Sergio Spigiorin|17000|
+RPPSS|30404533949|Jacir Antonio Sottili|12000|
+RPPSS|33741689904|Valmiro Antunes|12000|
+RPPSS|33768250920|Clovis Luiz Piacentini|12000|
+RPPSS|33770689968|Eloy Almeida|10000|
+RPPSS|33805636920|Rosemaria Madureira|12000|
+RPPSS|33845174900|Airton Bortolacci|12000|
+RPPSS|33935122004|Bernardete Renosto Coelho|16000|
+RPPSS|34092684991|Ademar Santini|10000|
+RPPSS|34096620904|Wilson Jose Fernandes De Avilla|12000|
+RPPSS|34931007287|Maria Carmen Decarli|10000|
+RPPSS|35832636856|Alexandre Carvalho Do Rosario|12000|
+RPPSS|37093061915|David Kalinoski|10000|
+RPPSS|37135791991|Tereza Pereira De Mello|17000|
+RPPSS|37142151900|Jose Aidil Kuszera|12000|
+RPPSS|37154885904|Laurena Debastiani|12000|
+RPPSS|37159038991|Orrivaldino De Jesus Vaz|12000|
+RPPSS|37159321987|Jorge Odacir De Paula|12000|
+RPPSS|37296957972|Marli Terezinha Teles Da Silva|10000|
+RPPSS|37302027900|Jose Pedro De Oliveira|10000|
+RPPSS|37410008920|Gelson Cristiano Leonardi|16000|
+RPPSS|37410270900|Paulo Umberto Fae|12000|
+RPPSS|37418904991|Euclides Dos Santos|12000|
+RPPSS|37908928668|Sergio Brandão Souto|12000|
+RPPSS|39607402987|Lidia Pysklevitz|12000|
+RPPSS|39614115904|Evaldir Dos Santos Oliveira|17000|
+RPPSS|40064875920|José Flávio Desanti|17000|
+RPPSS|40353940925|Osvaldo Aparecido Albertini|17000|
+RPPSS|40873099915|Josmar Toccolini|10000|
+RPPSS|41141067900|Germano Henrique Kirchheim|12000|
+RPPSS|41146050968|Claudete Colla Fioravanso|12000|
+RPPSS|43506003968|Carlinho Bombana|12000|
+RPPSS|44107188949|Domingos Teixeira Da Silva|12000|
+RPPSS|44142544934|Geli Gonçalves De Lima|10000|
+RPPSS|44143206900|Salete De Araujo|17000|
+RPPSS|45118990963|Joao Carlos Pereira Rocha|12000|
+RPPSS|45307237987|Milhian Leda Pitarello De Abreu|17000|
+RPPSS|46027573830|Maiara Gislaine Lopes Rodrigues|10000|
+RPPSS|46357742953|Leoci De Lourdes Rottava|12000|
+RPPSS|46531211920|Lindaura Gonçalves De Ramos|12000|
+RPPSS|46918167987|João Fagundes|10000|
+RPPSS|47361689949|Leonildo Carneiro|10000|
+RPPSS|48718890920|Lavizon Ribeiro De Lima|17000|
+RPPSS|48719943920|Ivone Terezinha Weber|12000|
+RPPSS|49031242829|Milena Monteiro Do Amaral|12000|
+RPPSS|49299026904|Sylmar Terezinha Michelon Dalla Maria|24000|
+RPPSS|49652958972|Luis Da Silva Adornes|12000|
+RPPSS|50050265920|Mario Romero Da Motta|12000|
+RPPSS|50060341904|Heleni Kurpel Daron Cavejon|12000|
+RPPSS|50325000972|João De Jesus De Oliveira|12000|
+RPPSS|51334754896|Laura Capela Franco|12000|
+RPPSS|51355345472|Djanira De Barros Silva|10000|
+RPPSS|51856913953|Ilda Biazussi Da Silva|12000|
+RPPSS|51887924949|Eliane Bernardi|12000|
+RPPSS|52207404900|Leonir Waiss|12000|
+RPPSS|52606589904|Afonso Rigo|10000|
+RPPSS|53217187253|Luana Fernandes Bez|12000|
+RPPSS|53222300925|Sadi Colonetti|16000|
+RPPSS|54585066934|Luiz Cleomar Rossatti|12000|
+RPPSS|55404413972|Jose Luis Rissardi|15000|
+RPPSS|56753268120|Ivan Gustavo De Abreu|10000|
+RPPSS|57500185987|Norelvi Antonio Rodrigues Da Silva|17000|
+RPPSS|58097643987|Rogelio Carini|22000|
+RPPSS|58101071920|Sebastião Ferreira|12000|
+RPPSS|58377069920|Maria De Fátima Vaz Faria|12000|
+RPPSS|58896937949|Osmar Malagi Pedroso|12000|
+RPPSS|58897658920|Alaor De Jesus Leite|10000|
+RPPSS|58905715915|Jair Vargas|12000|
+RPPSS|58937773953|Laura De Col Ferronato|12000|
+RPPSS|58941401968|Nelson Glowacki|10000|
+RPPSS|59251085900|Claudio Ferreira Terres|17000|
+RPPSS|59611260210|Alice De Fatima Pedroso Rodrigues|12000|
+RPPSS|60040840930|Caccio Fernando Petrycoski|15000|
+RPPSS|60347309020|Neli Terezinha Trombetta|12000|
+RPPSS|60573449953|Paulo Luiz Tonon|12000|
+RPPSS|60762985968|Amarildo Acker|12000|
+RPPSS|60812443004|Clovis Abel Giulian|17000|
+RPPSS|61916013015|Vandro José Pereira|12000|
+RPPSS|62015400915|Darci Marchiori|17000|
+RPPSS|62017004987|Adao Silveira Dos Santos|12000|
+RPPSS|62777955972|Valdecir Santana|12000|
+RPPSS|63573717934|Ivalino Bombana|12000|
+RPPSS|63904365991|Ana Lucia Ferreira Ramos|15000|
+RPPSS|63998300953|Dorvalino Dal Bosco Filho|12000|
+RPPSS|64041808987|Francisco Atilio Baroni|10000|
+RPPSS|64184277934|Neli De Morais|12000|
+RPPSS|64522830904|Adir Alves|12000|
+RPPSS|64671780097|Rita Elaine Machado Oliveira|10000|
+RPPSS|64913295934|Eurides Dadeia Santos|10000|
+RPPSS|65910494953|Vilma Salete Zucco|12000|
+RPPSS|66345502987|Gelson Cavalheiro Da Silva|10000|
+RPPSS|66380952004|Izabete Rodrigues Barbosa|12000|
+RPPSS|66387515904|Ignes Carletto Ronsani|12000|
+RPPSS|66967600915|Salete Santini Batistin|12000|
+RPPSS|67473130030|Maria Teresinha Machry Da Silva|12000|
+RPPSS|67708200997|Elza Kreczkiuski|30000|
+RPPSS|68081260978|Estela Mara Rosa|10000|
+RPPSS|68307721920|Ezidio Pedro Reolon|10000|
+RPPSS|68938195953|Marlize Terezinha Senem|10000|
+RPPSS|69393230900|Valdecir José Liviz|17000|
+RPPSS|69744440953|Vilmar Dalla Valle|16000|
+RPPSS|69750092953|Joana Nilce Da Silva|12000|
+RPPSS|70169349934|Leonir De Souza|17000|
+RPPSS|70312595255|Maxime Ferdinand|12000|
+RPPSS|70661006972|Geimir Carlos De Oliveira|34000|
+RPPSS|71792732953|Neraci Clementino Machado|12000|
+RPPSS|71793917949|Claudia Cristina Rodrigues|12000|
+RPPSS|71794506934|Altemir Sergio De Conto|12000|
+RPPSS|71821074904|José Claudemir Correa De Almeida|12000|
+RPPSS|71840460997|Gilberto Martinello|12000|
+RPPSS|71893288900|Antonio Adelir De Lara|12000|
+RPPSS|72472839987|Jose Alceu Schereiner|10000|
+RPPSS|72473134987|Wilson Teodoro Antunes|12000|
+RPPSS|72654058700|Ivo Dos Santos Costa|15000|
+RPPSS|73479365949|Eliane Maira Belloni|17000|
+RPPSS|73598518900|Maria Lucia Pereira Ramos|10000|
+RPPSS|73731439972|Rui Pedro Kunert|17000|
+RPPSS|74673254953|Scheilla Regina Dos Santos|10000|
+RPPSS|74703110172|Andre Stefan Burkhardt|15000|
+RPPSS|74957155968|Rubenei Meloto|75000|
+RPPSS|75252090904|Paulino Sergio Alves Siqueira|10000|
+RPPSS|76189309968|Luiz Carlos Mulhmann|12000|
+RPPSS|76190536972|Sirlei Barivieira Dalla Valle|16000|
+RPPSS|76190811949|Ondina Carneiro Cavalheiro|10000|
+RPPSS|76190935915|Juventino Nogueira Dos Santos|12000|
+RPPSS|76425118920|Dorvalina Noth|12000|
+RPPSS|78080738220|Fernanda Batista|10000|
+RPPSS|78111145934|Anita Spaniol|12000|
+RPPSS|79271898915|Joel Signori|12000|
+RPPSS|79363601900|Amarildo Barbosa Da Silva|27000|
+RPPSS|80127351990|Maria Eduarda Aguiar Pereira|10000|
+RPPSS|80127353933|Pedro Jorge Aguiar Pereira|10000|
+RPPSS|80457584904|Gerson Biscaia|16000|
+RPPSS|80514910925|Sandra Luiza Pastro|10000|
+RPPSS|80972748920|Osvaldo Dzvbanski|12000|
+RPPSS|81010427920|Gilvani Luis Auziliero|12000|
+RPPSS|82096112915|Edgar Jose Schumann|10000|
+RPPSS|82326444272|Zenair Paloschi Malacarne|16000|
+RPPSS|82544158972|Valdecir Dos Santos|17000|
+RPPSS|84008229949|Rosemari Farias|10000|
+RPPSS|84010118920|Leoni Mackievicz Schreiber|17000|
+RPPSS|84011297968|Miriam Heller|24000|
+RPPSS|84012293915|Angelita De Cassia o Matzenbacher|12000|
+RPPSS|84012498991|Marcos Antonio Wagner|12000|
+RPPSS|84013427915|Serli Da Silva Carneiro Stasiak|10000|
+RPPSS|84014253953|Leticia Maria Caprini|12000|
+RPPSS|84519193915|Zelia Gonçalves Dos Santos|15000|
+RPPSS|84701498904|Rosmari Terezinha De Jesus|12000|
+RPPSS|84709529949|Celso Baptista Ribas|12000|
+RPPSS|84891289104|Mariana Da Silva Buono|10000|
+RPPSS|84944447949|Maria Luiza Abatti Gregorio|12000|
+RPPSS|84944838972|Vilson Santana|10000|
+RPPSS|85330922968|Terezinha Sueli Sabino|12000|
+RPPSS|85559636991|Maria Dell Sent De Freitas|10000|
+RPPSS|85722049204|Sulivan Dos Santos Guimarães|12000|
+RPPSS|85908380997|Maria Ivone Caminski Bochese|10000|
+RPPSS|86132202900|Kassia Regina Bach|12000|
+RPPSS|86449800763|Carla De Souza Mordice Rodrigues|12000|
+RPPSS|86529412972|Solange Mariano Da Silva Ruela|24000|
+RPPSS|86727710953|Celso Thomazi|12000|
+RPPSS|86762559204|Monica Ramos Sampaio|12000|
+RPPSS|86982621987|Carmen Regina Dos Santos|17000|
+RPPSS|87004470997|Enedina Zeferino Santos|10000|
+RPPSS|87939452134|Elisandra Nath Copatti|10000|
+RPPSS|88077039987|Luiz Cararo|12000|
+RPPSS|88147410930|Cleci Rodrigues Vieira|12000|
+RPPSS|88151484934|Adenir Natali Baldin|12000|
+RPPSS|88152979953|Alexsandro Fernandes|12000|
+RPPSS|88157148987|Joel Carlos Dos Santos|12000|
+RPPSS|88157920906|Maria Tonial|10000|
+RPPSS|88161161968|Antonio Jose Westpahl|12000|
+RPPSS|88509664072|Marines Pereira|12000|
+RPPSS|90392345900|Santina Polese De Lima Dos Santos|10000|
+RPPSS|90613970900|Shirlei Aparecida Garcia Beltrame|10000|
+RPPSS|90724917934|Evandro João Pelinson|12000|
+RPPSS|91107946972|Laercio Lino Pinheiro|15000|
+RPPSS|91305543904|Elaine Cristine Faria De Moura|17000|
+RPPSS|91404959904|Terezinha Krulikoski|12000|
+RPPSS|91409381900|Dari Roberto Przysbecz|12000|
+RPPSS|92728243972|Lisandra Perla De Souza|12000|
+RPPSS|93238711172|Vilda Maria Nath|10000|
+RPPSS|93445512949|Lorene Da Silva Barbosa|12000|
+RPPSS|94069522972|Nilva De Souza Espindola|17000|
+RPPSS|94114048987|Paulino Marcante|10000|
+RPPSS|94115699949|Terezinha Piovesan Bonetti|12000|
+RPPSS|94116202991|Edilse Polasso De Almeida Machado|10000|
+RPPSS|94117152904|Celso Felisberto|12000|
+RPPSS|94117179934|Erli Rodrigues Curzel Rocha|17000|
+RPPSS|94118213915|Honorina Rodrigues Da Silva Carneiro|12000|
+RPPSS|95083430282|Luana De Souza Moura Geron|12000|
+RPPSS|95621067991|Suzana Aparecida De Andrade|12000|
+RPPSS|95621105915|Marilene Terezinha Da Silva|10000|
+RPPSS|95622489920|Angelina Debastiani Cordova|10000|
+RPPSS|95722173991|Tereza Ivatiuk|12000|
+RPPSS|96461322949|Ivone Rosa Padoin|10000|
+RPPSS|97639532949|Neusa Maria Canesso|12000|
+RPPSS|97678937920|Antonio Menegon|34000|
+RPPSS|97680087920|Sonia Mantuvamni Moraes|17000|
+RPPSS|98517899920|Janete Raquel Dos Santos Kovari|12000|
+RPPSS|98963686949|Inivilde Bocio Cappoani|16000|
+RPPSS|99574381900|Universina Krampe|12000|
+RPPSS|99895455968|Lazilda Neves Santos|12000|
+RPPSS|99923254968|Jaci Galvan Furigo|12000|
+FIMDmed|

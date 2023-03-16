@@ -1,0 +1,308 @@
+unit Arquiv;
+
+interface
+
+uses
+  SysUtils, Classes, Provider, SqlExpr, DB, DBClient,
+  //DBLocal,
+  SqlSis,Windows, SimpleDS,
+  //DBXpress,
+   Data.DBXInterBase;
+   //, zEnv;
+
+//DBLocalS,
+
+type
+  TArq = class(TDataModule)
+    Ambiente: TSQLEnv;
+    THistoricos: TSQLDs;
+    TEspecies: TSQLDs;
+    TRegioes: TSQLDs;
+    TMunicipios: TSQLDs;
+    TFeriados: TSQLDs;
+    TXXInflacao: TSQLDs;
+    TNatFisc: TSQLDs;
+    TPortadores: TSQLDs;
+    TLPgto: TSQLDs;
+    TVendedores: TSQLDs;
+    TMoedas: TSQLDs;
+    TFPgto: TSQLDs;
+    TImpressos: TSQLDs;
+    TUnidades: TSQLDs;
+    TGrUsuarios: TSQLDs;
+    TUsuarios: TSQLDs;
+    TPlano: TSQLDs;
+    TPlanoCon: TSQLDs;
+    TCCustos: TSQLDs;
+    TCodBancarios: TSQLDs;
+    TEmpresas: TSQLDs;
+    TTransp: TSQLDs;
+    TFornec: TSQLDs;
+    TClientes: TSQLDs;
+    TBloqueios: TSQLDs;
+    TDepartamentos: TSQLDs;
+    TCNAB: TSQLDs;
+    TPlanoGer2: TSQLDs;
+    TImpedimentos: TSQLDs;
+    TSittributaria: TSQLDs;
+    TchuRepresentantes: TSQLDs;
+    TReferencias: TSQLDs;
+    TCores: TSQLDs;
+    TTamanhos: TSQLDs;
+    TGrupos: TSQLDs;
+    TSubgrupos: TSQLDs;
+    TGrades: TSQLDs;
+    TEstoque: TSQLDs;
+    TFamilias: TSQLDs;
+    TCodigosFiscais: TSQLDs;
+    TTabelaPreco: TSQLDs;
+    TEstoqueQtde: TSQLDs;
+    TConfMovimento: TSQLDs;
+    TSalEstoque: TSQLDs;
+    TMaterial: TSQLDs;
+    TCotasRepr: TSQLDs;
+    TMensagensNF: TSQLDs;
+    TCadocorrencias: TSQLDs;
+    TCheques: TSQLDs;
+    TCopas: TSQLDs;
+    TCodigosipi: TSQLDs;
+    TEmitentes: TSQLDs;
+    TOrcamentos: TSQLDs;
+    TSetores: TSQLDs;
+    TServicos: TSQLDs;
+    TTiposNota: TSQLDs;
+    TIndicadores: TSQLDs;
+    TRepresentantes: TSQLDs;
+    TabelaComissao: TSQLDs;
+    TColaboradores: TSQLDs;
+    TNutricionais: TSQLDs;
+    TIngredientes: TSQLDs;
+    TConservacao: TSQLDs;
+    TFaixas: TSQLDs;
+    TEquipamentos: TSQLDs;
+    ConexaoFB: TSQLConnection;
+    SDCliefor: TSimpleDataSet;
+    DSClifor: TDataSource;
+    SDMunicipios: TSimpleDataSet;
+    DSMunicpios: TDataSource;
+    SDEstados: TSimpleDataSet;
+    DSEstados: TDataSource;
+    Q: TSQLDs;
+    TBaias: TSQLDs;
+    procedure AmbienteMessage(var Msg: tagMSG; var Handled: Boolean);
+    procedure TPlanoGer2PGER_CLASSIFICACAOGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TPlanoGer2PGER_DESCRICAOGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TPlanoConPCON_CLASSIFICACAOGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TPlanoConPCON_DESCRICAOGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TCCustosCCST_CODIGOGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TCCustosCCST_DESCRICAOGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TClientesCLIE_CNPJCPFGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TVinculadosVINC_CPFGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TRegioesAfterApplyUdates(Sender:TObject; var OwnerData:OleVariant);
+    procedure TPlanoConAfterOpen(DataSet: TDataSet);
+    procedure TCCustosAfterOpen(DataSet: TDataSet);
+    procedure TClientesAfterOpen(DataSet: TDataSet);
+    procedure TPlanoGer2AfterOpen(DataSet: TDataSet);
+    procedure TFornecAfterOpen(DataSet: TDataSet);
+    procedure TFornecForn_CNPJCPFGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+    procedure TRegioesBeforeOpen(DataSet: TDataSet);
+    procedure TImpedimentosImpe_CNPJCPFGetText(Sender: TField; var Text: String;DisplayText: Boolean);
+    procedure TImpedimentosImpe_CNPJCPFAvGetText(Sender: TField; var Text: String;DisplayText: Boolean);
+    procedure TImpedimentosAfterOpen(DataSet: TDataSet);
+    procedure TFornecBeforeApplyUpdates(Sender: TObject;
+      var OwnerData: OleVariant);
+    procedure TClientesInternalDataSetBeforeOpen(DataSet: TDataSet);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Arq: TArq;
+
+implementation
+
+uses Menuinicial, Geral, MaskUtils, SqlFun, cadccustos;
+
+{$R *.dfm}
+
+
+procedure TArq.AmbienteMessage(var Msg: tagMSG; var Handled: Boolean);
+begin
+  FGeral.ProcessaMensagem(Msg,Handled);
+end;
+
+procedure TArq.TPlanoGer2PGER_CLASSIFICACAOGetText(Sender: TField;var Text: String; DisplayText: Boolean);
+begin
+//  if DisplayText then Text:=FPlanoGer.FormataClassificacao(Arq.TPlanoGer2.FieldByName('Pger_Classificacao').AsString);
+end;
+
+procedure TArq.TPlanoGer2PGER_DESCRICAOGetText(Sender: TField; var Text: String; DisplayText: Boolean);
+begin
+//  if DisplayText then Text:=FPlanoGer.FormataDescricao(Arq.TPlanoGer2.FieldByName('Pger_Classificacao').AsString,Arq.TPlanoGer2.FieldByName('Pger_Descricao').AsString);
+end;
+
+procedure TArq.TPlanoConPCON_CLASSIFICACAOGetText(Sender: TField;var Text: String; DisplayText: Boolean);
+begin
+//  if DisplayText then Text:=FPlanoCon.FormataClassificacao(Arq.TPlanoCon.FieldByName('Pcon_Classificacao').AsString);
+end;
+
+procedure TArq.TPlanoConPCON_DESCRICAOGetText(Sender: TField;var Text: String; DisplayText: Boolean);
+begin
+//  if DisplayText then Text:=FPlanoCon.FormataDescricao(Arq.TPlanoCon.FieldByName('Pcon_Classificacao').AsString,Arq.TPlanoCon.FieldByName('Pcon_Descricao').AsString);
+end;
+
+procedure TArq.TCCustosCCST_CODIGOGetText(Sender: TField; var Text: String;DisplayText: Boolean);
+begin
+    if DisplayText then Text:=FCCustos.FormataCodigo(Arq.TCCustos.FieldByName('Ccst_Codigo').AsString);
+end;
+
+procedure TArq.TCCustosCCST_DESCRICAOGetText(Sender: TField;var Text: String; DisplayText: Boolean);
+begin
+//  if DisplayText then Text:=FCCustos.FormataDescricao(Arq.TCCustos.FieldByName('Ccst_Codigo').AsString,Arq.TCCustos.FieldByName('Ccst_Descricao').AsString);
+end;
+
+procedure TArq.TClientesCLIE_CNPJCPFGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+begin
+  if DisplayText then begin
+     if TClientes.FieldByName('Clie_Tipo').AsString='J' then
+        Text := FormatMaskText(f_cgc, TClientes.FieldByName('Clie_CnpjCpf').AsString)
+     else
+        Text := FormatMaskText(f_cpf, TClientes.FieldByName('Clie_CnpjCpf').AsString);
+  end;
+end;
+
+procedure TArq.TVinculadosVINC_CPFGetText(Sender:TField; var Text:String; DisplayText:Boolean);
+begin
+  if DisplayText then Text:=FormatMaskText(f_cpf,Sender.AsString);
+end;
+
+
+procedure TArq.TRegioesAfterApplyUdates(Sender: TObject;var OwnerData: OleVariant);
+begin
+  FGeral.GravaContadorRefresh(TSqlDs(Sender));
+end;
+
+procedure TArq.TPlanoConAfterOpen(DataSet: TDataSet);
+begin
+  TPlanoCon.FieldByName('Pcon_Classificacao').OnGetText:=TPlanoConPCON_CLASSIFICACAOGetText;
+  TPlanoCon.FieldByName('Pcon_Descricao').OnGetText:=TPlanoConPCON_DESCRICAOGetText;
+end;
+
+procedure TArq.TCCustosAfterOpen(DataSet: TDataSet);
+begin
+//  TCCustos.FieldByName('Ccst_Codigo').OnGetText:=TCCustosCCST_CODIGOGetText;
+//  TCCustos.FieldByName('Ccst_Descricao').OnGetText:=TCCustosCCST_DescricaoGetText;
+// 26.05.20
+end;
+
+procedure TArq.TClientesAfterOpen(DataSet: TDataSet);
+begin
+  TClientes.FieldByName('Clie_CnpjCpf').OnGetText:=TClientesCLIE_CNPJCPFGetText;
+end;
+
+
+procedure TArq.TPlanoGer2AfterOpen(DataSet: TDataSet);
+begin
+  TPlanoGer2.FieldByName('Pger_Classificacao').OnGetText:=TPlanoGer2PGER_CLASSIFICACAOGetText;
+  TPlanoGer2.FieldByName('Pger_Descricao').OnGetText:=TPlanoGer2PGER_DESCRICAOGetText;
+end;
+
+procedure TArq.TFornecAfterOpen(DataSet: TDataSet);
+begin
+  TFornec.FieldByName('FORN_CNPJCPF').OnGetText:=TFornecForn_CNPJCPFGetText;
+end;
+
+
+
+
+procedure TArq.TFornecForn_CNPJCPFGetText(Sender: TField; var Text: String;
+  DisplayText: Boolean);
+begin
+  if (DisplayText) then begin
+
+     if ( not FGeral.LeiLGPDP ) then begin
+
+       if Length(TFornec.FieldByName('Forn_CNPJCPF').AsString)=14 then
+          Text:=FormatMaskText(f_cgc,TFornec.FieldByName('Forn_CNPJCPF').AsString)
+       else if Length(TFornec.FieldByName('Forn_CNPJCPF').AsString)=11 then
+          Text:=FormatMaskText(f_cpf,TFornec.FieldByName('Forn_CNPJCPF').AsString);
+
+     end else begin
+
+       if Length(TFornec.FieldByName('Forn_CNPJCPF').AsString)=14 then
+          Text:=FormatMaskText(f_cgc,'***********')
+       else if Length(TFornec.FieldByName('Forn_CNPJCPF').AsString)=11 then
+          Text:=FormatMaskText(f_cpf,'*************');
+
+     end;
+
+  end;
+
+end;
+
+procedure TArq.TImpedimentosImpe_CNPJCPFGetText(Sender: TField; var Text: String;DisplayText: Boolean);
+begin
+  if DisplayText then begin
+     if Length(TImpedimentos.FieldByName('Impe_CNPJCPF').AsString)=14 then
+        Text:=FormatMaskText(f_cgc,TImpedimentos.FieldByName('Impe_CNPJCPF').AsString)
+     else if Length(TImpedimentos.FieldByName('Impe_CNPJCPF').AsString)=11 then
+        Text:=FormatMaskText(f_cpf,TImpedimentos.FieldByName('Impe_CNPJCPF').AsString);
+  end;
+end;
+
+procedure TArq.TImpedimentosImpe_CNPJCPFAvGetText(Sender: TField; var Text: String;DisplayText: Boolean);
+begin
+  if DisplayText then begin
+     if Length(TImpedimentos.FieldByName('Impe_CNPJCPFAv').AsString)=14 then
+        Text:=FormatMaskText(f_cgc,TImpedimentos.FieldByName('Impe_CNPJCPFAv').AsString)
+     else if Length(TImpedimentos.FieldByName('Impe_CNPJCPFAv').AsString)=11 then
+        Text:=FormatMaskText(f_cpf,TImpedimentos.FieldByName('Impe_CNPJCPFAv').AsString);
+  end;
+end;
+
+
+
+
+procedure TArq.TRegioesBeforeOpen(DataSet: TDataSet);
+begin
+  if sistema.inicializado then begin
+    FGeral.LeContadorRefresh(TSqlDs(DataSet));
+    // 07.01.15 - Coorlaf
+    if Global.topicos[1111] then begin
+      if Uppercase(TSqlDs(DataSet).TableName)='CLIENTES' then begin
+        if Arq.TClientes.Condicao='' then
+          Arq.TClientes.Condicao:=FGeral.GetIN('clie_unid_codigo',Global.codigounidade,'C')
+        else
+          Arq.TClientes.Condicao:=Arq.TClientes.Condicao+' and '+FGeral.GetIN('clie_unid_codigo',Global.codigounidade,'C');
+      end;
+    end;
+  end;
+end;
+
+procedure TArq.TImpedimentosAfterOpen(DataSet: TDataSet);
+begin
+  TImpedimentos.FieldByName('Impe_CNPJCPF').OnGetText:=TImpedimentosIMPE_CNPJCPFGetText;
+  TImpedimentos.FieldByName('Impe_CNPJCPFAv').OnGetText:=TImpedimentosIMPE_CNPJCPFAvGetText;
+end;
+
+procedure TArq.TFornecBeforeApplyUpdates(Sender: TObject;
+  var OwnerData: OleVariant);
+begin
+  TFornec.Edit;
+    TFornec.FieldByName('Forn_Dataalt').AsDateTime:=Sistema.Hoje;
+  TFornec.Post;
+end;
+
+
+
+
+procedure TArq.TClientesInternalDataSetBeforeOpen(DataSet: TDataSet);
+begin
+//    Arq.TClientes.CommandText:='SELECT CLIENTES.* FROM CLIENTES ORDER BY CLIENTES.CLIE_CODIGO'
+
+end;
+
+end.

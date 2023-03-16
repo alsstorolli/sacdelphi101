@@ -1,0 +1,10 @@
+*.dcu
+*.exe
+*.dcp
+*.xml
+*.bmp
+*.pdf
+*.xsd
+*.err
+*.ddp
+\bin

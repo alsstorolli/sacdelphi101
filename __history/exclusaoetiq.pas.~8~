@@ -1,0 +1,128 @@
+// 07.12.20
+// Exclusão de etiquetas de miúdos da desossa
+
+unit exclusaoetiq;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, SQLEd,
+  Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid, SqlExpr;
+
+type
+  TFExclusaoEtiqueta = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bexcluir: TSQLBtn;
+    bSair: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    Edetiqueta: TSQLEd;
+    EdProduto: TSQLEd;
+    SetEdESTO_DESCRICAO: TSQLEd;
+    Edqtde: TSQLEd;
+    EdPecas: TSQLEd;
+    procedure EdetiquetaValidate(Sender: TObject);
+    procedure bexcluirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    procedure LimpaEdits;
+
+  end;
+
+
+var
+  FExclusaoEtiqueta: TFExclusaoEtiqueta;
+  Q : TSqlquery;
+  Transacao : string;
+
+
+implementation
+
+uses geral, sqlfun, Estoque, Sqlsis;
+
+{$R *.dfm}
+
+{ TFExclusaoEtiqueta }
+
+procedure TFExclusaoEtiqueta.bexcluirClick(Sender: TObject);
+///////////////////////////////////////////////////////////////
+begin
+
+   if not Confirma('Confirma exclusão ?') then exit;
+   Sistema.edit('movabate');
+   Sistema.setfield('mova_status','C');
+   Sistema.post('mova_transacao = '+Stringtosql(transacao));
+
+   Sistema.edit('movabatedet');
+   Sistema.setfield('movd_status','C');
+   Sistema.post('movd_transacao = '+Stringtosql(transacao));
+
+   Sistema.commit;
+   Aviso('Etiqueta excluída');
+   Q.close;
+   Transacao :='';
+   LimpaEdits;
+   EdEtiqueta.setfocus;
+
+
+end;
+
+procedure TFExclusaoEtiqueta.EdetiquetaValidate(Sender: TObject);
+///////////////////////////////////////////////////////////////////////
+begin
+
+   transacao := '';
+   if (not EdEtiqueta.isempty) and ( copy(EdEtiqueta.text,1,4)='9589' ) then begin
+
+      Q := sqltoquery('select * from movabatedet where movd_operacao = '+Edetiqueta.assql);
+      if Q.eof then EdEtiqueta.invalid('Etiqueta não encontrada')
+      else begin
+
+          transacao      := Q.fieldbyname('movd_transacao').asstring;
+          EdProduto.text := Q.fieldbyname('movd_esto_codigo').asstring;
+          SetEdESTO_DESCRICAO.text := FEstoque.GetDescricao(Q.fieldbyname('movd_esto_codigo').asstring);
+          EdPecas.text   := Q.fieldbyname('movd_pecas').asstring;
+          EdQtde.text    := Q.fieldbyname('movd_pesocarcaca').asstring;
+
+      end;
+
+   end;
+
+
+end;
+
+procedure TFExclusaoEtiqueta.Execute;
+///////////////////////////////////////
+begin
+
+    FGeral.ConfiguraColorEditsNaoEnabled(FExclusaoEtiqueta);
+    Show;
+    LimpaEdits;
+    EdUnid_codigo.text:=Global.CodigoUnidade;
+    EdUNid_codigo.validfind;
+    EdEtiqueta.text:='';
+    EdEtiqueta.setfocus;
+
+end;
+
+procedure TFExclusaoEtiqueta.LimpaEdits;
+////////////////////////////////////////////
+begin
+
+  Edproduto.clear;
+  EdQtde.clear;
+  EdPecas.Clear;
+
+end;
+
+end.

@@ -1,0 +1,42 @@
+unit tributacaoncm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, SqlDtg, Vcl.StdCtrls,
+  Vcl.Mask, SQLEd, Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid;
+
+type
+  TFTributacaoncm = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bexclusao: TSQLBtn;
+    brel: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdSeto_codigo: TSQLEd;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FTributacaoncm: TFTributacaoncm;
+
+implementation
+
+{$R *.dfm}
+
+end.

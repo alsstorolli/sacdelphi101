@@ -1,0 +1,198 @@
+unit cadcor;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, SQLGrid, StdCtrls, Mask, SQLEd, ExtCtrls,
+  Buttons, SQLBtn, alabel;
+
+type
+  TFCores = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    Dts: TDataSource;
+    EdCore_codigo: TSQLEd;
+    EdCore_descricao: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure EdCore_descricaoExitEdit(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    function GetDescricao(Codigo:Integer):string;
+    function GetSql(campo:string ; codigo:integer ):string;
+// 04.08.10
+    procedure SetaItems(Edit,EditNomeGrupo:TSqlEd;GruposValidos,Nomevalido:String);
+    function ValidaCor(Edit:TSqlEd):boolean;
+  end;
+
+var
+  FCores: TFCores;
+
+implementation
+
+uses Arquiv, SQLRel, Geral, SqlFun, SqlExpr;
+
+{$R *.dfm}
+
+procedure TFCores.Execute;
+begin
+  FCores.ShowModal;
+end;
+
+procedure TFCores.bIncluirClick(Sender: TObject);
+begin
+  Grid.Insert(EdCore_codigo);
+end;
+
+procedure TFCores.EdCore_descricaoExitEdit(Sender: TObject);
+begin
+   Grid.PostInsert(EdCore_codigo);
+end;
+
+procedure TFCores.bRelatorioClick(Sender: TObject);
+begin
+//   Grid.Report('CadCores','RElãção de Cores','','');
+   FRel.Reportfromsql('select * from cores','CadCores','Relação de Cores');
+end;
+
+procedure TFCores.FormActivate(Sender: TObject);
+begin
+  if not Arq.TCores.Active then Arq.TCores.open;
+end;
+
+function TFCores.GetDescricao(Codigo: Integer): string;
+var Q:TSqlquery;
+begin
+{
+  if not Arq.TCores.Active then Arq.TCores.Open;
+  if Arq.TCores.Locate('core_codigo',codigo,[]) then
+    result:=Arq.TCores.fieldbyname('Core_descricao').AsString
+  else
+    result:='';
+}
+// 24.09.09
+  if codigo=0 then begin
+    result:='';
+    exit;
+  end;
+  Q:=sqltoquery('select * from cores where core_codigo='+inttostr(codigo));
+  if not Q.eof then
+    result:=Q.fieldbyname('core_descricao').asstring
+  else
+//    result:='Cor '+inttostr(codigo)+' não encontrada';
+    result:='';
+  FGeral.Fechaquery(q);
+end;
+
+
+procedure TFCores.bExcluirClick(Sender: TObject);
+var Cod:String;
+    Found:Boolean;
+
+    function FoundTabela(Tabela,Campo,Msg:String):Boolean;
+    var Q:TSqlQuery;
+    begin
+      Q:=SqlToQuery('SELECT Count(*) AS Registros FROM '+Tabela+' WHERE '+Campo+'='+Cod);
+      Result:=Q.FieldByName('Registros').AsInteger>0;
+      if Result then AvisoErro('Encontradas vinculações com a cor; selecionada na tabela: '+Msg);
+      Q.Close;Q.Free;
+    end;
+
+
+begin
+  Cod:=IntToStr(Arq.TCores.FieldByName('core_Codigo').AsInteger);
+  Found:=FoundTabela('Movpeddet','Mpdd_core_Codigo','Pedidos de Venda');
+  if not Found then Grid.Delete;
+
+end;
+
+function TFCores.GetSql(campo: string; codigo: integer): string;
+begin
+   result:=' and ( '+campo+' = 0 or '+campo+' is null )';
+   if (codigo>0)  then
+      result:=' and '+campo+' = '+inttostr(codigo);
+end;
+
+procedure TFCores.SetaItems(Edit, EditNomeGrupo: TSqlEd; GruposValidos,
+  Nomevalido: String);
+begin
+  Edit.Items.Clear;
+  if not Arq.TCores.Active then Arq.TCores.Open;
+  Arq.TCores.BeginProcess;
+  Arq.TCores.First;
+  while not Arq.TCores.Eof do begin
+    if ((GruposValidos='') or (Pos(strzero(Arq.TCores.FieldByName('Core_Codigo').AsInteger,3),GruposValidos)>0))
+       and ((NomeValido='') or (Pos(NomeValido,Uppercase(Arq.TCores.FieldByName('Core_Descricao').AsString))>0))
+      then begin
+       Edit.Items.Add(Strzero(Arq.TCores.FieldByName('Core_Codigo').AsInteger,3)+' - '+Trim(Arq.TCores.FieldByName('Core_Descricao').AsString));
+    end;
+    Arq.TCores.Next;
+  end;
+  Arq.TCores.EndProcess;
+  if Edit.Items.Count=1 then begin
+//     if EditNomeGrupo<>nil then EditNomeGrupo.Text:=FinalStr(Edit.Items[0],7);
+     if EditNomeGrupo<>nil then EditNomeGrupo.Text:=FinalStr(Edit.Items[0],9);
+  end;
+  if trim(GruposValidos)<>'' then begin
+    Edit.ShowForm:='';
+  end;
+end;
+
+function TFCores.ValidaCor(Edit: TSqlEd):boolean;
+var Lista:TStringlist;
+    p:integer;
+begin
+  if Edit.IsEmpty then begin
+    result:=true;
+    exit;
+  end else begin
+     if trim(FGeral.getconfig1asstring('CORESVALIDAS'))<>'' then begin
+       Lista:=TStringlist.Create;
+       strtolista(Lista,FGeral.getconfig1asstring('CORESVALIDAS'),';',true);
+       result:=false;
+       for p:=0 to Lista.Count-1 do begin
+         if trim(Lista[p])<>'' then begin
+           if strzero(Edit.Asinteger,3)=strspace(Lista[p],3) then begin
+              result:=true;
+              break;
+           end;
+         end;
+       end;
+     end else
+       result:=true;
+  end;
+  if not result then
+    Avisoerro('Codigo de cor não permitido para uso');
+end;
+
+end.

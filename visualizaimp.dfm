@@ -1,0 +1,213 @@
+object FVisualizaImpressao: TFVisualizaImpressao
+  Left = 260
+  Top = 124
+  BorderStyle = bsDialog
+  Caption = 'Visualiza'#231#227'o Impress'#227'o'
+  ClientHeight = 651
+  ClientWidth = 1175
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnCloseQuery = FormCloseQuery
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PImagem: TSQLPanelGrid
+    Left = 0
+    Top = 0
+    Width = 1175
+    Height = 651
+    Align = alClient
+    Color = clSilver
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+    HeightLimite = 0
+    WidthLimite = 0
+    FixedVisible = False
+    object Imagem: TImage
+      Left = 1
+      Top = 1
+      Width = 912
+      Height = 310
+      Align = alCustom
+    end
+    object SQLPanelGrid2: TSQLPanelGrid
+      Left = 1096
+      Top = 1
+      Width = 78
+      Height = 649
+      Align = alRight
+      Color = clSilver
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+      object APHeadLabel1: TAPHeadLabel
+        Left = 1
+        Top = 1
+        Width = 76
+        Height = 647
+        Align = alClient
+        AutoBounds = False
+        BoundLines = []
+        SubCaption.Ellipsis = False
+        SubCaption.Style = []
+      end
+      object bImpressaoant: TSQLBtn
+        Left = 1
+        Top = 93
+        Width = 73
+        Height = 27
+        Hint = 'Imprime '
+        Caption = '&Impress'#226'o'
+        Enabled = False
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        Visible = False
+        OnClick = bImpressaoantClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bimprimetexto: TSQLBtn
+        Left = 2
+        Top = 4
+        Width = 73
+        Height = 27
+        Hint = 'Imprime texto'
+        Caption = '&Impress'#227'o '
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bimprimetextoClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bsair: TSQLBtn
+        Left = 2
+        Top = 32
+        Width = 73
+        Height = 27
+        Hint = 'Sair'
+        Caption = '&Sair'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bsairClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bfonte: TSQLBtn
+        Left = 4
+        Top = 150
+        Width = 73
+        Height = 27
+        Hint = 'Escolhe fonte'
+        Caption = 'Fonte'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bfonteClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+    end
+    object ComboFontes: TComboBox
+      Left = 1101
+      Top = 240
+      Width = 73
+      Height = 21
+      TabOrder = 1
+      Visible = False
+    end
+    object NP: TNicePreview
+      Left = 120
+      Top = 33
+      Width = 817
+      Height = 472
+      Title = 'Printing ...'
+      MarginLeft = 96
+      MarginTop = 96
+      MarginRight = 96
+      MarginBottom = 96
+    end
+  end
+  object PrintDlg: TPrintDialog
+    Left = 947
+    Top = 169
+  end
+  object Fontes: TFontDialog
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    Left = 1032
+    Top = 136
+  end
+end

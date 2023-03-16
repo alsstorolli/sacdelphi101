@@ -1,0 +1,323 @@
+unit confplano;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, SQLBtn, StdCtrls, alabel, ExtCtrls, SQLGrid, Mask,
+  SQLEd,SqlExpr, ComCtrls;
+
+type
+  TFConfPlano = class(TForm)
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bSair: TSQLBtn;
+    Panel1: TPanel;
+    bGravar: TSQLBtn;
+    Page: TPageControl;
+    PgGeral: TTabSheet;
+    PgAcess: TTabSheet;
+    PGeral: TPanel;
+    EdPger_codigobanco: TSQLEd;
+    EdPger_agencia: TSQLEd;
+    EdPger_contacorrente: TSQLEd;
+    EdPger_fluxocaixa: TSQLEd;
+    EdPger_numparccc: TSQLEd;
+    EdPger_autpgto: TSQLEd;
+    EdPger_mvtocaixa: TSQLEd;
+    EdPger_codhist: TSQLEd;
+    EdPger_movfluxo: TSQLEd;
+    PAcess: TPanel;
+    EdPger_contajuros: TSQLEd;
+    EdPger_contadescontos: TSQLEd;
+    EdPger_contamulta: TSQLEd;
+    EdPger_contamora: TSQLEd;
+    EdDescrJuros: TSQLEd;
+    EdDescrDescontos: TSQLEd;
+    EdDescrMulta: TSQLEd;
+    EdDescrMora: TSQLEd;
+    EdPger_carenciajuros: TSQLEd;
+    EdPger_taxajuros: TSQLEd;
+    EdPger_tipojuros: TSQLEd;
+    EdPger_percdescontos: TSQLEd;
+    EdPger_carenciamulta: TSQLEd;
+    EdPger_percmulta: TSQLEd;
+    EdPger_carenciamora: TSQLEd;
+    EdPger_valormora: TSQLEd;
+    PMensAcess: TSQLPanelGrid;
+    PMensGeral: TSQLPanelGrid;
+    Bevel2: TBevel;
+    EdPger_bxparcial: TSQLEd;
+    EdPger_carenciaprotesto: TSQLEd;
+    EdPger_datavcto: TSQLEd;
+    EdPger_prazovcto: TSQLEd;
+    EdPger_diavcto: TSQLEd;
+    EdPger_pzbloqclientes: TSQLEd;
+    EdPger_motivobloqueio: TSQLEd;
+    EdPger_motivodesbloqueio: TSQLEd;
+    EdPger_sitdesbloqclientes: TSQLEd;
+    Edcaexporta: TSQLEd;
+    Edplan_ctaexporta02: TSQLEd;
+    Edplan_ctaexporta03: TSQLEd;
+    Edplan_ctaexporta04: TSQLEd;
+    Edplan_ctaexporta05: TSQLEd;
+    Edplan_ctaexporta06: TSQLEd;
+    Edunid_exp01: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    Edunid_exp02: TSQLEd;
+    SQLEd2: TSQLEd;
+    Edunid_exp03: TSQLEd;
+    SQLEd3: TSQLEd;
+    Edunid_exp06: TSQLEd;
+    SQLEd4: TSQLEd;
+    SQLEd5: TSQLEd;
+    Edunid_exp05: TSQLEd;
+    Edunid_exp04: TSQLEd;
+    SQLEd8: TSQLEd;
+    Edplan_ctachequescomp: TSQLEd;
+    SQLEd6: TSQLEd;
+    Edplan_imprimeextrato: TSQLEd;
+    EdPlan_tipoativ: TSQLEd;
+    Edplan_carteira: TSQLEd;
+    Edplan_convenio: TSQLEd;
+    Edtipo_codigo: TSQLEd;
+    SQLEd7: TSQLEd;
+    Edplan_impr_cheque: TSQLEd;
+    SQLEd1: TSQLEd;
+    Edplan_unid_codigo: TSQLEd;
+    SQLEd9: TSQLEd;
+    Edplan_ctaapropriar01: TSQLEd;
+    Edplan_ctaapropriar02: TSQLEd;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure bGravarClick(Sender: TObject);
+    procedure EdPger_contajurosKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdPger_contajurosVlidate(Sender: TObject);
+    procedure PageChange(Sender: TObject);
+    procedure Edplan_ctachequescompValidate(Sender: TObject);
+  private
+    { Private declarations }
+    procedure SetaFocus(Painel:TPanel);
+    procedure LibBloqEditsBloqueio;
+  public
+    { Public declarations }
+    procedure SetaTiposAtividade(Ed:TSqled);
+
+  end;
+
+var
+  FConfPlano: TFConfPlano;
+
+
+procedure ConfPLano_Execute;
+
+const Sinteticas = 'S';
+      Analiticas = 'A';
+
+implementation
+
+{$R *.dfm}
+
+uses SqlFun, Arquiv,SqlSis, Geral, Plano, Unidades;
+//,GetConta
+var wConta:Integer;
+    wTipo:String;
+
+procedure ConfPLano_Execute;
+////////////////////////////
+var i:Integer;
+    Ed:TSqlEd;
+    campo:TDicionario;
+
+    procedure SetaFocus;
+    ////////////////////
+    var i,Menor:Integer;
+    begin
+      Menor:=999;
+      for i:=0 to FConfPlano.PGeral.ControlCount-1 do begin
+          if FConfPlano.PGeral.Controls[i] is TSqlEd then begin
+             Ed:=TSqlEd(FConfPlano.PGeral.Controls[i]);
+             if (Ed.Enabled) and (Ed.TabOrder<Menor) then Menor:=Ed.TabOrder;
+          end;
+      end;
+      for i:=0 to FConfPlano.PGeral.ControlCount-1 do begin
+          if FConfPlano.PGeral.Controls[i] is TSqlEd then begin
+             Ed:=TSqlEd(FConfPlano.PGeral.Controls[i]);
+             if Ed.TabOrder=Menor then FConfPlano.ActiveControl:=Ed;
+          end;
+      end;
+    end;
+
+begin
+
+  FGeral.CreateForm(TFConfPlano,FConfPlano);
+  wConta:=Arq.TPlano.FieldByName('Plan_Conta').AsInteger;
+  if not FPlano.GetConta(wConta) then begin
+     Arq.TPlano.Refresh;
+     FPlano.GetConta(wConta);
+  end;
+  FConfPlano.EdPger_codigobanco.ClearAll(FConfPlano,99);
+  FConfPlano.EdPger_codigobanco.GetFieldsSQL(FConfPlano,99,'Plano','Plan_Conta='+IntToStr(Arq.TPlano.FieldByName('Plan_Conta').AsInteger));
+  FConfPlano.Caption:='Configuração Do Plano Gerencial / '+IntToStr(Arq.TPlano.FieldByName('Plan_Conta').AsInteger)+
+           ' - '+Trim(Arq.TPlano.FieldByName('Plan_Descricao').AsString)+
+           ' - Tipo '+Trim(Arq.TPlano.FieldByName('Plan_Tipo').AsString) ;
+  FConfPlano.ActiveControl:=nil;
+  FConfPlano.Page.ActivePage:=FConfPlano.PgGeral;
+  wTipo:=Arq.TPlano.FieldByName('Plan_Tipo').AsString;
+  for i:=0 to FConfPlano.ComponentCount-1 do begin
+      if FConfPlano.Components[i] is TSqlEd then begin
+         Ed:=TSqlEd(FConfPlano.Components[i]);
+         Ed.Enabled:=Pos(wTipo,Ed.TagStr)>0;
+         if Ed.IsEmpty then Ed.SetDefault;
+      end;
+  end;
+  SetaFocus;
+  if FConfPlano.EdPger_contajuros.Enabled then begin
+     if FPlano.GetConta(FConfPlano.EdPger_contajuros.AsInteger) then FConfPlano.EdDescrJuros.Text:=Arq.TPlano.FieldByName('Plan_Descricao').AsString;
+     if FPlano.GetConta(FConfPlano.EdPger_contadescontos.AsInteger) then FConfPlano.EdDescrDescontos.Text:=Arq.TPlano.FieldByName('Plan_Descricao').AsString;
+     if FPlano.GetConta(FConfPlano.EdPger_contamulta.AsInteger) then FConfPlano.EdDescrMulta.Text:=Arq.TPlano.FieldByName('Plan_Descricao').AsString;
+     if FPlano.GetConta(FConfPlano.EdPger_contamora.AsInteger) then FConfPlano.EdDescrMora.Text:=Arq.TPlano.FieldByName('Plan_Descricao').AsString;
+     FPlano.GetConta(wConta);
+  end;
+  FPlano.GetConta(wConta);
+  FConfPlano.LibBloqEditsBloqueio;
+// 29.02.08
+  FPlano.SetaItems(FConfPlano.Edplan_ctachequescomp,FConfPlano.Sqled6,'C','Compensa');
+  FConfPlano.SetaTiposAtividade(FConfPlano.EdPlan_tipoAtiv);
+// 31.05.10 - Novicarnes
+  campo:=Sistema.GetDicionario(FConfPlano.Edplan_carteira.TableName,FConfPlano.Edplan_carteira.TableField);
+  if campo.Tipo<>'' then
+    FConfPlano.EdPlan_carteira.enabled:=true
+  else
+    FConfPlano.EdPlan_carteira.enabled:=false;
+  campo:=Sistema.GetDicionario(FConfPlano.Edplan_convenio.TableName,FConfPlano.Edplan_convenio.TableField);
+  if campo.Tipo<>'' then
+    FConfPlano.EdPlan_convenio.enabled:=true
+  else
+    FConfPlano.EdPlan_convenio.enabled:=false;
+// 05.12.16
+  campo:=Sistema.GetDicionario(FConfPlano.Edplan_unid_codigo.TableName,FConfPlano.Edplan_unid_codigo.TableField);
+  if campo.Tipo<>'' then
+    FConfPlano.EdPlan_unid_codigo.enabled:=true
+  else
+    FConfPlano.EdPlan_unid_codigo.enabled:=false;
+  FUnidades.SetaItems(FConfPlano.EdPlan_unid_codigo,FConfPlano.SQLEd9,Global.Usuario.UnidadesMvto);
+//////////////////
+  FConfPlano.ShowModal;
+end;
+
+procedure TFConfPlano.LibBloqEditsBloqueio;
+begin
+(*
+  EdPger_motivobloqueio.Enabled:=(EdPger_CatEntidade.Text='C') or (EdPger_CatEntidade.Text='J');
+  EdPger_pzbloqclientes.Enabled:=(EdPger_CatEntidade.Text='C') or (EdPger_CatEntidade.Text='J');
+  EdPger_motivodesbloqueio.Enabled:=EdPger_CatEntidade.Text='C';
+  EdPger_sitdesbloqclientes.Enabled:=EdPger_CatEntidade.Text='C';
+*)
+end;
+
+
+procedure TFConfPlano.SetaFocus(Painel:TPanel);
+var i,Menor:Integer;
+    Ed:TSqlEd;
+begin
+  Menor:=999;
+  for i:=0 to Painel.ControlCount-1 do begin
+      if Painel.Controls[i] is TSqlEd then begin
+         Ed:=TSqlEd(Painel.Controls[i]);
+         if (Ed.Enabled) and (Ed.TabOrder<Menor) then Menor:=Ed.TabOrder;
+      end;
+  end;
+  for i:=0 to Painel.ControlCount-1 do begin
+      if Painel.Controls[i] is TSqlEd then begin
+         Ed:=TSqlEd(Painel.Controls[i]);
+         if Ed.TabOrder=Menor then Ed.SetFocus;
+      end;
+  end;
+end;
+
+
+procedure TFConfPlano.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action:=caFree;
+end;
+
+procedure TFConfPlano.bGravarClick(Sender: TObject);
+/////////////////////////////////////////////////////
+var Ed:TSqlEd;
+    i:integer;
+begin
+  for i:=0 to FConfPlano.ComponentCount-1 do begin
+      if FConfPlano.Components[i] is TSqlEd then begin
+         Ed:=TSqlEd(FConfPlano.Components[i]);
+         if not Ed.Valid then Exit;
+      end;
+  end;
+  FConfPlano.EdPger_codigobanco.UpdateSQL(FConfPlano,99,'Plano','Plan_Conta='+IntToStr(wConta));
+  Sistema.Commit;
+//  Arq.TPlano.Refreshecord;
+//  Arq.TPlano.Refresh;
+  Close;
+end;
+
+procedure TFConfPlano.EdPger_contajurosKeyDown(Sender: TObject;var Key: Word; Shift: TShiftState);
+begin
+//  if Key=VK_F12 then GetConta_Execute(TSqlEd(Sender),analitica,'','');
+end;
+
+procedure TFConfPlano.EdPger_contajurosVlidate(Sender: TObject);
+begin
+  if TSqlEd(Sender).FindSetEdt<>nil then TSqlEd(Sender).FindSetEdt.Clear;
+  if TSqlEd(Sender).AsInteger>0 then begin
+//     if GetConta_Validar(TSqlEd(Sender),Trim(TSqlEd(Sender).Text),analitica,'','') then begin
+//        if (TSqlEd(Sender).FindSetEdt<>nil) and (FPlano.GetConta(TSqlEd(Sender).AsInteger)) then TSqlEd(Sender).FindSetEdt.Text:=Arq.TPlano.FieldByName('Plan_Descricao').AsString;
+//     end;
+  end;
+  FPlano.GetConta(wConta);
+end;
+
+
+
+
+procedure TFConfPlano.PageChange(Sender: TObject);
+begin
+  if Page.ActivePage=PgGeral then SetaFocus(PGeral);
+  if (Page.ActivePage=PgAcess) and (EdPger_contajuros.Enabled) then EdPger_Contajuros.SetFocus;
+end;
+
+
+
+
+//procedure TFConfPlano.EdPger_catentidadeValidate(Sender: TObject);
+//begin
+//  LibBloqEditsBloqueio;
+//end;
+
+procedure TFConfPlano.Edplan_ctachequescompValidate(Sender: TObject);
+var Q:TSqlquery;
+begin
+  if EdPlan_ctachequescomp.isempty then exit;
+  Q:=sqltoquery('select plan_descricao from plano where plan_conta='+EdPlan_ctachequescomp.assql);
+  if not Q.eof then
+    Sqled6.text:=Q.fieldbyname('plan_descricao').text;
+  FGeral.FechaQuery(Q);
+end;
+
+procedure TFConfPlano.SetaTiposAtividade(Ed: TSqled);
+//////////////////////////////////////////////////////
+begin
+  Ed.Items.Clear;
+  Ed.Items.Add('A - Atividades de Adiantamentos');
+  Ed.Items.Add('B - Atividades de Investimentos');
+  Ed.Items.Add('C - Atividades de Financiamentos');
+end;
+
+end.
+
+
+
+
+
+
+
+

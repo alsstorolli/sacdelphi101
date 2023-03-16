@@ -1,0 +1,29 @@
+unit gerapdf;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, PReport, PRJpegImage, Vcl.ExtCtrls,
+  PdfDoc;
+
+type
+  TFGeraPdf = class(TForm)
+    PReport1: TPReport;
+    PRPage1: TPRPage;
+    PRLayoutPanel1: TPRLayoutPanel;
+    PRJpegImage1: TPRJpegImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FGeraPdf: TFGeraPdf;
+
+implementation
+
+{$R *.dfm}
+
+end.

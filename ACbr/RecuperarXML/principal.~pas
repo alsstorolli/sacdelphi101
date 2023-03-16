@@ -1,0 +1,537 @@
+unit principal;
+
+interface
+
+uses GifImage ,UrlMon, MSHtml, ACBrUtil, pcnAuxiliar,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, OleCtrls, SHDocVw, ExtCtrls, ComCtrls, WinInet, Menus,
+  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP;
+
+
+type
+  TFBuscaXmlSefa = class(TForm)
+    ProgressBar1: TProgressBar;
+    lblStatus: TLabel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnPegarHTML: TButton;
+    btnNovaConsulta: TButton;
+    btnGerarXML: TButton;
+    Label1: TLabel;
+    edtChaveNFe: TEdit;
+    Label2: TLabel;
+    edtCaptcha: TEdit;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    Memo2: TMemo;
+    Panel1: TPanel;
+    WBXML: TWebBrowser;
+    Button1: TButton;
+    TabSheet3: TTabSheet;
+    Label4: TLabel;
+    Label5: TLabel;
+    WebBrowser1: TWebBrowser;
+    cbnfce: TCheckBox;
+    IdHTTP1: TIdHTTP;
+    procedure btnPegarHTMLClick(Sender: TObject);
+    procedure WebBrowser1DocumentComplete(Sender: TObject;
+      const pDisp: IDispatch; var URL: OleVariant);
+    procedure WebBrowser1ProgressChange(Sender: TObject; Progress,
+      ProgressMax: Integer);
+    procedure btnNovaConsultaClick(Sender: TObject);
+    procedure btnGerarXMLClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button1Click(Sender: TObject);
+    procedure Label3Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+  private
+    { Private declarations }
+    function DownloadFile(SourceFile, DestFile: string): Boolean;
+    function StripHTML(S: string): string;
+    procedure DeleteIECache;
+    procedure PegarHTML;
+    procedure GeraXml;
+    procedure NovaConsulta;
+  public
+    { Public declarations }
+    FPath: string;
+    procedure Execute;
+    function FillForm(WebBrowser: TWebBrowser; FieldName: string; Value: string): Boolean;
+    function WebFormFields(const document: IHTMLDocument2; const formName : string): TStringList;
+    function WebFormGet(const formNumber: integer; const document: IHTMLDocument2): IHTMLFormElement;
+  end;
+
+var
+  FBuscaXmlSefa: TFBuscaXmlSefa;
+  pagina:string;
+
+implementation
+
+//uses ACBrNFeUtil, ACBrHTMLtoXML, Sqlsis, nfcompra;
+uses ACBrHTMLtoXML, Sqlsis, nfcompra, Geral,SqlFun;
+
+{$R *.dfm}
+
+
+procedure TFBuscaXmlSefa.DeleteIECache;
+//////////////////////////////////////////////
+var
+  lpEntryInfo: PInternetCacheEntryInfo;
+  hCacheDir: LongWord;
+  dwEntrySize: LongWord;
+begin { DeleteIECache }
+  dwEntrySize := 0;
+
+  FindFirstUrlCacheEntry(nil, TInternetCacheEntryInfo(nil^), dwEntrySize);
+
+  GetMem(lpEntryInfo, dwEntrySize);
+
+  if dwEntrySize>0 then
+    lpEntryInfo^.dwStructSize := dwEntrySize;
+
+  hCacheDir := FindFirstUrlCacheEntry(nil, lpEntryInfo^, dwEntrySize);
+
+  if hCacheDir<>0 then
+  begin
+    repeat
+      DeleteUrlCacheEntry(lpEntryInfo^.lpszSourceUrlName);
+      FreeMem(lpEntryInfo, dwEntrySize);
+      dwEntrySize := 0;
+      FindNextUrlCacheEntry(hCacheDir, TInternetCacheEntryInfo(nil^), dwEntrySize);
+      GetMem(lpEntryInfo, dwEntrySize);
+      if dwEntrySize>0 then
+        lpEntryInfo^.dwStructSize := dwEntrySize;
+    until not FindNextUrlCacheEntry(hCacheDir, lpEntryInfo^, dwEntrySize)
+  end; { hCacheDir<>0 }
+  FreeMem(lpEntryInfo, dwEntrySize);
+
+  FindCloseUrlCache(hCacheDir)
+end; { DeleteIECache }
+
+
+function TFBuscaXmlSefa.DownloadFile(SourceFile, DestFile: string): Boolean;
+//////////////////////////////////////////////////////////////////////////////////
+const BufferSize = 1024;
+var
+  hSession, hURL: HInternet;
+  Buffer: array[1..BufferSize] of Byte;
+  BufferLen: DWORD;
+  f: File;
+  sAppName: string;
+begin
+ sAppName := ExtractFileName(Application.ExeName);
+ hSession := InternetOpen(PChar(sAppName),INTERNET_OPEN_TYPE_PRECONFIG,nil, nil, 0);
+ try
+   hURL := InternetOpenURL(hSession,PChar(SourceFile),nil,0,0,0);
+   try
+     AssignFile(f, DestFile);
+     Rewrite(f,1);
+     repeat
+       InternetReadFile(hURL, @Buffer,SizeOf(Buffer), BufferLen);
+       BlockWrite(f, Buffer, BufferLen)
+     until BufferLen = 0;
+     CloseFile(f);
+     Result := True;
+   finally
+     InternetCloseHandle(hURL)
+   end
+ finally
+   InternetCloseHandle(hSession)
+ end;
+end;
+{begin
+  try
+    Result := UrlDownloadToFile(nil, PChar(SourceFile), PChar(DestFile), 0,
+      nil) = 0;
+  except
+    Result := False;
+  end;
+end;   }
+
+function TFBuscaXmlSefa.StripHTML(S: string): string;
+///////////////////////////////////////////////////////////////
+var
+  TagBegin, TagEnd, TagLength: integer;
+begin
+  TagBegin := Pos( '<', S);      // search position of first <
+
+  while (TagBegin > 0) do begin  // while there is a < in S
+    TagEnd    := Pos('>', S);              // find the matching >
+    TagLength := TagEnd - TagBegin + 1;
+    Delete(S, TagBegin, TagLength);     // delete the tag
+    TagBegin := Pos( '<', S);            // search for next <
+  end;
+
+  Result := S;                   // give the result
+end;
+
+procedure TFBuscaXmlSefa.btnPegarHTMLClick(Sender: TObject);
+//////////////////////////////////////////////////////////////////////////////
+begin
+  PegarHTML;
+end;
+
+// 21.04.16
+function TFBuscaXmlSefa.WebFormGet(const formNumber: integer; const document: IHTMLDocument2): IHTMLFormElement;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var
+forms : IHTMLElementCollection;
+begin
+forms := document.Forms as IHTMLElementCollection;
+result := forms.Item(formNumber,'') as IHTMLFormElement
+end;
+
+// 21.04.16
+function TFBuscaXmlSefa.WebFormFields(const document: IHTMLDocument2; const formName : string): TStringList;
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+var
+form : IHTMLFormElement;
+field : IHTMLElement;
+fName : string;
+idx : integer;
+begin
+form := WebFormGet(0, WebBrowser1.Document AS IHTMLDocument2) ;
+
+result := TStringList.Create;
+for idx := 0 to -1 + form.length do
+begin
+field := form.item(idx, '') as IHTMLElement;
+
+if field = nil then Continue;
+fName := field.id;
+
+if field.tagName = 'INPUT' then fName := (field as IHTMLInputElement).name;
+if field.tagName = 'SELECT' then fName := (field as IHTMLSelectElement).name;
+if field.tagName = 'TEXTAREA' then fName := (field as IHTMLTextAreaElement).name;
+
+Memo2.lines.add( fname );
+
+result.Add(fName) ;
+end;
+end;
+
+
+// 21.04.16
+function TFBuscaXmlSefa.FillForm(WebBrowser: TWebBrowser; FieldName: string; Value: string): Boolean;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var
+i, j: Integer;
+FormItem: Variant;
+begin
+Result := False;
+//no form on document
+if WebBrowser.OleObject.Document.all.tags('FORM').Length = 0 then
+begin
+Exit;
+end;
+//count forms on document
+for I := 0 to WebBrowser.OleObject.Document.forms.Length - 1 do
+begin
+FormItem := WebBrowser.OleObject.Document.forms.Item(I);
+for j := 0 to FormItem.Length - 1 do
+begin
+  try
+  //when the fieldname is found, try to fill out
+    if FormItem.Item(j).Name = FieldName then begin
+       FormItem.Item(j).Value := Value;
+       Result := True;
+    end else
+      Memo2.Lines.Add( 'Campo = '+FormItem.Item(j).Name )
+
+  except
+    Exit;
+  end;
+end;
+
+end;
+end;
+
+
+procedure TFBuscaXmlSefa.PegarHTML;
+/////////////////////////////////////////////////
+var  textoNFe : IHTMLDocument2;
+begin
+  edtChaveNFe.Text := OnlyNumber(edtChaveNFe.Text);
+
+  if not ValidarChave('NFe'+edtChaveNFe.Text) then
+   begin
+     MessageDlg('Chave Inválida.',mtError,[mbok],0);
+     edtChaveNFe.SetFocus;
+     exit;
+   end;
+
+  if trim(edtCaptcha.Text) = '' then
+   begin
+     MessageDlg('Digite o valor da imagem.',mtError,[mbok],0);
+     edtCaptcha.SetFocus;
+     exit;
+   end;
+
+  Memo2.Lines.Clear;
+
+  Button1.Enabled         := False;
+  btnPegarHTML.Enabled    := False;
+//  btnNovaConsulta.Enabled := False;
+// 20.04.16
+  btnNovaConsulta.Enabled := True;
+  btnGerarXML.Enabled     := False;
+  textoNFe := WebBrowser1.Document as IHTMLDocument2;
+  try
+     if cbnfce.Checked then begin
+ //      if FillForm(WebBrowser1, 'eChDFe', edtChaveNFe.Text ) = False then
+ //      ShowMessage('Erro. Campo não disponível.');
+//        WebFormFields(textoNFe ,webbrowser1.Name);
+
+          Memo2.Lines.Text := IdHTTP1.Get(pagina);
+
+//       WebBrowser1.OleObject.Document.all.Item('eChDFe', 0).value := edtChaveNFe.Text;
+//       WebBrowser1.OleObject.Document.all.Item('eNumImage', 0).value := edtCaptcha.Text;
+//       WebBrowser1.OleObject.Document.all.Item('btConsultar', 0).click;
+     end else begin
+       WebBrowser1.OleObject.Document.all.Item('ctl00$ContentPlaceHolder1$txtChaveAcessoCompleta', 0).value := edtChaveNFe.Text;
+       WebBrowser1.OleObject.Document.all.Item('ctl00$ContentPlaceHolder1$txtCaptcha', 0).value := edtCaptcha.Text;
+       WebBrowser1.OleObject.Document.all.Item('ctl00$ContentPlaceHolder1$btnConsultar', 0).click;
+     end;
+  except
+     btnNovaConsulta.Enabled := True;
+     raise;
+  end;
+
+  PageControl1.ActivePageIndex := 0;
+end;
+
+procedure TFBuscaXmlSefa.WebBrowser1DocumentComplete(Sender: TObject;
+  const pDisp: IDispatch; var URL: OleVariant);
+  /////////////////////////////////////////////////////////////////////////////////////
+var
+  k, i: Integer;
+  Source, dest: string;
+  textoNFe : IHTMLDocument2;
+begin
+  Application.ProcessMessages;
+//  if WebBrowser1.LocationURL = 'http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=' then
+//  pagina:='http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=' ;
+//  pagina:='https://www.sped.fazenda.pr.gov.br/modules/conteudo/conteudo.php?conteudo=100' ;
+  if WebBrowser1.LocationURL = pagina then
+  begin
+    {
+    for k := 0 to WebBrowser1.OleObject.Document.Images.Length - 1 do
+     begin
+       Source := WebBrowser1.OleObject.Document.Images.Item(k).Src;
+       if (Source = 'http://www.nfe.fazenda.gov.br/scripts/srf/intercepta/captcha.aspx?opt=image') then
+       begin
+         dest := ExtractFilePath(ParamStr(0)) + 'captcha.gif';
+         DownloadFile(Source, dest);
+       end;
+     end;
+     }
+//     Image1.Picture.LoadFromFile(dest);
+     btnPegarHTML.Enabled := True;
+  end
+  else if WebBrowser1.LocationURL = 'https://www.nfe.fazenda.gov.br/portal/visualizacaoNFe/completa/Default.aspx' then
+  begin
+    WebBrowser1.Navigate('https://www.nfe.fazenda.gov.br/PORTAL/visualizacaoNFe/completa/impressao.aspx');
+  end
+  else if ( WebBrowser1.LocationURL = 'http://www.nfe.fazenda.gov.br/portal/consultaCompleta.aspx?tipoConteudo=XbSeqxE8pl8=' )
+       or
+          ( WebBrowser1.LocationURL =  'http://www.dfeportal.fazenda.pr.gov.br/dfe-portal/rest/servico/consultaCompletaDFe?modelo=65&tpAmbiente=1' )
+//          &chaveAcesso=41160407115580000101650020000003711000003711&captcha=pddszb
+       then
+// ver aqui a pagina do PR da nfce
+//  else if WebBrowser1.LocationURL = pagina then
+  begin
+    textoNFe := WebBrowser1.Document as IHTMLDocument2;
+    repeat
+       Application.ProcessMessages;
+    until Assigned(textoNFe.body);
+    Memo2.Lines.Text := StripHTML(textoNFe.body.innerHTML);
+    Memo2.Lines.Text := StringReplace(Memo2.Lines.Text,'&nbsp;','',[rfReplaceAll, rfIgnoreCase]);
+
+    i := 0;
+    while i < memo2.Lines.Count-1 do
+    begin
+      if trim(Memo2.Lines[i]) = '' then
+      begin
+        Memo2.Lines.Delete(i);
+        i := i - 1;
+      end;
+      if pos('function',Memo2.lines[i])>0 then
+      begin
+        Memo2.Lines.Delete(i);
+        i := i - 1;
+      end;
+      if pos('document',Memo2.lines[i])>0 then
+      begin
+        Memo2.Lines.Delete(i);
+        i := i - 1;
+      end;
+      if pos('{',Memo2.lines[i])>0 then
+      begin
+        Memo2.Lines.Delete(i);
+        i := i - 1;
+      end;
+      if pos('}',Memo2.lines[i])>0 then
+      begin
+        Memo2.Lines.Delete(i);
+        i := i - 1;
+      end;
+
+      i := i + 1;
+    end;
+//    Image1.Picture      := nil;
+    btnGerarXML.Enabled := True;
+    GeraXml;
+  end
+  else if WebBrowser1.LocationURL = 'https://www.nfe.fazenda.gov.br/portal/inexistente_completa.aspx' then
+  begin
+    MessageDlg('NF-e INEXISTENTE na base nacional, favor consultar esta NF-e no site da SEFAZ de origem.',mtError,[mbok],0);
+  //  Image1.Picture          := nil;
+    btnGerarXML.Enabled     := True;
+    btnNovaConsulta.Enabled := True;
+  end
+  else
+  begin
+    MessageDlg('Erro carregando URL: '+WebBrowser1.LocationURL,mtError,[mbok],0);
+//    Image1.Picture          := nil;
+    btnGerarXML.Enabled     := True;
+    btnNovaConsulta.Enabled := True;
+  end;
+end;
+
+procedure TFBuscaXmlSefa.WebBrowser1ProgressChange(Sender: TObject; Progress,
+  ProgressMax: Integer);
+begin
+ if ProgressMax = 0 then
+  begin
+    ProgressBar1.Visible := False;
+    lblStatus.Visible    := False;
+    exit;
+  end
+ else
+  begin
+    ProgressBar1.Visible := True;
+    lblStatus.Visible    := True;
+    try
+       ProgressBar1.Max := ProgressMax;
+       if (Progress <> -1) and (Progress <= ProgressMax) then
+          ProgressBar1.Position := Progress
+       else
+        begin
+          ProgressBar1.Visible := False;
+          lblStatus.Visible    := False;
+        end;
+    except
+       on EDivByZero do
+         exit;
+    end;
+  end;
+end;
+
+procedure TFBuscaXmlSefa.btnNovaConsultaClick(Sender: TObject);
+//////////////////////////////////////////////////////////////////////////////////
+begin
+  NovaConsulta;
+end;
+
+procedure TFBuscaXmlSefa.NovaConsulta;
+/////////////////////////////////////////
+begin
+//  btnNovaConsulta.Enabled := False;
+  btnGerarXML.Enabled     := False;
+  edtcaptcha.Text:='';
+  Button1.Enabled         := True;
+  DeleteIECache;
+  Memo2.Lines.Clear;
+  if cbnfce.Checked then begin
+    if Global.UFUnidade='PR' then
+      pagina:='http://www.sped.fazenda.pr.gov.br/modules/conteudo/conteudo.php?conteudo=100'
+    else
+      pagina:='Não tem site';
+  end else
+    pagina:='http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=' ;
+  WebBrowser1.Navigate( pagina );
+end;
+
+procedure TFBuscaXmlSefa.btnGerarXMLClick(Sender: TObject);
+begin
+  GeraXML;
+end;
+
+procedure TFBuscaXmlSefa.GeraXml;
+begin
+  FPath:=GerarXML(Memo2.Lines.Text);
+  WBXML.Navigate(FPath);
+  MessageBox(0,PChar('XML '+FPath+' gerado com sucesso!'),'Informação',
+    MB_ICONINFORMATION+MB_TASKMODAL);
+  btnNovaConsulta.Enabled := True;
+  btnPegarHTML.Enabled    := True;
+end;
+
+procedure TFBuscaXmlSefa.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if Key=vk_escape then
+  Close;
+end;
+
+procedure TFBuscaXmlSefa.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TFBuscaXmlSefa.Button1Click(Sender: TObject);
+///////////////////////////////////////////////////////////
+var xmodelo:string;
+begin
+  xmodelo:=copy(EdtChavenfe.text,21,2);
+  if xmodelo<>'55' then begin
+    Avisoerro('Opção válida somente para NF-e modelo 55.  Esta chave é de nota modelo '+xmodelo);
+    exit;
+  end;
+  PegarHTML;
+end;
+
+procedure TFBuscaXmlSefa.Label3Click(Sender: TObject);
+begin
+  NovaConsulta;
+end;
+
+procedure TFBuscaXmlSefa.Execute;
+///////////////////////////////////////////////
+var site:string;
+begin
+// 28.01.15
+//   site:='http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=';
+//   site:='http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa';
+   Sistema.beginprocess('Acessando consulta da NF-e Completa Portal Nacional');
+   Show;
+// 28.01.15
+//   WebBrowser1.Navigate(site);
+  pagina:='http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=' ;
+//  pagina:='http://www.sped.fazenda.pr.gov.br/modules/conteudo/conteudo.php?conteudo=100' ;
+
+  NovaConsulta;
+  Sistema.endprocess('');
+end;
+
+procedure TFBuscaXmlSefa.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+/////////////////////////////////////////////////
+var caminhoxml:string;
+begin
+    CaminhoXML := PathWithDelim(ExtractFilePath(Application.ExeName));
+// 29.01.15
+    CaminhoXML := Caminhoxml+'XmlsBaixados\'+
+                  copy(edtchavenfe.text,1, 44)+'-nfe.xml';
+
+   FNotaCompra.EdArquivoxml.Text:=caminhoxml;
+end;
+
+end.
+
+

@@ -1,0 +1,114 @@
+// 18.05.20
+// armazena valores mensais por centro de custo
+// inicialmente usado para guardar o valor unitario para rateio em cada boi da fazenda
+
+unit centroscusto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, SQLEd,
+  Vcl.Grids, SqlDtg, Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid;
+
+type
+  TFCentrosCusto = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bexclusao: TSQLBtn;
+    brel: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    PRemessa: TSQLPanelGrid;
+    Eddata: TSQLEd;
+    EdMesano: TSQLEd;
+    EdConta: TSQLEd;
+    SetEdplan_descricao: TSQLEd;
+    EdValorPrevisto: TSQLEd;
+    EdValorreal: TSQLEd;
+    procedure EdMesanoValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    function Getsqlorcamento(Mesano:string):string;
+
+  end;
+
+var
+  FCentrosCusto: TFCentrosCusto;
+
+implementation
+
+uses Sqlfun ,Geral, SqlExpr, Sqlsis, SQLRel;
+
+
+{$R *.dfm}
+
+{ TFCentrosCusto }
+
+procedure TFCentrosCusto.EdMesanoValidate(Sender: TObject);
+///////////////////////////////////////////////////////////////////
+var xdata:TDatetime;
+    Q:TSqlquery;
+begin
+
+   try
+     xdata:=Texttodate('01'+FGeral.tirabarra(EdMesano.text));
+     EdData.setdate(xdata);
+   except
+     EdMesano.invalid('Mes/ano inválido');
+     exit;
+   end;
+   Q:=sqltoquery( Getsqlorcamento(EdMesano.text) );
+   Grid.clear;
+   if not Q.eof then
+     Grid.querytogrid(Q);
+   FGeral.fechaquery(Q);
+
+end;
+
+procedure TFCentrosCusto.Execute;
+//////////////////////////////////
+begin
+
+   Show;
+//   EdValorprevisto.enabled:=Global.Usuario.OutrosAcessos[0046];
+   grid.clear;
+   EdMesano.clearall(FCentrosCusto,99);
+   EdMesano.setfocus;
+
+   {
+     Inst.AddField('CentrosdeCusto','Ccus_Data',       'D',0,0,60,True,'Mes/ano CC','Mes/ano do centro de custo','',True,'1','','','0');
+  Inst.AddField('CentrosdeCusto','Ccus_Unid_Codigo','C',3,0,30,True,'Unidade','Código da unidade','000',False,'1','','','0');
+  Inst.AddField('CentrosdeCusto','Ccus_Codigo',     'C',08,0,70,True ,'Código','Código do centro de custo','',False,'1','','','0');
+  Inst.AddField('CentrosdeCusto','Ccus_plan_Contas','C',100,0,200,True,'Contas','Contas que somam neste centro de custo','',False,'3','','','0');
+  Inst.AddField('CentrosdeCusto','Ccus_VlrReal'    ,'N',12,2,80,True,'Valor CC','Valor do centro de custo',f_cr,True,'3','','','0');
+  Inst.AddField('CentrosdeCusto','Ccus_VlrMeta'    ,'N',12,3,50,True ,'Meta em Valor','Valor desejável para este centro de custo','',False,'3','','','0');
+
+   }
+
+end;
+
+function TFCentrosCusto.Getsqlorcamento(Mesano: string): string;
+////////////////////////////////////////////////////////////////////
+var xdata:TDatetime;
+begin
+
+  xdata:=Texttodate('01'+FGeral.tirabarra(Mesano));
+
+  result:='select CentrosdeCusto.*,ccst_descricao_resp from CentrosdeCusto'+
+          ' left join ccustos on (ccst_codigo=Ccus_Codigo)'+
+          ' where ccus_datamvto = '+Datetosql(xdata);
+
+end;
+
+end.

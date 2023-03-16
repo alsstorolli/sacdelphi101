@@ -1,0 +1,153 @@
+unit baias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  SQLGrid, Vcl.StdCtrls, Vcl.Mask, SQLEd, Vcl.ExtCtrls, Vcl.Buttons, SQLBtn,
+  alabel;
+
+type
+  TFBaias = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    EdGRUPOSPRECO: TSQLEd;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    EdBaia_codigo: TSQLEd;
+    EdBaia_descricao: TSQLEd;
+    EBaia_cabecas: TSQLEd;
+    EdBaia_sexo: TSQLEd;
+    Edbaia_ganhopeso: TSQLEd;
+    Grid: TSQLGrid;
+    Dts: TDataSource;
+    procedure bIncluirClick(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure Edbaia_ganhopesoExitEdit(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    function GetDescricao(codigo:integer):string;
+
+  end;
+
+var
+  FBaias: TFBaias;
+
+implementation
+
+uses Arquiv, SQLRel, SqlExpr, Geral , faixas, SqlSis, SqlFun;
+
+{$R *.dfm}
+
+{ TFBaias }
+
+procedure TFBaias.bExcluirClick(Sender: TObject);
+//////////////////////////////////////////////////
+var Cod:String;
+    Found:Boolean;
+
+    function FoundTabela(Tabela,Campo,Msg,Chave:String):Boolean;
+    /////////////////////////////////////////////////////////////
+    var Q:TSqlQuery;
+    begin
+      Q:=SqlToQuery('SELECT '+chave+' as Codigo FROM '+Tabela+' WHERE '+Campo+'='+Cod );
+      Result:=not Q.eof;
+      if Result then AvisoErro('Encontrado vínculo na tabela '+tabela+' ref. '+Msg+' codigo '+Q.fieldbyname('codigo').asstring);
+      Q.Close;Freeandnil(Q);
+    end;
+
+
+begin
+
+  Cod:=Arq.TBaias.FieldByName('baia_Codigo').AsString;
+  Found:=FoundTabela('Movabatedet','Movd_baia','Movimento de romaneios/lotes','Baia_codigo');
+  if not Found then Grid.Delete;
+
+end;
+
+
+procedure TFBaias.bIncluirClick(Sender: TObject);
+///////////////////////////////////////////////
+begin
+
+   Grid.Insert(EdBaia_descricao);
+   EdBaia_codigo.setvalue( FGeral.GetProximoCodigoCadastro('baias','baia_codigo') );
+
+end;
+
+procedure TFBaias.bRelatorioClick(Sender: TObject);
+///////////////////////////////////////////////////////
+begin
+
+   Frel.Reportfromsql('select * from baias','Baias','Relação de Baias');
+
+end;
+
+procedure TFBaias.Edbaia_ganhopesoExitEdit(Sender: TObject);
+//////////////////////////////////////////////////////////
+begin
+
+  Grid.PostInsert(EdBaia_descricao);
+  EdBaia_codigo.setvalue( FGeral.GetProximoCodigoCadastro('Baias','baia_codigo') );
+
+end;
+
+procedure TFBaias.Execute;
+///////////////////////////
+begin
+
+   FBaias.Show;
+
+end;
+
+procedure TFBaias.FormActivate(Sender: TObject);
+////////////////////////////////////////////////////
+begin
+
+   if not Arq.TBaias.Active then Arq.TBaias.Open;
+   Fgeral.ColunasGrid(Grid,Self);
+
+end;
+
+function TFBaias.GetDescricao(codigo: string): string;
+////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+
+  Result:='';
+  if trim(Codigo)<>'' then begin
+    Q:=sqltoquery('select baia_descricao from baias where baia_codigo='+stringtosql(codigo));
+    if not Q.Eof then Result:=q.FieldByName('Baia_Descricao').AsString;
+    Fgeral.FechaQuery(Q);
+  end;
+
+end;
+
+end.

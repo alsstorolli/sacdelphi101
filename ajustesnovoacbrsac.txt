@@ -1,0 +1,47 @@
+gerencianfe :
+=============
+uses pcnconversaonfe
+tirar Rave1 e colocar RL1
+Pathcan -> PathEvento
+..Geral.PathSalvar   -> ...Arquivos.PathSalvar
+..Geral.PathEsquemas   -> ...Arquivos.PathEsquemas
+EnviarEventoNfe  -> EnviarEvento
+GetCertificado nao tem mais por enquanto checar numerodocertificado preenchido
+funcao para enviar email mudou a ordem dos parametros
+AcbrNfe1.NotasFiscais.Valida -> AcbrNfe1.NotasFiscais.Validar
+Nao tem data de vencimento do certificado
+// ACBrNFe1.NotasFiscais.Items[i].SaveToFile(ondesalvar+copy(ACBrNFe1.NotasFiscais.Items[i].NFe.infNFe.id,4,44)+'-nfe.xml');
+ACBrNFe1.NotasFiscais.Items[i].GravarXML(copy(ACBrNFe1.NotasFiscais.Items[i].NFe.infNFe.id,4,44)+'-nfe.xml',ondesalvar);
+AcbrNfeDanfeRaveCB1  -> ACBrNFeDANFCeFortes1
+
+
+expnfetxt :
+===========
+
+..Geral.PathSalvar   -> ...Arquivos.PathSalvar
+..Geral.PathEsquemas   -> ...Arquivos.PathEsquemas
+AcbrNfe1.Configuracoes.Geral.IdToken:=''  ->   AcbrNfe1.Configuracoes.Geral.IdToken:='';
+acbrnfe1.Configuracoes.Arquivos.PathDPEC  -> nao tem mais a propriedade
+Nao tem data de vencimento do certificado
+AcbrNfe1.NotasFiscais.Valida -> AcbrNfe1.NotasFiscais.Validar
+// ACBrNFe1.NotasFiscais.Items[i].SaveToFile(ondesalvar+copy(ACBrNFe1.NotasFiscais.Items[i].NFe.infNFe.id,4,44)+'-nfe.xml');
+ACBrNFe1.NotasFiscais.Items[i].GravarXML(copy(ACBrNFe1.NotasFiscais.Items[i].NFe.infNFe.id,4,44)+'-nfe.xml',ondesalvar);
+ACBrNFe1.NotasFiscais.Items[i].XML  ->  ACBrNFe1.NotasFiscais.Items[i].GerarXML
+
+nfcompra:
+=========
+
+Acbrnfe1.NotasFiscais.Items[0].Alertas:='EstornoNFe'  : agora é readonly entao rever como controlar q tipo
+de nota é em outro campo do acbrnfe1.notasfiscais.items[]
+
+////////////////////////////////////////////////////////
+
+gerenciacte -> retirado do projeto por enquanto
+
+forms para apagar e recolocar acbrnfe nfcompra,gerencianfe, expnfetxt,sqlrel
+
+retirar expcte.pas do projeto e suas chamadas
+
+
+
+

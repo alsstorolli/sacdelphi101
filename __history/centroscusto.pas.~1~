@@ -1,0 +1,45 @@
+unit centroscusto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, SQLEd,
+  Vcl.Grids, SqlDtg, Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid;
+
+type
+  TFCentrosCusto = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bexclusao: TSQLBtn;
+    brel: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    PRemessa: TSQLPanelGrid;
+    Eddata: TSQLEd;
+    EdMesano: TSQLEd;
+    EdConta: TSQLEd;
+    SetEdplan_descricao: TSQLEd;
+    EdValorPrevisto: TSQLEd;
+    EdValorreal: TSQLEd;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCentrosCusto: TFCentrosCusto;
+
+implementation
+
+{$R *.dfm}
+
+end.

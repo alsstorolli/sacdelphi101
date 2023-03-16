@@ -1,0 +1,507 @@
+unit Relmalote;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, Buttons, SQLBtn, alabel, ExtCtrls,
+  SQLGrid;
+
+type
+  TFRelMalote = class(TForm)
+    PRel: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    baplicar: TSQLBtn;
+    bSair: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Eddatai: TSQLEd;
+    Eddataf: TSQLEd;
+    Edunid_codigo: TSQLEd;
+    EdCodtipo: TSQLEd;
+    EdFormato: TSQLEd;
+    EdRepr_codigo: TSQLEd;
+    SeEdrepr_nome: TSQLEd;
+    procedure EdCodtipoExitEdit(Sender: TObject);
+    procedure baplicarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure Edunid_codigoValidate(Sender: TObject);
+    procedure EdRepr_codigoValidate(Sender: TObject);
+  private
+    { Private declarations }
+    SaiOk:Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  FRelMalote: TFRelMalote;
+  sqlunidade,sqldatacont,sqlcodtipo:string;
+  largura:integer;
+
+procedure FRelMalote_ChequesRecebidos;                // 1
+procedure FRelMalote_PendentesRepre;                  // 2
+
+
+implementation
+
+uses Geral, represen, Unidades, Sqlsis , SQLRel, Sqlexpr, Sqlfun, conpagto,
+  portador;
+
+{$R *.dfm}
+
+
+function FRelMalote_Execute(Tp:Integer):Boolean;
+begin
+  if FRelMalote=nil then FGeral.CreateForm(TFRelMalote, FRelMalote);
+  result:=true;
+  FRepresentantes.SetaItems(FRelMalote.EdCodtipo,nil,'','');
+  sqlunidade:='';
+  sqlcodtipo:='';
+  FRelMalote.Edformato.items.clear;
+  with FRelMalote do begin
+    FUnidades.SetaItems(EdUnid_codigo,nil,Global.Usuario.UnidadesRelatorios);
+    if tp=1 then begin
+      FGeral.SetaItems(FRelMalote.EdFormato,'RelChequesRecebidos');
+      Caption:='Cheques Recebidos';
+    end else if tp=2 then begin
+      FGeral.SetaItems(FRelMalote.EdFormato,'RelPendentesRepre');
+      Caption:='Pendencias por Representante';
+    end;
+    largura:=80;
+    EdDatai.enabled:=true;
+    EdDataf.enabled:=true;
+    EdUnid_codigo.enabled:=true;
+    Edcodtipo.enabled:=true;
+    if tp=1 then  begin
+    end else if tp=3 then begin
+    end;
+    SaiOk:=False;
+    FRelMalote.ShowModal;
+    Result:=SaiOk;
+  end;
+
+end;
+
+
+procedure FRelMalote_ChequesRecebidos;    // 1
+var Q:TSqlquery;
+    sqlbompara,sqlDeposito,sqlorder,sqlperiodo,campodata,sqlprorroga,sqlemaberto,titemaberto:string;
+    emaberto,baixados:currency;
+    Lista:Tstringlist;
+    p:integer;
+    Semdados:boolean;
+
+begin
+
+  with FRelMalote do begin
+    if not FRelMalote_Execute(1) then Exit;
+    if trim(EdUnid_codigo.text)<>'' then
+      sqlunidade:=' and '+FGeral.getin('cheq_unid_codigo',EdUnid_codigo.text,'C',)
+    else
+      sqlunidade:='';
+    sqlorder:=' order by cheq_unid_codigo,cheq_emitente,cheq_lancto,cheq_cheque';
+    sqlemaberto:=' and cheq_deposito is null';
+    sqlprorroga:='';
+    if (EdDatai.asdate>1) and (EdDataf.asdate>1) then begin
+      sqlbompara:=' cheq_predata>='+EdDatai.AsSql+' and cheq_predata<='+EdDataf.AsSql;
+      sqlorder:=' order by cheq_unid_codigo,cheq_emitente,cheq_predata,cheq_cheque';
+      sqlperiodo:='and '+sqlbompara;
+      campodata:='cheq_predata';
+    end else
+      sqlbompara:='';
+
+    if Global.Usuario.OutrosAcessos[0701] then
+      sqldatacont:=''
+    else
+      sqldatacont:=' and cheq_datacont>1';
+
+    lista:=Tstringlist.create;
+    strtolista(lista,EdCodtipo.text,';',true);
+
+    Sistema.BeginProcess('Gerando Relatório');
+
+    FOR P:=0 TO LISTA.COUNT-1 DO BEGIN
+
+    sqlcodtipo:=' and cheq_repr_codigo='+lista[p];
+
+    Q:=sqltoquery('select * from cheques left join representantes on (repr_codigo=cheq_repr_codigo)'+
+                  ' where cheq_emirec=''R'''+
+                  sqlperiodo+sqlcodtipo+
+                  sqlunidade+
+                  sqldatacont+
+                  sqlemaberto+
+                  ' and '+FGeral.Getin('cheq_status','N','C')+
+                  sqlorder );
+
+
+//      FRel.Init('RelMaloteChequesRecebidos');
+      semdados:=Q.eof;
+      if not Semdados then begin
+        FRel.Init('RelChequesRecebidos');  // para poder usar o formato criado neste relatorio...
+        FRel.AddTit('Malote - Relação de Cheques Recebidos '+FGeral.TituloRelCliRepre(strtoint(lista[p]),'R') );
+        FRel.AddTit(FGeral.TituloRelUnidade(EdUnid_codigo.Text));
+        FRel.AddTit('Periodo Bom para : '+FGeral.formatadata(Eddatai.Asdate)+' a '+FGeral.formatadata(Eddataf.asdate));
+        FRel.AddCol( 80,0,'C','' ,''              ,'Unidade'         ,''         ,'',false);
+        FRel.AddCol( 60,0,'C','' ,''              ,'Codigo'          ,''         ,'',false);
+        FRel.AddCol(180,0,'C','' ,''              ,'Representante'   ,''         ,'',false);
+        FRel.AddCol( 60,1,'D','' ,''              ,'Movimento'  ,''         ,'',false);
+        FRel.AddCol( 60,1,'D','' ,''              ,'Lançamento'  ,''         ,'',false);
+        FRel.AddCol( 60,1,'D','' ,''              ,'Emissão'    ,''         ,'',false);
+        FRel.AddCol( 70,0,'N','' ,''              ,'Numero Cheque'   ,''         ,'',False);
+        FRel.AddCol( 80,3,'N','+',f_cr            ,'Valor'           ,''         ,'',False);
+        FRel.AddCol( 90,0,'C','' ,''              ,'Banco Emitente'  ,''         ,'',false);
+        FRel.AddCol(150,0,'C','' ,''              ,'Emitente'  ,''         ,'',false);
+        FRel.AddCol( 60,1,'D','' ,''              ,'Bom para'   ,''         ,'',false);
+        FRel.AddCol( 60,1,'D','' ,''              ,'Depósito'   ,''         ,'',false);
+        FRel.AddCol( 60,1,'D','' ,''              ,'Prorrogação',''         ,'',false);
+        FRel.AddCol(150,0,'C','' ,''              ,'Observações',''         ,'',false);
+        FRel.AddCol( 60,1,'C','' ,''              ,'Devolvido'  ,''         ,'',false);
+      end;
+
+      while not Q.eof do begin
+
+          FRel.AddCel(FUnidades.GetReduzido(Q.FieldByName('cheq_unid_codigo').AsString));
+          FRel.AddCel(Q.fieldbyname('cheq_repr_codigo').asstring);
+          FRel.AddCel(FRepresentantes.GetDescricao(Q.fieldbyname('cheq_repr_codigo').asinteger));
+          FRel.AddCel(Q.FieldByName('cheq_datacont').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_lancto').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_emissao').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_cheque').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_valor').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_bcoemitente').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_emitente').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_predata').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_deposito').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_prorroga').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_obs').AsString);
+          FRel.AddCel(Q.FieldByName('cheq_devolvido').AsString);
+
+        if Q.FieldByName('cheq_deposito').AsDatetime<1 then
+          emaberto:=emaberto+Q.FieldByName('cheq_valor').Ascurrency
+        else
+          baixados:=baixados+Q.FieldByName('cheq_valor').Ascurrency;
+
+        Q.Next;
+
+      end;
+
+      if not Semdados then begin
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+
+ //////////////////
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('Bai.:'+formatfloat(f_cr,baixados)+' Aberto:'+formatfloat(f_cr,emaberto));
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+          FRel.AddCel('');
+
+        if Edformato.isempty then
+          FRel.Video
+        else begin
+//        FREl.Setformat(EdFormato.text);
+//        FRel.Formatosexit(FRelmalote);
+//        FRel.Print(1);
+//          FRel.Video(EdFormato.text);
+          FRel.Video;
+        end;
+
+      end; // pra nao imprimir 'vazio'
+
+      Sistema.EndProcess('');
+
+
+    Q.close;
+    Freeandnil(Q);;
+
+    END;  // lista representantes
+
+  end;
+
+  FRelMalote_ChequesRecebidos;    // 1
+
+end;
+
+
+procedure FRelMalote_PendentesRepre;     // 2
+var statusvalidos,titulo,periodo,sqlorder,sqlrecpag,sqlcodtipo,sqltipocad,tipomov,sqldatavenci:string;
+    Q:TSqlquery;
+    bxparcial,saldoduplicata:currency;
+    Lista:TStringlist;
+    p:integer;
+
+    function  ChecaBaixaParcial(unidade,tipocod,tipocad,numerodoc:string;Data,Datacont,Vencimento:TDatetime;parcela:integer):currency;
+    var Qbx:TSqlquery;
+        status,sqlqtipo:string;
+        valor:currency;
+    begin
+      status:=stringtosql('P');
+      if Datacont>1 then
+        sqlqtipo:=' and pend_datacont>1'
+      else
+        sqlqtipo:=' and pend_datacont is null';
+      QBx:=sqltoquery('select * from pendencias where pend_status='+status+' and pend_tipo_codigo='+stringtosql(Tipocod)+
+                      ' and pend_tipocad='+stringtosql(tipocad)+
+                      ' and pend_databaixa>='+Datetosql(Data)+
+                      ' and pend_unid_codigo='+stringtosql(unidade)+
+                      ' and pend_parcela='+inttostr(parcela)+
+                      ' and pend_datavcto='+Datetosql(Vencimento)+
+                      sqlqtipo+
+                      ' and pend_numerodcto='+stringtosql(numerodoc) );
+      valor:=0;
+      while not QBx.eof do begin
+        valor:=valor+QBx.fieldbyname('pend_valor').ascurrency;
+        QBx.next;
+      end;
+      Qbx.close;
+      Freeandnil(Qbx);
+      result:=valor;
+    end;
+
+    function Tudobaixado(tipocod,tipocad,numerodoc:string;Data:TDatetime;parcela:integer):boolean;
+    var Qbx:TSqlquery;
+    begin
+      if Q.FieldByName('pend_status').AsString='P' then begin
+        QBx:=sqltoquery('select * from pendencias where pend_status=''B'' and pend_tipo_codigo='+stringtosql(Tipocod)+
+                      ' and pend_tipocad='+stringtosql(tipocad)+
+                      ' and pend_databaixa<='+Datetosql(Data)+
+                      ' and pend_databaixa>1'+
+                      ' and pend_parcela='+inttostr(parcela)+
+                      ' and pend_numerodcto='+stringtosql(numerodoc) );
+        result:=not Qbx.eof;
+        Qbx.close;
+        Freeandnil(Qbx);
+      end else
+        result:=false;
+    end;
+
+    function Gettipomov(transacao:String):string;
+    var Q:TSqlquery;
+    begin
+      Q:=sqltoquery('select moes_tipomov from movesto where moes_transacao='+stringtosql(transacao));
+      result:='';
+      if not Q.eof then begin
+        result:=Q.fieldbyname('moes_tipomov').asstring;
+        if result=Global.CodDevolucaoConsig then   //  09.09.05 - gambia para reges -
+          result:=Global.CodVendaConsig;
+      end else
+        result:=Global.CodPendenciaFinanceira;
+      Q.close;
+      Freeandnil(Q);
+    end;
+
+
+begin
+
+  with FRelMalote do begin
+
+    if not FRelmalote_Execute(2) then Exit;
+
+    sqlrecpag:=' and pend_RP='+stringtosql('R');
+    statusvalidos:='N';
+    sqlorder:=' order by pend_unid_codigo,pend_repr_codigo,pend_tipo_codigo,pend_numerodcto,pend_datavcto';
+    sqlunidade:=' and '+FGeral.getin('pend_unid_codigo',EdUnid_codigo.text,'C');
+    if (EdDatai.asdate>1) and (EdDataf.asdate>1) then
+      periodo:=' Vencimento : '+FGeral.FormataData(EdDatai.AsDate)+' a '+FGeral.FormataData(EdDataf.AsDate)
+    else
+      periodo:='';
+    if EdDatai.AsDate>1 then begin
+      sqldatavenci:=' and pend_datavcto>='+EdDatai.AsSql+' and pend_datavcto<='+EdDataf.AsSql;
+    end else
+      sqldatavenci:='';
+
+    sqltipocad:=' and pend_tipocad='+stringtosql('C');
+// 24.03.06
+    if Global.Usuario.OutrosAcessos[0701] then
+      sqldatacont:=''
+    else
+      sqldatacont:=' and pend_datacont > 1';
+
+    lista:=Tstringlist.create;
+    strtolista(lista,EdCodtipo.text,';',true);
+
+    Sistema.BeginProcess('Gerando Relatório');
+
+    FOR P:=0 TO LISTA.COUNT-1 DO BEGIN
+
+    if trim(lista[p])<>'' then begin
+      sqlcodtipo:=' and pend_repr_codigo='+lista[p];
+      titulo:='Malote - Relatório de Recebimentos Pendentes para Representantes'+FGeral.TituloRelCliRepre(strtoint(lista[p]),'R');
+/////////
+      Q:=sqltoquery('select * from pendencias'+
+                  ' where '+FGeral.Getin('pend_status',statusvalidos,'C')+
+                  sqlrecpag+
+                  ' and pend_databaixa is null'+
+                  sqlunidade+
+                  sqldatavenci+
+                  sqldatacont+
+                  sqlcodtipo+
+                  sqltipocad+
+                  sqlorder );
+
+
+      FRel.Init('RelPendentesRepre');
+      FRel.AddTit(titulo);
+      FRel.AddTit(FGeral.TituloRelUnidade(EdUnid_codigo.Text));
+      FRel.AddTit(Periodo);
+      FRel.AddCol(100,0,'C','' ,''              ,'Transação'       ,''         ,'',False);
+      FRel.AddCol( 60,1,'D','' ,''              ,'Emissão'         ,''         ,'',false);
+      if Global.Usuario.OutrosAcessos[0701] then
+         FRel.AddCol( 60,1,'D','' ,''              ,'Movimento'       ,''         ,'',false);
+      FRel.AddCol( 70,2,'N','' ,''              ,'Numero Doc'      ,''         ,'',False);
+// 08.09.05
+      FRel.AddCol(100,0,'C','' ,''              ,'Tipo Movimento'  ,''         ,'',False);
+
+      FRel.AddCol( 80,0,'C','' ,''              ,'Forma Pagto'     ,''         ,'',false);
+      FRel.AddCol( 90,0,'C','' ,''              ,'Portador'        ,''         ,'',false);
+      FRel.AddCol( 45,0,'C','' ,''              ,'Cliente'         ,''         ,'',false);
+      FRel.AddCol(150,0,'C','' ,''              ,'Nome'            ,''         ,'',false);
+//      if EdCodtipo.AsInteger=0 then begin
+        FRel.AddCol( 45,0,'C','' ,''              ,'Representante'   ,''         ,'',false);
+        FRel.AddCol(150,0,'C','' ,''              ,'Nome Repr.'      ,''         ,'',false);
+//      end;
+      FRel.AddCol( 60,1,'D','' ,''              ,'Vencimento'      ,''         ,'',false);
+      FRel.AddCol( 30,2,'N','' ,''              ,'NP'              ,''         ,'',False);
+      FRel.AddCol( 30,2,'N','' ,''              ,'Parc'            ,''         ,'',False);
+      FRel.AddCol( 70,3,'N','+' ,f_cr            ,'Valor Parcela'   ,''         ,'',False);
+      FRel.AddCol( 70,3,'N','+' ,f_cr            ,'Saldo Duplicata' ,''         ,'',False);
+
+/////////
+    end else begin
+      sqlcodtipo:='';
+      titulo:='';
+      Q:=sqltoquery('select * from copas where 1=2');   // so pra dar eof....
+    end;
+
+
+      while not Q.eof do begin
+          FRel.AddCel(Q.FieldByName('pend_transacao').AsString);
+//          FRel.AddCel(Q.FieldByName('pend_datalcto').AsString);
+          FRel.AddCel(Q.FieldByName('pend_dataemissao').AsString);
+          if Global.Usuario.OutrosAcessos[0701] then
+            FRel.AddCel(Q.FieldByName('pend_datacont').AsString);
+          FRel.AddCel(Q.FieldByName('pend_numerodcto').AsString);
+//          FRel.AddCel(Q.FieldByName('pend_tipomov').AsString+'-'+FGeral.GetTipoMovto(Q.FieldByName('pend_tipomov').AsString));
+// 08.09.05
+          tipomov:=Gettipomov(Q.FieldByName('pend_transacao').AsString);
+          FRel.AddCel(Tipomov+'-'+FGeral.GetTipoMovto(Tipomov));
+          FRel.AddCel(FCondpagto.GetReduzido(Q.FieldByName('pend_fpgt_codigo').AsString));
+          FRel.AddCel(FPortadores.GetDescricao(Q.FieldByName('pend_port_codigo').AsString));
+          FRel.AddCel(Q.FieldByName('pend_tipo_codigo').AsString);
+          FRel.AddCel(FGeral.GetNomeRazaoSocialEntidade(Q.FieldByName('pend_tipo_codigo').AsInteger,Q.FieldByName('pend_tipocad').AsString,'N'));
+//          if EdCodtipo.AsInteger=0 then begin
+            FRel.AddCel(Q.FieldByName('pend_repr_codigo').AsString);
+            FRel.AddCel(FGeral.GetNomeRazaoSocialEntidade(Q.FieldByName('pend_repr_codigo').AsInteger,'R','N'));
+//          end;
+          FRel.AddCel(Q.FieldByName('pend_datavcto').AsString);
+//          FRel.AddCel(Q.FieldByName('pend_databaixa').AsString);
+          FRel.AddCel(Q.FieldByName('pend_nparcelas').AsString);
+          FRel.AddCel(Q.FieldByName('pend_parcela').AsString);
+          FRel.AddCel(Q.FieldByName('pend_valor').AsString);
+//          FRel.AddCel(Q.FieldByName('pend_status').AsString);
+//          FRel.AddCel(formatfloat(f_cr,(-1)*texttovalor(valor)));
+          bxparcial:=ChecaBaixaParcial(Q.FieldByName('pend_unid_codigo').AsString,Q.FieldByName('pend_tipo_codigo').AsString,Q.FieldByName('pend_tipocad').AsString,Q.FieldByName('pend_numerodcto').AsString,Q.FieldByName('pend_dataemissao').Asdatetime,
+               Q.FieldByName('pend_datacont').Asdatetime,Q.FieldByName('pend_datavcto').Asdatetime,Q.FieldByName('pend_parcela').Asinteger);
+          saldoduplicata:=Q.FieldByName('pend_valor').Ascurrency-bxparcial;
+          FRel.AddCel(formatfloat(f_cr,saldoduplicata));
+
+        Q.Next;
+      end;
+
+      if trim(lista[p])<>'' then begin   // 03.08.06
+        if Edformato.isempty then
+          FRel.Video
+        else begin
+//          FRel.Video(EdFormato.text);
+          FRel.Video;
+        end;
+      end;
+
+    Sistema.EndProcess('');
+    Q.Close;
+    Freeandnil(Q);
+
+    END;  // lista representantes
+
+  end;
+
+    FRelMalote_PendentesRepre;
+
+end;
+
+
+
+procedure TFRelMalote.EdCodtipoExitEdit(Sender: TObject);
+begin
+  baplicarclick(self);
+end;
+
+procedure TFRelMalote.baplicarClick(Sender: TObject);
+begin
+  if not EdDAtai.ValidEdiAll(FRelMalote,99) then exit;
+  Saiok:=true;
+  close;
+
+
+end;
+
+procedure TFRelMalote.FormActivate(Sender: TObject);
+begin
+  FRelMalote.Eddatai.SetFirstEd;
+  if FRelMalote.EdDatai.isempty then begin
+    FRelMalote.EdDatai.setdate(sistema.hoje);
+    FRelMalote.EdDataf.setdate(sistema.hoje);
+  end;
+
+end;
+
+procedure TFRelMalote.Edunid_codigoValidate(Sender: TObject);
+begin
+  if trim(EdUnid_codigo.Text)='' then
+    EdUnid_codigo.Text:=Global.Usuario.UnidadesRelatorios;
+
+end;
+
+procedure TFRelMalote.EdRepr_codigoValidate(Sender: TObject);
+var Q:TSqlquery;
+    lista:string;
+begin
+  if not EdRepr_codigo.isempty then begin
+     Q:=sqltoquery('select repr_codigo,repr_repr_codigo from representantes where repr_repr_codigo='+EdRepr_codigo.assql+
+                   ' order by repr_codigo');
+     lista:='';
+     while not Q.eof do begin
+       lista:=lista+strzero(Q.fieldbyname('repr_codigo').asinteger,4)+';';
+       Q.Next;
+     end;
+     FGeral.Fechaquery(Q);
+     if trim(lista)<>'' then
+       EdCodtipo.text:=lista;
+  end;
+end;
+
+end.

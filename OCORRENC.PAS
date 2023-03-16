@@ -1,0 +1,822 @@
+﻿unit Ocorrenc;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, SQLGrid, ExtCtrls, Buttons, SQLBtn, StdCtrls,
+  alabel, DB, Provider, SqlExpr, DBClient, SqlSis, SimpleDS, SqlDtg, Vcl.Mask,
+  SQLEd, ComObj;
+
+type
+  TFOcorrencias = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    Dts: TDataSource;
+    TOcorrencias: TSQLDs;
+    Memo: TMemo;
+    bGravar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    brelpendentes: TSQLBtn;
+    breceita: TSQLBtn;
+    bimpatestado: TSQLBtn;
+    boculos: TSQLBtn;
+    poculos: TSQLPanelGrid;
+    v: TSQLPanelGrid;
+    gridoculos: TSqlDtGrid;
+    Edoculos: TSQLEd;
+    bfechar: TSQLBtn;
+    bgravargrid: TSQLBtn;
+    bimpoculos: TSQLBtn;
+    Edmais: TSQLEd;
+    EdMenos: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure bCancelarClick(Sender: TObject);
+    procedure bAlterarClick(Sender: TObject);
+    procedure bGravarClick(Sender: TObject);
+    procedure MemoExit(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure brelpendentesClick(Sender: TObject);
+    procedure breceitaClick(Sender: TObject);
+    procedure GridKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure bimpatestadoClick(Sender: TObject);
+    procedure boculosClick(Sender: TObject);
+    procedure gridoculosDblClick(Sender: TObject);
+    procedure boculosDblClick(Sender: TObject);
+    procedure EdoculosExitEdit(Sender: TObject);
+    procedure bfecharClick(Sender: TObject);
+    procedure bgravargridClick(Sender: TObject);
+    procedure gridoculosKeyPress(Sender: TObject; var Key: Char);
+    procedure TOcorrenciasNewRecord(DataSet: TDataSet);
+    procedure bimpoculosClick(Sender: TObject);
+    procedure EdmaisExitEdit(Sender: TObject);
+    procedure EdMenosExitEdit(Sender: TObject);
+    procedure DtsDataChange(Sender: TObject; Field: TField);
+  private
+    TipoMov,Categoria:String;
+    Entidade:Integer;
+    procedure PreparaEdicao;
+  public
+    procedure Execute(const CatEntidade:String; const CodEntidade:Integer; const NomEntidade:String;Tipooc:string='';Numero:integer=0);
+    function GetObservacao(const CatEntidade:String; const CodEntidade:Integer; Numero:integer):string;
+    function GetCodigoOcorrencia(const CatEntidade:String; const CodEntidade:Integer; Numero:integer  ; Datamvto:TDatetime):integer;
+    function FormataValor( v:currency; mascara:string ):string;
+    function FormataValorEixo( v:currency; mascara:string ):string;
+  end;
+
+var
+  FOcorrencias: TFOcorrencias;
+  Numerodoc:integer;
+  Tipoocor,nomedaentidade:string;
+
+implementation
+
+uses Arquiv, SQLFun, Geral, SQLRel, RelFinan, TextRel, Unidades;
+
+{$R *.dfm}
+
+// 29.05.19
+procedure TFOcorrencias.EdmaisExitEdit(Sender: TObject);
+////////////////////////////////////////////////////////
+begin
+
+   if EdMais.asinteger>0 then begin
+
+     GridOculos.Cells[01,01] := currtostr( TextToValor(GridOculos.Cells[01,01]) + EdMais.AsCurrency );
+     GridOculos.Cells[01,02] := currtostr( TextToValor(GridOculos.Cells[01,02]) + EdMais.AsCurrency );
+     GridOculos.Cells[01,04] := currtostr( TextToValor(GridOculos.Cells[01,04]) + EdMais.AsCurrency ) ;
+     GridOculos.Cells[01,05] := currtostr( TextToValor(GridOculos.Cells[01,05]) + EdMais.AsCurrency ) ;
+
+   end;
+
+
+end;
+
+// 29.05.19
+procedure TFOcorrencias.EdMenosExitEdit(Sender: TObject);
+//////////////////////////////////////////////////////////
+begin
+
+   if EdMenos.asinteger>0 then begin
+
+     GridOculos.Cells[01,01] := currtostr( TextToValor(GridOculos.Cells[01,01]) - EdMenos.AsCurrency );
+     GridOculos.Cells[01,02] := currtostr( TextToValor(GridOculos.Cells[01,02]) - EdMenos.AsCurrency );
+     GridOculos.Cells[01,04] := currtostr( TextToValor(GridOculos.Cells[01,04]) - EdMenos.AsCurrency ) ;
+     GridOculos.Cells[01,05] := currtostr( TextToValor(GridOculos.Cells[01,05]) - EdMenos.AsCurrency ) ;
+
+   end;
+
+
+end;
+
+procedure TFOcorrencias.EdoculosExitEdit(Sender: TObject);
+begin
+//   if not EdOculos.IsEmpty then begin
+     Gridoculos.Cells[gridoculos.Col,gridoculos.Row]:=EdOculos.Text;
+//   end;
+   EdOculos.Visible:=false;
+   EdOculos.Enabled:=false;
+   GridOculos.SetFocus;
+end;
+
+procedure TFOcorrencias.Execute(const CatEntidade:String; const CodEntidade:Integer; const NomEntidade:String;Tipooc:string='';Numero:integer=0);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+begin
+
+  Categoria:=CatEntidade;
+  Entidade:=CodEntidade;
+  NomedaEntidade:=nomentidade;
+// 05.10.17
+  if not Arq.TClientes.Active then begin
+    Arq.TClientes.Open;
+    Arq.TClientes.Locate('clie_codigo',inttostr(codentidade),[])
+  end;
+
+  TOcorrencias.DBConnection:=Sistema.Conexao;
+  TOcorrencias.TableName:='OCORRENCIAS';
+  TOcorrencias.TableFields:='*';
+  TOcorrencias.OpenWith('Ocor_CatEntidade='+StringToSql(CatEntidade)+' And Ocor_CodEntidade='+IntToStr(CodEntidade)+
+                       ' and '+FGeral.Getin('Ocor_status','N;E','C'),'Ocor_Data');
+  Grid.Columns[0].FieldName:='Ocor_Data';
+  Grid.Columns[0].Title.Caption :='Data';
+  Grid.Columns[1].FieldName:='Ocor_Unid_Codigo';
+  Grid.Columns[1].Title.Caption:='Unidade';
+
+  Grid.Columns[4].FieldName:='Ocor_Usuario';
+  Grid.Columns[4].Title.Caption:='Usuário';
+
+  Grid.Columns[3].FieldName:='Ocor_numerodoc';
+  Grid.Columns[3].Title.Caption:='Numero Doc.';
+
+  Grid.Columns[2].FieldName    :='Ocor_descricao';
+  Grid.Columns[2].Title.Caption:='Observação';
+  Grid.Columns[2].Width        :=200;
+
+  Caption:='Ocorrências: '+NomEntidade;
+  Numerodoc:=Numero;
+  Tipoocor:=Tipooc;
+  Grid.Configurar;
+// 09.09.2021
+//  Memo.Text := TOcorrencias.FieldByName('Ocor_Descricao').Text;
+
+//  FGeral.ColunasGrid(Grid,Self);
+  bCancelarClick(Self);
+  ShowModal;
+end;
+
+function TFOcorrencias.FormataValor(v: currency; mascara: string): string;
+//////////////////////////////////////////////////////////////////////////////
+begin
+  if (v<=0) or (v>030) then result:=FGeral.Formatavalor(v,mascara)
+  else result:='+'+FGeral.Formatavalor(v,copy(mascara,2,5));
+
+end;
+
+// 21.11.17
+function TFOcorrencias.FormataValorEixo(v: currency; mascara: string): string;
+//////////////////////////////////////////////////////////////////////////////////
+begin
+
+  result:=FGeral.Formatavalor(v,mascara);
+
+end;
+
+procedure TFOcorrencias.bCancelarClick(Sender: TObject);
+begin
+  Memo.Enabled:=False;
+  bGravar.White;
+  bIncluir.Black;
+  bAlterar.Black;
+  TipoMov:='';
+//  GridNewRecord(Self);
+end;
+
+procedure TFOcorrencias.PreparaEdicao;
+//////////////////////////////////////////
+begin
+  bIncluir.Black;
+  bAlterar.Black;
+  bGravar.Black;
+  if TipoMov='I' then begin
+     Memo.Clear;
+     bIncluir.Red;
+  end else begin
+     bAlterar.Red;
+  end;
+  Memo.Enabled:=True;
+  Memo.SetFocus;
+end;
+
+procedure TFOcorrencias.bfecharClick(Sender: TObject);
+begin
+  POculos.Visible:=false;
+  POculos.Enabled:=false;
+end;
+
+procedure TFOcorrencias.TOcorrenciasNewRecord(DataSet: TDataSet);
+begin
+  if (not TOcorrencias.Eof) and ( Tipomov<>'I') then
+     Memo.Text := TOcorrencias.FieldByName('Ocor_Descricao').Text;
+
+end;
+
+// 07.02.17
+procedure TFOcorrencias.bimpatestadoClick(Sender: TObject);
+/////////////////////////////////////////////////////////
+var i,margem:integer;
+    xnome,xnome1:string;
+begin
+
+//  "Atesto para os devidos fins que o paciente.............. deve afastar-se de suas atividades pelo periodo
+//  de ' data inicial e data final .    ( se for um dia escrever um dia )
+
+//  2 linhas e nome do medico e linha pra assinar
+
+  margem:=03;
+  if not Sistema.GetDataMvto('Data de emissão') then exit;
+  if not Sistema.GetPeriodo('Informe período') then exit;
+//  xnome:=Arq.TClientes.FieldByName('clie_nome').asstring;
+// 11.10.17
+  xnome:=nomedaentidade;
+  if not Input('Nome','Paciente',xnome,50,false) then exit;
+
+  FTextRel.Init(60,nil,nil,0,true);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha(space(margem)+'ATESTADO',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  i:=50-length(trim(xnome));
+  xnome1:=trim(xnome)+' '+replicate('X',i);
+  FTextRel.AddLinha(space(margem)+space(05)+'Atesto para os devidos fins que o paciente',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha(space(margem)+strspace(xnome1,47),false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha(space(margem)+'deve afastar-se de suas atividades pelo período',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  if trunc(Sistema.Dataf-Sistema.Datai)=0 then
+    FTextRel.AddLinha(space(margem)+'de Um dia.',false,false,false)
+  else
+    FTextRel.AddLinha(space(margem)+'de '+FGeral.FormataData(Sistema.Datai)+
+                      ' a '+FGeral.FormataData(Sistema.Dataf)+'.',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha(space(margem)+'Data : '+FGeral.FormataData(Sistema.DataMvto),false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha(space(margem)+'______________________________',false,false,false);
+  FTextRel.AddLinha('',false,false,false);
+  FTextRel.AddLinha(space(margem)+strspace(FUnidades.GetNome(Global.CodigoUnidade) ,40),false,false,false);
+//  FTextRel.Print();
+  FGeral.Imprimesemvideo();
+//  FTextRel.Video();
+
+
+end;
+
+// 25.02.17
+procedure TFOcorrencias.bimpoculosClick(Sender: TObject);
+//////////////////////////////////////////////////////////
+var i,margem,tam:integer;
+    xnome,xnome1,xobs:string;
+    condensado:boolean;
+    QU:TSqlquery;
+      WordApp: Variant;
+      Documento: Olevariant;
+      xcomando,nomearquivo:string;
+      p : byte;
+      ListaComandos:TStringList;
+
+const formato:string='##0.00';
+const formatoeixo:string='###';
+
+//const formato:string='000.00';
+//const formatoeixo:string='000';
+
+
+
+      Function Retorno(xcom:string):string;
+      //////////////////////////////////////
+      begin
+        if xcom='@Paciente' then result:=xnome
+        else if xcom='@Data' then result:=FGeral.FormataData(Sistema.DataMvto)
+        else if xcom='@Obs'  then result:=xobs
+        else if xcom='@ODEL' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongeesfe').AsCurrency,formato)
+        else if xcom='@ODCL' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongecili').AsCurrency,formato)
+        else if xcom='@ODFL' then result:=FormatavalorEixo(TOcorrencias.Fieldbyname('ocor_odlongeeixo').AsCurrency,formatoeixo)
+        else if xcom='@OEEL' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_oelongeesfe').AsCurrency,formato)
+        else if xcom='@OECL' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_oelongecili').AsCurrency,formato)
+        else if xcom='@OEFL' then result:=FormatavalorEixo(TOcorrencias.Fieldbyname('ocor_oelongeeixo').AsCurrency,formatoeixo)
+        else if xcom='@ODEP' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_odpertoesfe').AsCurrency,formato)
+        else if xcom='@ODCP' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_odpertocili').AsCurrency,formato)
+        else if xcom='@ODFP' then result:=FormatavalorEixo(TOcorrencias.Fieldbyname('ocor_odpertoeixo').AsCurrency,formatoeixo)
+        else if xcom='@OEEP' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_oepertoesfe').AsCurrency,formato)
+        else if xcom='@OECP' then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_oepertocili').AsCurrency,formato)
+        else if xcom='@OEFP' then result:=FormatavalorEixo(TOcorrencias.Fieldbyname('ocor_oepertoeixo').AsCurrency,formatoeixo)
+        else if xcom='@DPP'  then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_dpperto').AsCurrency,formato)
+        else if xcom='@DPL'  then result:=Formatavalor(TOcorrencias.Fieldbyname('ocor_dplonge').AsCurrency,formato);
+      end;
+
+
+begin
+
+  margem:=03;
+  tam:=45;
+  condensado:=false;
+  if not Sistema.GetDataMvto('Data de emissão') then exit;
+  xnome:=Arq.TClientes.FieldByName('clie_nome').asstring;
+// 11.10.17
+  xnome:=nomedaentidade;
+  if not Input('Nome','Paciente',xnome,44,false) then exit;
+  if not Input('Observação','Obs:',xobs,50,false) then exit;
+  QU:=sqltoquery('select * from unidades where unid_codigo='+Stringtosql(Global.CodigoUnidade));
+
+// 28.09.07
+  NomeArquivo:= ExtractFilePath(Application.ExeName) +  'ModeloReceita.docx' ;
+  if FileExists( Nomearquivo ) then begin
+      WordApp:= CreateOleObject('Word.Application');
+      try
+
+        WordApp.Visible := False;
+        Documento := WordApp.Documents.Open(NomeArquivo);
+
+        ListaComandos:=TStringList.Create;
+        ListaComandos.add('@Paciente');
+        ListaComandos.add('@Data');
+        ListaComandos.add('@Obs');
+        ListaComandos.add('@ODEL');
+        ListaComandos.add('@ODCL');
+        ListaComandos.add('@ODFL');
+        ListaComandos.add('@OEEL');
+        ListaComandos.add('@OECL');
+        ListaComandos.add('@OEFL');
+        ListaComandos.add('@ODEP');
+        ListaComandos.add('@ODCP');
+        ListaComandos.add('@ODFP');
+        ListaComandos.add('@OEEP');
+        ListaComandos.add('@OECP');
+        ListaComandos.add('@OEFP');
+        ListaComandos.add('@DPL');
+        ListaComandos.add('@DPP');
+
+        for p:=0 to ListaComandos.count-1 do begin
+          xcomando:=ListaComandos[p];
+          Documento.Content.Find.Execute(FindText := xcomando , ReplaceWith := Retorno(xcomando) );
+        end;
+
+//        WordApp.Visible := True;
+
+        Documento.SaveAs( ExtractFilePath( Application.ExeName ) + 'RECEITA '+xnome+'.docx');
+        Documento.close;
+        Documento := WordApp.Documents.Open( ExtractFilePath( Application.ExeName ) + 'RECEITA '+xnome+'.docx');
+
+        Documento.PrintOut(copies := 1 );
+
+        Documento.close;
+
+
+//        Documento.open;
+      finally
+        WordApp.Quit;
+        DeleteFile( ExtractFilePath( Application.ExeName ) + 'RECEITA '+xnome+'.docx');
+      end;
+
+
+  end else begin
+
+      FTextRel.Init(60,nil,nil,0,true);
+      FTextRel.AddLinha('',false,false,condensado);
+      FTextRel.AddLinha(QU.fieldbyname('unid_razaosocial').asstring,false,false,condensado);
+      FTextRel.AddLinha(QU.fieldbyname('unid_endereco').asstring,false,false,condensado);
+      FTextRel.AddLinha(QU.fieldbyname('unid_fone').asstring,false,false,condensado);
+      FTextRel.AddLinha('',false,false,condensado);
+      FTextRel.AddLinha('',false,false,condensado);
+      FTextRel.AddLinha('Data  : '+FGeral.FormataData(Sistema.DataMvto)+
+                         space(38+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+      FGeral.FechaQuery(QU);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+'| Para longe | Esférico | Cilíndrico |  Eixo  |',false,false,condensado);
+      FTextRel.AddLinha('Sr.(a): '+copy(xnome+space(50),1,44)+space(02+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+'|    O.D.    |'+
+                        space(03)+Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongeesfe').AsCurrency,formato)+' | '+
+                        space(04)+Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongecili').AsCurrency,formato)+' | '+
+                        Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongeeixo').AsCurrency,formatoeixo)+' | '
+                        ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+      if trim(xobs)='' then xobs:=space(50);
+
+      FTextRel.AddLinha('Obs.  : '+copy(xobs+space(25),1,25)+space(21+2)+'|'+
+                        space(03)+'|    O.E.    |'+
+                        space(03)+Formatavalor(TOcorrencias.Fieldbyname('ocor_oelongeesfe').AsCurrency,formato)+' | '+
+                        space(04)+Formatavalor(TOcorrencias.Fieldbyname('ocor_oelongecili').AsCurrency,formato)+' | '+
+                        Formatavalor(TOcorrencias.Fieldbyname('ocor_oelongeeixo').AsCurrency,formatoeixo)+' | '
+                                 ,false,false,condensado);
+      FTextRel.AddLinha('        '+copy(xobs+space(50),26,25)+space(21+2)+
+                        '|'+space(03)+' '+replicate('-',tam)
+                                 ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+'| Para perto | Esférico | Cilíndrico |  Eixo  |',false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+'|    O.D.    |'+
+                        space(03)+Formatavalor(TOcorrencias.Fieldbyname('ocor_odpertoesfe').AsCurrency,formato)+' | '+
+                        space(04)+Formatavalor(TOcorrencias.Fieldbyname('ocor_odpertocili').AsCurrency,formato)+' | '+
+                        Formatavalor(TOcorrencias.Fieldbyname('ocor_odpertoeixo').AsCurrency,formato)+' | '
+                        ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+
+                        space(03)+'|    O.E.    |'+
+                        space(03)+Formatavalor(TOcorrencias.Fieldbyname('ocor_oepertoesfe').AsCurrency,formato)+' | '+
+                        space(04)+Formatavalor(TOcorrencias.Fieldbyname('ocor_oepertocili').AsCurrency,formato)+' | '+
+                        Formatavalor(TOcorrencias.Fieldbyname('ocor_oepertoeixo').AsCurrency,formato)+' | '
+                                 ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+
+                        space(03)+'| D.P (longe)|'+
+                        space(03)+Formatavalor(TOcorrencias.Fieldbyname('ocor_dplonge').AsCurrency,formato)+
+                        space(02)+'|D.P.(perto)| '+
+                        Formatavalor(TOcorrencias.Fieldbyname('ocor_dpperto').AsCurrency,formato)+' | '
+                                 ,false,false,condensado);
+      FTextRel.AddLinha(space(54+2)+'|'+space(03)+' '+replicate('-',tam)
+                        ,false,false,condensado);
+
+
+    {
+      FTextRel.AddLinha(' '+replicate('-',tam),false,false,condensado);
+      FTextRel.AddLinha('| Para longe | Esférico | Cilíndrico | Eixo |',false,false,condensado);
+      FTextRel.AddLinha(' '+replicate('-',tam),false,false,condensado);
+      FTextRel.AddLinha('| O.D.       |'+FGeral.Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongeesfe').AsCurrency,f_cr)+' | '+
+                        FGeral.Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongecili').AsCurrency,f_cr)+' | '+
+                        FGeral.Formatavalor(TOcorrencias.Fieldbyname('ocor_odlongeeixo').AsCurrency,f_cr)+' | '
+                        ,false,false,condensado);
+      FTextRel.AddLinha(' '+replicate('-',tam),false,false,condensado);
+      }
+      FTextRel.AddLinha('____/____/____  _______________________________________',false,false,condensado);
+    //  FTextRel.AddLinha('',false,false,false);
+      FTextRel.AddLinha(space(16)+strspace(FUnidades.GetNome(Global.CodigoUnidade) ,34),false,false,condensado);
+    //  FGeral.Imprimesemvideo();
+      FTextRel.Video('',8);
+
+  end;
+
+end;
+
+procedure TFOcorrencias.bIncluirClick(Sender: TObject);
+begin
+  TipoMov:='I';
+  PreparaEdicao;
+end;
+
+// 12.02.17
+procedure TFOcorrencias.boculosClick(Sender: TObject);
+//////////////////////////////////////////////////////////
+begin
+  poculos.visible:=true;
+  poculos.enabled:=true;
+  Gridoculos.Cells[00,1]:='O.D.';
+  Gridoculos.Cells[00,2]:='O.E.';
+  Gridoculos.Cells[00,3]:='Para Perto';
+  Gridoculos.Cells[01,3]:='Esférico';
+  Gridoculos.Cells[02,3]:='Cilíndrico';
+  Gridoculos.Cells[03,3]:='Eixo';
+  Gridoculos.Cells[00,4]:='O.D.';
+  Gridoculos.Cells[00,5]:='O.E.';
+  Gridoculos.Cells[00,6]:='D.P.Longe';
+  Gridoculos.Cells[02,6]:='D.P.Perto';
+// dados
+  Gridoculos.Cells[01,2]:=TOcorrencias.FieldByName('ocor_oelongeesfe').AsString;
+  Gridoculos.Cells[02,2]:=TOcorrencias.FieldByName('ocor_oelongecili').AsString;
+  Gridoculos.Cells[03,2]:=TOcorrencias.FieldByName('ocor_oelongeeixo').AsString;
+  Gridoculos.Cells[01,1]:=TOcorrencias.FieldByName('ocor_odlongeesfe').AsString;
+  Gridoculos.Cells[02,1]:=TOcorrencias.FieldByName('ocor_odlongecili').AsString;
+  Gridoculos.Cells[03,1]:=TOcorrencias.FieldByName('ocor_odlongeeixo').AsString;
+  GridOculos.Cells[01,04]:=TOcorrencias.Fieldbyname('ocor_odpertoesfe').AsString;
+  GridOculos.Cells[02,04]:=TOcorrencias.Fieldbyname('ocor_odpertocili').AsString;
+  GridOculos.Cells[03,04]:=TOcorrencias.Fieldbyname('ocor_odpertoeixo').AsString;
+  GridOculos.Cells[01,05]:=TOcorrencias.Fieldbyname('ocor_oepertoesfe').AsString;
+  GridOculos.Cells[02,05]:=TOcorrencias.Fieldbyname('ocor_oepertocili').AsString;
+  GridOculos.Cells[03,05]:=TOcorrencias.Fieldbyname('ocor_oepertoeixo').AsString;
+  GridOculos.Cells[01,06]:=TOcorrencias.Fieldbyname('ocor_dplonge').AsString;
+  GridOculos.Cells[03,06]:=TOcorrencias.Fieldbyname('ocor_dpperto').AsString;
+
+  GridOculos.SetFocus;
+
+end;
+
+procedure TFOcorrencias.boculosDblClick(Sender: TObject);
+begin
+
+end;
+
+// 12.02.17
+procedure TFOcorrencias.breceitaClick(Sender: TObject);
+///////////////////////////////////////////////////////////
+var i,margem:integer;
+    xnome:string;
+
+//////////////////////////////////
+begin
+///////////////////////////////////////////
+  if TOcorrencias.Eof then exit;
+  if TOcorrencias.FieldByName('Ocor_Descricao').AsString='' then exit;
+//  if not  FTextrel.PrintDialog.Execute then exit;
+//  FTextrel.Impr.NomeImpressora:=FTextrel.Impr.PegaImpPadrao;
+  margem:=05;
+  if not Sistema.GetDataMvto('Data') then exit;
+//  xnome:=Arq.TClientes.FieldByName('clie_nome').asstring;
+// 11.10.17
+  xnome:=nomedaentidade;
+
+  if not Input('Nome','Paciente',xnome,50,false) then exit;
+
+
+
+    FTextRel.Init(60,nil,nil,0,true);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha(space(margem)+xnome,false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    for i:=0 to Memo.Lines.Count-1 do begin
+        FTextRel.AddLinha(space(margem)+Memo.Lines[i],false,false,false);
+    end;
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha('',false,false,false);
+    FTextRel.AddLinha(space(margem)+'Data : '+FGeral.FormataData(Sistema.DataMvto),false,false,false);
+  //  FTextRel.Print();
+    FGeral.Imprimesemvideo();
+  //  FTextRel.Video();
+
+end;
+
+procedure TFOcorrencias.bAlterarClick(Sender: TObject);
+begin
+  if TOcorrencias.IsEmpty then Exit;
+  TipoMov:='A';
+  PreparaEdicao;
+end;
+
+procedure TFOcorrencias.bGravarClick(Sender: TObject);
+/////////////////////////////////////////////////////////
+var GravaUsu:Boolean;
+    Texto   :string;
+
+begin
+  GravaUsu:=False;
+  if TipoMov='I' then begin
+
+     TOcorrencias.Insert;
+     TOcorrencias.FieldByName('Ocor_CatEntidade').AsString:=Categoria;
+     TOcorrencias.FieldByName('Ocor_CodEntidade').AsInteger:=Entidade;
+     TOcorrencias.FieldByName('Ocor_Data').AsDateTime:=Sistema.Hoje;
+     TOcorrencias.FieldByName('Ocor_Unid_Codigo').AsString:=Global.CodigoUnidade;
+     TOcorrencias.FieldByName('Ocor_Descricao').AsString:=Memo.Text;
+     GravaUsu:=True;
+
+  end else if TipoMov='A' then begin
+
+     GravaUsu:=TOcorrencias.FieldByName('Ocor_Descricao').AsString<>Memo.Text;
+     Texto := Memo.text;
+     TOcorrencias.Edit;
+//     TOcorrencias.FieldByName('Ocor_Descricao').AsString:=Memo.Text;
+     TOcorrencias.FieldByName('Ocor_Descricao').AsString := Texto;
+
+  end;
+
+  if GravaUsu then TOcorrencias.FieldByName('Ocor_Usuario').AsInteger:=Global.Usuario.Codigo;
+  TOcorrencias.FieldByName('ocor_numerodoc').Asinteger:=Numerodoc;
+  if Arq.TCadOcorrencias.active then
+    TOcorrencias.FieldByName('ocor_caoc_codigo').Asinteger:=Arq.TCadOcorrencias.fieldbyname('caoc_codigo').asinteger;
+  TOcorrencias.FieldByName('ocor_status').Asstring:='N';
+  TOcorrencias.FieldByName('ocor_tipoocor').asstring:=Tipoocor;
+
+  TOcorrencias.Post;
+  TOcorrencias.Commit;
+  bCancelarClick(Self);
+end;
+
+procedure TFOcorrencias.bgravargridClick(Sender: TObject);
+//////////////////////////////////////////////////////////
+///
+         procedure GravaOculos;
+         //////////////////////
+         begin
+           TOcorrencias.Fieldbyname('ocor_odlongeesfe').AsCurrency:=TextToValor(GridOculos.Cells[01,01]);
+           TOcorrencias.Fieldbyname('ocor_odlongecili').AsCurrency:=TextToValor(GridOculos.Cells[02,01]);
+           TOcorrencias.Fieldbyname('ocor_odlongeeixo').AsCurrency:=TextToValor(GridOculos.Cells[03,01]);
+           TOcorrencias.Fieldbyname('ocor_oelongeesfe').AsCurrency:=TextToValor(GridOculos.Cells[01,02]);
+           TOcorrencias.Fieldbyname('ocor_oelongecili').AsCurrency:=TextToValor(GridOculos.Cells[02,02]);
+           TOcorrencias.Fieldbyname('ocor_oelongeeixo').AsCurrency:=TextToValor(GridOculos.Cells[03,02]);
+           TOcorrencias.Fieldbyname('ocor_odpertoesfe').AsCurrency:=TextToValor(GridOculos.Cells[01,04]);
+           TOcorrencias.Fieldbyname('ocor_odpertocili').AsCurrency:=TextToValor(GridOculos.Cells[02,04]);
+           TOcorrencias.Fieldbyname('ocor_odpertoeixo').AsCurrency:=TextToValor(GridOculos.Cells[03,04]);
+           TOcorrencias.Fieldbyname('ocor_oepertoesfe').AsCurrency:=TextToValor(GridOculos.Cells[01,05]);
+           TOcorrencias.Fieldbyname('ocor_oepertocili').AsCurrency:=TextToValor(GridOculos.Cells[02,05]);
+           TOcorrencias.Fieldbyname('ocor_oepertoeixo').AsCurrency:=TextToValor(GridOculos.Cells[03,05]);
+           TOcorrencias.Fieldbyname('ocor_dplonge').AsCurrency:=TextToValor(GridOculos.Cells[01,06]);
+           TOcorrencias.Fieldbyname('ocor_dpperto').AsCurrency:=TextToValor(GridOculos.Cells[03,06]);
+           TOcorrencias.FieldByName('Ocor_Descricao').AsString:='OCULOS';
+         end;
+begin
+  if TOcorrencias.Fieldbyname('ocor_tipoocor').asstring='O' then begin
+    TOcorrencias.Edit;
+    gravaoculos
+  end else begin
+     TOcorrencias.Insert;
+     TOcorrencias.Fieldbyname('ocor_tipoocor').AsString:='O';
+     TOcorrencias.Fieldbyname('ocor_catentidade').AsString:=Categoria;
+     TOcorrencias.Fieldbyname('ocor_codentidade').AsInteger:=Entidade;
+     TOcorrencias.FieldByName('Ocor_Data').AsDateTime:=Sistema.Hoje;
+     TOcorrencias.FieldByName('Ocor_Unid_Codigo').AsString:=Global.CodigoUnidade;
+     TOcorrencias.FieldByName('Ocor_Usuario').AsInteger:=Global.Usuario.Codigo;
+     TOcorrencias.FieldByName('ocor_status').AsString:='N';
+     gravaoculos;
+  end;
+  TOcorrencias.Post;
+  TOcorrencias.Commit;
+end;
+
+procedure TFOcorrencias.GridKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+//   Memo.Text := TOcorrencias.FieldByName('Ocor_Descricao').Text;
+end;
+
+procedure TFOcorrencias.gridoculosDblClick(Sender: TObject);
+begin
+   if Gridoculos.Col>=1 then begin
+     EdOculos.Top:=GridOculos.TopEdit;
+     EdOculos.Left:=GridOculos.LeftEdit+1;
+     EdOculos.visible:=true;
+     EdOculos.enabled:=true;
+     EdOculos.text:=Gridoculos.Cells[Gridoculos.Col,Gridoculos.row];
+     EdOculos.SetFocus;
+   end;
+
+end;
+
+procedure TFOcorrencias.gridoculosKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then gridoculosDblClick(Self);
+
+end;
+
+procedure TFOcorrencias.MemoExit(Sender: TObject);
+begin
+  bCancelarClick(Self);
+end;
+
+procedure TFOcorrencias.bRelatorioClick(Sender: TObject);
+////////////////////////////////////////////////////////////
+var i:Integer; P:Pointer;
+begin
+  FRel.Init('RelOcorrencias');
+  FRel.AddTit('Relação de '+Caption);
+  FRel.AddCol(70,1,'D','','','Data','','Data da ocorrência',False);;
+  FRel.AddCol(40,1,'C','','','Unid','','Código da unidade',False);;
+  FRel.AddCol(60,1,'C','','','Usuário','','Código do Usuário',False);;
+  FRel.AddCol(60,1,'N','','','Documento','','Numero do documento',False);;
+  FRel.AddCol(400,1,'C','','','Ocorrência','','Descrição da ocorrência',False);;
+  TOcorrencias.DisableControls;
+  P:=TOcorrencias.GetBookmark;
+  TOcorrencias.First;
+  while not TOcorrencias.Eof do begin
+     Memo.Text:=TOcorrencias.FieldByName('Ocor_Descricao').AsString;
+     if Memo.Lines.Count>0 then begin
+        FRel.AddCel(TOcorrencias.FieldByName('Ocor_Data').AsString);
+        FRel.AddCel(TOcorrencias.FieldByName('Ocor_Unid_Codigo').AsString);
+        FRel.AddCel(TOcorrencias.FieldByName('Ocor_Usuario').AsString);
+        FRel.AddCel(TOcorrencias.FieldByName('Ocor_numerodoc').AsString);
+        FRel.AddCel(Memo.Lines[0]);
+        for i:=1 to Memo.Lines.Count-1 do begin
+            FRel.AddCel(''); FRel.AddCel(''); FRel.AddCel('');  FRel.AddCel('');
+            FRel.AddCel(Memo.Lines[i]);
+        end;
+     end;
+     TOcorrencias.Next;
+  end;
+  FRel.Video;
+  TOcorrencias.GotoBookmark(P);
+  TOcorrencias.EnableControls;
+  Memo.Text:=TOcorrencias.FieldByName('Ocor_Descricao').AsString;
+end;
+
+procedure TFOcorrencias.bExcluirClick(Sender: TObject);
+begin
+   if not Confirma('Confirma exclusão') then exit;
+   TOcorrencias.Edit;
+   TOcorrencias.fieldbyname('ocor_status').asstring:='C';
+   TOcorrencias.Post;
+   TOcorrencias.Commit;
+   TOcorrencias.Refresh;
+end;
+
+function TFOcorrencias.GetObservacao(const CatEntidade: String;  const CodEntidade: Integer; Numero: integer): string;
+var Q:TSqlquery;
+begin
+   Q:=sqltoquery('select ocor_descricao from ocorrencias where ocor_codentidade='+inttostr(Codentidade)+
+       ' and ocor_numerodoc='+inttostr(numero)+' and ocor_status=''N'' and ocor_catentidade='+stringtosql(catentidade)+
+       ' order by ocor_data');
+   result:='';
+   if Q.eof then begin
+     Q.close;
+     Freeandnil(Q);
+     Q:=sqltoquery('select ocor_descricao from ocorrencias where ocor_codentidade='+inttostr(Codentidade)+
+       ' and ocor_numerodoc=0 and ocor_status=''N'' and ocor_catentidade='+stringtosql(catentidade)+
+       ' order by ocor_data');
+   end;
+//   if not Q.eof then
+// 21.08.06
+   while not Q.eof do begin
+     result:=result+Q.fieldbyname('ocor_descricao').asstring+' ';
+     Q.Next;
+   end;
+   Q.close;
+   Freeandnil(Q);
+end;
+
+function TFOcorrencias.GetCodigoOcorrencia(const CatEntidade: String;
+  const CodEntidade: Integer; Numero: integer ; Datamvto:TDatetime): integer;
+var Q:TSqlquery;
+begin
+   Q:=sqltoquery('select ocor_caoc_codigo,ocor_tipoocor  from ocorrencias where ocor_codentidade='+inttostr(Codentidade)+
+       ' and ocor_numerodoc='+inttostr(numero)+' and ocor_status=''N'' and ocor_catentidade='+stringtosql(catentidade)+
+       ' and ocor_data>='+Datetosql(datamvto));
+   result:=0;
+   if Q.eof then begin
+     Q.close;
+     Freeandnil(Q);
+     Q:=sqltoquery('select ocor_caoc_codigo from ocorrencias where ocor_codentidade='+inttostr(Codentidade)+
+       ' and ocor_numerodoc=0 and ocor_status=''N'' and ocor_catentidade='+stringtosql(catentidade)+
+       ' and ocor_data>='+Datetosql(datamvto));
+   end;
+   if not Q.eof then
+//     result:=Q.fieldbyname('ocor_caoc_codigo').asinteger;
+// 01.08.06
+     result:=strtointdef(Q.fieldbyname('ocor_tipoocor').asstring,0);
+   Q.close;
+   Freeandnil(Q);
+
+end;
+
+procedure TFOcorrencias.brelpendentesClick(Sender: TObject);
+begin
+  if not Sistema.Processando then FRelFinan_Pendentes('R',Entidade);
+//  if not Sistema.Processando then FRelFinan_Pendencias('R','',2,Entidade);
+end;
+
+procedure TFOcorrencias.DtsDataChange(Sender: TObject; Field: TField);
+begin
+
+     Memo.text := TOcorrencias.fieldbyname('ocor_descricao').asstring;
+
+end;
+
+end.
+

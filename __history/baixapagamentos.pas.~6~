@@ -1,0 +1,204 @@
+unit baixapagamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ACBrBase, ACBrBoleto, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.Mask, SQLEd, Vcl.Grids, SqlDtg, SQLBtn, alabel, Vcl.ExtCtrls,
+  SQLGrid, SqlExpr;
+
+type
+  TFBaixaPagamentos = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bbaixar: TSQLBtn;
+    bSair: TSQLBtn;
+    bpendentes: TSQLBtn;
+    bexclui: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    EdSeunumero: TSQLEd;
+    Edvencimento: TSQLEd;
+    PAcerto: TSQLPanelGrid;
+    bprocurar: TSQLBtn;
+    EdArquivo: TSQLEd;
+    EdValorpago: TSQLEd;
+    EdDataBaixa: TSQLEd;
+    Edbanco: TSQLEd;
+    EdBanco_descricao: TSQLEd;
+    OpenDialog1: TOpenDialog;
+    procedure EdDataBaixaValidate(Sender: TObject);
+    procedure EdbancoValidate(Sender: TObject);
+    procedure EdArquivoValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+
+  end;
+
+var
+  FBaixaPagamentos: TFBaixaPagamentos;
+  unidadetituloachado,
+  sqldatacont         :string;
+  DataBaixa           :Tdatetime;
+  QBanco              :TSqlquery;
+
+implementation
+
+uses sqlfun , Geral, Sqlsis , plano, relfinan, Unidades, cadcli;
+
+
+{$R *.dfm}
+
+{ TFBaixaPagamentos }
+
+procedure TFBaixaPagamentos.EdArquivoValidate(Sender: TObject);
+//////////////////////////////////////////////////////////////////
+var cnab240400,
+    numerobanco,
+    g_erro      : string ;
+    Mat         : TStringList;
+    p,tamnossonum,colparcela,tamparcela,
+    coldecimais,colvencimento,tamvencimento,tamnumerodoc,colnumerodoc,colocorrencia,colmotivo,
+    tammotivo,tamdataocor,coldataocor,coljuros,tamjuros,coldescontos,tamdescontos,
+    colcodbarra, tamcodbarra,
+    x               :integer;
+    condicao        :boolean;
+
+begin
+
+   if not Fileexists( EdArquivo.text ) then begin
+     EdArquivo.INvalid('Arquivo '+EdArquivo.text+' não encontrado');
+     exit;
+   end;
+
+   cnab240400:='240';
+
+   Sistema.BeginProcess('Lendo arquivo '+EdArquivo.Text);
+
+   Mat:=TStringList.Create;
+   Mat.LoadFromFile(EdArquivo.text);
+
+   Try
+  		g_erro := copy( Mat.Strings[0],10,1 );
+   Except
+      Sistema.EndProcess('Arquivo de retorno inválido');
+      Mat.Free;
+      exit;
+   End;
+   Grid.clear;
+   if copy( Mat[0],143,1 ) <> '2' then begin
+
+      Sistema.EndProcess('Arquivo não é de retorno');
+      Mat.Free;
+      exit;
+
+   End;
+
+   numerobanco:=copy( Mat.Strings[0],001,03 );
+
+   if  AnsiPos(  copy( Mat.Strings[0],001,03 ),'341;104;001;422') > 0 then cnab240400:='240';
+
+   colcodbarra   :=18;
+   tamcodbarra   :=44;
+   colparcela    :=100;
+   tamparcela    :=13;
+   coldecimais   :=112;
+   colvencimento :=92;
+   tamvencimento :=8;
+   tamnumerodoc  :=20;
+   colnumerodoc  :=183;
+   colocorrencia :=231;
+   colmotivo     :=0;
+   coldataocor   :=145;
+   tamdataocor   :=8;
+   coljuros      :=130;
+   tamjuros      :=15;
+   coldescontos  :=115;
+   tamdescontos  :=15;
+
+    for p:=0 to Mat.count-1 do begin
+
+      condicao:=true;
+      if numerobanco='341' then
+        condicao:=( AnsiPos( copy( Mat.Strings[p],14,1 ),'J')>0 );
+
+      if ( condicao ) and ( p>0 ) then begin
+
+        if p=0 then
+           x:=1
+        else
+           inc(x);
+
+      end;
+
+    end; // for mat.count-1
+
+
+end;
+
+procedure TFBaixaPagamentos.EdbancoValidate(Sender: TObject);
+////////////////////////////////////////////////////////////////////
+begin
+
+ QBanco:=sqltoquery('select * from plano where plan_conta='+EdBanco.assql);
+ if not QBanco.eof then begin
+
+    EdBanco_descricao.text:=QBanco.fieldbyname('plan_descricao').asstring;
+    if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='' then begin
+      EdBAnco.invalid('Codigo do Banco não configurado nas contas gerenciais');
+      exit;
+    end;
+
+    opendialog1.filterindex:=1 ;
+
+    if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='422' then begin
+
+       opendialog1.filterindex:=3
+
+    end else if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='748' then begin
+
+       opendialog1.filterindex:=2
+
+    end;
+
+ end else
+
+    EdBAnco.invalid('Banco não encontrado');
+
+end;
+
+procedure TFBaixaPagamentos.EdDataBaixaValidate(Sender: TObject);
+//////////////////////////////////////////////////////////////////////
+begin
+
+   if not FGeral.ValidaMvto(EdDAtaBaixa) then EdDataBaixa.Invalid('');
+
+end;
+
+procedure TFBaixaPagamentos.Execute;
+///////////////////////////////////////
+begin
+   show;
+   Grid.clear;
+   FGeral.ConfiguraColorEditsNaoEnabled(FBaixaPagamentos);
+   FPlano.SetaItems(EdBanco,EdBanco_descricao,'B','','','S');
+   EdDataBaixa.SetFocus;
+   unidadetituloachado:=Global.CodigoUnidade;
+   DataBaixa:=Sistema.Hoje;
+   EdDataBaixa.setdate(sistema.hoje);
+    if Global.Usuario.OutrosAcessos[0721] then
+      sqldatacont:=''
+    else
+      sqldatacont:=' and pend_datacont > '+DatetoSql(Global.DataMenorBanco);
+
+end;
+
+end.

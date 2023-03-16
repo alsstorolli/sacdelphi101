@@ -1,0 +1,15 @@
+
+--------------------------------------------------------------------------------
+ATIVAR - 29/07/20 08:14:32:551 - Modelo: Filizola - Porta: COM9         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE= MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ATIVAR - 29/07/20 08:15:04:361 - Modelo: Filizola - Porta: COM9         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE= MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ATIVAR - 29/07/20 08:15:16:861 - Modelo: Filizola - Porta: COM9         Device: BAUD=9600 DATA=8 PARITY=N STOP=1 HANDSHAKE= MAXBANDWIDTH=0 SENDBYTESCOUNT=0 SENDBYTESINTERVAL=0
+--------------------------------------------------------------------------------
+

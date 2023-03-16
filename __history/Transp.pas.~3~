@@ -1,0 +1,423 @@
+unit Transp;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, DB, Grids, DBGrids, SQLGrid, ExtCtrls,
+  Buttons, SQLBtn, alabel, SqlSis;
+
+type
+  TFTransp = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    bEditar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    DSCadastro: TDataSource;
+    EdTran_codigo: TSQLEd;
+    EdTran_nome: TSQLEd;
+    EdTran_razaosocial: TSQLEd;
+    EdTran_cnpjcpf: TSQLEd;
+    EdTran_inscricaoestadual: TSQLEd;
+    EdTran_inscricaomunicipal: TSQLEd;
+    EdTran_regjuntacomercial: TSQLEd;
+    EdTran_endereco: TSQLEd;
+    EdTran_bairro: TSQLEd;
+    EdTran_cep: TSQLEd;
+    EdTran_cxpostal: TSQLEd;
+    EdTran_cida_codigo: TSQLEd;
+    EdTran_fone: TSQLEd;
+    EdTran_fax: TSQLEd;
+    EdTran_email: TSQLEd;
+    EdTran_placa: TSQLEd;
+    EdTran_ufplaca: TSQLEd;
+    EdTran_usua_codigo: TSQLEd;
+    SetEdcida_nome: TSQLEd;
+    EdNomCtaGerencial: TSQLEd;
+    EdTran_contagerencial: TSQLEd;
+    EdTran_proprio: TSQLEd;
+    EdTran_cola_codigo: TSQLEd;
+    SetEdCOLA_NOME: TSQLEd;
+    edTran_tara: TSQLEd;
+    Edtran_pesomaximo: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure bEditarClick(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure GridNewRecord(Sender: TObject);
+    procedure bCancelarClick(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure EdTran_ufplacaExitEdit(Sender: TObject);
+    procedure EdTran_codigoKeyPress(Sender: TObject; var Key: Char);
+    procedure EdTran_placaValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    function GetUF(codigo:integer):string;
+    function GetNome(codigo:string):string;
+    function GetRazaoSocial(codigo:string):string;
+    function GetCnpjCpf(codigo:string):string;
+    function GetInsEst(codigo:string):string;
+    function GetCidade(codigo:string):string;
+    function GetPlaca(codigo:string):string;
+    procedure SetaItems(Edit:TSqlEd);
+    function ValidaPlaca(Ed:TSqled):boolean;
+
+  end;
+
+var
+  FTransp: TFTransp;
+  Op:string;
+  Campo:TDicionario;
+
+implementation
+
+uses Arquiv, munic, SQLRel, SqlExpr, Sqlfun, Geral, colaboradores;
+
+{$R *.dfm}
+
+procedure TFTransp.bIncluirClick(Sender: TObject);
+begin
+  Op:='I';
+  EdTran_Codigo.SetStatusEdits(Self,99,seEdit);
+  PEdits.Visible:=true;
+  PEdits.EnableEdits;
+  bSair.enabled:=false;
+//  Grid.Cancel;
+  EdTran_Codigo.ClearAll(Self,99);
+  EdTran_codigo.text:=strzero(FGeral.getsequencial(1,'tran_codigo','C','transportadores'),3);
+  EdTran_Codigo.SetFocus;
+
+end;
+
+procedure TFTransp.bEditarClick(Sender: TObject);
+begin
+  if Arq.TTransp.isempty then exit;
+  Op:='E';
+  EdTran_Codigo.SetStatusEdits(Self,99,seEditAll);
+// 22.10.16
+  campo:=Sistema.GetDicionario('TRANSPORTADORES','tran_tara');
+  if trim(campo.tipo)='' then begin
+     EdTran_tara.enabled:=false;
+     EdTran_tara.tablename:='';
+     EdTran_tara.group:=7;
+     EdTran_pesomaximo.enabled:=false;
+     EdTran_pesomaximo.tablename:='';
+     EdTran_pesomaximo.group:=7;
+  end else begin
+     EdTran_tara.enabled:=true;
+     EdTran_tara.tablename:='TRANSPORTADORES';
+     EdTran_tara.TableField:='tran_tara';
+     EdTran_tara.group:=0;
+     EdTran_pesomaximo.enabled:=true;
+     EdTran_pesomaximo.tablename:='TRANSPORTADORES';
+     EdTran_pesomaximo.TableField:='tran_pesomaximo';
+     EdTran_pesomaximo.group:=0;
+  end;
+//
+
+  EdTran_codigo.GetFields(Self,99);
+  PEdits.Visible:=true;
+  PEdits.EnableEdits;
+//  EdUnid_Muni_Nome.Enabled:=False;
+  EdTran_Codigo.Enabled:=False;
+  bSair.enabled:=false;
+//  Grid.Cancel;
+  EdTran_NOme.SetFocus;
+
+end;
+
+procedure TFTransp.bExcluirClick(Sender: TObject);
+var Cod:String;
+    Found:Boolean;
+
+    function FoundTabela(Tabela,Campo,Msg:String):Boolean;
+    var Q:TSqlQuery;
+    begin
+      Q:=SqlToQuery('SELECT Count(*) AS Registros FROM '+Tabela+' WHERE '+Campo+'='+Cod);
+      Result:=Q.FieldByName('Registros').AsInteger>0;
+      if Result then AvisoErro('Encontrado lançamentos com este registro na tabela: '+Msg);
+      Q.Close;Q.Free;
+    end;
+
+
+begin
+  Cod:=StringToSql(Arq.TTransp.FieldByName('Tran_Codigo').AsString);
+  Found:=FoundTabela('Movesto','Moes_Comv_Codigo','Movimento Mestre de Estoque');
+  if not Found then Grid.Delete;
+
+
+end;
+
+procedure TFTransp.FormActivate(Sender: TObject);
+begin
+  if not Arq.TTransp.Active then Arq.TTransp.Open;
+  Fgeral.ColunasGrid(Grid,Self);
+  EdTran_Codigo.ClearAll(Self,99);
+  FGeral.SetaUFs(EdTran_UFplaca);
+  PEdits.DisableEdits;
+  if not Arq.TTransp.IsEmpty then Arq.TTransp.GetFields(Self,0);
+
+end;
+
+procedure TFTransp.GridNewRecord(Sender: TObject);
+begin
+  if not Arq.TTransp.IsEmpty then Arq.TTransp.GetFields(Self,0);
+  SetEdCida_nome.text:=FCidades.getnome(EdTran_cida_codigo.Asinteger);
+  if trim( campo.Tipo )<>'' then
+    SetEdCola_nome.text:=FColaboradores.GetDescricao(EdTran_Cola_codigo.Text);
+
+end;
+
+procedure TFTransp.bCancelarClick(Sender: TObject);
+begin
+  EdTran_Codigo.ClearAll(Self,99);
+/////////////////////////  Grid.Cancel;
+  PEdits.DisableEdits;
+  PEdits.Visible:=false;
+  if not Arq.TTransp.IsEmpty then Arq.TTransp.GetFields(Self,0);
+  Arq.TTransp.refresh;
+  bSair.enabled:=true;
+
+end;
+
+procedure TFTransp.bRelatorioClick(Sender: TObject);
+begin
+//  FRel.ReportFromGrid(Grid,'CadTransportadores','Relação de Transportadores','','');
+// 19.11.12
+  FRel.ReportFromSQL('select * from transportadores order by tran_codigo','CadTransportadores','Relação de Transportadores','','');
+
+end;
+
+procedure TFTransp.Execute;
+////////////////////////////
+begin
+  campo:=Sistema.GetDicionario('TRANSPORTADORES','tran_cola_codigo');
+  if trim(campo.tipo)='' then begin
+     EdTran_cola_codigo.enabled:=false;
+     EdTran_cola_codigo.tablename:='';
+     EdTran_cola_codigo.group:=7;
+  end else begin
+     EdTran_cola_codigo.enabled:=true;
+     EdTran_cola_codigo.tablename:='TRANSPORTADORES';
+     EdTran_cola_codigo.TableField:='TRAN_cola_codigo';
+     EdTran_cola_codigo.group:=0;
+  end;
+// 27.06.16
+  campo:=Sistema.GetDicionario('TRANSPORTADORES','tran_tara');
+  if trim(campo.tipo)='' then begin
+     EdTran_tara.enabled:=false;
+     EdTran_tara.tablename:='';
+     EdTran_tara.group:=7;
+     EdTran_pesomaximo.enabled:=false;
+     EdTran_pesomaximo.tablename:='';
+     EdTran_pesomaximo.group:=7;
+  end else begin
+     EdTran_tara.enabled:=true;
+     EdTran_tara.tablename:='TRANSPORTADORES';
+     EdTran_tara.TableField:='tran_tara';
+     EdTran_tara.group:=0;
+     EdTran_pesomaximo.enabled:=true;
+     EdTran_pesomaximo.tablename:='TRANSPORTADORES';
+     EdTran_pesomaximo.TableField:='tran_pesomaximo';
+     EdTran_pesomaximo.group:=0;
+  end;
+// 30.05.19
+  campo:=Sistema.GetDicionario('TRANSPORTADORES','tran_rntrc');
+  if trim(campo.tipo)='' then begin
+
+     EdTran_rntrc.enabled:=false;
+     EdTran_rntrc.tablename:='';
+     EdTran_rntrc.group:=7;
+     EdTran_renavan.enabled:=false;
+     EdTran_renavan.tablename:='';
+     EdTran_renavan.group:=7;
+     EdTran_volume.enabled:=false;
+     EdTran_volume.tablename:='';
+     EdTran_volume.group:=7;
+
+  end else begin
+
+     EdTran_rntrc.enabled:=true;
+     EdTran_rntrc.tablename:='TRANSPORTADORES';
+     EdTran_rntrc.TableField:='tran_rntrc';
+     EdTran_rntrc.group:=0;
+     EdTran_renavan.enabled:=true;
+     EdTran_renavan.tablename:='TRANSPORTADORES';
+     EdTran_renavan.TableField:='tran_renavan';
+     EdTran_renavan.group:=0;
+     EdTran_volume.enabled:=true;
+     EdTran_volume.tablename:='TRANSPORTADORES';
+     EdTran_volume.TableField:='tran_renavan';
+     EdTran_volume.group:=0;
+
+  end;
+
+  FGeral.ConfiguraColorEditsNaoEnabled(FTransp);
+  show;
+
+end;
+
+procedure TFTransp.EdTran_ufplacaExitEdit(Sender: TObject);
+begin
+  if not EdTran_codigo.ValidEdiAll(FTransp,99) then exit;
+  EdTran_usua_codigo.SetValue(Global.Usuario.Codigo);
+  if Op='I' then begin
+     Grid.PostInsert(EdTran_Codigo);
+     EdTran_codigo.text:=strzero(FGeral.getsequencial(1,'tran_codigo','C','transportadores'),3);
+  end else begin
+     Arq.TTransp.Edit;
+     Arq.TTransp.SetFields(Self,0);
+     Arq.TTransp.Post;
+     Arq.TTransp.Commit;
+     Grid.Cancel;
+     PEdits.DisableEdits;
+  end;
+  bSair.enabled:=true;
+
+end;
+
+procedure TFTransp.EdTran_codigoKeyPress(Sender: TObject; var Key: Char);
+begin
+  FGEral.LImpaedit(EdTran_codigo,key);
+end;
+
+function TFTransp.GetUF(codigo: integer): string;
+begin
+  if not Arq.TMunicipios.active then Arq.TMunicipios.Open;
+  if not Arq.TTransp.active then Arq.TTransp.Open;
+  Arq.Ttransp.locate('tran_codigo',codigo,[]);
+  if Arq.TMunicipios.locate('cida_codigo',Arq.TTransp.fieldbyname('tran_cida_codigo').asinteger,[]) then
+    result:=Arq.TMunicipios.fieldbyname('cida_uf').asstring
+  else
+    result:='';
+end;
+
+function TFTransp.GetNome(codigo: string): string;
+////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+{
+  if not Arq.TTransp.active then Arq.TTransp.Open;
+  if Arq.Ttransp.locate('tran_codigo',codigo,[]) then
+    result:=Arq.TTransp.fieldbyname('tran_nome').asstring
+  else
+    result:='';
+}
+  Q:=sqltoquery('select tran_nome from transportadores where tran_codigo='+stringtosql(codigo));
+  if not Q.eof then
+    result:=Q.fieldbyname('tran_nome').asstring
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+  
+end;
+
+function TFTransp.GetRazaoSocial(codigo: string): string;
+begin
+  if not Arq.TTransp.active then Arq.TTransp.Open;
+  if Arq.Ttransp.locate('tran_codigo',codigo,[]) then
+    result:=Arq.TTransp.fieldbyname('tran_razaosocial').asstring
+  else
+    result:='';
+
+end;
+
+function TFTransp.GetCnpjCpf(codigo: string): string;
+begin
+  if not Arq.TTransp.active then Arq.TTransp.Open;
+  if Arq.Ttransp.locate('tran_codigo',codigo,[]) then
+    result:=Arq.TTransp.fieldbyname('tran_cnpjcpf').asstring
+  else
+    result:='';
+
+end;
+
+function TFTransp.GetInsEst(codigo: string): string;
+begin
+  if not Arq.TTransp.active then Arq.TTransp.Open;
+  if Arq.Ttransp.locate('tran_codigo',codigo,[]) then
+    result:=Arq.TTransp.fieldbyname('tran_inscricaoestadual').asstring
+  else
+    result:='';
+
+end;
+
+// chamada da exportacao pra o livro fiscal..
+// retorna o nome da cidade do transportador
+// já recebe o codigo da cidade do transportador
+function TFTransp.GetCidade(codigo: string): string;
+begin
+  result:=FCidades.GetNome(strtointdef(codigo,0)) ;
+
+
+end;
+
+function TFTransp.GetPlaca(codigo: string): string;
+begin
+  if not Arq.TTransp.active then Arq.TTransp.open;
+  if Arq.TTransp.Locate('Tran_codigo',codigo,[]) then begin
+    result:=Arq.TTransp.fieldbyname('tran_placa').asstring
+  end else
+    result:='';
+
+end;
+
+procedure TFTransp.SetaItems(Edit: TSqlEd);
+var Q:TSqlquery;
+begin
+  Edit.Items.Clear;
+  Q:=sqltoquery('select * from transportadores order by tran_nome');
+  while not Q.Eof do begin
+    Edit.Items.Add(Q.FieldByName('Tran_Codigo').AsString+' - '+strspace(Q.FieldByName('Tran_Placa').AsString,08)+' - '+Trim(Q.FieldByName('Tran_Nome').AsString));
+    Q.Next;
+  end;
+  Q.close;Q.free;
+
+end;
+
+procedure TFTransp.EdTran_placaValidate(Sender: TObject);
+begin
+  if not EdTran_placa.IsEmpty then begin
+    if not ValidaPlaca(EdTran_Placa) then EdTran_Placa.Invalid('');
+  end;
+end;
+
+function TFTransp.ValidaPlaca(Ed: TSqled): boolean;
+var r:boolean;
+    s:string;
+begin
+  r:=true;
+  s:=copy(Ed.text,1,3);
+  if not ( s[1]  in ['A'..'Z'] ) then r:=false
+  else if not ( s[2]  in ['A'..'Z'] ) then r:=false
+  else if not ( s[3]  in ['A'..'Z'] ) then r:=false;
+  if not r then Avisoerro('Primeiras 3 posições tem que ser letra maiúscula');
+  result:=r;
+end;
+
+end.

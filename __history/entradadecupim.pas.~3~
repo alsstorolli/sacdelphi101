@@ -1,0 +1,137 @@
+// 15.06.20
+// entrada de cupins cfe indicado no abate o numero de carcaças com cupim
+
+unit entradadecupim;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ACBrBase, ACBrDFe, ACBrNFe, Vcl.Grids,
+  SqlDtg, Vcl.StdCtrls, Vcl.Mask, SQLEd, Vcl.Buttons, SQLBtn, alabel,
+  Vcl.ExtCtrls, SQLGrid, SqlExpr;
+
+type
+  TFEntradadecupim = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    betiqueta: TSQLBtn;
+    EdCaoc_codigo: TSQLEd;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdDtdesossa: TSQLEd;
+    EdNumeroDoc: TSQLEd;
+    EdProduto: TSQLEd;
+    SetEdESTO_DESCRICAO: TSQLEd;
+    Edqtde: TSQLEd;
+    EdPecas: TSQLEd;
+    Grid: TSqlDtGrid;
+    ACBrNFe1: TACBrNFe;
+    procedure EdDtdesossaValidate(Sender: TObject);
+    procedure bGravarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    procedure LimpaEdits;
+    function CalculaEntradaCupim:currency;
+
+  end;
+
+var
+  FEntradadecupim: TFEntradadecupim;
+  kiloscupim     : currency;
+  codigocupim    : string;
+
+implementation
+
+uses Geral, Sqlsis, Sqlfun;
+
+{$R *.dfm}
+
+{ TFEntradadecupim }
+
+procedure TFEntradadecupim.bGravarClick(Sender: TObject);
+//////////////////////////////////////////////////////////////
+begin
+
+   if EdQtde.AsCurrency=0 then begin
+      Avisoerro('Kilos tem que ser maior que zero');
+      exit;
+   end;
+
+end;
+
+function TFEntradadecupim.CalculaEntradaCupim;
+begin
+end;
+
+procedure TFEntradadecupim.EdDtdesossaValidate(Sender: TObject);
+/////////////////////////////////////////////////////////////////////////
+var Q   :Tsqlquery;
+    peso: currency;
+
+begin
+
+   if not FGeral.ValidaMvto(EdDtdesossa) then
+
+     EdDtdesossa.Invalid('')
+
+   else begin
+
+    Q := sqltoquery('select sum(movd_pesocarcaca) as kilos,count(*) as pecas from movabatedet'+
+                    ' where movd_datamvto = '+EdDtDesossa.AsDateTime+
+                    ' and movd_unid_codigo = '+EdUNid_codigo.assql+
+                    ' and movd_cupim = ''S''');
+
+
+    peso := Q.FieldByName('kilos').AsCurrency;
+    peso := peso * 0.01;    // considerando 1% os kilos em media ref. cupim
+
+    EdProduto.Text := codigocupim;
+    EdPecas.SetValue( Q.FieldByName('pecas').AsCurrency );
+    EdQtde.SetValue(  Q.FieldByName('kilos').AsCurrency );
+    FGeral.FechaQuery(Q);
+
+   end;
+
+end;
+
+procedure TFEntradadecupim.Execute;
+///////////////////////////////////
+var numero:integer;
+begin
+
+    FGeral.ConfiguraColorEditsNaoEnabled(Fentradadecupim);
+    Numero:=FGeral.GetContador('DESOSSA'+EdUnid_codigo.text,false,false);
+    EdNumerodoc.Text:=inttostr(Numero);
+    codigocupim := '81';
+    Show;
+    LimpaEdits;
+    EdUnid_codigo.text:=Global.CodigoUnidade;
+    EdUNid_codigo.validfind;
+    EdDtDesossa.setdate( Sistema.hoje );
+    EdDtdesossa.setfocus;
+
+end;
+
+procedure TFEntradadecupim.LimpaEdits;
+/////////////////////////////////////////
+begin
+
+  Edproduto.clear;
+  EdQtde.clear;
+  EdPecas.Clear;
+  Grid.Clear;
+
+end;
+
+end.

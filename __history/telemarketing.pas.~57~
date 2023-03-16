@@ -1,0 +1,629 @@
+// 25.10.18 - Controle das ligações do telemarketing
+//
+unit telemarketing;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, SQLEd,
+  Vcl.Grids, SqlDtg, Vcl.Buttons, SQLBtn, alabel, Vcl.ExtCtrls, SQLGrid, SqlExpr;
+
+type
+  TFTeleMarketing = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bSair: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    Edencerramento: TSQLEd;
+    PIns: TSQLPanelGrid;
+    Edmovt_datamvto: TSQLEd;
+    Edmovt_obs: TSQLEd;
+    EdCaoc_codigo: TSQLEd;
+    SetEdobs: TSQLEd;
+    Edmovt_contato: TSQLEd;
+    binclusao: TSQLBtn;
+    bverPedidos: TSQLBtn;
+    EdTipo_codigo: TSQLEd;
+    SetEdCLIE_NOME: TSQLEd;
+    bCancelar: TSQLBtn;
+    bincpedido: TSQLBtn;
+    bexcluir: TSQLBtn;
+    Edmovt_obspro: TSQLEd;
+    Edmovt_datamvtopro: TSQLEd;
+    batendimento: TSQLBtn;
+    bfiltragrid: TSQLBtn;
+    bretirafiltro: TSQLBtn;
+    PProposta: TBevel;
+    EdBanco: TSQLEd;
+    EdTipoConta: TSQLEd;
+    EdAgencia: TSQLEd;
+    EdConta: TSQLEd;
+    EdBeneficio: TSQLEd;
+    EdPrazo: TSQLEd;
+    EdValorliberado: TSQLEd;
+    EdValorsolicitado: TSQLEd;
+    EdParcela: TSQLEd;
+    procedure binclusaoClick(Sender: TObject);
+    procedure bverPedidosClick(Sender: TObject);
+    procedure EdTipo_codigoValidate(Sender: TObject);
+    procedure Edmovt_obsExitEdit(Sender: TObject);
+    procedure bCancelarClick(Sender: TObject);
+    procedure bincpedidoClick(Sender: TObject);
+    procedure bexcluirClick(Sender: TObject);
+    procedure batendimentoClick(Sender: TObject);
+    procedure GridNewLine(Sender: TObject);
+    procedure bfiltragridClick(Sender: TObject);
+    procedure bretirafiltroClick(Sender: TObject);
+    procedure EdParcelaExitEdit(Sender: TObject);
+    procedure Edmovt_contatoValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute(xsituacao:string='P;A');
+    procedure SetaContatos( Ed:TSqled );
+    procedure EditstoGrid( linha:integer=-1 );
+    procedure atualizaedits(xtrans:string);
+    procedure FiltraGrid( campo , conteudo , tipocampo :string );
+
+  end;
+
+var
+  FTeleMarketing: TFTeleMarketing;
+  Q             :TSqlquery;
+  Operacao,
+  OP,
+  sqlusuarios,
+  sqlsituacao   :string;
+
+
+implementation
+
+uses SqlSis, Geral, SqlFun , Usuarios, Pospedi, PedVenda, cadocor, Emitentes;
+
+{$R *.dfm}
+
+{ TFTeleMarketing }
+
+
+procedure TFTeleMarketing.atualizaedits(xtrans: string);
+//////////////////////////////////////////////////
+var Qa    : TSqlquery;
+
+begin
+
+   Qa := sqltoquery('select *,clie_nome,clie_cnpjcpf from movtelevendas '+
+                ' inner join clientes on ( clie_codigo = movt_tipo_codigo )'+
+                ' where movt_status=''N'''+
+                ' and movt_operacao = '+stringtosql(xtrans)+
+                ' and movt_unid_codigo = '+stringtosql(Global.CodigoUnidade)+
+                ' order by movt_datamvto');
+
+   Edmovt_datamvto.setDate(  qa.fieldbyname('movt_datamvto').asdatetime );
+   SetEdclie_nome.text  := Qa.fieldbyname('clie_nome').asstring;
+   EdMovt_obs.text      := Qa.fieldbyname('movt_obs').asstring;
+   EdTipo_codigo.Text   := Qa.fieldbyname('movt_tipo_codigo').asstring;
+   EdCaoc_codigo.Text   := Qa.fieldbyname('movt_caoc_codigo').asstring;
+   SetEdobs.text        := FCadOcorrencias.GetDescricao( EdCaoc_codigo.Asinteger);
+//   Edmovt_datamvtopro.text :=
+//   Edmovt_obspro.text      :=
+   Qa.close;
+
+end;
+
+procedure TFTeleMarketing.batendimentoClick(Sender: TObject);
+/////////////////////////////////////////////////////////////////////////
+begin
+
+   if trim( Grid.Cells[Grid.GetColumn('movt_operacao'),Grid.Row] )<>'' then  begin
+
+     PIns.Enabled:=true;
+//     PIns.Visible:=true;
+     EdTipo_codigo.SetFocus;
+     Grid.Enabled:=false;
+     EdTipo_codigo.Text  := Grid.Cells[Grid.GetColumn('movt_tipo_codigo'),Grid.Row];
+     Edmovt_datamvto.Setdate( Texttodate( FGeral.TiraBarra(Grid.Cells[Grid.GetColumn('movt_datamvto'),Grid.Row]) ) );
+     Edcaoc_codigo.Text  := Grid.Cells[Grid.GetColumn('movt_caoc_codigo'),Grid.Row];
+     Edmovt_obs.Text     := Grid.Cells[Grid.GetColumn('movt_obs'),Grid.Row];
+     PProposta.enabled   := true;
+     OP:='A';
+     Edmovt_datamvtopro.enabled := false;
+     Edmovt_obspro.enabled      := false;
+
+   end;
+
+end;
+
+procedure TFTeleMarketing.bCancelarClick(Sender: TObject);
+////////////////////////////////////////////////////////////
+begin
+
+   PIns.Enabled:=false;
+//   PIns.Visible:=false;
+   Grid.Enabled:=true;
+   Grid.SetFocus;
+
+end;
+
+procedure TFTeleMarketing.bexcluirClick(Sender: TObject);
+///////////////////////////////////////////////////////////////////////
+var xop:string;
+begin
+
+  xop:=Grid.Cells[Grid.GetColumn('movt_operacao'),Grid.Row];
+  if trim(xOP)='' then begin
+     Avisoerro('Escolher um lançamento para exclusão');
+     exit;
+  end;
+  if not confirma('Confirma exclusão ?') then exit;
+  try
+
+    Sistema.Edit('movtelevendas');
+    Sistema.SetField('movt_status','C');
+    Sistema.post('movt_operacao = '+stringtosql(xop)+' and movt_status=''N''');
+    Sistema.Commit;
+
+    Grid.DeleteRow(Grid.Row);
+
+  except on E:exception do
+
+     Avisoerro('Não foi possível gravar no banco de dados.  '+E.Message);
+
+  end;
+
+
+end;
+
+procedure TFTeleMarketing.bfiltragridClick(Sender: TObject);
+/////////////////////////////////////////////////////////////////////
+begin
+
+//   if Grid.getcolumn('clie_nome') = Grid.col then begin
+
+      FiltraGrid( Grid.columns.Items[Grid.col].fieldname , Grid.cells[grid.col,grid.row],'C');
+
+//   end;
+
+end;
+
+procedure TFTeleMarketing.binclusaoClick(Sender: TObject);
+////////////////////////////////////////////////////////////
+begin
+
+   PIns.Enabled:=true;
+//   PIns.Visible:=true;
+   EdTipo_codigo.SetFocus;
+   Grid.Enabled:=false;
+   OP:='I';
+   EdTipo_codigo.Clearall(FTeleMarketing,99 );
+   Edmovt_datamvtopro.enabled := true;
+   Edmovt_obspro.enabled      := true;
+
+
+   if EdMovt_datamvto.IsEmpty then EdMovt_datamvto.SetDate( sistema.Hoje);
+
+end;
+
+procedure TFTeleMarketing.EditstoGrid(linha:integer=-1);
+////////////////////////////////////////////////////////
+var lin     : integer;
+
+begin
+
+   if linha>=0 then
+
+      lin:=linha
+
+   else
+
+      lin:=Grid.rowcount-1;
+
+   Grid.AppendRow;
+   Grid.Cells[Grid.GetColumn('movt_situacao'),lin]:='P';
+   Grid.Cells[Grid.GetColumn('movt_datamvto'),lin]:=Datetostr(Edmovt_datamvto.asdate);
+   Grid.Cells[Grid.GetColumn('clie_nome'),lin]:=SetEdclie_nome.text;
+   Grid.Cells[Grid.GetColumn('movt_obs'),lin]:=EdMovt_obs.text;
+   Grid.Cells[Grid.GetColumn('movt_operacao'),lin]:=Operacao;
+   Grid.Cells[Grid.GetColumn('movt_tipo_codigo'),lin]:=EdTipo_codigo.Text;
+   Grid.Cells[Grid.getcolumn('movt_caoc_codigo'),lin]:=EdCaoc_codigo.Text;
+   Grid.Cells[Grid.getcolumn('caoc_descricao'),lin]:=FCadOcorrencias.GetDescricao( EdCaoc_codigo.Asinteger);
+
+end;
+
+procedure TFTeleMarketing.Edmovt_contatoValidate(Sender: TObject);
+begin
+
+    if OP = 'A' then EdBanco.setfocus;
+
+end;
+
+procedure TFTeleMarketing.Edmovt_obsExitEdit(Sender: TObject);
+/////////////////////////////////////////////////////////////
+
+begin
+
+    if not confirma('Confirma gravação ?') then begin
+
+       Edtipo_codigo.SetFocus;
+       exit;
+
+    end;
+    if OP='I' then
+
+        Operacao:=inttostr( FGeral.GetContador('TELEVENDAS'+Global.CodigoUnidade,false) )
+
+    else
+
+        Operacao:=Grid.Cells[Grid.GetColumn('movt_operacao'),Grid.Row];
+
+    if OP='I' then begin
+
+       Sistema.Insert('movtelevendas');
+       Sistema.SetField('movt_status','N');
+       Sistema.SetField('movt_datamvto',EdMovt_datamvto.asdate);
+       Sistema.SetField('movt_datarepro',EdMovt_datamvto.asdate);
+       Sistema.SetField('movt_dtlcto',Sistema.Hoje);
+       Sistema.SetField('movt_unid_codigo',Global.CodigoUnidade);
+       Sistema.SetField('movt_situacao','A');
+       Sistema.SetField('movt_usua_codigo',Global.Usuario.codigo);
+       Sistema.SetField('movt_obs',Edmovt_obs.Text);
+       Sistema.SetField('movt_tipo_codigo',Edtipo_codigo.Asinteger);
+       Sistema.SetField('movt_tipocad','C');
+       Sistema.SetField('movt_caoc_codigo',EdCaoc_codigo.Asinteger);
+       Sistema.SetField('movt_contato',EdMovt_contato.Text);
+       Sistema.SetField('movt_operacao',Operacao);
+       Sistema.Post();
+
+       if not EdMovt_datamvtopro.IsEmpty then begin
+
+         Operacao:=inttostr( FGeral.GetContador('TELEVENDAS'+Global.CodigoUnidade,false) );
+
+          Sistema.Insert('movtelevendas');
+          Sistema.SetField('movt_status','N');
+          Sistema.SetField('movt_datamvto',EdMovt_datamvtopro.asdate);
+          Sistema.SetField('movt_datarepro',EdMovt_datamvto.asdate);
+          Sistema.SetField('movt_dtlcto',Sistema.Hoje);
+          Sistema.SetField('movt_unid_codigo',Global.CodigoUnidade);
+          Sistema.SetField('movt_situacao','P');
+          Sistema.SetField('movt_usua_codigo',Global.Usuario.codigo);
+          Sistema.SetField('movt_obs',Edmovt_obspro.Text);
+          Sistema.SetField('movt_tipo_codigo',Edtipo_codigo.Asinteger);
+          Sistema.SetField('movt_tipocad','C');
+          Sistema.SetField('movt_caoc_codigo',0);
+          Sistema.SetField('movt_contato',EdMovt_contato.Text);
+          Sistema.SetField('movt_operacao',Operacao);
+          Sistema.Post();
+
+       end;
+
+    end else begin
+
+       Sistema.edit('movtelevendas');
+       Sistema.SetField('movt_obs',Edmovt_obs.Text);
+       Sistema.SetField('movt_caoc_codigo',EdCaoc_codigo.Asinteger);
+       Sistema.SetField('movt_contato',EdMovt_contato.Text);
+// 02.09.2021 - deixa como A -> Atendido
+       Sistema.SetField('movt_situacao','A');
+       Sistema.SetField('mvto_banco',EdBanco.text);
+       Sistema.SetField('mvto_tipoconta',EdTipoconta.text);
+       Sistema.SetField('mvto_agencia',EdAgencia.text);
+       Sistema.SetField('mvto_conta',Edconta.text);
+       Sistema.SetField('mvto_beneficio',EdBeneficio.text);
+       Sistema.SetField('mvto_parcelas',EdPrazo.text);
+       Sistema.SetField('mvto_Valorliberado',EdValorliberado.ascurrency);
+       Sistema.SetField('mvto_Valorsolicitado',EdValorsolicitado.ascurrency);
+       Sistema.SetField('mvto_Parcela',EdParcela.ascurrency);
+       Sistema.Post( 'movt_operacao = '+Stringtosql(Operacao) );
+
+    end;
+
+    try
+       Sistema.commit;
+       if OP='I' then
+          EditstoGrid
+       else
+          EditstoGrid(Grid.Row);
+
+    except on E:exception do
+       Avisoerro('Não foi possível gravar no banco de dados.  '+E.Message);
+    end;
+
+    EdTipo_codigo.ClearAll(Self,0);
+    PIns.Enabled:=false;
+//    PIns.Visible:=false;
+    Grid.Enabled:=true;
+    Grid.SetFocus;
+
+end;
+
+procedure TFTeleMarketing.EdParcelaExitEdit(Sender: TObject);
+///////////////////////////////////////////////////////////////////
+begin
+
+  Edmovt_obs.setfocus;
+
+end;
+
+procedure TFTeleMarketing.EdTipo_codigoValidate(Sender: TObject);
+/////////////////////////////////////////////////////////////////////
+begin
+
+    SetaContatos( EdMovt_contato );
+
+end;
+
+procedure TFTeleMarketing.bverPedidosClick(Sender: TObject);
+////////////////////////////////////////////////////////////
+var tipo_codigo:integer;
+
+begin
+
+   tipo_codigo:=strtointdef(Grid.Cells[Grid.GetColumn('movt_tipo_codigo'),Grid.Row],0);
+   if not Sistema.Processando then  FPosicaoPedidoVenda.Execute('C',Tipo_codigo);
+
+end;
+
+procedure TFTeleMarketing.Execute(xsituacao:string='P;A');
+////////////////////////////////////////////////////////////
+
+    procedure QuerytoGrid(Q:Tsqlquery);
+    ////////////////////////////////////
+    var i,diasatraso:integer;
+
+        function GetSituacao( xsit:string):string;
+        ///////////////////////////////////////////
+        begin
+
+//           if xsit='P' then result:='Pendente'
+//           else result:=xsit;
+           result:=xsit;   // ate definir como tratar
+
+        end;
+
+
+    begin
+      Grid.clear;i:=1;
+
+      while not Q.Eof do begin
+
+         Grid.Cells[Grid.getcolumn('movt_situacao'),i]:=GetSituacao( Q.fieldbyname('movt_situacao').AsString );
+         Grid.Cells[Grid.getcolumn('movt_datamvto'),i]:=FGeral.formatadata(Q.fieldbyname('movt_datamvto').asdatetime);
+         Grid.Cells[Grid.getcolumn('clie_nome'),i]:=Q.fieldbyname('clie_nome').AsString;
+
+//         if (Grid.GetColumn('paca_quem')=Grid.col) or (Grid.GetColumn('paca_quando')=Grid.col)
+//            then begin
+            diasatraso:=trunc( Sistema.hoje - Q.fieldbyname('movt_datamvto').asdatetime );
+{
+            if diasatraso>0 then begin
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='ATRASADO';
+            end else if (diasatraso>=-7) and (diasatraso<=0) then begin
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='NA SEMANA';
+            end else begin
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='EM EXECUÇÃO';
+            end;
+}
+
+         Grid.Cells[Grid.getcolumn('movt_obs'),i]:=Q.fieldbyname('movt_obs').AsString;
+         Grid.Cells[Grid.getcolumn('movt_operacao'),i]:=Q.fieldbyname('movt_operacao').AsString;
+         Grid.Cells[Grid.getcolumn('movt_tipo_codigo'),i]:=Q.fieldbyname('movt_tipo_codigo').AsString;
+         Grid.Cells[Grid.getcolumn('movt_caoc_codigo'),i]:=Q.fieldbyname('movt_caoc_codigo').AsString;
+         Grid.Cells[Grid.getcolumn('caoc_descricao'),i]:=FCadOcorrencias.GetDescricao( Q.fieldbyname('movt_caoc_codigo').Asinteger);
+
+
+         Grid.AppendRow;
+         inc(i);
+         Q.Next;
+      end;
+
+    end;
+
+    procedure QuerytoGridColuna(Q:Tsqlquery);
+    ///////////////////////////////////////////
+    var i,diasatraso:integer;
+    begin
+      i:=1;
+//      Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Style:=[fsBold];
+      while not Q.Eof do begin
+            diasatraso:=trunc( Sistema.hoje - Q.fieldbyname('paca_quando').asdatetime );
+            if diasatraso>0 then begin
+//              Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Color:=clRed;
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='ATRASADO';
+//               Grid.Columns.Items[Grid.GetColumn('paca_quem')].Font.Color:=clRed;
+//               Grid.Columns.Items[Grid.GetColumn('paca_quando')].Font.Color:=clRed;
+//               Grid.Canvas.Font.Color:=clRed;
+            end else if (diasatraso>=-7) and (diasatraso<=0) then begin
+//              Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Color:=clYellow;
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='NA SEMANA';
+//              Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Color:=clBlue;
+//               Grid.Canvas.Font.Color:=clBlue;
+//               Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Style:=[];
+            end else begin
+//              Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Color:=clGreen;
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='EM EXECUÇÃO';
+//              Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Color:=clYellow;
+//              Grid.Canvas.Font.Color:=clYellow;
+//              Grid.Columns.Items[Grid.GetColumn('situacao')].Font.Style:=[fsItalic];
+            end;
+//         end;
+
+         inc(i);
+         Q.Next;
+      end;
+    end;
+
+
+begin
+//////////////////////////
+
+  FGeral.EstiloForm(self);
+  FGeral.ConfiguraColorEditsNaoEnabled(FTeleMarketing);
+  Show;
+  PProposta.enabled   := false;
+
+  FEmitentes.Setabancos(EdBanco);
+
+  Sistema.beginprocess('Pesquisando telefonemas');
+  sqlusuarios := 'and movt_usua_codigo = '+inttostr(Global.Usuario.Codigo);
+//  sqlsituacao := ' and '+FGeral.GetIn('movt_situacao','P;A','C');
+  sqlsituacao := ' and '+FGeral.GetIn('movt_situacao', xsituacao,'C');
+// ver criar opção por usuario que poder ver 'de todos'..
+  if False then sqlusuarios := '';
+
+  Q:=sqltoquery('select *,clie_nome from movtelevendas '+
+                ' inner join clientes on ( clie_codigo = movt_tipo_codigo )'+
+                ' where movt_status=''N'''+
+                ' and movt_unid_codigo='+stringtosql(Global.CodigoUnidade)+
+                sqlsituacao+
+                sqlusuarios+
+                ' order by movt_datamvto');
+  if not Q.eof then begin
+    QuerytoGrid(Q);
+  end;
+  Sistema.endprocess('');
+
+  Grid.Refresh;
+
+
+end;
+
+procedure TFTeleMarketing.FiltraGrid(campo, conteudo, tipocampo: string);
+/////////////////////////////////////////////////////
+var sqlfiltro : string;
+
+    procedure QuerytoGrid(Q:Tsqlquery);
+    ////////////////////////////////////
+    var i,diasatraso:integer;
+
+        function GetSituacao( xsit:string):string;
+        ///////////////////////////////////////////
+        begin
+
+//           if xsit='P' then result:='Pendente'
+//           else result:=xsit;
+           result:=xsit;   // ate definir como tratar
+
+        end;
+
+
+    begin
+      Grid.clear;i:=1;
+
+      while not Q.Eof do begin
+
+         Grid.Cells[Grid.getcolumn('movt_situacao'),i]:=GetSituacao( Q.fieldbyname('movt_situacao').AsString );
+         Grid.Cells[Grid.getcolumn('movt_datamvto'),i]:=FGeral.formatadata(Q.fieldbyname('movt_datamvto').asdatetime);
+         Grid.Cells[Grid.getcolumn('clie_nome'),i]:=Q.fieldbyname('clie_nome').AsString;
+
+//         if (Grid.GetColumn('paca_quem')=Grid.col) or (Grid.GetColumn('paca_quando')=Grid.col)
+//            then begin
+            diasatraso:=trunc( Sistema.hoje - Q.fieldbyname('movt_datamvto').asdatetime );
+{
+            if diasatraso>0 then begin
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='ATRASADO';
+            end else if (diasatraso>=-7) and (diasatraso<=0) then begin
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='NA SEMANA';
+            end else begin
+              Grid.Cells[Grid.getcolumn('situacao'),i]:='EM EXECUÇÃO';
+            end;
+}
+
+         Grid.Cells[Grid.getcolumn('movt_obs'),i]:=Q.fieldbyname('movt_obs').AsString;
+         Grid.Cells[Grid.getcolumn('movt_operacao'),i]:=Q.fieldbyname('movt_operacao').AsString;
+         Grid.Cells[Grid.getcolumn('movt_tipo_codigo'),i]:=Q.fieldbyname('movt_tipo_codigo').AsString;
+         Grid.Cells[Grid.getcolumn('movt_caoc_codigo'),i]:=Q.fieldbyname('movt_caoc_codigo').AsString;
+         Grid.Cells[Grid.getcolumn('caoc_descricao'),i]:=FCadOcorrencias.GetDescricao( Q.fieldbyname('movt_caoc_codigo').Asinteger);
+
+         Grid.AppendRow;
+         inc(i);
+         Q.Next;
+
+      end;
+
+    end;
+
+
+
+
+begin
+
+  Sistema.beginprocess('filtrando telefonemas');
+  sqlfiltro :=' and '+campo+' = '+stringtosql(conteudo);
+  if tipocampo = 'N' then
+
+     sqlfiltro := 'and '+campo+' = '+Valortosql( TextToValor(conteudo));
+
+
+  Q := sqltoquery('select *,clie_nome from movtelevendas '+
+                ' inner join clientes on ( clie_codigo = movt_tipo_codigo )'+
+                ' where movt_status=''N'''+
+                ' and movt_unid_codigo='+stringtosql(Global.CodigoUnidade)+
+                sqlsituacao+
+                sqlusuarios+
+                sqlfiltro+
+                ' order by movt_datamvto');
+
+
+  if not Q.eof then begin
+
+    QuerytoGrid(Q);
+
+  end;
+  Sistema.endprocess('');
+
+  Grid.Refresh;
+
+end;
+
+procedure TFTeleMarketing.GridNewLine(Sender: TObject);
+//////////////////////////////////////////////////////////
+var ctrans:string;
+begin
+
+   ctrans := Grid.Cells[Grid.GetColumn('movt_operacao'),Grid.Row];
+   if trim(ctrans) = '' then exit;
+
+   Atualizaedits(ctrans);
+
+end;
+
+procedure TFTeleMarketing.SetaContatos(Ed: TSqled);
+/////////////////////////////////////////////////////////
+
+begin
+
+   if EdTipo_codigo.ResultFind<>nil then begin
+
+      Ed.Items.Clear;
+      Ed.Items.Add( EdTipo_codigo.ResultFind.FieldByName('clie_contato1').AsString );
+      Ed.Items.Add( EdTipo_codigo.ResultFind.FieldByName('clie_contato2').AsString );
+
+   end;
+
+end;
+
+procedure TFTeleMarketing.bincpedidoClick(Sender: TObject);
+/////////////////////////////////////////////////////////////
+var tipo_codigo:integer;
+
+begin
+
+   tipo_codigo:=strtointdef(Grid.Cells[Grid.GetColumn('movt_tipo_codigo'),Grid.Row],0);
+   if not Sistema.Processando then PedidoVenda_Execute('I',0,tipo_codigo);
+
+end;
+
+procedure TFTeleMarketing.bretirafiltroClick(Sender: TObject);
+////////////////////////////////////////////////////////////////////
+begin
+
+   Execute;
+
+end;
+
+end.

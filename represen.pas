@@ -1,0 +1,366 @@
+unit represen;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, SQLGrid, ExtCtrls, Buttons, SQLBtn,
+  StdCtrls, alabel, Mask, SQLEd;
+
+type
+  TFRepresentantes = class(TForm)
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;                 
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    DSRepr: TDataSource;
+    EdRepr_codigo: TSQLEd;
+    EdRepr_nome: TSQLEd;
+    EdRepr_razaosocial: TSQLEd;
+    EdRepr_cnpjcpf: TSQLEd;
+    EdRepr_inscricaoestadual: TSQLEd;
+    EdRepr_inscricaomunicipal: TSQLEd;
+    EdRepr_regjuntacomercial: TSQLEd;
+    EdRepr_endereco: TSQLEd;
+    EdRepr_bairro: TSQLEd;
+    EdRepr_cep: TSQLEd;
+    EdRepr_cxpostal: TSQLEd;
+    EdRepr_cida_codigo: TSQLEd;
+    EdRepr_fone: TSQLEd;
+    EdRepr_fax: TSQLEd;
+    EdRepr_email: TSQLEd;
+    EdRepr_comissao: TSQLEd;
+    SetEdrepr_nome: TSQLEd;
+    Edrepr_repr_codigo: TSQLEd;
+    SQLEd2: TSQLEd;
+    bocorrencia: TSQLBtn;
+    EdRepr_tiporepr: TSQLEd;
+    Edrepr_contagerencial: TSQLEd;
+    procedure FormActivate(Sender: TObject);
+    procedure bIncluirClick(Sender: TObject);
+    procedure EdRepr_cnpjcpfValidate(Sender: TObject);
+    procedure EdRepr_comissaoExitEdit(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure Edrepr_repr_codigoValidate(Sender: TObject);
+    procedure bocorrenciaClick(Sender: TObject);
+    procedure EdRepr_nomeValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function GetDescricao(Codigo:Integer):string;
+    function GetRazaosocial(Codigo:Integer):string;
+    function GetCnpjCpf(Codigo:Integer):string;
+    function GetInsEst(Codigo:Integer):string;
+    function GetPerComissao(Codigo:Integer ; data:Tdatetime=0 ; tipomov:string='' ):currency;
+    function GetCidade(Codigo:Integer):string;
+    function GetDescricaoSql(Codigo:Integer):string;
+    procedure SetaItems(Edit,EditNomeForne:TSqlEd;ForneValidos,Nomevalido:String);
+    function GetCodigosRepres(codigo:integer):string;
+    function GetPerbonus(Codigo:Integer ; data:Tdatetime=0 ; tipomov:string='' ):currency;
+// 23.04.10
+    function GetContaExp(codigo:integer; unidade:string=''):integer;
+
+  end;
+
+var
+  FRepresentantes: TFRepresentantes;
+
+implementation
+
+{$R *.dfm}
+
+uses Geral, Arquiv , SQLRel, Sqlexpr, sqlfun, munic, Ocorrenc;
+
+procedure TFRepresentantes.FormActivate(Sender: TObject);
+begin
+   if not Arq.TRepresentantes.Active then begin
+     Arq.TRepresentantes.Open;
+     Setaitems(EdRepr_repr_codigo,Sqled2,'','');
+     Arq.TRepresentantes.First;;
+   end;
+   FGeral.SetaTipoRepresentante(EdRepr_Tiporepr);
+   FGeral.ColunasGrid(Grid,self);
+end;
+
+procedure TFRepresentantes.bIncluirClick(Sender: TObject);
+begin
+  Grid.Insert(EdRepr_codigo);
+  EdRepr_codigo.SetValue( FGeral.GetProximoCodigoCadastro('representantes','repr_codigo') );
+end;
+
+procedure TFRepresentantes.EdRepr_cnpjcpfValidate(Sender: TObject);
+begin
+  FGeral.ValidaCNPJCPF(TSQLEd(Sender));
+
+end;
+
+procedure TFRepresentantes.EdRepr_comissaoExitEdit(Sender: TObject);
+begin
+   Grid.PostInsert(EdRepr_codigo);
+   EdRepr_codigo.SetValue( FGeral.GetProximoCodigoCadastro('representantes','repr_codigo') );
+end;
+
+procedure TFRepresentantes.bRelatorioClick(Sender: TObject);
+begin
+//  Grid.Report('CadRepresentantes','Relação de Representantes','','');
+  FRel.Reportfromsql('select * from representantes order by repr_nome','CadRepresentantes','Relação de Representantes');
+end;
+
+function TFRepresentantes.GetDescricao(Codigo: Integer): string;
+var Q:TSqlquery;
+begin
+{
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  if Arq.TRepresentantes.Locate('repr_codigo',codigo,[]) then
+    result:=Arq.TRepresentantes.fieldbyname('Repr_nome').AsString
+  else
+    result:='';
+}
+  Q:=sqltoquery('select repr_nome from representantes where repr_codigo='+inttostr(codigo));
+  if not Q.eof then
+    result:=Q.fieldbyname('Repr_nome').AsString
+  else
+    result:='';
+  FGeral.Fechaquery(Q);
+
+end;
+
+function TFRepresentantes.GetRazaosocial(Codigo: Integer): string;
+begin
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  if Arq.TRepresentantes.Locate('repr_codigo',codigo,[]) then
+    result:=Arq.TRepresentantes.fieldbyname('Repr_razaosocial').AsString
+  else
+    result:='';
+
+end;
+
+function TFRepresentantes.GetCnpjCpf(Codigo: Integer): string;
+begin
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  if Arq.TRepresentantes.Locate('repr_codigo',codigo,[]) then
+    result:=Arq.TRepresentantes.fieldbyname('Repr_cnpjcpf').AsString
+  else
+    result:='';
+
+end;
+
+procedure TFRepresentantes.bExcluirClick(Sender: TObject);
+var Cod:String;
+    Found:Boolean;
+
+    function FoundTabela(Tabela,Campo,Msg:String):Boolean;
+    var Q:TSqlQuery;
+    begin
+      Q:=SqlToQuery('SELECT Count(*) AS Registros FROM '+Tabela+' WHERE '+Campo+'='+Cod);
+      Result:=Q.FieldByName('Registros').AsInteger>0;
+      if Result then AvisoErro('Encontrado lançamentos com o representante escolhido na tabela: '+Msg);
+      Q.Close;Q.Free;
+    end;
+
+
+begin
+  Cod:=StringToSql(Arq.TRepresentantes.FieldByName('Repr_Codigo').AsString);
+  Found:=FoundTabela('Movesto','Moes_repr_Codigo','Movimento Mestre De Estoque');
+  if not Found then Found:=FoundTabela('MovPed','Mped_Repr_Codigo','Pedidos de Venda');
+  if not Found then Grid.Delete;
+
+end;                                    
+
+function TFRepresentantes.GetInsEst(Codigo: Integer): string;
+begin
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  if Arq.TRepresentantes.Locate('repr_codigo',codigo,[]) then
+    result:=Arq.TRepresentantes.fieldbyname('repr_inscricaoestadual').AsString
+  else
+    result:='';
+
+end;
+
+function TFRepresentantes.GetPerComissao(Codigo: Integer ; data:Tdatetime=0  ; tipomov:string='' ): currency;
+var Q:TSqlquery;
+    vendasdiretas:string;
+    DataComissaoconsignado:TDatetime;
+begin
+{
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  if Arq.TRepresentantes.Locate('repr_codigo',codigo,[]) then
+    result:=Arq.TRepresentantes.fieldbyname('repr_comissao').AsCurrency
+  else
+    result:=0;
+}
+// 30.03.09
+  result:=0;
+  if codigo=0 then exit;
+// 04.08.06
+  Q:=Sqltoquery('select repr_comissao from representantes where repr_codigo='+inttostr(codigo) );
+  if not Q.eof then
+    result:=Q.fieldbyname('repr_comissao').AsCurrency
+  else
+    result:=0;
+{ - retirado em 03.12.08
+// 14.08.06 - comissões diferenciadas por tipo de venda - email cassio
+  DataComissaoconsignado:=Texttodate('28022007');
+  vendasdiretas:=Global.CodVendaDireta+';'+Global.CodVendaProntaEntrega+';'+Global.CodVendaProntaEntregaFecha+';'+
+                 global.CodVendaRE+';'+Global.CodVendaMostruarioII+';'+Global.CodVendaMagazine;
+  if (data>1) and (trim(tipomov)<>'') and (Data>=Texttodate('01092006')) then begin
+    if pos(tipomov,vendasdiretas)=0 then begin
+      if data<=DataComissaoconsignado then
+        result:=8
+      else
+        result:=6;
+    end;
+  end;
+}
+  FGeral.Fechaquery(Q);
+end;
+
+function TFRepresentantes.GetCidade(Codigo: Integer): string;
+begin
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  if Arq.TRepresentantes.Locate('repr_codigo',codigo,[]) then
+    result:= FCidades.GetNOme( Arq.TRepresentantes.fieldbyname('repr_cida_codigo').AsInteger )
+  else
+    result:='';
+
+end;
+
+function TFRepresentantes.GetDescricaoSql(Codigo: Integer): string;
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select * from Representantes where repr_codigo='+inttostr(codigo));
+  if not Q.eof then
+    result:= Q.fieldbyname('repr_nome').AsString 
+  else
+    result:='';
+  Q.close;
+  Freeandnil(Q);
+end;
+
+procedure TFRepresentantes.SetaItems(Edit, EditNomeForne: TSqlEd;
+  ForneValidos, Nomevalido: String);
+begin
+  Edit.Items.Clear;
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  Arq.TRepresentantes.BeginProcess;
+  Arq.TRepresentantes.First;
+  while not Arq.TRepresentantes.Eof do begin
+    if ((ForneValidos='') or (Pos(strzero(Arq.TRepresentantes.FieldByName('Repr_Codigo').AsInteger,4),ForneValidos)>0))
+       and ((NomeValido='') or (Pos(NomeValido,Uppercase(Arq.TRepresentantes.FieldByName('Repr_Nome').AsString))>0))
+      then begin
+       Edit.Items.Add(Strzero(Arq.TRepresentantes.FieldByName('Repr_Codigo').AsInteger,4)+' - '+strspace(Arq.TRepresentantes.FieldByName('repr_Nome').AsString,30)+
+                      ' - '+Arq.TRepresentantes.FieldByName('Repr_razaosocial').AsString);
+    end;
+    Arq.TRepresentantes.Next;
+  end;
+  Arq.TRepresentantes.EndProcess;
+  if Edit.Items.Count=1 then begin
+     Edit.Text:=LeftStr(Edit.Items[0],4);
+     if EditNomeForne<>nil then EditNomeForne.Text:=FinalStr(Edit.Items[0],4);
+  end;
+
+end;
+
+procedure TFRepresentantes.Edrepr_repr_codigoValidate(Sender: TObject);
+var Q:TSqlquery;
+begin
+  if not EdRepr_repr_codigo.Empty then begin
+     Q:=sqltoquery('select repr_nome from representantes where repr_codigo='+EdRepr_repr_codigo.assql);
+     if not Q.eof then
+       Sqled2.text:=Q.fieldbyname('repr_nome').asstring
+     else begin
+       Sqled2.text:='';
+       EdRepr_repr_codigo.invalid('Codigo não encontrado');
+     end;
+     FGeral.Fechaquery(Q);
+  end;
+end;
+
+procedure TFRepresentantes.bocorrenciaClick(Sender: TObject);
+begin
+   if Arq.TRepresentantes.Active then
+     FOcorrencias.Execute('R',Arq.TRepresentantes.fieldbyname('repr_codigo').asinteger,EdRepr_nome.text);
+
+end;
+
+function TFRepresentantes.GetCodigosRepres(codigo: integer): string;
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select repr_codigo from representantes where repr_repr_codigo='+inttostr(codigo));
+  result:='';
+  while not Q.eof do begin
+    result:=result+strzero(Q.fieldbyname('repr_codigo').asinteger,4)+';';
+    Q.Next;
+  end;
+  FGeral.Fechaquery(Q);
+
+end;
+
+function TFRepresentantes.GetPerbonus(Codigo: Integer; data: Tdatetime;
+  tipomov: string): currency;
+var vendasdiretas:string;
+    DataComissaoconsignado:TDatetime;
+
+begin
+// 14.08.06 - comissões diferenciadas por tipo de venda - email cassio
+  DataComissaoconsignado:=Texttodate('28022007');
+  vendasdiretas:=Global.CodVendaDireta+';'+Global.CodVendaProntaEntrega+';'+Global.CodVendaProntaEntregaFecha+';'+
+                 global.CodVendaRE+';'+Global.CodVendaMostruarioII+';'+Global.CodVendaMagazine;
+  result:=0;
+  if (data>1) and (trim(tipomov)<>'') and (Data>=Texttodate('01092006')) then begin
+    if pos(tipomov,vendasdiretas)>0 then begin
+      if data<=DataComissaoconsignado then
+        result:=25
+      else
+        result:=0;
+    end;
+  end;
+
+end;
+
+procedure TFRepresentantes.EdRepr_nomeValidate(Sender: TObject);
+begin
+   if EdRepr_razaosocial.isempty then EdRepr_razaosocial.text:=EdRepr_nome.text;
+end;
+
+
+function TFRepresentantes.GetContaExp(codigo: integer;
+  unidade: string): integer;
+var Q:TSqlquery;
+begin
+// por enquanto sem distinção por unidade
+  Q:=sqltoquery('select * from Representantes where repr_codigo='+inttostr(codigo));
+  if not Q.eof then begin
+    if trim(unidade)='' then
+      result:=Q.fieldbyname('repr_contagerencial').asinteger
+    else
+      result:=Q.fieldbyname('repr_contagerencial').asinteger;
+  end else
+    result:=0;
+  FGeral.fechaquery(Q);
+end;
+
+end.

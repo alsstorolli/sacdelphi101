@@ -1,0 +1,1761 @@
+unit Configura;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, Buttons, SQLBtn, alabel, ExtCtrls,
+  SQLGrid, CheckLst, ComCtrls,SqlExpr, Spin;
+
+type
+  TFConfigura = class(TForm)
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bSair: TSQLBtn;
+    Panel1: TPanel;
+    bGravar: TSQLBtn;
+    Page: TPageControl;
+    PgGeral: TTabSheet;
+    ScrollBox1: TScrollBox;
+    PMsgPrincipal: TSQLPanelGrid;
+    PgTopicos: TTabSheet;
+    CBTopicos: TCheckListBox;
+    PgCabecalhos: TTabSheet;
+    PMsgCab: TSQLPanelGrid;
+    Panel2: TPanel;
+    EdTituloRelatorios: TSQLEd;
+    PgDiversos: TTabSheet;
+    P1: TSQLPanelGrid;
+    EdICMSUF01: TSQLEd;
+    EdICMS01: TSQLEd;
+    EdICMSFISICA: TSQLEd;
+    EdICMSUF02: TSQLEd;
+    EdICMS02: TSQLEd;
+    EdICMSUF03: TSQLEd;
+    EdICMS03: TSQLEd;
+    EdICMSUF04: TSQLEd;
+    EdICMS04: TSQLEd;
+    PMens: TSQLPanelGrid;
+    PContadores: TSQLPanelGrid;
+    Ednumeronfs: TSQLEd;
+    EdRemconsig: TSQLEd;
+    EdNumeronfs002: TSQLEd;
+    EdNumeronfs003: TSQLEd;
+    EdCODMENREMIND: TSQLEd;
+    SQLEd15: TSQLEd;
+    EdMENSTRAMAT: TSQLEd;
+    SQLEd16: TSQLEd;
+    EdMENSTRAMATFO: TSQLEd;
+    SQLEd17: TSQLEd;
+    Edpercaumcusto: TSQLEd;
+    EdMENSSIMPRS: TSQLEd;
+    SQLEd19: TSQLEd;
+    PDiversos3: TSQLPanelGrid;
+    EdDIASCONSIG: TSQLEd;
+    EdDtiniciorem: TSQLEd;
+    SetEdDEPT_DESCRICAO: TSQLEd;
+    EdGrup_codigo: TSQLEd;
+    EdFornfinanceiro: TSQLEd;
+    EdContaacertos: TSQLEd;
+    SedEdcontaacertos: TSQLEd;
+    PCredito: TSQLPanelGrid;
+    EdDIASVENPRAZO: TSQLEd;
+    EdDIASVENBOLETO: TSQLEd;
+    EdDtiniciocredito: TSQLEd;
+    EdPERCMEDIAS: TSQLEd;
+    EdVENDASCONSIG: TSQLEd;
+    EdProdutoscopa: TSQLEd;
+    PgImpressos: TTabSheet;
+    PImp01: TSQLPanelGrid;
+    Ednotasaidamatriz: TSQLEd;
+    SQLEd22: TSQLEd;
+    Ednotasaida100: TSQLEd;
+    SQLEd21: TSQLEd;
+    EdImprnotasaidas: TSQLEd;
+    SQLEd8: TSQLEd;
+    EdImprecibo: TSQLEd;
+    SQLEd3: TSQLEd;
+    EdImprromaretorno: TSQLEd;
+    SQLEd4: TSQLEd;
+    EdImpromaserie5: TSQLEd;
+    SQLEd12: TSQLEd;
+    EdImprdevvenda: TSQLEd;
+    SQLEd9: TSQLEd;
+    EdImprpedidoven: TSQLEd;
+    SQLEd13: TSQLEd;
+    EdImprnotasaida: TSQLEd;
+    SetEdimpr_DESCRICAO: TSQLEd;
+    EdImprbloqueto: TSQLEd;
+    SQLEd18: TSQLEd;
+    EdImprnotatransf: TSQLEd;
+    SQLEd2: TSQLEd;
+    EdImprnfmatricial: TSQLEd;
+    SQLEd10: TSQLEd;
+    EdImpretqcli: TSQLEd;
+    SQLEd11: TSQLEd;
+    Ednotasaidateste: TSQLEd;
+    SQLEd20: TSQLEd;
+    Ednotatranmatriz: TSQLEd;
+    SQLEd23: TSQLEd;
+    PPedidos: TSQLPanelGrid;
+    EdPEDVENDA01: TSQLEd;
+    StaticText1: TStaticText;
+    EdPEDVENDA01F: TSQLEd;
+    EdPEDVENDA01P: TSQLEd;
+    EdPEDVENDA02: TSQLEd;
+    EdPEDVENDA02F: TSQLEd;
+    EdPEDVENDA02P: TSQLEd;
+    EdImprnfprodutor: TSQLEd;
+    SQLEd28: TSQLEd;
+    EdPort_codigo: TSQLEd;
+    EdCODMENVEN: TSQLEd;
+    SQLEd30: TSQLEd;
+    Edlimitelimcredito: TSQLEd;
+    pestoque: TSQLPanelGrid;
+    EdGRUPOSPRECO: TSQLEd;
+    EdContasdejuros: TSQLEd;
+    EdContasdedesconto: TSQLEd;
+    EdFornnaocontab: TSQLEd;
+    PEmail: TSQLPanelGrid;
+    EdSMTP: TSQLEd;
+    EdUSUARIOSMTP: TSQLEd;
+    EdEMAILORIGEM: TSQLEd;
+    EdSENHASMTP: TSQLEd;
+    EdCODMENDRAWE: TSQLEd;
+    SQLEd37: TSQLEd;
+    EdCODMENDRAWS: TSQLEd;
+    SQLEd38: TSQLEd;
+    EdCODMENDRAWE2: TSQLEd;
+    SQLEd39: TSQLEd;
+    EdCodmendraws2: TSQLEd;
+    SQLEd40: TSQLEd;
+    PMsgImpressos: TSQLPanelGrid;
+    SQLPanelGrid1: TSQLPanelGrid;
+    Edlocalpea: TSQLEd;
+    OpenDialog1: TOpenDialog;
+    bprocura: TSQLBtn;
+    EdTAMESTOQUE: TSQLEd;
+    EdGRUPOPERF: TSQLEd;
+    EdSUBGRUPERF: TSQLEd;
+    EdFAMILIAPERF: TSQLEd;
+    EdProdutosnaovenda: TSQLEd;
+    PgMensalidade: TTabSheet;
+    pmensalidade: TSQLPanelGrid;
+    Edmens01as: TSQLEd;
+    Label1: TLabel;
+    Edmens02as: TSQLEd;
+    Edmens03as: TSQLEd;
+    Edmens04as: TSQLEd;
+    Label2: TLabel;
+    Edmens01na: TSQLEd;
+    Edmens02na: TSQLEd;
+    Edmens03na: TSQLEd;
+    Edmens04na: TSQLEd;
+    Label3: TLabel;
+    Edmens01nc: TSQLEd;
+    Edmens01ou: TSQLEd;
+    Label4: TLabel;
+    Edvalorpedidopac: TSQLEd;
+    EdRELFATURA: TSQLEd;
+    EdRELCOMPRAS: TSQLEd;
+    EdConfMovAbate: TSQLEd;
+    SetEdcomv_DESCRICAO: TSQLEd;
+    EdContasnfprodutor: TSQLEd;
+    EdICMSUF01E: TSQLEd;
+    EdICMS01E: TSQLEd;
+    EdREFPERFIS: TSQLEd;
+    EdCMC7CONTA: TSQLEd;
+    EdVencireceber: TSQLEd;
+    EdPERMAXCOMI: TSQLEd;
+    EdUNIDADECOMISSAO: TSQLEd;
+    EdFpgtoComissao: TSQLEd;
+    Edpercconvm3: TSQLEd;
+    EdGRUPOSNAOVEN: TSQLEd;
+    EdREFPERSIANAS: TSQLEd;
+    EdREFMOTORI: TSQLEd;
+    EdVLRMETRO2: TSQLEd;
+    EdVLRporkm: TSQLEd;
+    EdVLRMETRO2ALI: TSQLEd;
+    Edtamdescrinf: TSQLEd;
+    EdPERCSIMPLES: TSQLEd;
+    EdCUSTOFIXO: TSQLEd;
+    EdMARGEMMIN: TSQLEd;
+    EdMARKUPMIN: TSQLEd;
+    pservicos: TSQLPanelGrid;
+    EdPERPIS: TSQLEd;
+    EdPercofins: TSQLEd;
+    EdPercsl: TSQLEd;
+    EdPerir: TSQLEd;
+    EdPerinss: TSQLEd;
+    EdImprnotasaimo: TSQLEd;
+    SQLEd43: TSQLEd;
+    EdTAMDESCRINFSER: TSQLEd;
+    pcontabil: TSQLPanelGrid;
+    EdTIPOSCONTAB: TSQLEd;
+    EdPortboleto: TSQLEd;
+    EdPERGERPRODUCAO: TSQLEd;
+    EdPedsempreco: TSQLEd;
+    SQLEd44: TSQLEd;
+    EdVendnaorateiam: TSQLEd;
+    EdContasBloqueadas: TSQLEd;
+    EdSeriesvalidas: TSQLEd;
+    EdCARGAM2: TSQLEd;
+    EdPRODUCAOM2: TSQLEd;
+    EdCONSUMOORCA: TSQLEd;
+    EdPRECOCOMBORCA: TSQLEd;
+    EdVLRDIARIA: TSQLEd;
+    EdVLRREFORCA: TSQLEd;
+    EdImprnotasaiser1: TSQLEd;
+    SQLEd45: TSQLEd;
+    EdPERCJURFIN: TSQLEd;
+    EdMESESCARENCIA: TSQLEd;
+    EdPERCRESTEC: TSQLEd;
+    EdGrupocompon: TSQLEd;
+    EdConfMovBonif: TSQLEd;
+    SQLEd46: TSQLEd;
+    EdCliente: TSQLEd;
+    SetEdCLIE_NOME: TSQLEd;
+    EdConfServicos: TSQLEd;
+    SQLEd47: TSQLEd;
+    Edpastaexpnfe: TSQLEd;
+    Edpastaexpnfexml: TSQLEd;
+    EdNumSerieCert: TSQLEd;
+    EdPastaretonfexml: TSQLEd;
+    EdAmbienteNFe: TSQLEd;
+    EdPastainunfexml: TSQLEd;
+    EdPastaimagemdanfe: TSQLEd;
+    EdContasMovfin: TSQLEd;
+    Edcopiasdanfe: TSQLEd;
+    EdNatf_codigo: TSQLEd;
+    EdNatf_descricao: TSQLEd;
+    EdContasnfentrada: TSQLEd;
+    EdCodigoscarcaca: TSQLEd;
+    EdSenhaCertificado: TSQLEd;
+    PMsgcontabil: TSQLPanelGrid;
+    EdVlrminimodarfir: TSQLEd;
+    Edperbaixareserva: TSQLEd;
+    EdContareserva: TSQLEd;
+    SQLEd48: TSQLEd;
+    EdCodfscpuro: TSQLEd;
+    SQLEd49: TSQLEd;
+    EdCodfscmisto: TSQLEd;
+    SQLEd50: TSQLEd;
+    EdCodfsccontrolado: TSQLEd;
+    SQLEd51: TSQLEd;
+    EdContasOrcam: TSQLEd;
+    EdContacomissao: TSQLEd;
+    SQLEd52: TSQLEd;
+    EdImpretqpro: TSQLEd;
+    SQLEd42: TSQLEd;
+    EdLarguraEtqcodBarra: TSQLEd;
+    EdAlturaEtqEstoque: TSQLEd;
+    EdImpremessape: TSQLEd;
+    SQLEd54: TSQLEd;
+    EdImpremessaco: TSQLEd;
+    SQLEd55: TSQLEd;
+    balteracontador: TSQLBtn;
+    EdPORTASMTP: TSQLEd;
+    Eddecqtdedanfe: TSQLEd;
+    Eddecunitariodanfe: TSQLEd;
+    EdCORESVALIDAS: TSQLEd;
+    EdImpcomlan: TSQLEd;
+    SQLEd56: TSQLEd;
+    EdContasMovfin1: TSQLEd;
+    EdPERCconstru: TSQLEd;
+    EdPastaschemas: TSQLEd;
+    EdPastapdfs: TSQLEd;
+    EdCaminhocodbarra: TSQLEd;
+    EdCaminhocodbarra1: TSQLEd;
+    EdFpgto2x: TSQLEd;
+    EdFpgto1mais2: TSQLEd;
+    EdFpgto1mais1: TSQLEd;
+    EdPaiscodbarra: TSQLEd;
+    EdEMPCODBARRA: TSQLEd;
+    Edtiposnumsaida: TSQLEd;
+    PgAutomacao: TTabSheet;
+    P01: TSQLPanelGrid;
+    EdPORTASERIAL: TSQLEd;
+    Edvelocidadebal: TSQLEd;
+    Eddatabitbal: TSQLEd;
+    Edstopbitbal: TSQLEd;
+    Edparidade1: TSQLEd;
+    EdMULTIBALANCA: TSQLEd;
+    EdPORTASERIAL2: TSQLEd;
+    Edvelocidadebal2: TSQLEd;
+    Eddatabitsbal2: TSQLEd;
+    Edstopbitsbal2: TSQLEd;
+    Edparidade2: TSQLEd;
+    EdDESCPESO: TSQLEd;
+    EdPORTASERIALNF1: TSQLEd;
+    EdPORTASERIALNF2: TSQLEd;
+    EdDIVBALANCA: TSQLEd;
+    Edsaivelocbal01: TSQLEd;
+    Edsaidatabitbal01: TSQLEd;
+    Edsaistopbitsbal01: TSQLEd;
+    Edsaiparidade01: TSQLEd;
+    Edsaivelocbal02: TSQLEd;
+    Edsaidatabitbal02: TSQLEd;
+    Edsaistopbitsbal02: TSQLEd;
+    Edsaiparidade02: TSQLEd;
+    PECF: TSQLPanelGrid;
+    EdPORTAECF1: TSQLEd;
+    EdMODELOECF1: TSQLEd;
+    EdPERCSIMPLESSER: TSQLEd;
+    EdConfMovECF: TSQLEd;
+    SQLEd57: TSQLEd;
+    EdImpretqbal: TSQLEd;
+    SQLEd58: TSQLEd;
+    EdConfNfComple: TSQLEd;
+    SQLEd59: TSQLEd;
+    EdImpromremaordem: TSQLEd;
+    SQLEd60: TSQLEd;
+    EdDIVBAL01: TSQLEd;
+    EdDIVBAL02: TSQLEd;
+    PVendaaOrdem: TSQLPanelGrid;
+    EdCliejustica: TSQLEd;
+    SQLEd61: TSQLEd;
+    EdClientesjustica: TSQLEd;
+    EdCliesaude: TSQLEd;
+    SQLEd62: TSQLEd;
+    EdClientessaude: TSQLEd;
+    EdCODMENVENAORD: TSQLEd;
+    SQLEd63: TSQLEd;
+    EdMODELOIMPETQ: TSQLEd;
+    EdTIPOVENTOLEDO: TSQLEd;
+    Edcliconsumidor: TSQLEd;
+    SQLEd64: TSQLEd;
+    Edcfopspiscofinse: TSQLEd;
+    Edcfopspiscofinss: TSQLEd;
+    Edcfoppiscofinsgerar: TSQLEd;
+    EdDivcomposicao: TSQLEd;
+    EdPastaSefaxml: TSQLEd;
+    PAtalhos: TSQLPanelGrid;
+    EdAtalhos: TSQLEd;
+    Edchacomp: TSQLEd;
+    EdEtqlaser: TSQLEd;
+    SQLEd65: TSQLEd;
+    EdPortaEtq: TSQLEd;
+    EdPortadorCartao: TSQLEd;
+    EdFAMILIASCUBA: TSQLEd;
+    Edctatranestoque: TSQLEd;
+    EdPlan_contaant: TSQLEd;
+    SetEdplan_descricao: TSQLEd;
+    EdAvancoetq: TSQLEd;
+    Edespacolinhas: TSQLEd;
+    PImportaCTe: TSQLPanelGrid;
+    EdProduto: TSQLEd;
+    SetEdESTO_DESCRICAO: TSQLEd;
+    EdEmailcontador: TSQLEd;
+    PgCores: TTabSheet;
+    SQLPanelGrid2: TSQLPanelGrid;
+    CD: TColorDialog;
+    EdCoreditsnaoenable: TSQLEd;
+    bcor1: TSQLBtn;
+    SQLEd53: TSQLEd;
+    SQLEd67: TSQLEd;
+    EdUnidadecedente: TSQLEd;
+    Eddescriunidade: TSQLEd;
+    EdUsua_unidadecomisfatu: TSQLEd;
+    PDeptosUsuarios: TSQLPanelGrid;
+    EdUsuafaturamento: TSQLEd;
+    EdUsuacompras: TSQLEd;
+    Edusuaestoque: TSQLEd;
+    EdUsuapcp: TSQLEd;
+    Edusuaadm: TSQLEd;
+    PAutomacaomsg: TSQLPanelGrid;
+    Edtolerancia: TSQLEd;
+    pimpressoras: TSQLPanelGrid;
+    Edimpnfe: TSQLEd;
+    Edimpnfce: TSQLEd;
+    EdImporcobra: TSQLEd;
+    SQLEd69: TSQLEd;
+    Edimpetqcliente: TSQLEd;
+    Edfaixairc: TSQLEd;
+    EdFaixafrc: TSQLEd;
+    Ededidovencomcusto: TSQLEd;
+    SQLEd70: TSQLEd;
+    Edmargemmo: TSQLEd;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLEd68: TSQLEd;
+    SQLEd71: TSQLEd;
+    SQLEd72: TSQLEd;
+    SQLEd73: TSQLEd;
+    edGRUPOSNAOcus: TSQLEd;
+    EdsubGRUPOScus: TSQLEd;
+    EdSetoresnaocompras: TSQLEd;
+    Edcstpadraentrada: TSQLEd;
+    SQLEd74: TSQLEd;
+    ConfMovECFVC: TSQLEd;
+    Edcstpadraentrada1: TSQLEd;
+    Edpesogancho: TSQLEd;
+    EdCodigoscomgancho: TSQLEd;
+    EdDiasdevolucao: TSQLEd;
+    Edcodigodiversos: TSQLEd;
+    Edgrupostrocaoleo: TSQLEd;
+    EdTempoSenha: TSQLEd;
+    EdDiasINATIVO: TSQLEd;
+    Edmens_codigo: TSQLEd;
+    EdMensagem: TSQLEd;
+    SetEdMENS_DESCRICAO: TSQLEd;
+    EdCODMENEXPO: TSQLEd;
+    EdDIASCHECOM: TSQLEd;
+    EdPrazoSenha: TSQLEd;
+    EdMascaraPlanoGer: TSQLEd;
+    EdCODMENFEIRA: TSQLEd;
+    SQLEd14: TSQLEd;
+    SQLEd24: TSQLEd;
+    EdCODMENCOMODA: TSQLEd;
+    EdDIASPEDIDO: TSQLEd;
+    EdImpplanosin: TSQLEd;
+    EdConfvenconsig: TSQLEd;
+    EdDescconf: TSQLEd;
+    EdDIASUSOSAC: TSQLEd;
+    EdMoes_tabp_codigo: TSQLEd;
+    SetEdTABP_ALIQUOTA: TSQLEd;
+    Painelabageral: TSQLPanelGrid;
+    StaticText5: TStaticText;
+    EdDtinicio: TSQLEd;
+    EdDttermino: TSQLEd;
+    EdContarecvista: TSQLEd;
+    SQLEd1: TSQLEd;
+    EdFpgtoantecipa: TSQLEd;
+    SetEdfpgt_DESCRICAO: TSQLEd;
+    EdFpgtoavista: TSQLEd;
+    SQLEd7: TSQLEd;
+    EdPerccompra: TSQLEd;
+    EdJUROSMORA: TSQLEd;
+    EdJUROSCHEQUE: TSQLEd;
+    EdHist_codigorec: TSQLEd;
+    EdHist_descricaos: TSQLEd;
+    EdHist_codigopag: TSQLEd;
+    SQLEd66: TSQLEd;
+    EdJurosrecebidos: TSQLEd;
+    SQLEd5: TSQLEd;
+    EdCtacheacompensar: TSQLEd;
+    SQLEd41: TSQLEd;
+    EdCtaJurospag: TSQLEd;
+    SQLEd6: TSQLEd;
+    EdCtachedevolvido: TSQLEd;
+    SQLEd34: TSQLEd;
+    SQLEd27: TSQLEd;
+    EdCtacherecebido: TSQLEd;
+    SQLEd25: TSQLEd;
+    EdCtadescconc: TSQLEd;
+    EdCtadescobtidos: TSQLEd;
+    SQLEd26: TSQLEd;
+    EdCtabancheqrec: TSQLEd;
+    SQLEd29: TSQLEd;
+    SQLEd32: TSQLEd;
+    EdCtabaixapag: TSQLEd;
+    SQLEd31: TSQLEd;
+    EdCtabaixarec: TSQLEd;
+    EdCtacaixabaixarec: TSQLEd;
+    SQLEd33: TSQLEd;
+    EdCtacaixabaixapag: TSQLEd;
+    SQLEd35: TSQLEd;
+    EdDtterminotas: TSQLEd;
+    EdDtinicionotas: TSQLEd;
+    SQLEd36: TSQLEd;
+    EdCtaadiansalario: TSQLEd;
+    Edperfunrural: TSQLEd;
+    Edperfunruraljur: TSQLEd;
+    Edpercotacapital: TSQLEd;
+    EdMultaboleto: TSQLEd;
+    Edtamanholetra: TSQLEd;
+    Edcontasprodutor: TSQLEd;
+    EdProdutoleite: TSQLEd;
+    SQLEd76: TSQLEd;
+    EdNfComplesaida: TSQLEd;
+    SQLEd77: TSQLEd;
+    EdCtapagleite: TSQLEd;
+    Edconfnfce: TSQLEd;
+    SQLEd78: TSQLEd;
+    EdUnidadesNaovenda: TSQLEd;
+    EdUnidadeTransf: TSQLEd;
+    EdCodigosgancho1: TSQLEd;
+    Edvalorgta: TSQLEd;
+    Edidtoken: TSQLEd;
+    SQLEd75: TSQLEd;
+    SQLEd79: TSQLEd;
+    Edunidadesestoque: TSQLEd;
+    Edtipodanfe: TSQLEd;
+    Edmargemesq: TSQLEd;
+    Edmargemdir: TSQLEd;
+    Edtamfontenfcea4: TSQLEd;
+    Editenspedido: TSQLEd;
+    Edcolunaesqnfcea4: TSQLEd;
+    EdTAMFONTERECAVU: TSQLEd;
+    Edsubgrupodevcom: TSQLEd;
+    bgravaimp: TSQLBtn;
+    Edimproment: TSQLEd;
+    Edimpetqent: TSQLEd;
+    Edcormenus: TSQLEd;
+    bcor2: TSQLBtn;
+    Edtamfontemenu: TSQLEd;
+    EdTitulo: TSQLEd;
+    SQLPanelGrid5: TSQLPanelGrid;
+    SQLEd84: TSQLEd;
+    SQLEd85: TSQLEd;
+    SQLEd86: TSQLEd;
+    SQLEd87: TSQLEd;
+    SQLPanelGrid4: TSQLPanelGrid;
+    Edstprsimples: TSQLEd;
+    Edstprnormal: TSQLEd;
+    Edstscsimples: TSQLEd;
+    Edstscnormal: TSQLEd;
+    Edtamfontedanfe: TSQLEd;
+    Edlibcaminhao: TSQLEd;
+    EdNomemicrocf: TSQLEd;
+    EdMicrocamarafria: TSQLEd;
+    edmaxcheque: TSQLEd;
+    Edtempochecaped: TSQLEd;
+    Edpastachecaped: TSQLEd;
+    EdAmbienteCTe: TSQLEd;
+    EdEmailportal: TSQLEd;
+    Edimpboleto: TSQLEd;
+    EdTiponaoautoriza: TSQLEd;
+    PMsgCoresProxy: TSQLPanelGrid;
+    EdUserWebNFSE: TSQLEd;
+    EdSenhaWebNFSE: TSQLEd;
+    EdTipoServicoNFSe001: TSQLEd;
+    EdGRUPOARMAS: TSQLEd;
+    Edvalorgtasuinos: TSQLEd;
+    Edcliedesossa: TSQLEd;
+    SQLEd81: TSQLEd;
+    EdCtaDevVenda: TSQLEd;
+    SQLEd82: TSQLEd;
+    Edimpvalidas: TSQLEd;
+    Edpertolerbavendas: TSQLEd;
+    Edtamgrid: TSQLEd;
+    Edgridestoque: TSQLEd;
+    Edidcsc: TSQLEd;
+    Edpesogancho1: TSQLEd;
+    EdPORTASERIALNF3: TSQLEd;
+    Edsaivelocbal03: TSQLEd;
+    Edsaidatabitbal03: TSQLEd;
+    Edsaistopbitsbal03: TSQLEd;
+    Edsaiparidade03: TSQLEd;
+    EdDIVBAL03: TSQLEd;
+    EdsubgrupovendasemIE: TSQLEd;
+    Edpercomkm: TSQLEd;
+    Edpercomcab: TSQLEd;
+    Edcteremdesti: TSQLEd;
+    EdTipomovLote1: TSQLEd;
+    EdTipomovLote2: TSQLEd;
+    EdGRUPOmiudos: TSQLEd;
+    SQLEd80: TSQLEd;
+    SQLEd83: TSQLEd;
+    EdDiasaltgerencialnf: TSQLEd;
+    Edcliereserva: TSQLEd;
+    SQLEd89: TSQLEd;
+    Edclievenda: TSQLEd;
+    SQLEd90: TSQLEd;
+    Edimpetqentada: TSQLEd;
+    EdGRUPOSNAOINV: TSQLEd;
+    Edprecokg: TSQLEd;
+    Edprecokgfds: TSQLEd;
+    SQLEd88: TSQLEd;
+    EdCtasobras: TSQLEd;
+    Edavanco: TSQLEd;
+    Edccustoconfina: TSQLEd;
+    SQLEd91: TSQLEd;
+    Edcliedescontoliq: TSQLEd;
+    SQLEd93: TSQLEd;
+    EdUNIDADEmatriz: TSQLEd;
+    EdPedidoviaemail: TSQLEd;
+    SQLEd94: TSQLEd;
+    EdNFvendaracao: TSQLEd;
+    SQLEd95: TSQLEd;
+    Edbalintervalo: TSQLEd;
+    Edbaltimeout: TSQLEd;
+    EdBalmonitora: TSQLEd;
+    SQLEd92: TSQLEd;
+    SQLEd96: TSQLEd;
+    Edprecokglivre: TSQLEd;
+    Edprecokgfdslivre: TSQLEd;
+    EdPastabaixaxmlent: TSQLEd;
+    EdUnidadesNCm: TSQLEd;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormActivate(Sender: TObject);
+    procedure bGravarClick(Sender: TObject);
+    procedure PageChange(Sender: TObject);
+    procedure EdImprnotasaidaKeyPress(Sender: TObject; var Key: Char);
+    procedure EdImprnotatransfKeyPress(Sender: TObject; var Key: Char);
+    procedure EdImprnfmatricialKeyPress(Sender: TObject; var Key: Char);
+    procedure EdImpromaserie5KeyPress(Sender: TObject; var Key: Char);
+    procedure EdnotasaidatesteKeyPress(Sender: TObject; var Key: Char);
+    procedure EdnotasaidamatrizKeyPress(Sender: TObject; var Key: Char);
+    procedure EdnotatranmatrizKeyPress(Sender: TObject; var Key: Char);
+    procedure Ednotasaida100KeyPress(Sender: TObject; var Key: Char);
+    procedure EdImpreciboKeyPress(Sender: TObject; var Key: Char);
+    procedure EdImprbloquetoKeyPress(Sender: TObject; var Key: Char);
+    procedure EdImpretqcliKeyPress(Sender: TObject; var Key: Char);
+    procedure EdPEDVENDA01FValidate(Sender: TObject);
+    procedure EdPEDVENDA02FValidate(Sender: TObject);
+    procedure bprocuraClick(Sender: TObject);
+    procedure balteracontadorClick(Sender: TObject);
+    procedure EdtamanholetraValidate(Sender: TObject);
+    procedure pcontabilDblClick(Sender: TObject);
+    procedure bcor1Click(Sender: TObject);
+    procedure EdFaixafrcValidate(Sender: TObject);
+    procedure bgravaimpClick(Sender: TObject);
+    procedure EdcormenusChange(Sender: TObject);
+    procedure bcor2Click(Sender: TObject);
+  private
+    { Private declarations }
+    procedure SetaTopicos;
+// 03.07.12
+    procedure SetaAtalhos(Ed:TSqled);
+  public
+    { Public declarations }
+    procedure execute;
+  end;
+
+var
+  FConfigura: TFConfigura;
+
+
+implementation
+
+uses Arquiv, Init, Geral,SqlFun,SqlSis, fornece, Estoque, familias, grupos,
+  plano, portador, represen, cadcor, Menuinicial, Menus, Unidades,
+  Usuarios, Subgrupos, setores, Printers;
+
+{$R *.dfm}
+
+var StrTopicos:String;
+
+
+procedure SetaVariaveisGlobal;
+//////////////////////////////////
+begin
+  Global.VCConfMov:=FGeral.GetConfig1AsInteger('Confvenconsig');
+  Global.FpgtoAntecipa:=FGeral.GetConfig1AsString('Fpgtoantecipa');
+  Global.DVConfMov:=FGeral.GetConfig1AsInteger('Confdevserie5');
+// 17.01.07
+  Global.ContaJurosRecebidos:=FGEral.getconfig1asinteger('CtaJurosrec');
+  Global.ContaJurosPagos:=FGEral.getconfig1asinteger('Ctajurospag');
+  Global.ContaDescontosConcedidos:=FGEral.getconfig1asinteger('Ctadescconc');
+  Global.ContaDescontosobtidos:=FGEral.getconfig1asinteger('Ctadescobtidos');
+  Global.UltimoFormAberto:='';
+
+//
+// 05.12.11
+end;
+
+
+procedure TFConfigura.Execute;
+////////////////////////////////////
+begin
+  FGeral.CreateForm(TFConfigura,FConfigura);
+  FConfigura.ShowModal;
+end;
+
+procedure TFConfigura.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action:=caFree;
+end;
+
+procedure TFConfigura.FormActivate(Sender: TObject);
+///////////////////////////////////////////////////////////
+begin
+  SetaTopicos;
+// 03.07.12
+  SetaAtalhos(EdAtalhos);
+  FGeral.GetFieldsConfig1(Self);
+//  FConfigura.EEspecificos.Text:=FConfigura.EEspecificos.Text;
+  EdMascaraPlanoGer.Enabled:=EdMascaraPlanoGer.IsEmpty;
+  Page.ActivePage:=PgGeral;
+  FGeral.SetaUfs(EdICMSUF01);
+  FGeral.SetaUfs(EdICMSUF02);
+  FGeral.SetaUfs(EdICMSUF03);
+  FGeral.SetaUfs(EdICMSUF04);
+  FFornece.SetaItems(EdFornfinanceiro,nil,'','');
+  FEstoque.SetaItems(EdProdutoscopa,nil,'','');
+  FFamilias.SetaItems(EdFamiliascuba,nil,'','');
+  FGrupos.SetaItems(EdGrupospreco,nil,'','');
+// 12.02.20
+  FGrupos.SetaItems(EdGRUPOSNAOINV,nil,'','');
+  FPlano.SetaItems(EdContasdejuros,nil,'M','');
+  FPlano.SetaItems(EdContasdedesconto,nil,'M','');
+// 08.08.07
+  FFornece.SetaItems(EdFornNaoContab,nil,'','');
+// 07.01.08
+  FEstoque.SetaItems(EdProdutosnaovenda,nil,'','');
+// 10.03.08
+  FGeral.SetaItemsMovimento(EdRELFATURA);
+// 28.03.08
+  FGeral.SetaItemsMovimento(EdRELcompras);
+// 11.07.08
+  FPlano.SetaItems(EdContasnfprodutor,nil,'M','');
+// 05.01.09
+  FGrupos.SetaItems(EdGruposNaoVen,nil,'','');
+// 07.01.14
+  FGrupos.SetaItems(edGRUPOSNAOcus,nil,'','');
+  FSubgrupos.SetaItems(edSubGRUPOScus,nil,'','');
+// 24.03.09
+  FPortadores.SetaItems(EdPortboleto);
+// 29.04.09
+  FRepresentantes.SetaItems(EdVendnaorateiam,nil,'','');
+// 22.05.09
+  FPlano.SetaItems(EdContasBloqueadas,nil,'M','Fornec');
+// 27.11.09
+  FPlano.SetaItems(EdContasMovfin,nil,'M','');
+// 07.12.09
+  FPlano.SetaItems(EdContasnfentrada,nil,'M','','plan_classificacao');
+// 06.01.10
+  FEstoque.SetaItems(EdCodigosCarcaca,nil,'','carca');
+// 04.08.10
+  FCores.SetaItems(EdCoresValidas,nil,'','');
+// 31.08.10
+  FPlano.SetaItems(EdContasMovfin1,nil,'M','');
+// 28.03.11
+  FPortadores.SetaItems(EdPort_codigo);
+// 18.05.11
+  FGeral.SetaItemsMovimento(EdTiposcontab);
+  FGeral.SetaItemsMovimento(Edtiposnumsaida);
+// 24.07.12
+  FPlano.SetaItems( EdChacomp,nil,'M','COMPENSA');
+// 23.10.12
+  FPortadores.SetaItems(EdPortadorcartao);
+// 20.05.13
+  if EdUsua_unidadecomisfatu.Items.Count=0 then FUnidades.SetaItems(EdUsua_unidadecomisfatu,nil,'');
+// 22.05.13
+  FUsuarios.SetaItems(EdusuaFaturamento);
+  FUsuarios.SetaItems(EdusuaCompras);
+  FUsuarios.SetaItems(Edusuaestoque);
+  FUsuarios.SetaItems(Edusuapcp);
+  FUsuarios.SetaItems(Edusuaadm);
+/////
+// 31.01.14
+  FSetores.SetaItems(EdSetoresnaocompras,nil,'','');
+// 16.05.14
+  FEstoque.SetaItems(EdCodigoscomgancho,nil,'','');
+  FEstoque.SetaItems(EdCodigosgancho1,nil,'','');
+  FFamilias.SetaItems(Edgrupostrocaoleo,nil,'','');
+// 29.12.14
+  FPlano.SetaItems(Edcontasprodutor,nil,'M','','plan_classificacao');
+// 25.01.15
+  FGeral.ConfiguraColorEditsNaoEnabled(FConfigura);
+  if EdUnidadesNaovenda.Items.Count=0 then FUnidades.SetaItems(EdUnidadesNaovenda,nil,'');
+  if EdUnidadesEstoque.Items.Count=0 then FUnidades.SetaItems(EdUnidadesestoque,nil,'');
+// 10.12.15
+  Edimpnfe.Items.Assign(Printer.Printers);
+  Edimpnfce.Items.Assign(Printer.Printers);
+  Edimproment.Items.Assign(Printer.Printers);
+  Edimpetqent.Items.Assign(Printer.Printers);
+  EdimPboleto.Items.Assign(Printer.Printers);
+  EdimPvalidas.Items.Assign(Printer.Printers);
+// 23.01.20
+  Edimpetqentada.Items.Assign(Printer.Printers);
+  if Edimpnfe.isempty then EdImpnfe.text:=LeArquivoINI(Global.NomeSistema,'Impressoras','IMPNFE');
+  if Edimpnfce.isempty then EdImpnfce.text:=LeArquivoINI(Global.NomeSistema,'Impressoras','IMPNFCE');
+  if Edimproment.isempty then EdImproment.text:=LeArquivoINI(Global.NomeSistema,'Impressoras','IMPROMENT');
+  if Edimpetqent.isempty then EdImpetqent.text:=LeArquivoINI(Global.NomeSistema,'Impressoras','IMPETQENT');
+  if Edimpboleto.isempty then EdImpboleto.text:=LeArquivoINI(Global.NomeSistema,'Impressoras','IMPBOLETO');
+  if Edimpetqentada.isempty then EdImpetqentada.text:=LeArquivoINI(Global.NomeSistema,'Impressoras','IMPETQENTADA');
+
+// 18.10.15
+//  Fconfigura.Color:=clsilver;
+//  P01.Color:=clsilver;
+//  Pgautomacao.Font.Color:=clsilver;
+  Panel1.Color:=clsilver;
+//  Page.Font.Color:=clsilver;
+  EdTempoSenha.SetFocus;
+end;
+
+procedure TFConfigura.bGravarClick(Sender: TObject);
+////////////////////////////////////////////////////
+var i,p:integer;
+    s:String;
+
+    function SubStr(const Str:String;const i,n:integer):String;
+    var ii,ff:Integer;
+    begin
+      ff:=i+n-1;if ff>Length(Str) then ff:=Length(Str);
+      Result:='';
+      for ii:=i to ff do Result:=Result+Str[ii];
+    end;
+
+    procedure SetaEditsEspecificos;
+//    var s:String;
+    begin
+//      s:=EEspecificos.Text;
+//      EEspecificos.Text:=LeftStr(s,50);
+//      EEspecificos2.Text:=SubStr(s,51,50);
+//      EEspecificos3.Text:=SubStr(s,101,50);
+//      EEspecificos4.Text:=SubStr(s,151,50);
+//      EEspecificos5.Text:=SubStr(s,201,50);
+    end;
+
+begin
+  for i:=0 to ComponentCount-1 do begin
+      if Components[i] is TSqlEd then begin
+// 20.10.16
+         if TSqlEd(Components[i]).TableName<>'' then
+           if not TSqlEd(Components[i]).Valid then Exit;
+      end;
+  end;
+  s:=Replicate('N',4000);
+  for i:=0 to CBTopicos.Items.Count-1 do begin
+      if CBTopicos.Checked[i] then begin
+         p:=Inteiro(LeftStr(CBTopicos.Items[i],4));
+         s[p]:='S';
+      end;
+  end;
+  if s<>StrTopicos then begin
+     ExecuteSql('UPDATE Config2 SET Cfg2_Topicos='+StringToSql(s));
+     Sistema.Commit;
+  end;
+//  SetaEditsEspecificos;
+  FGeral.SetFieldsConfig1(Self);
+  FGeral.GetContador('ConfigGeral',False);
+// 01.07.10 - 13.11.11 - mudado para 'chusmtp'
+//  if EdPortasmtp.isempty then
+//       FGeral.SMTP.Port:= 25
+//  else
+//       FGeral.SMTP.Port:= EdPortasmtp.asinteger;
+/////////////
+  FInit.InicializaConfiguracao;
+  SetaVariaveisGlobal;
+// 26.05.20
+  FGeral.GravaLog(036,'Usuário '+inttostr(Global.Usuario.Codigo)+' gravou configuração geral' );
+  Close;
+end;
+
+procedure TFConfigura.PageChange(Sender: TObject);
+var p:integer;
+begin
+  if Page.ActivePage=PgGeral then EdTempoSenha.SetFocus;
+  if Page.ActivePage=PgTopicos then CBTopicos.SetFocus;
+//  if Page.ActivePage=PgCabecalhos then EdTituloRelatorios.SetFocus;
+  if Page.ActivePage=PgCabecalhos then EdGruposPreco.Setfirsted;
+  if Page.ActivePage=PgDiversos then EdIcmsuf01.Setfirsted;
+  if Page.ActivePage=PgImpressos then begin
+    for p:=0 to FConfigura.ComponentCount-1 do begin
+//    EdImprnotasaidas.validfind;
+//    EdImprromaretorno.validfind;
+      if (FConfigura.Components[p] is TSqled) and ( TSqled(FConfigura.Components[p]).Parent=PImp01 )  then
+        TSqled(Fconfigura.Components[p]).validfind;
+    end;
+    EdImprnotasaidas.Setfirsted;
+  end;
+  if Page.ActivePage=PgMensalidade then EdMens01as.SetFirstEd;
+  if Page.ActivePage=PgAutomacao then  begin
+    EdPortaSerial.SetFirstEd;
+  end;
+  if Page.ActivePage=PgCores then EdCoreditsnaoenable.SetFirstEd;
+end;
+
+////////////////////////////////////
+procedure TFConfigura.SetaTopicos;
+////////////////////////////////////
+
+  procedure Inicializar;
+  ////////////////////////
+  var Q:TSqlQuery;
+      i,p:Integer;
+      s:String;
+  begin
+    Q:=SqlToQuery('SELECT Cfg2_Topicos FROM Config2');
+    s:=Q.FieldByName('Cfg2_Topicos').AsString;
+    Q.Close;Q.Free;
+    StrTopicos:=s;
+    for i:=0 to CBTopicos.Items.Count-1 do begin
+        p:=Inteiro(LeftStr(CBTopicos.Items[i],4));
+        CBTopicos.Checked[i]:=s[p]='S';
+    end;
+    CBTopicos.ItemIndex:=0;
+  end;
+
+begin
+
+  CBTopicos.Items.Add('1001 - Sistema - Desativar o efeito gradiente');
+  CBTopicos.Items.Add('1002 - Sistema - Contas Gerenciais do financeiro igual ao Plano de contas contábil');
+  CBTopicos.Items.Add('1003 - Sistema - NÃO usa contas gerenciais informada nas notas de entrada para exportação contábil');
+  CBTopicos.Items.Add('1004 - Sistema - NÃO exporta notas fiscais a prazo que não gerem financeiro para a contabilidade');
+// 14.04.09
+  CBTopicos.Items.Add('1005 - Sistema - Exporta valores referente IPI das notas de entrada/saida para o fiscal');
+// 15.07.09
+  CBTopicos.Items.Add('1006 - Sistema - Ativa visualização de impressos no momento da impressão');
+// 05.11.09 - Novicarnes
+  CBTopicos.Items.Add('1007 - Sistema - Ativa zeramento de data de movimento');
+// 25.01.10 - Abra
+  CBTopicos.Items.Add('1008 - Sistema - Exporta devolução de compra com a mesma conta de cada fornecedor para contabilidade');
+// 19.03.10 - Asatec
+  CBTopicos.Items.Add('1009 - Sistema - Trata as unidades como indústrias com IPI');
+// 12.05.10 - Abra
+  CBTopicos.Items.Add('1010 - Sistema - Exportação para contabilidade somente com primeiro reduzido configurado');
+// 24.05.10 - Abra
+  CBTopicos.Items.Add('1011 - Sistema - Usa cadastro de impressos para impressão de remessas');
+// 15.06.10 - Lam. Sao Caetano
+  CBTopicos.Items.Add('1012 - Sistema - Gera PDF no email da NFe para clientes');
+// 07.07.10 - Abra
+  CBTopicos.Items.Add('1013 - Sistema - Usa proxy para envio da Nfe para Sefa');
+  CBTopicos.Items.Add('1014 - Sistema - Visualiza webservices de Nfe da Sefa');
+// 19.08.10
+  CBTopicos.Items.Add('1015 - Sistema - Permite informar várias unidades na geração do sintegra');
+// 03.09.10
+  CBTopicos.Items.Add('1016 - Sistema - Formulário de nota de entrada e saida ficam em primeiro plano');
+// 08.10.10
+  CBTopicos.Items.Add('1017 - Sistema - Utiliza SSL para envio de email');
+// 05.11.10
+  CBTopicos.Items.Add('1018 - Sistema - Exporta compras e vendas A VISTA na exportação de notas a prazo para contabilidade');
+// 17.03.11
+  CBTopicos.Items.Add('1019 - Sistema - Envia email da nota eletronica usando outlook ou similar');
+// 11.05.11
+  CBTopicos.Items.Add('1020 - Sistema - Envia NFe de saida para sefa logo após gravar');
+// 06.06.11
+  CBTopicos.Items.Add('1021 - Sistema - Ativa opção de imprimir cupom fiscal');
+// 06.07.11
+  CBTopicos.Items.Add('1022 - Sistema - Envio automático de email da nota eletrônica após impressão do Danfe');
+// 19.07.11 - Novicarnes
+  CBTopicos.Items.Add('1023 - Sistema - NÃO exporta para contabilidade baixa de cheques recebidos no CAIXA');
+// 09.11.11
+  CBTopicos.Items.Add('1024 - Sistema - Ativa opção de imprimir relatório gerencial com parcelas logo após cupom fiscal');
+// 07.03.12
+  CBTopicos.Items.Add('1025 - Sistema - Ativa filtragem de itens do estoque por unidade(filial)');
+// 21.05.12
+  CBTopicos.Items.Add('1026 - Sistema - Permite fazer RC e VC para pessoa jurídica (CNPJ)');
+// 25.06.12
+  CBTopicos.Items.Add('1027 - Sistema - Ativa barra de atalhos');
+// 16.08.12
+  CBTopicos.Items.Add('1028 - Sistema - Gera XML das NFe apenas para exportar sistema gratuito SEFA/SP versão 2.2.1');
+// 03.09.12
+  CBTopicos.Items.Add('1029 - Sistema - Ativa restrição de crédito nas remessas consignadas (RC)');
+// 18.09.12
+  CBTopicos.Items.Add('1030 - Sistema - Imprime remessas e devoluções do consignado em 2 vias ');
+// 08.10.12
+  CBTopicos.Items.Add('1031 - Sistema - Considera as remessas de consignação ( RC ) na checagem do limite de crédito');
+// 05.11.12
+  CBTopicos.Items.Add('1032 - Sistema - Possui impresso FS para emissão de NFe');
+// 26.11.12
+  CBTopicos.Items.Add('1033 - Sistema - Ativa cancelamento NFe por EVENTO');
+// 29.11.12
+  CBTopicos.Items.Add('1034 - Sistema - Desativa mostrar ip da internet na tela inicial');
+// 05.04.13
+  CBTopicos.Items.Add('1035 - Sistema - Fixa a primeira opção de pagamento (dinheiro) no cupom fiscal e não pede em toda impressão');
+// 10.06.13
+  CBTopicos.Items.Add('1036 - Sistema - Ativa função de Ajuda(Help)');
+// 16.12.13
+  CBTopicos.Items.Add('1037 - Sistema - Não permite cancelamento de NFe');
+// 19.05.14
+  CBTopicos.Items.Add('1038 - Sistema - Obriga a informar tamanho e cor quando usa codigo de barra mas digita MANUALMENTE');
+// 23.05.14
+  CBTopicos.Items.Add('1039 - Sistema - Envia CTe de saida para sefa logo após gravar');
+// 26.02.15
+  CBTopicos.Items.Add('1040 - Sistema - Ativa importação de XML de obra do CEM');
+// 05.03.15
+  CBTopicos.Items.Add('1041 - Sistema - Ativa geração do XML de saida na versão 3.10');
+// 28.08.15
+  CBTopicos.Items.Add('1042 - Sistema - Inclui produto automático usando XML de compra e codigo de barra');
+// 19.06.16
+  CBTopicos.Items.Add('1043 - Sistema - ativa CONTABILIZAÇÃO no FATURAMENTO no momento do lançamento');
+// 31.08.16
+  CBTopicos.Items.Add('1044 - Sistema - Ativa pesquisa por TODO O CAMPO');
+// 19.09.16
+  CBTopicos.Items.Add('1045 - Sistema - ativa CONTABILIZAÇÃO no FINANCEIRO no momento do lançamento');
+// 24.10.16
+  CBTopicos.Items.Add('1046 - Sistema - NÃO EXPORTA JUROS em baixa MULTIPLA na exportação Caixa/Bancos');
+// 31.10.16
+  CBTopicos.Items.Add('1047 - Sistema - EXPORTA OS ITENS nas NF-e de saida no SPED FISCAL');
+// 07.03.17
+  CBTopicos.Items.Add('1048 - Sistema - Inibe "linha" do cpf no cadastro de clientes');
+// 08.12.17
+  CBTopicos.Items.Add('1049 - Sistema - Imprime o tamanho na impressão das REMESSAS do consignado');
+// 15.02.18
+  CBTopicos.Items.Add('1050 - Sistema - Imprime coluna com CNPJ no relatório de AUDITORIA FISCAL');
+// 13.06.18
+  CBTopicos.Items.Add('1051 - Sistema - Inclui produto automático usando XML de compra e codigo do fornecedor');
+// 29.08.18
+  CBTopicos.Items.Add('1052 - Sistema - Imprimir os produtos no DANFE em ordem alfabética');
+// 12.09.18 - DEvereda arquivo enorme...
+  CBTopicos.Items.Add('1053 - Sistema - Gera PDF no envio dos XMLS de saida para contabilidade');
+// 15.01.19 -  Vida Nova - Alexsandra
+  CBTopicos.Items.Add('1054 - Sistema - Exporta para FISCAL/CONTABIL pela DATA DE SAIDA as notas de saida');
+// 19.03.19 -  Novicarnes - Ketlen
+  CBTopicos.Items.Add('1055 - Sistema - Armazena os reduzidos contábeis da exportação das notas a prazo');
+// 29.05.19 -  Novicarnes - Isonel + Vanderlei
+  CBTopicos.Items.Add('1056 - Sistema - Ativa checagem da VALIDADE na leitura da  EITQUETA');
+// 05.02.20 -  Novicarnes
+  CBTopicos.Items.Add('1057 - Sistema - Gera registro 0210 do BLOCO K DO SPED FISCAL');
+// 17.12.20 -  Novicarnes
+  CBTopicos.Items.Add('1058 - Sistema - Gera MDF-e automático a partir de UMA NF-e');
+// 26.01.2021
+  CBTopicos.Items.Add('1059 - Sistema - BUSCA produto automático usando CODIGO DE BARRAS na NOTA DE ENTRADA');
+// 23.10.2021 - A2z
+  CBTopicos.Items.Add('1060 - Sistema - Usa campo de cliente e demais campos no cadastro de EQUIPAMENTOS');
+  CBTopicos.Items.Add('1061 - Sistema - Habilita LOGO no título de relatórios em colunas');
+// 09.02.2023
+//  CBTopicos.Items.Add('1062 - Sistema - Habilita VALIDAÇÃO DA TRIBUTAÇÃO NOTA PELO NCM');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+  CBTopicos.Items.Add('1101 - Cadastros - Liberado cadastramento de fornecedores sem CNPJ/CPF');
+  CBTopicos.Items.Add('1102 - Cadastros - Liberado cadastramento de clientes sem CNPJ/CPF');
+// 21.05.07
+  CBTopicos.Items.Add('1103 - Cadastros - Ativa Aba Diversos no cadastro de clientes');
+// 24.05.07
+  CBTopicos.Items.Add('1104 - Cadastros - Liberado digitação de clientes com CNPJ preenchido com zeros');
+// 14.02.08
+  CBTopicos.Items.Add('1105 - Cadastros - Ativa campos ref. CTG na Aba Diversos no cadastro de clientes');
+// 05.08.09
+  CBTopicos.Items.Add('1106 - Cadastros - Liberado cadastramento de clientes com CNPJ/CPF duplicados');
+// 11.01.09
+  CBTopicos.Items.Add('1107 - Cadastros - Liberado o uso da opção "R" ( Revenda ) no campo de consumidor final de clientes');
+// 31.10.11 - Vivan - Lindacir
+  CBTopicos.Items.Add('1108 - Cadastros - Liberado o uso dos campos referente moradia no cadastro de clientes');
+  CBTopicos.Items.Add('1109 - Cadastros - Liberado o uso dos campos referente a dados do conjuge no cadastro de clientes');
+// 09.09.14
+  CBTopicos.Items.Add('1110 - Cadastros - Liberado o uso dos campos referente vendedor, gerente, indústria no cadastro de fornecedores');
+// 07.03.12
+  CBTopicos.Items.Add('1111 - Cadastros - Ativa filtragem de CLIENTES por unidade(filial)');
+// 18.03.15
+  CBTopicos.Items.Add('1112 - Cadastros - Ativa checagem de Pré-Cadastro de CLIENTES');
+// 01.09.15
+  CBTopicos.Items.Add('1113 - Cadastros - NÃO permite incluir CLIENTES sem CEP');
+// 12.06.17
+  CBTopicos.Items.Add('1114 - Cadastros - NÃO permite incluir Fornecedores sem Endereço devido ao SPED');
+// 01.06.18
+  CBTopicos.Items.Add('1115 - Cadastros - ativa checagem de CONDIÇÕES DE PAGAMENTO nas vendas');
+// 09.12.19
+  CBTopicos.Items.Add('1116 - Cadastros - ativa restrições ref. a LGPD');
+// 23.06.2021
+  CBTopicos.Items.Add('1117 - Cadastros - tira da tela de cadastro de CLIENTES os INATIVOS ');
+
+// 24.07.07
+  CBTopicos.Items.Add('1150 - Cheques Recebidos - Preenchimento obrigatório do codigo do cliente na inclusão cheques');
+
+  CBTopicos.Items.Add('1201 - Estoque - Baixa estoque somente na gravação das notas de saida');
+// 29.08.07
+  CBTopicos.Items.Add('1202 - Estoque - Ativa campos de cor, tamanho e copa no custo de composição de material');
+// 08.10.07
+//  CBTopicos.Items.Add('1203 - Estoque - Efetua decomposição dos itens da composição de custo na nota de entrada de produtor');
+// retirado pois sera feito na opção 'desossa'
+// 20.11.07
+  CBTopicos.Items.Add('1203 - Estoque - Cria codigo sequencial automático para os ítens do estoque');
+// 19.12.07
+  CBTopicos.Items.Add('1204 - Estoque - Ativa campo de numero da obra no estoque e em relatórios');
+// 17.06.08
+  CBTopicos.Items.Add('1205 - Estoque - Agiliza digitação comprimento no cadastro de tamanhos');
+// 02.10.08
+  CBTopicos.Items.Add('1206 - Estoque - Busca pela referencia no Acerto de Estoque');
+// 04.02.09
+  CBTopicos.Items.Add('1207 - Estoque - Deixar livre a descrição do produto ref. maiúscula/minúscula');
+// 18.02.09
+  CBTopicos.Items.Add('1208 - Estoque - Considerar 100 caracteres na descrição do item no estoque');
+// 06.04.09
+  CBTopicos.Items.Add('1209 - Estoque - Imprime coluna com a Referência ao invés do codigo do produto em relatórios do estoque');
+// 23.11.09
+  CBTopicos.Items.Add('1210 - Estoque - Não baixa estoque na requisição do almoxarifado caso não houver estoque');
+// 26.04.10
+  CBTopicos.Items.Add('1211 - Estoque - Considerar descrição do tamanho como alfanumérico em relatórios');
+// 03.05.10
+  CBTopicos.Items.Add('1212 - Estoque - Deixar fixo Maiúscula a descrição do produto');
+// 20.05.10
+  CBTopicos.Items.Add('1213 - Estoque - Imprime etiqueta de codigo de barra usando cadastro de impressos');
+// 09.08.10
+  CBTopicos.Items.Add('1214 - Estoque - Utiliza imagem para cada produto');
+// 14.10.10
+  CBTopicos.Items.Add('1215 - Estoque - Codigo do estoque é o mesmo codigo do fornecedor');
+// 02.12.10
+  CBTopicos.Items.Add('1216 - Estoque - Imprime etiqueta de codigo de barra usando cadastro de impressos + ACBR');
+// 13.09.11
+  CBTopicos.Items.Add('1217 - Estoque - Utiliza codigo de barras para compras e vendas');
+// 10.11.11
+  CBTopicos.Items.Add('1218 - Estoque - Habilita campos de custos, etc na inclusão de produtos no estoque');
+// 08.05.12
+  CBTopicos.Items.Add('1219 - Estoque - Usa campo de preço de compra para calcular custo da composição de produtos');
+  CBTopicos.Items.Add('1220 - Estoque - Usa campo de último custo de compra para calcular custo da composição de produtos');
+// 24.10.12
+  CBTopicos.Items.Add('1221 - Estoque - Retira o décimo terceiro dígito do codigo de barras enviado pelo leitor');
+// 25.10.13
+  CBTopicos.Items.Add('1222 - Estoque - Relatório Gerencial CMV usa o último custo de compra');
+// 28.10.13
+  CBTopicos.Items.Add('1223 - Estoque - Fechamento Mensal fechando movimento do período');
+// 22.11.13
+  CBTopicos.Items.Add('1224 - Estoque - Soma a quantidade em estoque da grade na tela do estoque');
+// 20.03.14 - Vivan..codigos de barra que começam com 2 'conflita' com codido de barra de balança
+  CBTopicos.Items.Add('1225 - Estoque - Utiliza codigo de barras de balança com peso ( começam com 2 )');
+// 10.03.15 - coorlafs
+  CBTopicos.Items.Add('1226 - Estoque - Ativar tributação para ATOS NÃO COOPERADOS');
+// 09.04.15 - devereda
+  CBTopicos.Items.Add('1227 - Estoque - Não faz relatório de carga no relatório Vendas Produtos');
+// 02.07.15 - Novicarnes
+  CBTopicos.Items.Add('1228 - Estoque - Não permite produto sem NCM');
+// 30.03.16 - Markito
+  CBTopicos.Items.Add('1229 - Estoque - Calcula preço de venda usando margem do grupo/UF e se é do Simples do cliente');
+// 23.06.16
+  CBTopicos.Items.Add('1230 - Estoque - busca CST PIS/COFINS no cadastro de subgrupos do estoque');
+// 19.10.16
+  CBTopicos.Items.Add('1231 - Estoque - calcula COMISSÃO por produto conforme faixa de preços');
+// 21.11.16
+  CBTopicos.Items.Add('1232 - Estoque - adiciona colunas no extrato para relatório ADAPAR');
+// 12.06.17 - branutri
+  CBTopicos.Items.Add('1233 - Estoque - ativa campos de cor e tamanho na CONTAGEM de estoque');
+// 13.04.18 - benato
+  CBTopicos.Items.Add('1234 - Estoque - NÃO BAIXA do estoque produtos com composição nas NOTAS DE SAIDA');
+// 09.05.18 -
+  CBTopicos.Items.Add('1235 - Estoque - na INCLUSÃO DO ESTOQUE calcula 40% sobre preço de venda para os custos');
+// 03.12.18 -
+  CBTopicos.Items.Add('1236 - Estoque - SEQUENCIAL do codigo de produto limita tamanho a 7');
+// 15.08.19
+  CBTopicos.Items.Add('1237 - Estoque - Imprime etiqueta do estoque usando modelo fixo interno');
+// 05.11.19
+  CBTopicos.Items.Add('1238 - Estoque - Monta descrição do produto com o grupo na geração da NF-e');
+// 20.02.20
+  CBTopicos.Items.Add('1239 - Estoque - Busca o CODIGO DO BENEFICIO FISCAL no cadastro de NCM');
+// 30.08.2021
+  CBTopicos.Items.Add('1240 - Estoque - UNIFICA o ESTOQUE de matriz e filial na tela de cadastro');
+// 24.08.2022
+  CBTopicos.Items.Add('1241 - Estoque - cria SEQUENCIAL INDEPENDENTE para o codigo do estoque');
+// 07.02.2023
+  CBTopicos.Items.Add('1242 - Estoque - ativa campo UNIDADE na GRADE do produto');
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 14.03.07
+  CBTopicos.Items.Add('1251 - Financeiro - Contabiliza documentos lançados direto financeiro em PAGAMENTOS');
+// 24.05.07
+  CBTopicos.Items.Add('1252 - Financeiro - Pede contas de despesa/receita específica para juros/descontos na baixa de pendencias');
+// 18.06.07
+  CBTopicos.Items.Add('1253 - Financeiro - Usa conta contábil do cadastro de clientes/fornecedores para exportar notas para contabilidade');
+// 27.09.07
+  CBTopicos.Items.Add('1254 - Financeiro - Calcula vencimentos em dias corridos sem considerar feriados/domingos');
+// 18.07.08
+  CBTopicos.Items.Add('1255 - Financeiro - Checar limite crédito pelas pendências no financeiro somente na unidade em uso');
+// 09.08.08
+  CBTopicos.Items.Add('1256 - Financeiro - Ativa cadastro de cheques recebidos no lançamento direto do caixa/bancos');
+// 14.08.08
+  CBTopicos.Items.Add('1257 - Financeiro - Imprime lançamentos do Caixa/bancos no relat. de Receitas/Despesas');
+// 03.10.08
+  CBTopicos.Items.Add('1258 - Financeiro - Pede número do CNPJ/CPF no cadastro de cheques recebidos');
+// 12.11.08
+  CBTopicos.Items.Add('1259 - Financeiro - Baixa de Pagamentos contabiliza numa unica conta de fornecedor(geral)');
+// 20.11.08
+  CBTopicos.Items.Add('1260 - Financeiro - Baixa Múltipla PARCIAL de Pendencias gera um movimento no Caixa/Bancos para cada titulo');
+// 08.01.09
+  CBTopicos.Items.Add('1261 - Financeiro - Não considerar devoluções no relatório de posição financeira a receber/pagar');
+// 08.04.09
+  CBTopicos.Items.Add('1262 - Financeiro - Calcular juros de mora na baixa de contas a receber');
+// 09.04.09
+  CBTopicos.Items.Add('1263 - Financeiro - NÃO considerar os cheques recebidos no relatório de contas a receber');
+  CBTopicos.Items.Add('1264 - Financeiro - Mostra produtos ao invés do nome no relatório de contas a receber');
+  CBTopicos.Items.Add('1265 - Financeiro - Baixa com antecipação de Recebimentos NÃO LANÇA no caixa/bancos');
+// 06.07.09 - Damama
+  CBTopicos.Items.Add('1266 - Financeiro - Pede data de emissão máxima para lista títulos na baixa de Recebimentos');
+// 17.07.09 - Damama
+  CBTopicos.Items.Add('1267 - Financeiro - Baixa Pendencia Financeira tipo R-Representante busca títulos pelo codigo do representante');
+// 10.09.09 - Damama
+  CBTopicos.Items.Add('1268 - Financeiro - Usa Wordpad para impressão recibo avulso');
+// 21.09.09 - Damama
+  CBTopicos.Items.Add('1269 - Financeiro - Baixa antecipação SEM gerar lançamento de baixa de antec. com valor negativo');
+// 03.10.09 - Capeg - Sicredi
+  CBTopicos.Items.Add('1270 - Financeiro - Permite Baixa de Pendência financeira de  vários clientes na mesma transação');
+// 03.12.09 - Abra
+  CBTopicos.Items.Add('1271 - Financeiro - Não mostra os cheques recebidos no relatório de contas a receber');
+// 21.01.10 - Abra
+  CBTopicos.Items.Add('1272 - Financeiro - Efetua a entrada e saida do cheque devolvido quando lança no cadastro de cheques');
+// 18.02.10 - Abra - Paulo
+  CBTopicos.Items.Add('1273 - Financeiro - Permite apenas contas de caixa(C), bancos(B) ou empréstimo(E) no lançamento no caixa/bancos');
+// 13.04.10 - Clessi
+  CBTopicos.Items.Add('1274 - Financeiro - Não imprime antecipações na relação de pendentes em rec./pagamentos');
+// 13.04.10 - DaMama
+  CBTopicos.Items.Add('1275 - Financeiro - Imprime somente saldo das antecipações no relatório de pendentes quando escolher um cliente');
+// 22.05.10 - Nacron - Denise
+  CBTopicos.Items.Add('1276 - Financeiro - Permite informar o codigo da unidade no lançamento direto em caixa/bancos');
+// 04.06.10 - Abra - Paulo
+  CBTopicos.Items.Add('1277 - Financeiro - Não imprime documentos totalmente baixados em várias baixas parciais');
+// 06.10.10 - Abra - Adriano
+  CBTopicos.Items.Add('1278 - Financeiro - Gera pendencia para pagamento de comissão ao vendedor na baixa de recebimento de contrato');
+// 20.10.10 - NOvi - Vava
+  CBTopicos.Items.Add('1279 - Financeiro - Na baixa de pendencia usar histórico informado na inclusão da pendencia');
+// 31.05.11 - Abra - Adriano
+  CBTopicos.Items.Add('1280 - Financeiro - Efetua pagamento de comissão ao representante conforme a baixa de títulos recebidos');
+// 27.08.11 - Vivan - Liane
+  CBTopicos.Items.Add('1281 - Financeiro - Imprime codigo e nome do usuário no extrato do caixa/bancos');
+// 05.10.11 - Vivan - Liane
+  CBTopicos.Items.Add('1282 - Financeiro - Opção de escolher qual email mandar nos relatórios do financeiro/pendentes');
+// 26.06.12 - Damama - Fabi
+  CBTopicos.Items.Add('1283 - Financeiro - Imprime resumo da movimentação no extrato do caixa/bancos');
+// 06.11.12 - Vivan - Lindacir
+  CBTopicos.Items.Add('1284 - Financeiro - Ativa campo portador na baixa de pendência financeira');
+// 10.01.13 -
+  CBTopicos.Items.Add('1285 - Financeiro - Ativa campo do bairro do cliente no relatório de contas a receber');
+// 05.09.13 - Metalforte
+  CBTopicos.Items.Add('1286 - Financeiro - Gera lançamento de SAIDA no caixa/bancos quando cancela transação de baixa de recebimentos');
+// 25.09.13 - Novicarnes
+  CBTopicos.Items.Add('1287 - Financeiro - Imprime coluna com o numero da nota de produtor no relatório Incluídas');
+// 03.04.14 - vivan
+  CBTopicos.Items.Add('1288 - Financeiro - Desativa campo de TARIFA na baixa de pendências');
+// 03.04.14 - Vivan
+  CBTopicos.Items.Add('1289 - Financeiro - Ativa restrição de crédito quando tem DUPLICATA VENCIDA');
+// 30.06.14 - Rumo Certo
+  CBTopicos.Items.Add('1290 - Financeiro - Recibo avulso somente em 1 via');
+// 09.09.14 - Vivan
+  CBTopicos.Items.Add('1291 - Financeiro - Imprimir data de cadastro no relat. de contas a receber pendentes');
+// 21.06.16 - Giacomoni - Barbara
+  CBTopicos.Items.Add('1292 - Financeiro - Imprimir cidade e fone no relatório de contas a receber pendentes');
+//  09.09.16
+  CBTopicos.Items.Add('1293 - Financeiro - Baixar cobrança bancária usando NOSSO NUMERO do banco ');
+// 05.09.17 -
+  CBTopicos.Items.Add('1294 - Financeiro - Coluna com CFOP no relatório INCLUIDAS');
+// 07.02.18 - Giacomoni - Barbara
+  CBTopicos.Items.Add('1295 - Financeiro - Deixa padrão com S no campo TODOS na geração de BOLETOS');
+// 16.04.18 - Vida Nova - Dani -
+  CBTopicos.Items.Add('1296 - Financeiro - Imprime percentual de desconto nos BOLETOS');
+// 23.04.18 - Giacomoni - imprime nome fantasia no relat. pendentes
+  CBTopicos.Items.Add('1297 - Financeiro - Imprime NOME FANTASIA no relatório de pendentes');
+// 27.06.18 - imprime o nosso numero ref. cobrança bancaria
+  CBTopicos.Items.Add('1298 - Financeiro - Imprime coluna NOSSO NUMERO no relatório de INCLUIDAS a receber');
+// 24.09.18 - Vida Nova
+  CBTopicos.Items.Add('1299 - Financeiro - Exige somente um dia de baixa no RETORNO DE COBRANÇA BANCARIA');
+// 01.02.19 - Novicarnes
+  CBTopicos.Items.Add('1300 - Financeiro - Permite BAIXAR vários pagamentos na BAIXA DE PENDENCIA');
+// 21.05.19 - Novicarnes
+  CBTopicos.Items.Add('1510 - Financeiro - Colunas de VENCIMENTO e CONTA de despesa no relat. audit.fiscal');
+// 18.10.19 - Novicarnes
+  CBTopicos.Items.Add('1511 - Financeiro - na BAIXA DE PENDENCIA colocar a PLACA no inicio do histórico');
+// 07.02.20 - Novicarnes
+  CBTopicos.Items.Add('1512 - Financeiro - mostra as entradas de BOLETOS dos arquivos RETORNO');
+// 11.05.20 - Novicarnes
+  CBTopicos.Items.Add('1513 - Financeiro - ativa leitura de CODIGO DE BARRA DE BOLETO na NOTA DE ENTRADA');
+// 12.05.20 - clessi
+  CBTopicos.Items.Add('1514 - Financeiro - Pedir se lança no CAIXA quando faz ANTECIPAÇÃO');
+// 16.10.20 - devereda
+  CBTopicos.Items.Add('1515 - Financeiro - Mostra o numero do pedido na BAIXA DE PENDENCIA');
+// 24.08.2021
+  CBTopicos.Items.Add('1516 - Financeiro - Não lança TARIFA na BAIXA de BOLETOS');
+  CBTopicos.Items.Add('1517 - Financeiro - Ativa opção de imprimir BOLETO COM PIX(Banco do Brasil)');
+// 01.10.2021
+  CBTopicos.Items.Add('1518 - Financeiro - Separa os PORTADORES para emissão de BOLETO por unidade conforme a CONTA vinculada');
+// 11.11.2021
+  CBTopicos.Items.Add('1519 - Financeiro - Faz o CREDIÁRIO identificando os clientes nas NFC-e');
+// 01.09.2022
+  CBTopicos.Items.Add('1520 - Financeiro - Ativa campo de portador pra vendas a vista e NFC-e');
+
+// 23.02.07
+  CBTopicos.Items.Add('1301 - Faturamento  - Libera digitação numeração nota saida');
+// 03.05.07
+  CBTopicos.Items.Add('1302 - Faturamento  - Ativa campo peças nas notas de e/s');
+// 23.05.07
+  CBTopicos.Items.Add('1303 - Faturamento  - Aplica restrições de crédito ao cliente na nota  de saida');
+// 17.07.07
+  CBTopicos.Items.Add('1304 - Faturamento  - Exporta Todas as Entradas em valor contábil e outras para sistema fiscal');
+// 17.09.07
+  CBTopicos.Items.Add('1305 - Faturamento  - Ativa campo de romaneio de entrada na nota de entrada');
+  CBTopicos.Items.Add('1306 - Faturamento  - Ativa campo de percentual no romaneio de entrada de abate');
+// 29.10.07
+  CBTopicos.Items.Add('1307 - Faturamento  - Ativa entrada de subprodutos na NF de entrada');
+// 02.11.07
+  CBTopicos.Items.Add('1308 - Faturamento  - Ativa atualização de custos pelo % informado na composição do produto');
+// 12.11.07
+  CBTopicos.Items.Add('1309 - Faturamento  - Ativa campos de tamanho e cor na NF de venda');
+  CBTopicos.Items.Add('1310 - Faturamento  - Adiciona descrição de tamanho e cor na descrição do produto na NF de venda');
+// 05.12.07
+  CBTopicos.Items.Add('1311 - Faturamento  - Ativa saida de subprodutos na NF de venda direta');
+// 02.01.08
+  CBTopicos.Items.Add('1312 - Faturamento  - Ativa campos de porto de embarque, saida e container');
+// 07.03.08
+  CBTopicos.Items.Add('1313 - Faturamento  - Ativa campo de frete unitário na NF de venda');
+// 11.03.08
+  CBTopicos.Items.Add('1314 - Faturamento  - Ativa campo de tamanho na nota de entrada');
+// 14.04.08
+  CBTopicos.Items.Add('1315 - Faturamento  - Ativa campo de cor na nota de entrada');
+// 13.05.08
+  CBTopicos.Items.Add('1316 - Faturamento  - Ativa uso de balança na entrada de abate');
+  CBTopicos.Items.Add('1317 - Faturamento  - Ativa uso de balança na nota de saida');
+// 30.05.08
+  CBTopicos.Items.Add('1318 - Faturamento  - Ativa arredodamento do peso na entrada de abate(inteiro)');
+// 11.06.08
+  CBTopicos.Items.Add('1319 - Faturamento  - Ativa checagem de CNPJ/CPF válido nas notas de saida e entrada');
+// 17.06.08
+  CBTopicos.Items.Add('1320 - Faturamento  - Ativa pesquisa das saidas de abate no campo do pedido na nota de saida');
+// 23.06.08
+  CBTopicos.Items.Add('1321 - Faturamento  - Ativa validação da grade do estoque na nota de saida');
+// 10.07.08
+  CBTopicos.Items.Add('1322 - Faturamento  - Ativa escolha de vários pedidos de venda na nota de saida');
+// 18.09.08
+  CBTopicos.Items.Add('1323 - Faturamento  - Aplica restrições de crédito ao cliente na saida de abate');
+// 03.12.08
+  CBTopicos.Items.Add('1324 - Faturamento  - Pedir % de comissão na nota de saida');
+// 05.12.08
+  CBTopicos.Items.Add('1325 - Faturamento  - Gerar contas a pagar referente comissão da nota de venda');
+// 22.12.08
+  CBTopicos.Items.Add('1326 - Faturamento  - Ativa controle de matéria prima e produto acabado com certificação na compra/venda');
+// 10.02.09
+//  CBTopicos.Items.Add('1327 - Faturamento  - Calcula icms sobre o total da nota de saida ( com ipi somado ) em venda para revenda');
+// 31.03.10 - Asatec - 'zona' com fernanda
+  CBTopicos.Items.Add('1327 - Faturamento  - Calcula icms sobre o total da nota de saida ( com ipi somado ) em venda para consumidor final');
+// 14.02.09
+  CBTopicos.Items.Add('1328 - Faturamento  - Obrigatório informar conta de despesa na nota de entrada');
+// 01.04.09
+  CBTopicos.Items.Add('1329 - Faturamento  - Coloca na mensagem da nota de saida as observações do pedido de venda');
+// 19.06.09
+  CBTopicos.Items.Add('1330 - Faturamento  - Bloqueia contas configuradas para contabilidade na conta despesa na nota de entrada');
+// 01.07.09
+  CBTopicos.Items.Add('1331 - Faturamento  - Lista pendencias financeiras no relatório notas fiscais\compras');
+// 16.07.09
+  CBTopicos.Items.Add('1332 - Faturamento  - Nota de serviços prestados usa mesma numeração da nota de produtos mas pode ser outra série');
+// 20.07.09
+  CBTopicos.Items.Add('1333 - Faturamento  - Gera registro de inventário ( tipo 74 ) todo mes para Sintegra');
+// 09.09.09
+  CBTopicos.Items.Add('1334 - Faturamento  - Multiplica qtde informada pelo comprimento na nota de saida');
+// 18.09.09 - Capeg
+  CBTopicos.Items.Add('1335 - Faturamento  - Pede se desconta pis e cofins do custo na nota de entrada');
+// 14.10.09 - Abra
+  CBTopicos.Items.Add('1336 - Faturamento  - Ativa checagem de produtos produzidos nas notas de Venda Entrega de Contrato');
+// 04.11.09 - Novicarnes
+  CBTopicos.Items.Add('1337 - Faturamento  - Ativa geração de notas de reclassificação em toda nota de entrada de produtor');
+// 05.11.09 - Abra
+  CBTopicos.Items.Add('1338 - Faturamento  - Ativa conversão de barras para metros em notas de compra(tipo CO) e Requisição');
+// 06.11.09 - Abra
+  CBTopicos.Items.Add('1339 - Faturamento  - Preenche automático codigo do representante na nota de saida');
+// 17.11.09 - Abra
+  CBTopicos.Items.Add('1340 - Faturamento  - Pesquisa Requisição/Devolução no estoque em cada item do pedido de venda');
+// 24.02.10 - Abra
+  CBTopicos.Items.Add('1341 - Faturamento  - Não permite informar conta de despesa na nota de entrada');
+// 19.03.10 - Asatec
+  CBTopicos.Items.Add('1342 - Faturamento  - Tipos de movimento sem Icms não calcula IPI nas saidas');
+// 13.09.10 - Nfe entrada + Bavi
+  CBTopicos.Items.Add('1343 - Faturamento  - Pede cfop por item na nota de entrada');
+// 06.10.10 - para separar a reserva técnica da comissao
+  CBTopicos.Items.Add('1344 - Faturamento  - Gerar contas a pagar referente a reserva técnica da nota de venda');
+  CBTopicos.Items.Add('1345 - Faturamento  - Gerar apenas PREVISÃO no contas a pagar referente comissão da nota de venda');
+// 14.10.10 - se usa xml na nf de entrada
+  CBTopicos.Items.Add('1346 - Faturamento  - Usa arquivo XML referente a NFe na nota de entrada');
+// 21.10.10 - tipo de movimento CF com duas contas de despesa ( debito e credito ) variavel
+  CBTopicos.Items.Add('1347 - Faturamento  - Tipo de movimento CF usa duas contas de receita/despesa na nota de entrada');
+// 18.01.11 - checagem se cfop pessoa fisica venda fora do estado
+  CBTopicos.Items.Add('1348 - Faturamento  - Ativa checagem de cfop específico para pessoa física fora do estado');
+// 11.04.11 - se pede para imprimir logo apos digitar a nota de saida  - Doce Pimenta X 'Luiz Carlos'
+  CBTopicos.Items.Add('1349 - Faturamento  - Pergunta se quer imprimir logo após gravar a nota de saida');
+// 07.07.11 - Clessi - Devolucao de material de uso e consumo..'como a nota veio'
+  CBTopicos.Items.Add('1350 - Faturamento  - Soma valor do Ipi na base de cálculo do Icms nas devolucões(saidas)');
+// 22.08.11 - Novicarnes - Vavá...
+  CBTopicos.Items.Add('1351 - Faturamento  - Não permite nota de entrada com diferença de valores totais e soma dos itens');
+// 20.10.11 - Silvano - Simone  - contabilidade
+  CBTopicos.Items.Add('1352 - Faturamento  - zera valores e % referente icms quando importa XML de NFe na entrada');
+// 17.01.12 - Bavi
+  CBTopicos.Items.Add('1353 - Faturamento  - imprime documento de saida em ordem de grupo mais descrição');
+// 20.04.12 - Giacomoni
+  CBTopicos.Items.Add('1354 - Faturamento  - zera valores e % referente icms na nf de entrada quando é empresa do SIMPLES');
+// 23.05.12 - Da Mama
+  CBTopicos.Items.Add('1355 - Faturamento  - Permite alterar o vencimento antes de gravar a nota de saida');
+// 05.09.12 - Benato
+  CBTopicos.Items.Add('1356 - Faturamento  - Ativa campo de quantidade por embalagem na nota de entrada');
+// 12.11.12 - Benato
+  CBTopicos.Items.Add('1357 - Faturamento  - Ativa campo de tabela de preço na nota de saida e entrada');
+// 03.12.12 - Permite importar xml de saidas no caso de 'perdas'
+  CBTopicos.Items.Add('1358 - Faturamento  - Permite importar XMLs de NFe emitida pela própria unidade');
+// 03.01.13 - nao passa pelo codigo do cliente em venda com cupom fiscal
+  CBTopicos.Items.Add('1359 - Faturamento  - Preenche automático o codigo do cliente consumidor em venda com cupom fiscal');
+// 17.01.13 - preço de venda na nf de transferencia
+  CBTopicos.Items.Add('1360 - Faturamento  - informa o preço de venda a vista quando não encontra o custo na transferência');
+// 01.03.13 - nome fantasia na NFe
+  CBTopicos.Items.Add('1361 - Faturamento  - imprime o nome fantasia na impressão do DANFE da NFe nos dados adicionais');
+// 04.03.13 - preço de venda da matriz 001
+  CBTopicos.Items.Add('1362 - Faturamento  - usa o preço de venda da matriz (001) na nota de venda');
+// 26.06.13 - Vivan
+  CBTopicos.Items.Add('1363 - Faturamento  - em Devoluções de Venda é obrigatório condição de pagamento A Vista');
+// 01.07.13 - Metalforte
+  CBTopicos.Items.Add('1364 - Faturamento  - Imprime nome do vendedor/representante nas inf. complementares no Danfe');
+// 22.08.13 - Patoterra
+  CBTopicos.Items.Add('1365 - Faturamento  - Pede setor/obra nas notas de entrada');
+// 09.09.13 - Metalforte
+  CBTopicos.Items.Add('1366 - Faturamento  - Calcula o preço de venda em cada entrada que altera o custo');
+// 23.09.13 - Patoterra
+  CBTopicos.Items.Add('1367 - Faturamento  - Ativa o campo de codigo do equipamento na nota de entrada');
+  CBTopicos.Items.Add('1368 - Faturamento  - Ativa DIAS DE USO do sistema para data de entrada');
+// 17.10.13
+  CBTopicos.Items.Add('1369 - Faturamento  - Imprime peças no danfe junto com a descrição do produto');
+// 30.10.13 - Metalforte
+  CBTopicos.Items.Add('1370 - Faturamento  - Calcula o peso total na nf de saida usando peso, tamanho e quantidade');
+// 23.03.14 - Novicarnes
+  CBTopicos.Items.Add('1371 - Faturamento  - Ativa campo de romaneio na nota de transferência');
+// 09.04.14 - Devereda
+  CBTopicos.Items.Add('1372 - Faturamento  - Ativa campo da quantidade mesmo usando LEITOR de codigo de barra');
+// 17.04.14 - Devereda
+  CBTopicos.Items.Add('1373 - Faturamento  - Traz preço de venda da grade caso estiver no cadastro codigo de barra');
+// 12.05.14 - Devereda
+  CBTopicos.Items.Add('1374 - Faturamento  - Imprime em duas linhas cada produto do CUPOM NÃO FISCAL');
+// 15.05.14 - Devereda
+  CBTopicos.Items.Add('1375 - Faturamento  - Desativa campo do Desconto em % na Venda Balcão');
+// 24.05.14 -
+  CBTopicos.Items.Add('1376 - Faturamento - Validar o portador pelo que tiver no cadastro do cliente');
+// 04.09.14 -
+  CBTopicos.Items.Add('1378 - Faturamento - Indicar se o cliente tem BP pendente no faturamento de pedidos');
+// 17.11.14 -
+  CBTopicos.Items.Add('1379 - Faturamento - Buscar informação nos pedidos de venda nas vendas contrato');
+// 10.12.14
+  CBTopicos.Items.Add('1380 - Faturamento  - Pede nome da obra nas notas de saida');
+// 07.03.15
+  CBTopicos.Items.Add('1381 - Faturamento  - Agiliza venda balcão');
+// 13.04.15 - Devereda
+  CBTopicos.Items.Add('1382 - Faturamento  - Ativa recurso de multiplicar QTDE X COMPRIMENTO do tamanho nas saidas');
+// 04.08.15 - NFC-e
+  CBTopicos.Items.Add('1383 - Faturamento  - Ativa visualização da NFC-e antes de imprimir');
+// 28.08.15 - NFC-e
+  CBTopicos.Items.Add('1384 - Faturamento  - seta VENDA BALCÃO para NFC-e');
+// 07.10.15 - incluir material da OS ja aberta
+  CBTopicos.Items.Add('1385 - Faturamento  - ativa consulta de OS nos itens da NOTA DE ENTRADA');
+// 27.10.15 -
+  CBTopicos.Items.Add('1386 - Faturamento  - Trazer PEDIDOS somente do mes anterior ao atual');
+// 03.11.15 -
+  CBTopicos.Items.Add('1387 - Faturamento  - Ativar opção de escolher tipo de movimento na VENDA BALCÃO');
+// 05.11.15 -
+  CBTopicos.Items.Add('1388 - Faturamento  - Ativar opção de imprimir NFC-e logo após gravar e autorizar');
+// 03.02.16 - NF-e
+  CBTopicos.Items.Add('1389 - Faturamento  - Ativa visualização da NF-e antes de imprimir');
+// 12.02.16 - NFc-e
+  CBTopicos.Items.Add('1390 - Faturamento  - Ativa inclusão do QR-Code no XML da NFC-e');
+// 24.03.16 - NFc-e  - outro tipo de 'agilizacao'
+  CBTopicos.Items.Add('1391 - Faturamento  - Pede confirmação para gravar a NFC-e para ver troco');
+// 24.03.16 - Markito
+  CBTopicos.Items.Add('1392 - Faturamento  - Ativa cálculo de ST no preço de venda');
+// 15.04.16 - Devereda
+  CBTopicos.Items.Add('1393 - Faturamento  - Ativa campo de desconto em valor na venda BALCÃO');
+// 24.05.16 - Markito
+  CBTopicos.Items.Add('1394 - Faturamento  - Não imprime resumo com valor total no canhoto do DANFE');
+// 06.06.16 - Markito
+  CBTopicos.Items.Add('1395 - Faturamento  - Gera TAG referente NOTA DE PRODUTOR na ''contra-nota'' de produtor');
+// 19.10.16 - Coorlaf Santa Maria
+  CBTopicos.Items.Add('1396 - Faturamento  - Não permite fazer NOTA DE VENDA caso tiver nota NÃO AUTORIZADA no dia anterior');
+// 10.01.17 - Novicarnes
+  CBTopicos.Items.Add('1397 - Faturamento  - Imprime no DANFE informação do usuário e da transação');
+// 07.04.17 - Novicarnes
+  CBTopicos.Items.Add('1398 - Faturamento  - Pergunta se quer enviar email a cada nota quando envia várias de uma vez');
+// 12.06.17 - SM -
+  CBTopicos.Items.Add('1399 - Faturamento  - Ativa campos de RETENÇÃO de pis, cofins, csl , ir e iss em NF de prestação de serviços');
+// 03.08.17 - Novicarnes
+  CBTopicos.Items.Add('1400 - Faturamento  - Informa condição de pagamento A VISTA quando no XML não constar a condição de pagamento');
+// 01.09.17 -
+  CBTopicos.Items.Add('1450 - Faturamento  - Baixa o XML da nfe de entrada pelo site SEM CERTIFICADO DIGITAL');
+// 30.10.17 -
+  CBTopicos.Items.Add('1451 - Faturamento  - Ativar campo de FRETE na NFC-e');
+// 23.04.18 - Agropecuaria Geffer
+  CBTopicos.Items.Add('1452 - Faturamento  - Usar somente um XML de nota fiscal para cada CTE digitado');
+// 17.05.18 - Giacomoni
+  CBTopicos.Items.Add('1453 - Faturamento  - Caso escolher portador CARTEIRA nota terá que ser A VISTA');
+// 01.07.18 - Cia Fruta
+  CBTopicos.Items.Add('1454 - Faturamento  - Permitir escolher cliente na NFC-e');
+// 16.08.18
+  CBTopicos.Items.Add('1455 - Faturamento  - Pedir o CFOP POR ITEM na digitação da NF-e');
+// 27.08.18 - siccare papeis
+  CBTopicos.Items.Add('1456 - Faturamento  - Ativa envio de EMAIL com várias NF-e marcadas');
+// 13.09.18 - Giacomoni
+  CBTopicos.Items.Add('1457 - Faturamento  - INIBE o CFOP na nota de saida');
+// 26.11.18 - Pato Embalagens
+  CBTopicos.Items.Add('1458 - Faturamento  - usa ETIQUETA com VALOR no CODIGO DE BARRA');
+// 18.04.19 - giacomoni
+  CBTopicos.Items.Add('1459 - Faturamento  - usa PEDIDO DE COMPRA na NOTA DE SAIDA');
+// 22.04.19 - Vida NOva
+  CBTopicos.Items.Add('1460 - Faturamento  - permite usar mesmo codigo de produto duas vezes na NOTA DE SAIDA');
+// 23.04.19 - Vida NOva
+  CBTopicos.Items.Add('1461 - Faturamento  - busca do SUBGRUPO do estoque a tributação em venda para cliente SEM I.E.');
+// 20.06.19 - Vida NOva
+  CBTopicos.Items.Add('1462 - Faturamento  - pede INSUMOS DE PRODUÇÃO em nota de produtor');
+// 26.08.19 - Sandro Com. de areia
+  CBTopicos.Items.Add('1463 - Faturamento  - pede VALOR TOTAL para calcular a QUANTIDADE na NOTA DE SAIDA');
+// 05.09.19 - Seip
+  CBTopicos.Items.Add('1464 - Faturamento  - busca do SUBGRUPO do estoque a tributação nas vendas FORA DO ESTADO');
+// 17.10.19 - Globalfoods
+  CBTopicos.Items.Add('1465 - Faturamento  - imprime nome do TRANSPORTADOR no lugar do nome do cliente no relat. de FATURAMENTO');
+// 13.11.19 - A2z + Novicarnes
+  CBTopicos.Items.Add('1466 - Faturamento  - usa 4 DIGITOS no ano na NOTA DE ENTRADA nos vencimentos');
+// 03.02.20 - guiber
+  CBTopicos.Items.Add('1467 - Faturamento  - traz data de movimento vazia na VENDA BALCÃO');
+// 11.02.20 - guiber
+  CBTopicos.Items.Add('1468 - Faturamento  - usa 4 DÍGITOS para o ANO no VENCIMENTO na NOTA DE SAIDA');
+// 03.04.20 - Vida Nova 'só para um mes'
+  CBTopicos.Items.Add('1469 - Faturamento  - pede PERIODO para somar os litros do LEITE DA CRIANÇA');
+// 06.04.20 - Novicarnes
+  CBTopicos.Items.Add('1470 - Faturamento  - não permitir lançar CTE ENTRADA sem XML ou chave');
+// 19.05.20 - Novicarnes X Fama
+  CBTopicos.Items.Add('1471 - Faturamento  - ACRÉSCIMO na NOTA DE SAIDA calcula embutindo o valor');
+// 02.06.20 - nome fantasia do EMITENTE na NFe
+  CBTopicos.Items.Add('1472 - Faturamento  - imprime o nome fantasia do EMITENTE na impressão do DANFE da NFe');
+// 07.07.20 - nome fantasia do EMITENTE na NFe
+  CBTopicos.Items.Add('1473 - Faturamento  - soma QUANTIDADE no relatório de FATURAMENTO');
+// 29.10.20 - NÃO USA CST 051 para TODOAS  as transferencias
+  CBTopicos.Items.Add('1474 - Faturamento  - NÃO usa CST 051 para todas as TRANSFERÊNCIAS');
+// 02.11.20 - Guiber - ver se para de 'cadastros de icms e cst' errados na 002
+  CBTopicos.Items.Add('1475 - Faturamento  - Não permite mudar a unidade na NOTA DE SAIDA');
+// 16.11.20
+  CBTopicos.Items.Add('1476 - Faturamento  - IMPRIME automático a nota de venda na VENDA BALCÃO');
+// 18.05.2021
+  CBTopicos.Items.Add('1477 - Faturamento  - Pede UF e cidade final para gerar o MDFE a partir de uma NFe');
+// 14.06.2021
+  CBTopicos.Items.Add('1478 - Faturamento  - Le direto da pasta os arquivo XMLS para NOTA DE ENTRADA');
+// 20.08.2021
+  CBTopicos.Items.Add('1479 - Faturamento  - Zera e Permite lançar a entrada NFP-e com valores zerados');
+// 08.09.2021
+  CBTopicos.Items.Add('1480 - Faturamento  - Zera ICMS ref. entrada de NF-e de Material de uso e Consumo (tipo CC)');
+// 11.03.2022
+  CBTopicos.Items.Add('1481 - Faturamento  - Permite informar CONDIÇÃO DE PAGAMENTO na NFCe');
+// 11.07.2022 - Guiber
+  CBTopicos.Items.Add('1482 - Faturamento  - Atualiza NCM do estoque com o que vem no XML do fornecedor');
+// 22.07.2022 - Devereda
+  CBTopicos.Items.Add('1483 - Faturamento  - Atualiza CUSTO do estoque com tag infAdProd quando vier no XML do fornecedor');
+// 22.10.2022 - Benato + Mirvane - serve tanto pra escritorio q baixa E para q usa o 'novo busca nfe'
+  CBTopicos.Items.Add('1484 - Faturamento  - NÃO EFETUA MANIFESTAÇÃO da nfe de entrada quando lançada com XML');
+// 19.12.2022 - Fama
+  CBTopicos.Items.Add('1485 - Faturamento  - libera acréscimo na VENDA BALCÃO(CONSUMIDOR)');
+
+  CBTopicos.Items.Add('1401 - Pedido Venda - Ativa descontos mes de aniversário');
+// 26.11.08
+  CBTopicos.Items.Add('1402 - Pedido Venda - Ativa campos de fardos, pacotes e cubagem no pedido de venda');
+// 01.9.09
+  CBTopicos.Items.Add('1403 - Pedido Venda - Usar markup sobre o custo para calcular preço de venda');
+// 15.03.10
+  CBTopicos.Items.Add('1404 - Pedido Venda - Converter automático de horas decimais para horas mais minutos os serviços');
+// 30.03.10 - Cenitech
+  CBTopicos.Items.Add('1405 - Pedido Venda - usar preço de custo e dividir o % da tabela para produtos');
+// 13.08.10 - Cenitech
+  CBTopicos.Items.Add('1406 - Pedido Venda - Aplica restrições de crédito ao cliente no pedido de venda');
+// 02.06.11 - Novicarnes
+  CBTopicos.Items.Add('1407 - Pedido Venda - Mostra F12 de produtos somente com os grupos escolhidos');
+  CBTopicos.Items.Add('1408 - Pedido Venda - Permite informar o peso sem usar a balança na pesagem de saida');
+// 26.08.13 - Vivan
+  CBTopicos.Items.Add('1409 - Pedido Venda - Não precisa autorizar pedido para faturar');
+  CBTopicos.Items.Add('1410 - Pedido Venda - Inibe campos para agilizar digitação');
+// 20.11.13 - Metalforte
+  CBTopicos.Items.Add('1411 - Pedido Venda - Usar markup, margem ,custo e peso para calcular preço de venda');
+// 20.01.14 - SolMetal
+  CBTopicos.Items.Add('1412 - Pedido Venda - Usar opção de Requisição para materiais do PV/OS');
+// 24.05.14 -
+  CBTopicos.Items.Add('1413 - Pedido Venda - Validar o portador pelo que tiver no cadastro do cliente');
+// 28.05.14
+  CBTopicos.Items.Add('1414 - Pedido Venda - Aplica restrições de crédito ao cliente em cada item no pedido de venda');
+// 07.07.14 -
+  CBTopicos.Items.Add('1415 - Pedido Venda - Validar a condição de pagamento pelo que tiver no cadastro do cliente');
+// 15.08.14 -
+  CBTopicos.Items.Add('1416 - Pedido Venda - Sugerir OS no tipo de pedido');
+// 08.01.15 - Devereda
+  CBTopicos.Items.Add('1417 - Pedido Venda - Não deixar vender se não houver estoque');
+// 28.01.15 - se pede para imprimir logo apos digitar a nota de saida  - Doce Pimenta X 'Luiz Carlos'
+  CBTopicos.Items.Add('1418 - Pedido Venda - Pergunta se quer imprimir logo após gravar o pedido de venda');
+// 04.01.17 -
+  CBTopicos.Items.Add('1419 - Pedido Venda - Importa automático pedidos de venda enviados via TABLET/CELULAR');
+// 01.11.17 -
+  CBTopicos.Items.Add('1420 - Pedido Venda - Gera ORDEM DE PRODUÇÃO quando inclui OS baseado na composição de custo');
+// 03.07.18 -
+  CBTopicos.Items.Add('1421 - Pedido Venda - habilita campos específicos de ORDEM DE SERVIÇO');
+// 26.10.18 -
+  CBTopicos.Items.Add('1422 - Pedido Venda - pede VENDEDOR/REPRESENTANTE em cada pedido de venda');
+// 22.11.18 -
+  CBTopicos.Items.Add('1423 - Pedido Venda - NÃO MOSTRAR orçamentos na consulta de pedidos na NF de SAIDA');
+// 06.02.19 - - rever isto pois dai 'phode' alteracao, exclusao, etc pois a chave é o numero..
+//  CBTopicos.Items.Add('1424 - Pedido Venda - fazer numeração independente para PEDIDO, OS e OP');
+  CBTopicos.Items.Add('1425 - Pedido Venda - pedir valor da comissão em cada pedido de venda');
+// 08.01.20
+  CBTopicos.Items.Add('1426 - Pedido Venda - considerar pedido para venda de CARNE ASSADA');
+// 25.02.20
+  CBTopicos.Items.Add('1427 - Pedido Venda - libera digitação da descrição do produto codigo PROD...');
+// 15.06.20
+  CBTopicos.Items.Add('1428 - Pedido Venda - pede quantas vias imprimir em cada impressão');
+// 23.04.2021
+  CBTopicos.Items.Add('1429 - Pedido Venda - informa pedido somente pra XML da nfe de SAIDA');
+// 28.12.2022
+  CBTopicos.Items.Add('1430 - Pedido Venda - usa PREÇO de fim de semana na SEXTA na pesagem da COMANDA');
+// 27.02.2023 - Guiber
+  CBTopicos.Items.Add('1431 - Pedido Venda - permite importar no FATURAMENTO pedido de outra unidade');
+
+  CBTopicos.Items.Add('1501 - Orçamentos   - Usar margem líquida de lucro por grupo de produto');
+
+//  CBTopicos.Items.Add('1501 - Específico - Cria log de movimento de estoque em movdpedicii');
+
+  Inicializar;
+end;
+
+
+procedure TFConfigura.EdImprnotasaidaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(EdImprnotasaida,key);
+
+end;
+
+procedure TFConfigura.EdImprnotatransfKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(EdImprnotatransf,key);
+
+end;
+
+procedure TFConfigura.EdImprnfmatricialKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(EdImprnfmatricial,key);
+
+end;
+
+procedure TFConfigura.EdImpromaserie5KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(EdImpromaserie5,key);
+
+end;
+
+procedure TFConfigura.EdnotasaidatesteKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(Ednotasaidateste,key);
+
+end;
+
+procedure TFConfigura.EdnotasaidamatrizKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(Ednotasaidamatriz,key);
+
+end;
+
+procedure TFConfigura.EdnotatranmatrizKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(Ednotatranmatriz,key);
+
+end;
+
+procedure TFConfigura.Ednotasaida100KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(Ednotasaida100,key);
+
+end;
+
+procedure TFConfigura.EdImpreciboKeyPress(Sender: TObject; var Key: Char);
+begin
+  FGeral.Limpaedit(EdImprecibo,key);
+
+end;
+
+procedure TFConfigura.EdImprbloquetoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(EdImprbloqueto,key);
+
+end;
+
+procedure TFConfigura.EdImpretqcliKeyPress(Sender: TObject; var Key: Char);
+begin
+  FGeral.Limpaedit(EdImpretqcli,key);
+
+end;
+
+procedure TFConfigura.EdPEDVENDA01FValidate(Sender: TObject);
+begin
+   if EdPedvenda01f.ascurrency<EdPedvenda01.ascurrency then
+     EdPedvenda01f.invalid('Valor tem que ser maior que o mínimo');
+end;
+
+procedure TFConfigura.EdPEDVENDA02FValidate(Sender: TObject);
+begin
+   if EdPedvenda02f.ascurrency<EdPedvenda02.ascurrency then
+     EdPedvenda02f.invalid('Valor tem que ser maior que o inicial');
+
+end;
+
+procedure TFConfigura.bprocuraClick(Sender: TObject);
+begin
+  if (opendialog1.execute) and ( trim(opendialog1.FileName)<>'' ) then
+    EdLocalpea.Text:=ExtractFilePath(Opendialog1.FileName)
+end;
+
+procedure TFConfigura.balteracontadorClick(Sender: TObject);
+var serie,nomecontador:string;
+begin
+  if Ednumeronfs.IsEmpty then exit;
+  if not Input('Informe a série','Série',serie,1,true ) then exit;
+  if trim(serie)='' then exit;
+  if not confirma('Alterar o contador de nota de saida da unidade '+Global.CodigoUnidade) then exit;
+  nomecontador:='NFSAIDA'+Global.CodigoUnidade+serie;
+  try
+    FGeral.AlteraContador(nomecontador,EdNumeronfs.AsInteger);
+    Aviso('Contador alterado para '+EdNumeronfs.Text);
+  except
+    Avisoerro('Problemas na alteração da numeração da nota');
+  end;
+
+end;
+
+procedure TFConfigura.EdtamanholetraValidate(Sender: TObject);
+begin
+  if (Edtamanholetra.asinteger<0) or (Edtamanholetra.asinteger>12) then
+    EdTamanholetra.invalid('Tamanho da letra varia entre 0 e 12'); 
+end;
+
+procedure TFConfigura.pcontabilDblClick(Sender: TObject);
+begin
+
+  FGeral.AtualizaExcel;
+
+end;
+
+// 03.07.12
+procedure TFConfigura.SetaAtalhos(Ed:TSqled);
+////////////////////////////////////////////////
+var p,r,i:integer;
+begin
+  Ed.Items.Clear;
+  {
+  for p:=0 to Application.ComponentCount-1 do begin
+     if Application.Components[p] is TForm then begin
+       if Ansipos( TForm(Application.Components[p]).Caption,'FGeral/FInit' ) = 0 then
+         Ed.Items.Add(  TForm(Application.Components[p]).Caption );
+     end;
+  end;
+  }
+  for p:=0 to FMain.Menu.Items.Count-1 do begin
+    for r:=0 to FMain.Menu.Items[p].Count-1 do begin
+      for i:=0 to FMain.Menu.Items[p].Items[r].Count-1 do begin
+        Ed.Items.Add(  FMain.Menu.Items[p].Items[r].Items[i].Name );
+      end;
+    end;
+  end;
+// 25.04.18 - para colocar itens de sub-menus
+  Ed.Items.Add( 'RelaoPendentes2' );
+
+//  Ed.Items.Sort;
+end;
+
+procedure TFConfigura.bcor1Click(Sender: TObject);
+begin
+   if Cd.Execute then EdCoreditsnaoenable.text:=ColorToString( Cd.color );
+end;
+
+procedure TFConfigura.EdFaixafrcValidate(Sender: TObject);
+begin
+   if EdFaixafrc.ascurrency<Edfaixairc.ascurrency then EdFaixafrc.invalid('Faixa final deve ser maior que a inicial');
+end;
+
+procedure TFConfigura.bgravaimpClick(Sender: TObject);
+//////////////////////////////////////////////////////////////
+begin
+//   if not Edimpnfe.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPNFE',EdImpnfe.text);
+//   if not Edimpnfce.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPNFCE',EdImpnfce.text);
+// 05.06.19
+   CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPNFE',EdImpnfe.text);
+   CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPNFCE',EdImpnfce.text);
+   if not Edimproment.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPROMENT',Edimproment.text);
+   if not EdIMPETQENT.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPETQENT',Edimpetqent.text);
+// 07.04.17
+   if not EdIMPboleto.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPBOLETO',Edimpboleto.text);
+// 08.04.18
+   if not EdIMPvalidas.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPVALIDA',Edimpvalidas.text);
+   if not EdIMPETQENTada.isempty then CriaArquivoINI(Global.NomeSistema,'Impressoras','IMPETQENTADA',EdimpetqentADA.text);
+end;
+
+procedure TFConfigura.EdcormenusChange(Sender: TObject);
+begin
+
+end;
+
+// 23.02.16
+procedure TFConfigura.bcor2Click(Sender: TObject);
+///////////////////////////////////////////////////
+begin
+   if Cd.Execute then EdCormenus.text:=ColorToString( Cd.color );
+
+end;
+
+end.

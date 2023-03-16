@@ -1,0 +1,700 @@
+object FSaidaDesossa: TFSaidaDesossa
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Entrada Embalgem'
+  ClientHeight = 628
+  ClientWidth = 1243
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SQLPanelGrid1: TSQLPanelGrid
+    Left = 0
+    Top = 0
+    Width = 1243
+    Height = 628
+    Align = alClient
+    Color = clSilver
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+    HeightLimite = 0
+    WidthLimite = 0
+    FixedVisible = False
+    object pbotoes: TSQLPanelGrid
+      Left = 1045
+      Top = 1
+      Width = 197
+      Height = 599
+      Align = alRight
+      Color = clSilver
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+      object APHeadLabel1: TAPHeadLabel
+        Left = 1
+        Top = 1
+        Width = 195
+        Height = 597
+        Align = alClient
+        AutoBounds = False
+        BoundLines = []
+        SubCaption.Ellipsis = False
+        SubCaption.Style = []
+        ExplicitLeft = 2
+        ExplicitTop = -4
+        ExplicitHeight = 578
+      end
+      object bSair: TSQLBtn
+        Left = 1
+        Top = -2
+        Width = 280
+        Height = 100
+        Hint = 'Abandona a tela'
+        Caption = 'F6 - Sair'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bSairClick
+        Operation = fbExit
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bretnropedido: TSQLBtn
+        Left = 2
+        Top = 281
+        Width = 280
+        Height = 100
+        Hint = 'retorna ao numero da etiqueta'
+        Caption = 'F3 - Codigo '
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bretnropedidoClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bimpetq: TSQLBtn
+        Left = 0
+        Top = 387
+        Width = 197
+        Height = 47
+        Hint = 'Impress'#227'o de Etiqueta'
+        Caption = 'F5 -Fecha Caixa'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bimpetqClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bexcluipesagem: TSQLBtn
+        Left = 1
+        Top = 139
+        Width = 180
+        Height = 35
+        Hint = 'Exclui Pesagem'
+        Caption = 'F2 - Exclui '
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bexcluipesagemClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object impetiqueta: TSQLBtn
+        Left = -1
+        Top = 200
+        Width = 197
+        Height = 47
+        Hint = 'Impress'#227'o de Etiqueta'
+        Caption = 'F4 - Etiqueta'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 2
+        OnClick = bimpetqClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object EdSeqi: TSQLEd
+        Left = 36
+        Top = 255
+        Width = 34
+        Height = 21
+        TabStop = False
+        Alignment = taRightJustify
+        TabOrder = 0
+        Text = ''
+        Visible = True
+        Empty = True
+        CloseForm = False
+        CloseFormEsc = False
+        ColorFocus = clBlack
+        ColorTextFocus = clWhite
+        ColorNotEnabled = clGray
+        ColorTextNotEnabled = clWhite
+        Title = 'Inicio'
+        TitlePos = tppLeft
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        TitlePixels = 30
+        TypeValue = tvInteger
+        ValueNegative = False
+        Decimals = 2
+        ValueFormat = '###0'
+        CharUpperLower = False
+        ItemsMultiples = False
+        ItemsValid = True
+        ItemsWidth = 0
+        ItemsHeight = 0
+        ItemsLength = 0
+        Duplicity = 0
+        MinLength = 0
+        Group = 0
+      end
+      object EdSeqf: TSQLEd
+        Left = 116
+        Top = 254
+        Width = 34
+        Height = 21
+        TabStop = False
+        Alignment = taRightJustify
+        TabOrder = 1
+        Text = ''
+        Visible = True
+        Empty = True
+        CloseForm = False
+        CloseFormEsc = False
+        ColorFocus = clBlack
+        ColorTextFocus = clWhite
+        ColorNotEnabled = clGray
+        ColorTextNotEnabled = clWhite
+        Title = 'Fim'
+        TitlePos = tppLeft
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        TitlePixels = 30
+        TypeValue = tvInteger
+        ValueNegative = False
+        Decimals = 2
+        ValueFormat = '###0'
+        CharUpperLower = False
+        ItemsMultiples = False
+        ItemsValid = True
+        ItemsWidth = 0
+        ItemsHeight = 0
+        ItemsLength = 0
+        Duplicity = 0
+        MinLength = 0
+        Group = 0
+      end
+    end
+    object PMens: TSQLPanelGrid
+      Left = 1
+      Top = 600
+      Width = 1241
+      Height = 27
+      Align = alBottom
+      Color = clSilver
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+    end
+    object SQLPanelGrid3: TSQLPanelGrid
+      Left = 1
+      Top = 1
+      Width = 1044
+      Height = 599
+      Align = alClient
+      Color = clSilver
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 2
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+      object SQLPanelGrid4: TSQLPanelGrid
+        Left = 1
+        Top = 1
+        Width = 1042
+        Height = 597
+        Align = alClient
+        Color = clSilver
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        HeightLimite = 0
+        WidthLimite = 0
+        FixedVisible = False
+        object PRemessa: TSQLPanelGrid
+          Left = 1
+          Top = 1
+          Width = 1040
+          Height = 56
+          Align = alTop
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+          HeightLimite = 0
+          WidthLimite = 0
+          FixedVisible = False
+          object EdNumeroDOC: TSQLEd
+            Left = 805
+            Top = 11
+            Width = 209
+            Height = 40
+            TabStop = False
+            Alignment = taLeftJustify
+            Color = clGray
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -27
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            MaxLength = 14
+            ParentFont = False
+            TabOrder = 1
+            Text = ''
+            Visible = False
+            OnChange = EdNumeroDOCChange
+            OnKeyDown = EdNumeroDOCKeyDown
+            Empty = False
+            CloseForm = False
+            CloseFormEsc = False
+            OnValidate = EdNumeroDOCValidate
+            ColorFocus = clBlack
+            ColorTextFocus = clWhite
+            ColorNotEnabled = clGray
+            ColorTextNotEnabled = clWhite
+            Title = 'Codigo Etiqueta'
+            TitlePos = tppLeft
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -16
+            TitleFont.Name = 'MS Sans Serif'
+            TitleFont.Style = [fsBold]
+            TitlePixels = 150
+            TypeValue = tvString
+            ValueNegative = False
+            Decimals = 0
+            CharUpperLower = False
+            ItemsMultiples = False
+            ItemsValid = True
+            ItemsWidth = 0
+            ItemsHeight = 300
+            ItemsLength = 0
+            Duplicity = 0
+            MinLength = 0
+            Group = 0
+          end
+          object EdEsto_codigo: TSQLEd
+            Left = 153
+            Top = 11
+            Width = 209
+            Height = 40
+            TabStop = False
+            Alignment = taLeftJustify
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -27
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            Text = ''
+            Visible = True
+            OnKeyDown = EdEsto_codigoKeyDown
+            Empty = False
+            CloseForm = False
+            CloseFormEsc = False
+            OnValidate = EdEsto_codigoValidate
+            ColorFocus = clBlack
+            ColorTextFocus = clWhite
+            ColorNotEnabled = clGray
+            ColorTextNotEnabled = clWhite
+            Title = 'Codigo Produto'
+            TitlePos = tppLeft
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -16
+            TitleFont.Name = 'MS Sans Serif'
+            TitleFont.Style = [fsBold]
+            TitlePixels = 150
+            TypeValue = tvString
+            ValueNegative = False
+            Decimals = 0
+            CharUpperLower = False
+            ItemsMultiples = False
+            ItemsValid = False
+            ItemsWidth = 0
+            ItemsHeight = 600
+            ItemsLength = 6
+            Duplicity = 0
+            MinLength = 0
+            FindTable = 'estoque'
+            FindField = 'esto_codigo'
+            FindSetField = 'esto_descricao'
+            Group = 0
+          end
+          object EdPecas: TSQLEd
+            Left = 521
+            Top = 11
+            Width = 209
+            Height = 40
+            TabStop = False
+            Alignment = taRightJustify
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -27
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            MaxLength = 99
+            ParentFont = False
+            TabOrder = 2
+            Text = ''
+            Visible = True
+            OnKeyDown = EdPecasKeyDown
+            Empty = False
+            CloseForm = False
+            CloseFormEsc = False
+            OnValidate = EdPecasValidate
+            ColorFocus = clBlack
+            ColorTextFocus = clWhite
+            ColorNotEnabled = clGray
+            ColorTextNotEnabled = clWhite
+            Title = 'Pe'#231'as'
+            TitlePos = tppLeft
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -16
+            TitleFont.Name = 'MS Sans Serif'
+            TitleFont.Style = [fsBold]
+            TitlePixels = 100
+            TypeValue = tvInteger
+            ValueNegative = False
+            Decimals = 0
+            CharUpperLower = False
+            ItemsMultiples = False
+            ItemsValid = False
+            ItemsWidth = 0
+            ItemsHeight = 600
+            ItemsLength = 6
+            Duplicity = 0
+            MinLength = 0
+            Group = 0
+          end
+        end
+        object PPedidos: TSQLPanelGrid
+          Left = 1
+          Top = 57
+          Width = 1040
+          Height = 358
+          Align = alClient
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 1
+          HeightLimite = 0
+          WidthLimite = 0
+          FixedVisible = False
+          object GridCortes: TSqlDtGrid
+            Left = 1
+            Top = 1
+            Width = 1038
+            Height = 356
+            Align = alClient
+            ColCount = 4
+            DefaultRowHeight = 25
+            FixedCols = 0
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -20
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            GridLineWidth = 3
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected, goColSizing]
+            ParentFont = False
+            TabOrder = 0
+            Columns = <
+              item
+                Title.Caption = 'Codigo'
+                WidthColumn = 80
+                FieldName = 'mpdd_esto_codigo'
+              end
+              item
+                Title.Caption = 'Descri'#231#227'o do Produto'
+                WidthColumn = 300
+                FieldName = 'esto_descricao'
+              end
+              item
+                Title.Caption = 'Peso'
+                WidthColumn = 100
+                FieldName = 'movd_pesocarcaca'
+              end
+              item
+                Title.Caption = 'Data'
+                WidthColumn = 90
+                FieldName = 'movd_data'
+              end>
+            RowCountMin = 0
+            SelectedIndex = 0
+            Version = '2.0'
+            PermitePesquisa = True
+            ColWidths = (
+              80
+              300
+              100
+              90)
+            RowHeights = (
+              25
+              25
+              25
+              25
+              25)
+          end
+        end
+        object PTotais: TSQLPanelGrid
+          Left = 1
+          Top = 415
+          Width = 1040
+          Height = 181
+          Align = alBottom
+          Color = clSilver
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 2
+          HeightLimite = 0
+          WidthLimite = 0
+          FixedVisible = False
+          object Label1: TLabel
+            Left = 258
+            Top = 56
+            Width = 160
+            Height = 37
+            Caption = 'Peso Total'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -32
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label5: TLabel
+            Left = 496
+            Top = 19
+            Width = 171
+            Height = 53
+            Align = alCustom
+            Caption = 'Balan'#231'a'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -45
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Layout = tlCenter
+          end
+          object ppesobalanca: TLabel
+            Left = 493
+            Top = 94
+            Width = 218
+            Height = 72
+            Align = alCustom
+            Alignment = taRightJustify
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -61
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Layout = tlCenter
+          end
+          object ptara: TLabel
+            Left = 843
+            Top = 210
+            Width = 194
+            Height = 72
+            Align = alCustom
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -61
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Layout = tlCenter
+          end
+          object panimaispesados: TSQLPanelGrid
+            Left = 125
+            Top = 1
+            Width = 123
+            Height = 281
+            Alignment = taRightJustify
+            Color = clSilver
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -61
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentBackground = False
+            ParentFont = False
+            TabOrder = 0
+            HeightLimite = 0
+            WidthLimite = 0
+            FixedVisible = False
+          end
+        end
+      end
+    end
+  end
+  object ACBrBAL1: TACBrBAL
+    Porta = 'COM1'
+    OnLePeso = ACBrBAL1LePeso
+    Left = 522
+    Top = 100
+  end
+  object ACBrETQ1: TACBrETQ
+    Porta = 'LPT1'
+    Ativo = False
+    Left = 443
+    Top = 137
+  end
+  object ACBrNFe1: TACBrNFe
+    Configuracoes.Geral.SSLLib = libNone
+    Configuracoes.Geral.SSLCryptLib = cryNone
+    Configuracoes.Geral.SSLHttpLib = httpNone
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Geral.VersaoQRCode = veqr000
+    Configuracoes.Arquivos.OrdenacaoPath = <>
+    Configuracoes.WebServices.UF = 'SP'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.QuebradeLinha = '|'
+    Configuracoes.RespTec.IdCSRT = 0
+    Left = 594
+    Top = 76
+  end
+end

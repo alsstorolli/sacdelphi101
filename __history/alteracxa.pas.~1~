@@ -1,0 +1,389 @@
+unit alteracxa;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, ExtCtrls, Buttons, SQLBtn, alabel,
+  SQLGrid, SqlExpr;
+
+type
+  TFAlteracaixa = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    PRemessa: TSQLPanelGrid;
+    Bevel1: TBevel;
+    Bevel2: TBevel;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdDtemissao: TSQLEd;
+    EdNumeroDoc: TSQLEd;
+    EdDtMovimento: TSQLEd;
+    EdValor: TSQLEd;
+    EdAntecipa: TSQLEd;
+    EdPlan_contaent: TSQLEd;
+    EdPlan_descricao: TSQLEd;
+    EdHist_codigoe: TSQLEd;
+    EdHist_descricaoe: TSQLEd;
+    EdHist_complementoe: TSQLEd;
+    EdPlan_contasai: TSQLEd;
+    SQLEd2: TSQLEd;
+    EdHist_codigos: TSQLEd;
+    EdHist_descricaos: TSQLEd;
+    EdHist_complementos: TSQLEd;
+    EdCheque: TSQLEd;
+    Edbompara: TSQLEd;
+    EdTipocad: TSQLEd;
+    EdCodtipo: TSQLEd;
+    SetEdFavorecido: TSQLEd;
+    PInicio: TSQLPanelGrid;
+    EdContaDesrec: TSQLEd;
+    SQLEd3: TSQLEd;
+    EdOperac: TSQLEd;
+    EdTransacao: TSQLEd;
+    EdTipolan: TSQLEd;
+    Edrepr_codigo: TSQLEd;
+    bImpressao: TSQLBtn;
+    procedure bGravarClick(Sender: TObject);
+    procedure EdOperacValidate(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure EdContaDesrecValidate(Sender: TObject);
+    procedure EdbomparaValidate(Sender: TObject);
+    procedure EdDtemissaoValidate(Sender: TObject);
+    procedure EdbomparaExitEdit(Sender: TObject);
+    procedure EdTipocadValidate(Sender: TObject);
+    procedure EdCodtipoValidate(Sender: TObject);
+    procedure bImpressaoClick(Sender: TObject);
+// 26.09.16
+    procedure AlteraContax(xtransacao,xtipoLan,xCompleHist:string ; xConta,xContaDesrec,xNUmerodoc:integer;xValor:currency;xDtEmissao:Tdatetime);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Querytoedits(Q:TSqlquery);
+    procedure Execute;
+  end;
+
+var
+  FAlteracaixa: TFAlteracaixa;
+  QMovfin,QBaixa:TSqlquery;
+
+implementation
+
+{$R *.dfm}
+
+
+uses Sqlsis, sqlfun , Geral, Unidades, impressao, plano;
+
+procedure TFAlteracaixa.bGravarClick(Sender: TObject);
+/////////////////////////////////////////////////////////////
+var conta,codhist:integer;
+    complehist,transacaocontax:string;
+begin
+//  if not EdOperac.valid then exit;
+  if EdOperac.isempty then exit;
+  if QMovfin=nil then begin
+     Avisoerro('Obrigatório informar a operação');
+     exit;
+  end;
+  if not confirma('Confirma a alteração') then exit;
+  if EdPlan_contaent.enabled then begin
+    conta:=EdPlan_contaent.asinteger;
+    codhist:=EdHist_codigoe.asinteger;
+    complehist:=EdHist_complementoe.text;
+  end else begin
+    conta:=EdPlan_contasai.asinteger;
+    codhist:=EdHist_codigos.asinteger;
+    complehist:=EdHist_complementos.text;
+  end;
+  Sistema.beginprocess('Gravando');
+  Sistema.Edit('movfin');
+  if QBaixa.eof then begin
+    Sistema.Setfield('movf_datalcto',Sistema.HOje);
+    Sistema.Setfield('movf_datamvto',EdDtEmissao.asdate);
+    Sistema.SetField('movf_DataCont',EdDtMovimento.asdate);
+    Sistema.Setfield('movf_dataprevista',edBomPara.asdate);
+    Sistema.Setfield('movf_plan_conta',conta);
+    Sistema.Setfield('movf_hist_codigo',Codhist);
+    Sistema.Setfield('movf_complemento',Complehist);
+    Sistema.Setfield('movf_numerodcto',EdNumerodoc.text);
+  //      Sistema.Setfield('movf_codb_codigo', varchar(3),
+  //      Sistema.Setfield('movf_favorecido varchar(100),
+    Sistema.Setfield('movf_numerocheque',Edcheque.asinteger);
+    Sistema.Setfield('movf_valorger',Edvalor.ascurrency);
+    Sistema.Setfield('movf_valorbco',EDvalor.ascurrency);
+    Sistema.Setfield('movf_plan_contard',EdContaDesrec.asinteger);
+  ///////  Sistema.Setfield('movf_tipomov',tipomov);
+  // 01.08.05
+    Sistema.Setfield('movf_es',EdtipoLan.text);
+  // 22.05.06
+    Sistema.Setfield('movf_repr_codigo',EdRepr_codigo.asinteger);
+  // 23.05.06
+    Sistema.Setfield('movf_tipo_codigo',EdCodTipo.asinteger);
+    Sistema.Setfield('movf_tipocad',EdTipocad.text);
+  // 25.05.10 - Nacron Denise
+    Sistema.Setfield('movf_unid_codigo',EdUnid_codigo.text);
+  end else begin
+// 09.04.14 - Novicarnes - Elize liberado historico
+    Sistema.Setfield('movf_plan_contard',EdContaDesrec.asinteger);
+    Sistema.Setfield('movf_hist_codigo',Codhist);
+    Sistema.Setfield('movf_complemento',Complehist);
+  end;
+  Sistema.Post('movf_operacao='+Edoperac.assql+' and movf_status=''N''');
+  Sistema.commit;
+  Sistema.endprocess('');
+  if (Global.topicos[1045]) and ( EdDtMovimento.asdate > 1 )  then begin
+    transacaocontax:=QMovfin.fieldbyname('movf_transacaocontax').asstring;
+    if trim(transacaocontax)<>'' then
+      AlteraContax(transacaocontax,EdtipoLan.text,CompleHist,Conta,EdContaDesrec.asinteger,EdNUmerodoc.asinteger,
+                   EdValor.ascurrency,EdDtEmissao.asdate);
+  end;
+
+// 13.04.07 - retirado pois calcula 'na hora'
+{
+// 10.05.05
+  if EdPlan_contaent.asinteger>0 then begin
+    if FGeral.RefazSaldofin(EdBompara.asdate,EdPlan_contaent.asinteger) then
+      Fgeral.FazSaldofin(EdBompara.asdate,EdPlan_contaent.asinteger,EdUnid_codigo.text);
+  end;
+  if EdPlan_contasai.asinteger>0 then begin
+    if FGeral.RefazSaldofin(EdBompara.asdate,EdPlan_contasai.asinteger) then
+      Fgeral.FazSaldofin(EdBompara.asdate,EdPlan_contasai.asinteger,EdUnid_codigo.text);
+  end;
+}
+
+  EdOperac.ClearAll(FAlteracaixa,99);
+  EdPlan_contaent.clearall(FAlteracaixa,99);
+  EdDtemissao.clearall(FAlteracaixa,99);
+  Edoperac.setfocus;
+end;
+
+procedure TFAlteracaixa.EdOperacValidate(Sender: TObject);
+//////////////////////////////////////////////////////////////////////////////
+var QMovesto,QT:TSqlquery;
+    nl:integer;
+begin
+   QMovfin:=sqltoquery('select * from movfin where movf_status=''N'' and movf_operacao='+EdOperac.assql);
+   if Qmovfin.eof then
+      EdOperac.invalid('Operação não encontrada')
+   else begin
+     QT:=sqltoquery('select * from movfin where movf_status=''N'' and movf_transacao='+stringtosql(QMovfin.fieldbyname('movf_transacao').asstring));
+     nl:=0;
+     while not QT.eof do begin
+       if pos(QT.FieldByName('movf_tipomov').asstring,Global.CodJurosRecebidos+';'+Global.CodDescontosDados+';'+
+              Global.CodDescontosTarifaBan)=0 then
+         inc(nl);
+       QT.Next;
+     end;
+     FGeral.FechaQuery(Qt);
+     if nl>1 then begin
+       EdOperac.Invalid('Em transferências deve-se cancelar a transação e incluir novamente');
+       exit;
+     end;
+     QMovfin.first;
+     QBaixa:=sqltoquery('select * from pendencias where pend_transbaixa='+stringtosql(Qmovfin.fieldbyname('movf_transacao').asstring)+
+                        ' and pend_status<>''C''');
+     if not QBaixa.eof then begin
+//       EdOperac.invalid('Não é permitido alterar transação de baixa de pendência.')
+        Avisoerro('Operação de baixa.   Será gravado somente a conta de despesa e o histórico');
+        Querytoedits(QMovfin);
+     end else begin
+       QMovesto:=sqltoquery('select * from movesto where moes_status=''N'' and moes_transacao='+stringtosql(Qmovfin.fieldbyname('movf_transacao').asstring));
+       if not QMovesto.eof then
+         EdOperac.invalid('Não é permitido alterar transação de movimento tipo '+QMovesto.fieldbyname('moes_tipomov').asstring)
+       else
+         Querytoedits(QMovfin);
+     end;
+   end;
+end;
+
+
+procedure TFAlteracaixa.Execute;
+begin
+   EdUnid_codigo.enabled:=Global.Topicos[1276];  // 25.05.10 - Nacron - Denise
+   FUnidades.SetaItems(EdUnid_codigo,SetEdUNid_nome,Global.Usuario.UnidadesMvto);
+// 12.08.10
+   if trim(FGeral.GetConfig1AsString('Impcomlan'))<>'' then
+     bimpressao.Enabled:=true
+   else
+     bimpressao.Enabled:=false;
+   Show;
+end;
+
+procedure TFAlteracaixa.Querytoedits(Q:TSqlquery);
+begin
+   EdContaDesrec.text:=Q.fieldbyname('movf_plan_contard').asstring;
+   EdPlan_contaent.enabled:=Q.fieldbyname('movf_es').asstring='E';
+   EdHist_codigoe.enabled:=Q.fieldbyname('movf_es').asstring='E';
+   EdHist_complementoe.enabled:=Q.fieldbyname('movf_es').asstring='E';
+   EdPlan_contasai.enabled:=Q.fieldbyname('movf_es').asstring='S';
+   EdHist_codigos.enabled:=Q.fieldbyname('movf_es').asstring='S';
+   EdHist_complementos.enabled:=Q.fieldbyname('movf_es').asstring='S';
+   EdCheque.enabled:=Q.fieldbyname('movf_es').asstring='S';
+   if Q.fieldbyname('movf_es').asstring='E' then begin
+     EdPlan_contaent.text:=Q.fieldbyname('movf_plan_conta').asstring;
+     EdHist_codigoe.text:=Q.fieldbyname('movf_hist_codigo').asstring;
+     EdHist_complementoe.text:=Q.fieldbyname('movf_complemento').asstring;
+     Edplan_contasai.enabled:=false;
+     EdHist_codigos.enabled:=false;
+     EdHist_complementos.enabled:=false;
+     EdCheque.enabled:=false;
+   end else begin
+     EdPlan_contasai.text:=Q.fieldbyname('movf_plan_conta').asstring;
+     EdHist_codigos.text:=Q.fieldbyname('movf_hist_codigo').asstring;
+     EdHist_complementos.text:=Q.fieldbyname('movf_complemento').asstring;
+     EdCheque.text:=Q.fieldbyname('movf_numerocheque').asstring;
+     EdPlan_contaent.enabled:=false;
+     EdPlan_contaent.enabled:=false;
+     EdHist_codigoe.enabled:=false;
+     EdHist_complementoe.enabled:=false;
+   end;
+   EdDtemissao.setdate(Q.fieldbyname('movf_datamvto').asdatetime);
+   EdNumerodoc.text:=Q.fieldbyname('movf_numerodcto').asstring;
+   EdValor.setvalue(Q.fieldbyname('movf_valorger').ascurrency);
+   EdDtmovimento.setdate(Q.fieldbyname('movf_datacont').asdatetime);
+   EdAntecipa.text:='N';
+   EdUnid_codigo.text:=Q.fieldbyname('movf_unid_codigo').asstring;
+   Edbompara.setdate(Q.fieldbyname('movf_dataprevista').asdatetime);
+   EdTransacao.text:=Q.fieldbyname('movf_transacao').asstring;
+   EdtipoLan.text:=Q.fieldbyname('movf_es').asstring;
+   EdRepr_codigo.Text:=Q.fieldbyname('movf_repr_codigo').asstring;
+// 23.05.06
+   EdTipocad.text:=Q.fieldbyname('movf_tipocad').asstring;
+   if EdTipocad.isempty then
+     EdTipocad.text:='C';
+   EdCodtipo.text:=Q.fieldbyname('movf_tipo_codigo').asstring;
+   EdCodtipo.valid;
+end;
+
+procedure TFAlteracaixa.FormActivate(Sender: TObject);
+begin
+   EdOperac.setfocus;
+
+end;
+
+procedure TFAlteracaixa.EdContaDesrecValidate(Sender: TObject);
+begin
+  if EdPlan_contaent.enabled then
+    EdPlan_contaent.setfocus
+  else
+    EdPlan_contasai.setfocus;
+end;
+
+procedure TFAlteracaixa.EdbomparaValidate(Sender: TObject);
+begin
+  EdCodtipo.enabled:=false;
+  if ( EdContadesrec.asinteger>0 ) and ( EdContaDesrec.asinteger=FGeral.getconfig1asinteger('Contaacertos') ) then begin
+    EdCodtipo.enabled:=true;
+    EdTipocad.valid;
+  end
+
+end;
+
+procedure TFAlteracaixa.EdDtemissaoValidate(Sender: TObject);
+begin
+  if not FGeral.ValidaMvto(EdDtemissao) then
+    EdDtemissao.Invalid('');
+
+{
+  else begin
+    if EdContadesrec.asinteger>0 then begin
+      EdRepr_codigo.enabled:=EdContaDesrec.asinteger=FGeral.getconfig1asinteger('Contaacertos');
+    end else begin
+      EdRepr_codigo.enabled:=false;
+      EdRepr_codigo.setvalue(0);
+    end;
+  end;
+}
+end;
+
+procedure TFAlteracaixa.EdbomparaExitEdit(Sender: TObject);
+begin
+  bgravarclick(FAlteracaixa);
+end;
+
+procedure TFAlteracaixa.EdTipocadValidate(Sender: TObject);
+begin
+  if EdTipoCad.text='U' then begin
+    EdCodtipo.ShowForm:='FUnidades';
+    EdCodtipo.FindTable:='unidades';
+    EdCodtipo.FindField:='unid_codigo';
+  end else if EdTipoCad.text='C' then begin
+    EdCodtipo.ShowForm:='FCadcli';
+    EdCodtipo.FindTable:='clientes';
+    EdCodtipo.FindField:='clie_codigo';
+  end else if EdTipoCad.text='F' then begin
+    EdCodtipo.ShowForm:='FFornece';
+    EdCodtipo.FindTable:='fornecedores';
+    EdCodtipo.FindField:='forn_codigo';
+  end else if EdTipoCad.text='T' then  begin
+    EdCodtipo.ShowForm:='FTransp';
+    EdCodtipo.FindTable:='transportadores';
+    EdCodtipo.FindField:='tran_codigo';
+  end else if EdTipoCad.text='R' then begin
+    EdCodtipo.ShowForm:='FRepresentantes';
+    EdCodtipo.FindTable:='representantes';
+    EdCodtipo.FindField:='repr_codigo';
+  end else begin
+    EdCodtipo.ShowForm:='';
+    EdCodtipo.FindTable:='';
+    EdCodtipo.FindField:='';
+  end;
+
+end;
+
+procedure TFAlteracaixa.EdCodtipoValidate(Sender: TObject);
+begin
+  if EdCodtipo.resultfind<>nil then
+    SetEdFavorecido.Text:=FGeral.GetNomeTipoCad(EdCodtipo.asinteger,EdTipoCad.text);
+
+end;
+
+procedure TFAlteracaixa.bImpressaoClick(Sender: TObject);
+begin
+  if trim(Edtransacao.text)<>'' then
+   FImpressao.ImprimeReciboCaixa( EdTransacao.text );
+
+end;
+
+// 26.09.16
+procedure TFAlteracaixa.AlteraContax(xtransacao, xtipoLan,xCompleHist: string; xConta, xContaDesrec, xNUmerodoc: integer;
+                                     xValor: currency; xDtEmissao: Tdatetime);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+var debito,credito:integer;
+    campos,valores,xcond,sqlnumerodoc:string;
+begin
+      if xTipoLan='E' then begin
+            debito:=FPlano.GetContaExportacao(xconta,Global.codigoUnidade);
+            credito:=FPlano.GetContaExportacao(xContadesrec,Global.codigoUnidade);
+      end else begin
+            credito:=FPlano.GetContaExportacao(xConta,Global.codigoUnidade);
+            debito:=FPlano.GetContaExportacao(xContaDesrec,Global.codigoUnidade);
+      end;
+      if xnumerodoc>0 then
+        sqlnumerodoc:=',mcon_numerodcto = '+Stringtosql(inttostr(xNUmerodoc))
+      else
+        sqlnumerodoc:='';
+
+      xcond:='mcon_transacao = '+Stringtosql(xtransacao)+' and mcon_Dc = ''C'' and mcon_status = ''N''';
+      campos:='mcon_pcon_conta,mcon_datamvto,mcon_valor,mcon_complemento,mcon_numerodcto';
+      valores:='mcon_pcon_conta = '+Stringtosql(inttostr(credito))+',Mcon_datamvto = '+Datetosql(xDtEmissao)+','+
+               'mcon_valor = '+Valortosql(xvalor)+',mcon_complemento = '+Stringtosql(xCompleHist)+
+                sqlnumerodoc;
+      FGeral.SistemaContax.ExecuteDirect(' Update movcon Set '+valores+' Where '+xcond );
+      xcond:='mcon_transacao = '+Stringtosql(xtransacao)+' and mcon_Dc = ''D'' and mcon_status = ''N''';
+      valores:='mcon_pcon_conta = '+Stringtosql(inttostr(debito))+',Mcon_datamvto = '+Datetosql(xDtEmissao)+','+
+                 'mcon_valor = '+Valortosql(xvalor)+',mcon_complemento = '+Stringtosql(xCompleHist)+
+                 sqlnumerodoc;
+      FGeral.SistemaContax.ExecuteDirect(' Update movcon Set '+valores+' Where '+xcond );
+end;
+
+end.

@@ -1,0 +1,646 @@
+unit Lancapen;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, Grids, SqlDtg, Buttons, SQLBtn, alabel,
+  ExtCtrls, SQLGrid;
+
+type
+  TFLancaPendencia = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    bImpressao: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    PFinan: TSQLPanelGrid;
+    PParcelas: TSQLPanelGrid;
+    GridParcelas: TSqlDtGrid;
+    EdVencimento: TSQLEd;
+    EdParcela: TSQLEd;
+    EdFpgt_codigo: TSQLEd;
+    EdFpgt_descricao: TSQLEd;
+    EdPort_codigo: TSQLEd;
+    EdPort_descricao: TSQLEd;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdCodtipo: TSQLEd;
+    SetEdFavorecido: TSQLEd;
+    EdDtemissao: TSQLEd;
+    EdRepr_codigo: TSQLEd;
+    SQLEd3: TSQLEd;
+    EdNumeroDoc: TSQLEd;
+    EdDtMovimento: TSQLEd;
+    EdTipocad: TSQLEd;
+    EdValortotal: TSQLEd;
+    EdRecpag: TSQLEd;
+    EdContaDesrec: TSQLEd;
+    SQLEd1: TSQLEd;
+    EdNparcelas: TSQLEd;
+    eddiavencimento: TSQLEd;
+    Edprevisao: TSQLEd;
+    EdHist_complemento: TSQLEd;
+    EdHist_codigo: TSQLEd;
+    procedure FormActivate(Sender: TObject);
+    procedure EdPort_codigoKeyPress(Sender: TObject; var Key: Char);
+    procedure EdFpgt_codigoKeyPress(Sender: TObject; var Key: Char);
+    procedure EdCodtipoValidate(Sender: TObject);
+    procedure EdFpgt_codigoValidate(Sender: TObject);
+    procedure bGravarClick(Sender: TObject);
+    procedure EdTipocadValidate(Sender: TObject);
+    procedure GridParcelasDblClick(Sender: TObject);
+    procedure EdVencimentoExitEdit(Sender: TObject);
+    procedure GridParcelasKeyPress(Sender: TObject; var Key: Char);
+    procedure EdParcelaExitEdit(Sender: TObject);
+    procedure Edunid_codigoKeyPress(Sender: TObject; var Key: Char);
+    procedure EdRecpagValidate(Sender: TObject);
+    procedure EdFpgt_codigoExitEdit(Sender: TObject);
+    procedure EdNparcelasExitEdit(Sender: TObject);
+    procedure EdNparcelasValidate(Sender: TObject);
+    procedure eddiavencimentoExitEdit(Sender: TObject);
+    procedure EdNumeroDocValidate(Sender: TObject);
+    procedure EdprevisaoExitEdit(Sender: TObject);
+    procedure bImpressaoClick(Sender: TObject);
+    procedure eddiavencimentoValidate(Sender: TObject);
+    procedure EdHist_codigoValidate(Sender: TObject);
+    procedure EdContaDesrecValidate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+    procedure AtivaEditsParcelas;
+
+  end;
+
+var
+  FLancaPendencia: TFLancaPendencia;
+  codrepr:integer;
+
+implementation
+
+uses Arquiv, Geral, conpagto, SqlSis, SqlFun, SqlExpr, RelFinan, DateUtils;
+
+{$R *.dfm}
+
+procedure TFLancaPendencia.FormActivate(Sender: TObject);
+begin
+  FGeral.SetaTipoCad(EdTipocad);
+  EdTipoCad.ClearAll(FLancaPendencia,99);
+  EdPort_codigo.clearall(FLancaPendencia,99);
+  if EdDtemissao.asdate=0 then EdDtEmissao.Setdate(Sistema.hoje);
+  if not Arq.TUnidades.Active then Arq.TUnidades.Open;
+  if not Arq.TTransp.Active then Arq.TTransp.Open;
+  if not Arq.TFornec.Active then Arq.TFornec.Open;
+  if not Arq.TClientes.Active then Arq.TClientes.Open;
+  if not Arq.TFPgto.Active then Arq.TFPgto.Open;
+  if not Arq.TPortadores.Active then Arq.TPortadores.Open;
+  if not Arq.TRepresentantes.Active then Arq.TRepresentantes.Open;
+  EdTipoCad.setfocus;
+end;
+
+procedure TFLancaPendencia.EdPort_codigoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.Limpaedit(EdPort_codigo,key);
+
+end;
+
+procedure TFLancaPendencia.EdFpgt_codigoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+   FGeral.LImpaEdit(Edfpgt_codigo,key);
+
+end;
+
+procedure TFLancaPendencia.EdCodtipoValidate(Sender: TObject);
+begin
+  codrepr:=0;
+  SetEdFavorecido.Text:=FGeral.GetNomeTipoCad(EdCodtipo.asinteger,EdTipoCad.text);
+  if trim(SetEdFavorecido.Text)='' then
+    EdCodTipo.Invalid('Não encontrado');
+  if EdCodtipo.resultfind<>nil then begin
+     if EdTipocad.text='C' then begin  // 17.08.05
+       codrepr:=EdCodtipo.resultfind.fieldbyname('clie_repr_codigo').asinteger;
+     end;
+  end;
+end;
+
+procedure TFLancaPendencia.EdFpgt_codigoValidate(Sender: TObject);
+var nparcelas,n:integer;
+    ListaPrazo:TStringlist;
+    p:integer;
+    valorparcela,valortotal,acumulado,valoravista:currency;
+begin
+  if not EdFpgt_codigo.validfind then exit;
+  GridParcelas.Clear;
+//  if FCondPagto.GetAvPz(EdFpgt_codigo.text)='P' then begin
+  if ( (FCondPagto.GetAvPz(EdFpgt_codigo.text)='P') ) or (EdFpgt_codigo.text<>EdFpgt_codigo.OldValue ) then begin
+    ListaPrazo:=TStringlist.create;
+    n:=FCondPagto.GetPrazos(EdFpgt_codigo.text,ListaPrazo);
+    valoravista:=FGeral.GetValorAvista(Listaprazo);
+    nparcelas:=FCondPagto.GetNumeroParcelas(EdFpgt_codigo.text);
+    acumulado:=0;
+//    valortotal:=EdValortotal.AsCurrency-valoravista;
+// 21.01.05
+    valortotal:=EdValortotal.AsCurrency-valoravista;
+    for p:=1 to nparcelas do begin
+      GridParcelas.cells[0,p]:=formatdatetime('dd/mm/yy',FGeral.GetProximoDiaUtil(EdDtEmissao.Asdate+Inteiro(ListaPrazo[p-1]),Inteiro(ListaPrazo[p-1]))  );
+//      Sistema.SetField('Pend_Parcela',p);
+//      Sistema.SetField('Pend_NParcelas',nparcelas);
+      if p=nparcelas then
+        valorparcela:=EdValortotal.ascurrency-acumulado  // para deixar na ultima parcelas "as dízimas"
+      else begin
+        if valoravista>0 then begin
+          valorparcela:=FGeral.Arredonda(valortotal/(nparcelas-1),2);
+          if (p=nparcelas) then
+            valorparcela:=valortotal+valoravista-acumulado  // para deixar na ultima parcelas "as dízimas" - 01.06.05
+
+        end else
+          valorparcela:=FGeral.Arredonda(valortotal/nparcelas,2);
+      end;
+//      GridParcelas.cells[1,p]:=strspace(Transform(valorparcela,f_cr),10);
+      if (valoravista>0) and (p=1) then begin
+        GridParcelas.cells[1,p]:=Transform(valoravista,f_cr);
+        acumulado:=acumulado+valoravista;
+      end else begin
+        GridParcelas.cells[1,p]:=Transform(valorparcela,f_cr);
+        acumulado:=acumulado+valorparcela;
+      end;
+      GridParcelas.RowCount:=GridParcelas.RowCount+1;
+    end;  // for do numero de parcelas
+    Freeandnil(ListaPrazo);
+  end;
+
+end;
+
+procedure TFLancaPendencia.Execute;
+begin
+  Show;
+  EdUnid_codigo.text:=Global.codigounidade;   // 07.05.07
+//  EdDtMovimento.setdate(sistema.hoje);
+// 05.11.09
+  FGeral.setamovimento(EdDtmovimento);
+  EdNparcelas.setvalue(0);
+  EdDiavencimento.setvalue(0);
+  EdTipocad.SetFocus;
+end;
+
+procedure TFLancaPendencia.bGravarClick(Sender: TObject);
+//////////////////////////////////////////////////////////////////////
+var transacao,status:string;
+    valorparcela:currency;
+
+    Procedure GravaParcelas;
+    ////////////////////////
+    var p,dias:integer;
+        emissao,vencimento:TDatetime;
+        total,valorpar,acumulado:currency;
+    begin
+//      emissao:=EdDtemissao.asdate;
+// 08.05.08 - quando coloca a emissao dia 02 e vai somando 30 dias dai cai 'no mesmo mes' e duplica o vencimento
+      emissao:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(EdDtemissao.AsDate),2)+strzero(Datetoano(EdDtemissao.AsDate,true),4) );
+      dias:=0;total:=EdNparcelas.asinteger*Edvalortotal.ascurrency;
+      acumulado:=0;
+      vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) );
+//      for p:=1 to Ednparcelas.asinteger do begin
+// 11.12.08 - mudado para respeitar o q tiver no  grid ( caso ter alterado )
+      for p:=1 to GridParcelas.rowcount do begin
+        if texttovalor( GridParcelas.cells[GridParcelas.getcolumn('pend_valor'),p] )>0 then begin
+          Sistema.Insert('Pendencias');
+          Sistema.SetField('Pend_Transacao',Transacao);
+          Sistema.SetField('Pend_Operacao',FGeral.GetOperacao);
+//          Sistema.SetField('Pend_Status','N');
+// 26.01.10
+          Sistema.SetField('Pend_Status',Status);
+          Sistema.SetField('Pend_DataLcto',Sistema.Hoje);
+{
+          if (p=1) and (Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) )>emissao) and (Datetomes(vencimento)=Datetomes(emissao)) then
+            vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) )
+          else begin
+            dias:=dias+30;
+            vencimento:=emissao+dias;
+            if Datetomes(vencimento)=2 then
+              vencimento:=Texttodate( strzero(28,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) )
+            else
+              vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) );
+          end;
+}
+          vencimento:=Texttodate( FGeral.TiraBarra( GridParcelas.cells[GridParcelas.getcolumn('pend_datavcto'),p] ) );
+          valorparcela:=texttovalor( GridParcelas.cells[GridParcelas.getcolumn('pend_valor'),p] );
+          if EdRecpag.text='P' then begin
+            if EdDtMOvimento.asdate>1 then
+              Sistema.SetField('Pend_DataMvto',EdDtMOvimento.asdate)
+            else
+              Sistema.SetField('Pend_DataMvto',sistema.hoje)
+          end else
+            Sistema.SetField('Pend_DataMvto',Emissao);
+          Sistema.SetField('Pend_DataCont',EddtMovimento.asdate);
+          Sistema.SetField('Pend_ValorComissao',0);
+  //          Sistema.SetField('Pend_DataVcto',FGeral.GetProximoDiaUtil(Emissao+Inteiro(ListaPrazos[p-1])) )
+          Sistema.SetField('Pend_DataVcto',Vencimento );
+//          Sistema.SetField('Pend_DataEmissao',Emissao);
+// 14.04.09 - Clessi - para respeitar a emissao informada sem usar a variavel emissao
+//            que foi mudada por motivos acima...
+          Sistema.SetField('Pend_DataEmissao',EdDtemissao.asdate);
+
+    //      Sistema.SetField('Pend_DataAutPgto','D',0,0,60,True,'Data Aut. Pgto','Data autorizada para pagamento','',True,'1','','','0');
+  //
+          Sistema.SetField('Pend_Plan_Conta',EdContaDesrec.asinteger);
+  // 07.08.07
+          if Edtipocad.text='C' then begin
+            Sistema.SetField('Pend_Repr_Codigo',EdCodtipo.resultfind.fieldbyname('clie_repr_codigo').asinteger);
+            if EdCodtipo.resultfind.fieldbyname('clie_codigofinan').asinteger>0 then
+              Sistema.SetField('Pend_Tipo_Codigo',EdCodtipo.resultfind.fieldbyname('clie_codigofinan').asinteger )
+            else
+              Sistema.SetField('Pend_Tipo_Codigo',EdCodtipo.Asinteger );
+          end else
+            Sistema.SetField('Pend_Tipo_Codigo',EdCodtipo.Asinteger );
+          Sistema.SetField('Pend_Unid_Codigo',EdUnid_codigo.text);
+          Sistema.SetField('Pend_Fpgt_Codigo','');
+          Sistema.SetField('Pend_Port_Codigo',edPort_codigo.text);
+//          Sistema.SetField('Pend_Hist_Codigo',Global.VCHist);
+// 30.07.14 - Rumo Certo - Mari
+          Sistema.SetField('Pend_Hist_Codigo',EdHist_codigo.text);
+          Sistema.SetField('Pend_Moed_Codigo','');
+          Sistema.SetField('Pend_TipoCad'    ,edTipocad.text);
+    //      Sistema.SetField('Pend_CNPJCPF',EdCliente.Resultfind('clie_cnpjcpf);
+//          Sistema.SetField('Pend_Complemento',global.VCComplehist);
+// 20.10.10 - novi - vava
+          Sistema.SetField('Pend_Complemento',EdHist_complemento.text);
+          Sistema.SetField('Pend_NumeroDcto',EdNumerodoc.AsInteger);
+          Sistema.SetField('Pend_Parcela',p);
+          Sistema.SetField('Pend_NParcelas',ednparcelas.AsInteger);
+          Sistema.SetField('Pend_RP',EdRecpag.text);
+    ///////////////////////////////////////////////////////////////
+{
+          if p=Ednparcelas.asinteger then
+              valorpar:=total-acumulado  // para deixar na ultima parcelas "as dízimas"
+          else begin
+              valorpar:=FGeral.Arredonda(valorparcela,2);
+          end;
+          acumulado:=acumulado+valorpar;
+}
+          Sistema.SetField('Pend_Valor',valorparcela);
+          Sistema.SetField('Pend_ValorTitulo',total);
+
+    ///////////////////////////////////////////////////////////////
+          Sistema.SetField('Pend_Juros',0);
+          Sistema.SetField('Pend_Multa',0);
+          Sistema.SetField('Pend_Mora',0);
+          Sistema.SetField('Pend_Acrescimos',0);
+          Sistema.SetField('Pend_Descontos',0);
+          Sistema.SetField('Pend_TransBaixa','');  // no. transacao da baixa
+          Sistema.SetField('Pend_ContaBaixa',0);
+    //        Sistema.SetField('Pend_DataBaixa',0);
+          Sistema.SetField('Pend_Observacao','');
+    //      Sistema.SetField('Pend_UsuAutPgto','');
+          Sistema.SetField('Pend_Impresso',0);   // numero do impresso relacionado
+          Sistema.SetField('Pend_ImprDcto','');  // S ou N se o impresso já foi enviado para impressão
+          Sistema.SetField('Pend_LoteCNAB',0);  // no. lote para exportação bancária (CNAB )
+          Sistema.SetField('Pend_tipomov',Global.CodPendenciaFinanceira);
+          Sistema.SetField('Pend_usua_codigo',Global.Usuario.Codigo);
+          Sistema.Post;
+        end;
+      end;
+    end;
+
+
+begin
+// 26.01.10 - para pegar tbem na gravacao de parcelas quando usa o campo de nro de parcelas
+  status:='N';   // confirmar funcionamento das antecipações antes
+  if EdPrevisao.text='S' then
+      status:='H';
+  if EdNParcelas.asinteger>0 then begin
+    valorparcela:=EdValortotal.ascurrency;
+//    if not confirma('Confirma a gravação de '+EdNParcelas.text+' parcelas de valor '+floattostr(valorparcela)+' ?') then exit;
+    if not confirma('Confirma a gravação de '+EdNParcelas.text+' parcelas nos valores acima ?') then exit;
+    Sistema.BeginTransaction('Gravando informações');
+    Transacao:=FGeral.GetTransacao;
+    Gravaparcelas;
+    try
+      Sistema.EndTransaction('Parcelas Gravadas');
+    except
+      Avisoerro('Parcelas não gravadas.  Problemas no banco de dados');
+    end;
+    EdTipoCad.ClearAll(FLancaPendencia,99);
+    EdPort_codigo.clearall(FLancaPendencia,99);
+    EdUnid_codigo.text:=Global.codigounidade;
+//    EdDtMovimento.setdate(sistema.hoje);
+// 05.11.09
+    FGeral.setamovimento(EdDtmovimento);
+    GridParcelas.clear;
+    EdTipocad.SetFocus;
+    exit;
+  end;
+  if trim(EdFpgt_codigo.Text)='' then begin
+    Avisoerro('Obrigatório colocar a condição de pagamento');
+    exit;
+  end;
+  if EdValortotal.ascurrency=0 then exit;
+  if not EdPrevisao.valid then exit;
+  if confirma('Confirma a gravação ?') then begin
+    status:='N';   // confirmar funcionamento das antecipações antes
+    if EdPrevisao.text='S' then
+      status:='H';
+    Sistema.BeginTransaction('Gravando informações');
+    Transacao:=FGeral.GetTransacao;
+    FGeral.GravaPendencia(EdDtemissao.AsDate,EdDtMovimento.AsDate,EdCodtipo,EdTipocad.text,Codrepr,EdUnid_codigo.text,Global.CodPendenciaFinanceira,
+             Transacao,EdFpgt_codigo.text,EdRecpag.Text,EdNumerodoc.asinteger,0,EdValortotal.AsCurrency,0,status,0,EdContaDesrec.asinteger,GridParcelas,'',EdPort_codigo.text,EdHist_Complemento.text );
+    Sistema.EndTransaction('');
+    EdTipoCad.ClearAll(FLancaPendencia,99);
+    EdPort_codigo.clearall(FLancaPendencia,99);
+    EdUnid_codigo.text:=Global.codigounidade;
+//    EdDtMovimento.setdate(sistema.hoje);
+// 05.11.09
+    FGeral.setamovimento(EdDtmovimento);
+    GridParcelas.clear;
+    EdTipocad.SetFocus;
+  end;
+end;
+
+procedure TFLancaPendencia.EdTipocadValidate(Sender: TObject);
+begin
+  if EdTipoCad.text='U' then begin
+    EdCodtipo.ShowForm:='FUnidades';
+    EdCodtipo.FindTable:='unidades';
+    EdCodtipo.FindField:='unid_codigo';
+  end else if EdTipoCad.text='C' then begin
+    EdCodtipo.ShowForm:='FCadcli';
+    EdCodtipo.FindTable:='clientes';
+    EdCodtipo.FindField:='clie_codigo';
+  end else if EdTipoCad.text='F' then begin
+    EdCodtipo.ShowForm:='FFornece';
+    EdCodtipo.FindTable:='fornecedores';
+    EdCodtipo.FindField:='forn_codigo';
+  end else if EdTipoCad.text='T' then  begin
+    EdCodtipo.ShowForm:='FTransp';
+//    EdCodtipo.FindTable:='transportadores';
+//    EdCodtipo.FindField:='tran_codigo';
+    EdCodtipo.FindTable:='';
+    EdCodtipo.FindField:='';
+  end else if EdTipoCad.text='R' then begin
+    EdCodtipo.ShowForm:='FRepresentantes';
+    EdCodtipo.FindTable:='representantes';
+    EdCodtipo.FindField:='repr_codigo';
+  end else begin
+    EdCodtipo.ShowForm:='';
+    EdCodtipo.FindTable:='';
+    EdCodtipo.FindField:='';
+  end;
+end;
+
+procedure TFLancaPendencia.GridParcelasDblClick(Sender: TObject);
+begin
+  AtivaEditsParcelas;
+
+end;
+
+procedure TFLancaPendencia.AtivaEditsParcelas;
+begin
+  if GridParcelas.Col=0 then begin
+     EdVencimento.Top:=GridParcelas.TopEdit;
+     EdVencimento.Left:=GridParcelas.LeftEdit+5;
+     EdVencimento.Text:=StrToStrNumeros(GridParcelas.Cells[GridParcelas.Col,GridParcelas.Row]);
+//     EdVencimento.Text:=GridParcelas.Cells[GridParcelas.Col,GridParcelas.Row];
+     EdVencimento.Visible:=True;
+     EdVencimento.SetFocus;
+  end else if GridParcelas.Col=1 then begin
+     EdParcela.Top:=GridParcelas.TopEdit;
+     EdParcela.Left:=GridParcelas.LeftEdit+6;
+     EdParcela.SetValue(TextToValor(GridParcelas.Cells[GridParcelas.Col,GridParcelas.Row]));
+     EdParcela.Visible:=True;
+     EdParcela.SetFocus;
+  end;
+
+end;
+
+procedure TFLancaPendencia.EdVencimentoExitEdit(Sender: TObject);
+begin
+  GridParcelas.Cells[GridParcelas.Col,GridParcelas.Row]:=DateToStr_(EdVencimento.AsDate);
+  GridParcelas.SetFocus;
+  EdVencimento.Visible:=False;
+
+end;
+
+procedure TFLancaPendencia.GridParcelasKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if key=#13 then
+    GridParcelasDblClick(FLancaPendencia);
+
+end;
+
+procedure TFLancaPendencia.EdParcelaExitEdit(Sender: TObject);
+begin
+  GridParcelas.Cells[GridParcelas.Col,GridParcelas.Row]:=Transform(EdParcela.AsFloat,f_cr);
+  GridParcelas.SetFocus;
+  EdParcela.Visible:=False;
+
+end;
+
+procedure TFLancaPendencia.Edunid_codigoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  FGeral.limpaedit(edunid_codigo,key);
+end;
+
+procedure TFLancaPendencia.EdRecpagValidate(Sender: TObject);
+begin
+  if Global.Usuario.OutrosAcessos[0709] then
+    EdContaDesrec.enabled:=EdRecpag.text='P'
+  else begin
+    EdContaDesrec.enabled:=false;
+    EdContaDesrec.setvalue(0);
+  end;
+  EdPrevisao.text:='N';
+  if EdRecpag.text='R' then
+     EdPrevisao.enabled:=false
+  else
+     EdPrevisao.enabled:=true;
+
+end;
+
+procedure TFLancaPendencia.EdFpgt_codigoExitEdit(Sender: TObject);
+begin
+   bgravarclick(self);
+end;
+
+procedure TFLancaPendencia.EdNparcelasExitEdit(Sender: TObject);
+begin
+//  if EdNParcelas.asinteger>0 then
+//    bgravarclick(self);
+
+end;
+
+procedure TFLancaPendencia.EdNparcelasValidate(Sender: TObject);
+begin
+  EdFpgt_codigo.Enabled:=true;
+  if EdNParcelas.asinteger>0 then begin
+    EdDiaVencimento.enabled:=true;
+    EdFpgt_codigo.Enabled:=false
+  end else
+    EdDiaVencimento.enabled:=false;
+
+end;
+
+procedure TFLancaPendencia.eddiavencimentoExitEdit(Sender: TObject);
+/////////////////////////////////////////////////////////////////
+var acumulado,valortotal,valorparcela:currency;
+    nparcelas,p,dias:integer;
+    emissao,vencimento,vencanterior:Tdatetime;
+begin
+  if Eddiavencimento.asinteger>0 then  begin
+//{
+    GridParcelas.Clear;
+    nparcelas:=EdNparcelas.asinteger;
+//    if nparcelas>6 then
+//      nparcelas:=6;  // somente para limitar exibição no grid
+    acumulado:=0;dias:=0;
+    valortotal:=EdValortotal.AsCurrency*nparcelas;
+//    emissao:=EdDtemissao.AsDate;
+// 08.05.08
+    emissao:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(EdDtemissao.AsDate),2)+strzero(Datetoano(EdDtemissao.AsDate,true),4) );
+    vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) );
+    for p:=1 to nparcelas do begin
+      if (p=1) and (Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) )>emissao) and (Datetomes(vencimento)=Datetomes(emissao)) then
+        vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) )
+      else begin
+        dias:=dias+30;
+//        vencimento:=emissao+dias;
+        vencimento:=DatetoDateMespos(Vencimento,1);
+// 20.06.13
+//        vencimento:=FGeral.GetProximoDiaUtil(vencimento);
+        vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) );
+        if p>1 then
+          vencanterior:=strtodate(GridParcelas.cells[0,p-1]);
+        if YearOf(Vencimento)<=1901 then
+          vencimento:=Texttodate( '2802'+strzero(Datetoano(vencanterior,true),4) );
+//        if (Datetomes(vencimento)=2) and (EdDiaVencimento.asinteger>=29) then
+//          vencimento:=Texttodate( strzero(28,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) )
+//        else
+//          vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) );
+
+      end;
+      GridParcelas.cells[0,p]:=formatdatetime('dd/mm/yy',vencimento) ;
+      valorparcela:=EdValortotal.ascurrency;
+      GridParcelas.cells[1,p]:=Transform(valorparcela,f_cr);
+      acumulado:=acumulado+valorparcela;
+      GridParcelas.RowCount:=GridParcelas.RowCount+1;
+    end;  // for do numero de parcelas
+
+//}
+///    bgravarclick(self);
+  end;
+
+end;
+
+procedure TFLancaPendencia.EdNumeroDocValidate(Sender: TObject);
+////////////////////////////////////
+var Q:TSqlquery;
+begin
+   if EdNumerodoc.isempty then exit;
+//   Q:=sqltoquery('select * from pendencias where pend_numerodcto='+EdNumerodoc.assql+
+// 18.11.11 - banco 8.4.1 'esperto'...edit ednumerodoc é integer e campo é string
+   Q:=sqltoquery('select * from pendencias where pend_numerodcto='+Stringtosql( EdNumerodoc.text ) +
+      ' and pend_unid_codigo='+EdUnid_codigo.assql+
+      ' and pend_status<>''C'' and pend_tipo_codigo='+EdCodtipo.AsSql+
+      ' and pend_tipocad='+EdTipocad.AsSql+' and pend_rp='+EdRecpag.AsSql );
+   if not Q.eof then
+     EdNumerodoc.invalid('Encontrado documento '+EdNumerodoc.text+' emissão '+FGeral.FormataData(Q.fieldbyname('pend_dataemissao').asdatetime)+
+           ' e vencimento em '+FGeral.FormataData(Q.fieldbyname('pend_datavcto').asdatetime)+
+           ' e valor '+FGeral.Formatavalor(Q.fieldbyname('pend_valor').ascurrency,f_cr) );
+   FGeral.fechaquery(Q);
+
+end;
+
+procedure TFLancaPendencia.EdprevisaoExitEdit(Sender: TObject);
+begin
+  EdPort_codigo.setfocus;
+
+end;
+
+procedure TFLancaPendencia.bImpressaoClick(Sender: TObject);
+begin
+  if not Sistema.Processando then FRelFinan_IMpBloqueto;
+
+end;
+
+procedure TFLancaPendencia.eddiavencimentoValidate(Sender: TObject);
+//////////////////////////////////////////////////////////////////////////
+var acumulado,valortotal,valorparcela:currency;
+    nparcelas,p,dias:integer;
+    emissao,vencimento,vencanterior:Tdatetime;
+begin
+  if Eddiavencimento.isempty then begin
+     EdDiavencimento.invalid('Preenchimento obrigatório');
+     exit;
+  end;
+///////////////
+  if Eddiavencimento.asinteger>0 then  begin
+//{
+    GridParcelas.Clear;
+    nparcelas:=EdNparcelas.asinteger;
+//    if nparcelas>6 then
+//      nparcelas:=6;  // somente para limitar exibição no grid
+    acumulado:=0;dias:=0;
+    valortotal:=EdValortotal.AsCurrency*nparcelas;
+//    emissao:=EdDtemissao.AsDate;
+// 08.05.08
+    emissao:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(EdDtemissao.AsDate),2)+strzero(Datetoano(EdDtemissao.AsDate,true),4) );
+    vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) );
+    for p:=1 to nparcelas do begin
+      if (p=1) and (Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) )>emissao) and (Datetomes(vencimento)=Datetomes(emissao)) then
+        vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(emissao),2)+strzero(Datetoano(Emissao,true),4) )
+      else begin
+        dias:=dias+30;
+//        vencimento:=emissao+dias;
+        vencimento:=DatetoDateMespos(Vencimento,1);
+// 20.06.13
+//        vencimento:=FGeral.GetProximoDiaUtil(vencimento);
+        vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) );
+        if p>1 then
+          vencanterior:=strtodate(GridParcelas.cells[0,p-1]);
+        if YearOf(Vencimento)<=1901 then
+          vencimento:=Texttodate( '2802'+strzero(Datetoano(vencanterior,true),4) );
+//        if (Datetomes(vencimento)=2) and (EdDiaVencimento.asinteger>=29) then
+//          vencimento:=Texttodate( strzero(28,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) )
+//        else
+//          vencimento:=Texttodate( strzero(Eddiavencimento.asinteger,2)+strzero(Datetomes(vencimento),2)+strzero(Datetoano(vencimento,true),4) );
+
+      end;
+      GridParcelas.cells[0,p]:=formatdatetime('dd/mm/yy',vencimento) ;
+      valorparcela:=EdValortotal.ascurrency;
+      GridParcelas.cells[1,p]:=Transform(valorparcela,f_cr);
+      acumulado:=acumulado+valorparcela;
+      GridParcelas.RowCount:=GridParcelas.RowCount+1;
+    end;  // for do numero de parcelas
+  end;
+////////////
+end;
+
+// 30.11.13
+procedure TFLancaPendencia.EdHist_codigoValidate(Sender: TObject);
+/////////////////////////////////////////////////////////////////////////
+begin
+  if EdHist_codigo.ResultFind<>nil then EdHist_complemento.text:=
+     EdHist_codigo.ResultFind.fieldbyname('hist_descricao').AsString;
+end;
+
+// 31.08.15
+procedure TFLancaPendencia.EdContaDesrecValidate(Sender: TObject);
+/////////////////////////////////////////////////////////////////////
+begin
+  if (EdContaDesREc.Enabled) and (EdContaDesrec.resultfind<>nil) then begin
+    if EdContaDesrec.resultfind.FieldByName('plan_tipo').asstring='S' then EdContaDesRec.invalid('Conta não pode ser sintética')
+  end;
+end;
+
+end.

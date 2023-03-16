@@ -1,0 +1,131 @@
+object FSiteWebservices: TFSiteWebservices
+  Left = 26
+  Top = 48
+  Caption = 'Consulta Situa'#231#227'o para envio da NFe'
+  ClientHeight = 618
+  ClientWidth = 1079
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PCadastro: TPanel
+    Left = 0
+    Top = 0
+    Width = 1079
+    Height = 618
+    Align = alClient
+    BevelOuter = bvLowered
+    TabOrder = 0
+    object PBotoes: TSQLPanelGrid
+      Left = 978
+      Top = 1
+      Width = 100
+      Height = 616
+      Align = alRight
+      BevelOuter = bvLowered
+      Color = clSilver
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      HeightLimite = 0
+      WidthLimite = 0
+      FixedVisible = False
+      object bSair: TSQLBtn
+        Left = 3
+        Top = 29
+        Width = 95
+        Height = 25
+        Hint = 'Abandona a tela'
+        Caption = 'Sair'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        Operation = fbExit
+        Processing = False
+        AutoAction = True
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+      object bpreenche: TSQLBtn
+        Left = 3
+        Top = 3
+        Width = 95
+        Height = 25
+        Hint = 'Preenche os campos'
+        Caption = 'Preencher'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Margin = 5
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Spacing = 5
+        OnClick = bpreencheClick
+        Operation = fbNone
+        Processing = False
+        AutoAction = False
+        GlyphSqlEnv = True
+        IntervalRepeat = 0
+        DownUp = False
+      end
+    end
+    object Panel1: TPanel
+      Left = 1
+      Top = 1
+      Width = 977
+      Height = 616
+      Align = alClient
+      BevelOuter = bvLowered
+      Caption = 'Panel1'
+      TabOrder = 1
+      object WebBrowser: TWebBrowser
+        Left = 1
+        Top = 1
+        Width = 975
+        Height = 614
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = -1
+        ExplicitTop = 2
+        ControlData = {
+          4C000000C5640000753F00000000000000000000000000000000000000000000
+          000000004C000000000000000000000001000000E0D057007335CF11AE690800
+          2B2E126208000000000000004C0000000114020000000000C000000000000046
+          8000000000000000000000000000000000000000000000000000000000000000
+          00000000000000000100000000000000000000000000000000000000}
+      end
+    end
+  end
+  object ACBrNFe1: TACBrNFe
+    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.WebServices.UF = 'SP'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.QuebradeLinha = '|'
+    Left = 681
+    Top = 105
+  end
+end

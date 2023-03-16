@@ -1,0 +1,87 @@
+k9100;etqentradaabate.prn
+k91;etqentradaabate.prn
+k969;camarafria.prn
+
+\sac\ETIQUETAS\carne suína congelada com osso\
+===============================================================
+186;\sac\ETIQUETAS\carne suína congelada com osso\pernil suino.prn
+185;\sac\ETIQUETAS\carne suína congelada com osso\paleta suína.prn
+183;\sac\ETIQUETAS\carne suína congelada com osso\COSTELA suína.prn
+155;\sac\ETIQUETAS\carne suína congelada com osso\CARRE SUINO.prn
+
+\sac\ETIQUETAS\carne suína resfriada com osso\
+===============================================================
+186;\sac\ETIQUETAS\carne suína resfriada com osso\pernil suino.prn
+185;\sac\ETIQUETAS\carne suína resfriada com osso\paleta suína.prn
+200;\sac\ETIQUETAS\carne suína resfriada com osso\MEIA CARCAÇA SUÍNA.prn
+183;\sac\ETIQUETAS\carne suína resfriada com osso\COSTELA suína.prn
+155;\sac\ETIQUETAS\carne suína resfriada com osso\CARRE SUINO.prn
+
+
+X02;ETIQUETA COSTELA NOVA.prn
+X03;COSTELA.prn
+X04;etiquetas modelo novo DIANTEIRO SEM PALETA .prn
+X10;ETIQUETA RABO NOVA.prn
+X12;ETIQUETA PEITO NOVA.PRN
+
+\sac\ETIQUETAS\etiquetas congelados BOVINO com osso\
+=====================================================================
+XXX;\sac\ETIQUETAS\etiquetas congelados BOVINO com osso\ETIQUETA CONTRA FILE  NOVA.prn
+X01;\sac\ETIQUETAS\etiquetas congelados BOVINO com osso\etiquetas modelo novo PALETA.prn
+6502;\sac\ETIQUETAS\etiquetas congelados BOVINO com osso\etiquetas modelo novo ACÉM.prn
+X14;"COSTELA DO TRASEIRO"
+
+\sac\ETIQUETAS\etiquetas resfriadas BOVINO com osso\
+=====================================================================
+4136;\sac\ETIQUETAS\etiquetas resfriadas BOVINO com osso\etiquetas modelo novo PALETA.prn
+7;\sac\ETIQUETAS\etiquetas resfriadas BOVINO com osso\etiquetas modelo novo TRASEIRO SERROTE .prn
+49;\sac\ETIQUETAS\etiquetas resfriadas BOVINO com osso\etiquetas modelo novo MEIA CARCAÇA.prn
+X13;"COSTELA DO TRASEIRO"
+65;\sac\ETIQUETAS\etiquetas resfriadas BOVINO com osso\etiquetas modelo novo COXÃO BOLA.prn
+X14;"DIANTEIRO SEM PALETA"
+X05;\sac\ETIQUETAS\etiquetas resfriadas BOVINO com osso\etiquetas modelo novo COXÃO BOLA.prn
+X07;"ALCATRA COXÃO"
+X06;"PEITO"
+X08;"LOMBO ALCATRA"
+X09;"QUARTO DIANTEIRO"
+
+
+\sac\ETIQUETAS\MIÚDOS SUÍNOS\
+==============================================
+204;\sac\ETIQUETAS\MIÚDOS SUÍNOS\ETIQUETA CORAÇÃO NOVA.PRN
+6520;\sac\ETIQUETAS\MIÚDOS SUÍNOS\ETIQUETA RIM NOVA.PRN
+500;\sac\ETIQUETAS\MIÚDOS SUÍNOS\ETIQUETA LÍNGUA NOVA.PRN
+
+\sac\ETIQUETAS\MIÚDOS CONGELADOS BOVINO\
+=========================================================
+27;\sac\ETIQUETAS\MIÚDOS CONGELADOS BOVINOETIQUETA BUCHO NOVA.prn
+56;\sac\ETIQUETAS\MIÚDOS CONGELADOS BOVINOETIQUETA RIM NOVA.prn
+19;\sac\ETIQUETAS\MIÚDOS CONGELADOS BOVINOETIQUETA LÍNGUA NOVA.prn
+1913;\sac\ETIQUETAS\MIÚDOS CONGELADOS BOVINOETIQUETA fígado NOVA.prn
+18;\sac\ETIQUETAS\MIÚDOS CONGELADOS BOVINOETIQUETA CORAÇÃO NOVA.prn
+
+\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\
+===========================================================================================
+2844;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo ALCATRA COM PICANHA .prn
+1905;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo ALCATRA COM MAMINHA .prn
+1907;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo ACÉM.prn
+X11;"RECORTES"
+1914;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo PATINHO.PRN
+2867;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo PALETA.PRN
+1904;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo MÚSCULO .PRN
+66;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo LAGARTO .PRN
+75;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo LAGARTO .PRN
+1912;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo COXÃO MOLE .PRN
+1911;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo COXÃO DURO .PRN
+74;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETAS DESOSSA\etiquetas modelo novo BIFE DO VAZIO.PRN
+
+\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\
+==============================================================================================
+112;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA CORAÇÃO DO ALCATRA.PRN
+202;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA CONTRA FILE  NOVA.PRN
+73;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA MAMINHA NOVA.PRN
+1903;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA FRALDA NOVA.PRN
+81;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA CUPIM.PRN
+1910;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA COSTELA NOVA.PRN
+68;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA PICANHA NOVA.PRN
+69;\sac\ETIQUETAS\etiquetas modelo novo DESOSSA congeladas\ETIQUETA MODELO NOVO\ETIQUETA MIGNON NOVA.PRN

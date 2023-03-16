@@ -1,0 +1,71 @@
+unit vencervalidade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, SqlDtg, Buttons, SQLBtn, StdCtrls, alabel, ExtCtrls,
+  SQLGrid, SqlExpr, SqlSis, SqlFun, Geral;
+
+type
+  TFValidadeVencendo = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    pbotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bSair: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+  end;
+
+var
+  FValidadeVencendo: TFValidadeVencendo;
+
+implementation
+
+{$R *.dfm}
+
+{ TFValidadeVencendo }
+
+// 13.05.16
+procedure TFValidadeVencendo.Execute;
+//////////////////////////////////////
+var Q:TSqlquery;
+    Validade:TDatetime;
+    p:integer;
+begin
+   Sistema.beginprocess('Pesquisando produtos a vencer');
+   Q:=sqltoquery('select * from estoque inner join estoqueqtde on ( esqt_esto_codigo=esto_codigo ) '+
+                 'where esto_validade>0  and esqt_unid_codigo = '+Stringtosql(Global.CodigoUnidade)+
+                 ' order by esto_descricao');
+   Grid.Clear;
+   if not Q.Eof then show;
+   p:=1;
+   while not Q.eof do begin
+     Validade:=Q.fieldbyname('esqt_dtultcompra').asdatetime+Q.fieldbyname('esto_validade').asinteger;
+     if ( (Validade) < (Sistema.hoje) ) or ( Validade < (Sistema.hoje+10) ) then begin
+       Grid.Cells[Grid.getcolumn('esto_codigo'),p]:=Q.fieldbyname('esto_codigo').asstring;
+       Grid.Cells[Grid.getcolumn('esto_descricao'),p]:=Q.fieldbyname('esto_descricao').asstring;
+       Grid.Cells[Grid.getcolumn('esto_validade'),p]:=Q.fieldbyname('esto_validade').asstring;
+       Grid.Cells[Grid.getcolumn('validade'),p]:=FGeral.formatadata(validade);
+       if ( (Validade) < (Sistema.hoje) ) then
+         Grid.Cells[Grid.getcolumn('avencer'),p]:='Vencido'
+       else
+         Grid.Cells[Grid.getcolumn('avencer'),p]:='a Vencer';
+       inc(p);
+       Grid.AppendRow;
+     end;
+     Q.Next;
+   end;
+   Q.close;
+   Sistema.endprocess('');
+end;
+
+end.

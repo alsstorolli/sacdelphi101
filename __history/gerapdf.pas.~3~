@@ -1,0 +1,70 @@
+// 12.03.2020
+// usa componente power pdf para gerar email a partir de imagens dos boletos impressos
+
+unit gerapdf;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, PReport, PRJpegImage, Vcl.ExtCtrls,
+  PdfDoc, Shellapi, RLFilters, RLPDFFilter, RLReport;
+
+type
+  TFGeraPdf = class(TForm)
+    RLReport1: TRLReport;
+    RLPDFFilter1: TRLPDFFilter;
+    RLImage1: TRLImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute( arquivo : string );
+
+  end;
+
+var
+  FGeraPdf: TFGeraPdf;
+
+implementation
+
+uses Sqlfun;
+
+
+{$R *.dfm}
+
+{ TFGeraPdf }
+
+procedure TFGeraPdf.Execute(arquivo: string);
+///////////////////////////////////////////////////////
+var nomearq:string;
+
+begin
+
+    show;
+
+    if not FileExists( arquivo ) then begin
+       Avisoerro('Arquivo '+Arquivo+' não encontrado');
+       Exit;
+    end;
+
+     RLimage1.Picture.LoadFromFile( arquivo );
+     RLimage1.Repaint;
+     RLPDFFilter1.FileName := arquivo;
+
+//     showmessage( 'imagem arquivo '+arquivo );
+
+//     Rlreport1.Print;
+     nomearq :=  'boleto'+StrToStrNumeros(arquivo)+'.pdf';
+//   if StrToStrNumeros(arquivo) = '001' then
+
+
+//     showmessage( 'imagem arquivo '+arquivo );
+
+     RLReport1.SaveToFile( nomearq );
+
+     RLReport1.NewPage;
+
+end;
+
+end.

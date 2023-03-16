@@ -1,0 +1,88 @@
+object FLenfeemail: TFLenfeemail
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Busca XML no email'
+  ClientHeight = 447
+  ClientWidth = 354
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = -6
+    Top = 0
+    Width = 351
+    Height = 204
+    Align = alCustom
+    TabOrder = 0
+    object BitBtn1: TBitBtn
+      Left = 134
+      Top = 76
+      Width = 83
+      Height = 57
+      Caption = 'Verificar Email'
+      TabOrder = 0
+      OnClick = BitBtn1Click
+    end
+  end
+  object Texto: TRichEdit
+    Left = 0
+    Top = 204
+    Width = 345
+    Height = 233
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    Zoom = 100
+  end
+  object IdIMAP41: TIdIMAP4
+    IOHandler = idpop3ssl
+    SASLMechanisms = <>
+    MilliSecsToWaitToClearBuffer = 10
+    Left = 248
+    Top = 80
+  end
+  object IdPOP31: TIdPOP3
+    IOHandler = idpop3ssl
+    AutoLogin = True
+    SASLMechanisms = <>
+    Left = 56
+    Top = 120
+  end
+  object idpop3ssl: TIdSSLIOHandlerSocketOpenSSL
+    Destination = ':110'
+    MaxLineAction = maException
+    Port = 110
+    DefaultPort = 0
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 72
+    Top = 64
+  end
+  object IdMessage1: TIdMessage
+    AttachmentEncoding = 'UUE'
+    BccList = <>
+    CCList = <>
+    Encoding = meDefault
+    FromList = <
+      item
+      end>
+    Recipients = <>
+    ReplyTo = <>
+    ConvertPreamble = True
+    Left = 274
+    Top = 16
+  end
+end

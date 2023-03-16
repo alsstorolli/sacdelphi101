@@ -1,0 +1,544 @@
+unit Natureza;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, DB, Grids, DBGrids, SQLGrid, ExtCtrls,
+  Buttons, SQLBtn, alabel,SqlExpr;
+
+type
+  TFNatureza = class(TForm)
+    PCadastro: TPanel;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bFiltrar: TSQLBtn;
+    bOrdenar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bRelatorio: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    bRestaurar: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Panel1: TPanel;
+    PEdits: TSQLPanelGrid;
+    Grid: TSQLGrid;
+    DSCadastro: TDataSource;
+    EdNatf_codigo: TSQLEd;
+    EdNatf_descricao: TSQLEd;
+    EdNatf_es: TSQLEd;
+    EdNatf_codigost: TSQLEd;
+    EdNatf_movimento: TSQLEd;
+    EdNatf_produtos: TSQLEd;
+    EdNatf_utilizacao: TSQLEd;
+    EdNatf_regimetrib: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure EdNatf_esExitEdit(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure bRelatorioClick(Sender: TObject);
+    procedure bExcluirClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure bAlterarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure InicializaNaturezasFiscais(Alterar:Boolean=False; CodAntigos:Boolean=False; CodNovos:Boolean=False);
+    procedure InicializaNaturezasFiscaisSistema(Alterar:Boolean=False; CodAntigos:Boolean=False; CodNovos:Boolean=False);
+    function GetDescricao(Codigo:String):String;
+    function GetES(Codigo: String): String;
+    function DctoToNatFisc(QDcto:TSqlQuery;CodUn,UF:String;SubTrib:Boolean):String;
+    procedure Open;
+    procedure Execute;
+    procedure SetaCfopsEmUso(Ed:TSqled);
+  end;
+
+var
+  FNatureza: TFNatureza;
+
+implementation
+
+uses Arquiv,Geral,SqlFun, SQLSis, SQLRel;
+
+{$R *.dfm}
+
+procedure TFNatureza.FormActivate(Sender: TObject);
+begin
+  if not Arq.TNatFisc.Active then Arq.TNatFisc.Open;
+  Fgeral.ColunasGrid(Grid,Self);
+end;
+
+procedure TFNatureza.bIncluirClick(Sender: TObject);
+begin
+  Grid.Insert(EdNatf_Codigo);
+end;
+
+procedure TFNatureza.EdNatf_esExitEdit(Sender: TObject);
+begin
+  Grid.PostInsert(EdNatf_Codigo);
+  FGeral.gravalog(9,'Inclusão',true);
+end;
+
+
+procedure TFNatureza.bRelatorioClick(Sender: TObject);
+begin
+//Grid.Report('CadNatFisc','Relação Das Naturezas Fiscais Cadastradas','','');
+  FRel.Reportfromsql('select * from natureza','CadNatFisc','Relação Das Naturezas Fiscais Cadastradas');
+end;
+
+
+procedure TFNatureza.InicializaNaturezasFiscais(Alterar,CodAntigos,CodNovos:Boolean);
+
+   procedure Cadastra(Codigo,Descricao,ES,Mov,Prod,Ut,Trib:String);
+   begin
+     Arq.TNatFisc.Insert;
+     Arq.TNatFisc.FieldByName('Natf_Codigo').AsString:=Codigo;
+     Arq.TNatFisc.FieldByName('Natf_Descricao').AsString:=Descricao;
+     Arq.TNatFisc.FieldByName('Natf_ES').AsString:=ES;
+     Arq.TNatFisc.FieldByName('Natf_Movimento').AsString:=Mov;
+     Arq.TNatFisc.FieldByName('Natf_Produtos').AsString:=Prod;
+     Arq.TNatFisc.FieldByName('Natf_Utilizacao').AsString:=Ut;
+     Arq.TNatFisc.FieldByName('Natf_RegimeTrib').AsString:=Trib;
+     Arq.TNatFisc.Post;
+     Arq.TNatFisc.Commit;
+   end;
+{
+  Inst.AddTable('NatFisc');
+  Inst.AddField('NatFisc','Natf_Codigo','C',5,0,50,False,'Código','Código da natureza fiscal','#.####;0;_',False,'1','','','2');
+  Inst.AddField('NatFisc','Natf_Descricao','C',100,0,350,True,'Descrição','Descrição da natureza fiscal','',True,'1','','','1');
+  Inst.AddField('NatFisc','Natf_CodigoST','C',5,0,50,True,'Cód ST','Código da natureza fiscal para mvtos por substituição tributária','#.####;0;_',False,'1','','','2');
+  Inst.AddField('NatFisc','Natf_ES','C',1,0,20,True,'E/S','Movimento de entrada/saida','',True,'1','','','0');
+  Inst.AddField('NatFisc','Natf_Movimento','C',1,0,20,True,'Mov','Tipo do movimento','',True,'1','','','0');
+  Inst.AddField('NatFisc','Natf_Produtos','C',1,0,20,True,'Prod','Produtos envolvidos','',True,'1','','','0');
+  Inst.AddField('NatFisc','Natf_Utilizacao','C',1,0,20,True,'Utiliz','Utilização da natureza fiscal','',True,'1','','','0');
+  Inst.AddField('NatFisc','Natf_RegimeTrib','C',1,0,20,True,'Trib','Regime tributário da natureza fiscal','',True,'1','','','0');
+}
+
+   procedure Verifica(Codigo,Descricao,ES,Mov,Prod,Ut,Trib:String);
+   begin
+     if not Arq.TNatFisc.Locate('Natf_Codigo',Codigo,[]) then begin
+        Cadastra(Codigo,Descricao,ES,Mov,Prod,Ut,Trib);
+     end else begin
+        Arq.TNatFisc.Edit;
+        Arq.TNatFisc.FieldByName('Natf_Descricao').AsString:=Descricao;
+        Arq.TNatFisc.FieldByName('Natf_ES').AsString:=ES;
+        Arq.TNatFisc.FieldByName('Natf_Movimento').AsString:=Mov;
+        Arq.TNatFisc.FieldByName('Natf_Produtos').AsString:=Prod;
+        Arq.TNatFisc.FieldByName('Natf_Utilizacao').AsString:=Ut;
+        Arq.TNatFisc.FieldByName('Natf_RegimeTrib').AsString:=Trib;
+        Arq.TNatFisc.Post;
+        Arq.TNatFisc.Commit;
+     end;
+   end;
+
+begin
+  if not Arq.TNatFisc.Active then Arq.TNatFisc.Open;
+  if not Arq.TNatFisc.isEmpty and not Alterar then Exit;
+  Arq.TNatFisc.BeginProcess;
+  if CodAntigos or (Sistema.Hoje<EncodeDate(2003,01,01)) then begin
+     Verifica('112','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('212','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('312','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('172','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('272','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('191','Compras Imobilizado','E','A','M','I','N');
+     Verifica('291','Compras Imobilizado','E','A','M','I','N');
+     Verifica('391','Compras Imobilizado','E','A','M','I','N');
+     Verifica('173','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('273','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('197','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('297','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('397','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('174','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('274','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('122','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('222','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('176','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('276','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('192','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('292','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('132','Devolução De Venda','E','D','M','C','N');
+     Verifica('232','Devolução De Venda','E','D','M','C','N');
+     Verifica('322','Devolução De Venda','E','D','M','C','N');
+     Verifica('178','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('278','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('163','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('263','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('199','Outras Entradas','E','O','M','C','N');
+     Verifica('299','Outras Entradas','E','O','M','C','N');
+     Verifica('399','Outras Entradas','E','O','M','C','N');
+     Verifica('198','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('298','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('512','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('612','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('712','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('574','Vendas De Merc Adquiridas Subst Trib','S','V','M','C','S');
+     Verifica('674','Vendas De Merc Adquiridas Subst Trib','S','V','M','C','S');
+     Verifica('573','Vendas a Terc De Merc Adq. Subst Trib','S','V','M','C','S');
+     Verifica('673','Vendas a Terc De Merc Adq. Subst Trib','S','V','M','C','S');
+     Verifica('522','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('622','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('576','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('676','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('575','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('675','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('532','Devolução De Compra','S','D','M','C','N');
+     Verifica('632','Devolução De Compra','S','D','M','C','N');
+     Verifica('732','Devolução De Compra','S','D','M','C','N');
+     Verifica('578','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('678','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('592','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('692','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('595','Devolução De Compra De Imob/Uso/Consumo','S','D','M','U','N');
+     Verifica('695','Devolução De Compra De Imob/Uso/Consumo','S','D','M','U','N');
+     Verifica('599','Outras Saidas','S','O','M','C','N');
+     Verifica('699','Outras Saidas','S','O','M','C','N');
+     Verifica('799','Outras Saidas','S','O','M','C','N');
+  end;
+  if CodNovos or ((Sistema.Hoje>=EncodeDate(2003,01,01)) and not CodAntigos) then begin
+     Verifica('1102','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('2102','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('3102','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('1403','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('2403','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('1551','Compras Imobilizado','E','A','M','I','N');
+     Verifica('2551','Compras Imobilizado','E','A','M','I','N');
+     Verifica('3551','Compras Imobilizado','E','A','M','I','N');
+     Verifica('1406','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('2406','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('1556','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('2556','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('3556','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('1407','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('2407','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('1152','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('2152','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('1409','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('2409','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('1552','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('2552','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('1202','Devolução De Venda','E','D','M','C','N');
+     Verifica('2202','Devolução De Venda','E','D','M','C','N');
+     Verifica('3202','Devolução De Venda','E','D','M','C','N');
+     Verifica('1411','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('2411','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('1353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('2353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('3353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('1949','Outras Entradas','E','O','M','C','N');
+     Verifica('2949','Outras Entradas','E','O','M','C','N');
+     Verifica('3949','Outras Entradas','E','O','M','C','N');
+     Verifica('1557','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('2557','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('5102','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('6102','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('7102','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('5403','Vendas De Merc Adq Subst Trib / Substituto','S','V','M','C','S');
+     Verifica('6403','Vendas De Merc Adq Subst Trib / Substituto','S','V','M','C','S');
+     Verifica('5405','Vendas De Merc Adq Subst Trib / Substituído','S','V','M','C','S');
+     Verifica('6405','Vendas De Merc Adq Subst Trib / Substituído','S','V','M','C','S');
+     Verifica('5152','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('6152','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('5409','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('6409','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('5202','Devolução De Compra','S','D','M','C','N');
+     Verifica('6202','Devolução De Compra','S','D','M','C','N');
+     Verifica('7202','Devolução De Compra','S','D','M','C','N');
+     Verifica('5411','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('6411','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('5552','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('6552','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('5553','Devolução De Compra De Imobilizado','S','D','M','I','N');
+     Verifica('6553','Devolução De Compra De Imobilizado','S','D','M','I','N');
+     Verifica('5556','Devolução De Compra Material Uso/Consumo','S','D','M','U','N');
+     Verifica('6556','Devolução De Compra Material Uso/Consumo','S','D','M','U','N');
+     Verifica('5949','Outras Saidas','S','O','M','C','N');
+     Verifica('6949','Outras Saidas','S','O','M','C','N');
+     Verifica('7949','Outras Saidas','S','O','M','C','N');
+  end;
+  Arq.TNatFisc.Commit;
+  Arq.TNatFisc.EndProcess;
+  Arq.TNatFisc.First;
+end;
+
+
+function TFNatureza.GetDescricao(Codigo:String):String;
+///////////////////////////////////////////////////////////
+var Q:Tsqlquery ;
+begin
+
+  Result:='';
+//  if Trim(Codigo)<>'' then begin
+//    if not Arq.TNatFisc.Active then Arq.TNatFisc.Open;
+//    if Arq.TNatFisc.Locate('Natf_Codigo',Codigo,[]) then Result:=Arq.TNatFisc.FieldByName('Natf_Descricao').AsString;
+//  end;
+// 03.02.2021
+  Q := sqltoquery('select natf_descricao from natureza where natf_codigo = '+stringtosql(codigo));
+  if not Q.eof then begin
+
+     result := Q.FieldByName('Natf_Descricao').AsString;
+
+  end else begin
+
+      result := '';
+     if Global.Usuario.codigo=100 then Avisoerro('Cfop '+codigo+' não encontrado');////
+      
+  end;
+
+  FGeral.Fechaquery( Q );
+
+end;
+
+procedure TFNatureza.Open;
+begin
+  if not Arq.TNatFisc.Active then Arq.TNatFisc.Open;
+end;
+
+
+function TFNatureza.DctoToNatFisc(QDcto:TSqlQuery;CodUn,UF:String;SubTrib:Boolean):String;
+begin
+  if (Trim(UF)='') or (UF=Global.UFUnidade) then begin
+     if not SubTrib then begin
+        Result:=QDcto.FieldByName('Dcto_NatFiscalEst').AsString;
+     end else begin
+        Result:=QDcto.FieldByName('Dcto_NatFiscalST').AsString;
+     end;
+  end else if UF='EX' then begin
+     Result:=QDcto.FieldByName('Dcto_NatFiscalExt').AsString;
+  end else begin
+     if not SubTrib then begin
+        Result:=QDcto.FieldByName('Dcto_NatFiscalInt').AsString;
+     end else begin
+        Result:=QDcto.FieldByName('Dcto_NatFiscalSTInt').AsString;
+     end;
+  end;
+end;
+
+procedure TFNatureza.bExcluirClick(Sender: TObject);
+var Q:TSqlQuery;
+begin
+  Q:=SqlToQuery('SELECT Count(*) AS Registros FROM Movesto WHERE Moes_Natf_Codigo='+StringToSql(Arq.TNatFisc.FieldByName('Natf_Codigo').AsString) );
+  if Q.FieldByName('Registros').AsInteger>0 then begin
+     AvisoErro('Atenção, natureza fiscal selecionada para exclusão possui lançamentos fiscais vinculados');
+  end else begin
+     Grid.Delete;
+     FGeral.gravalog(9,'Exclusão',true);
+  end;
+  Q.Close;Q.Free;
+end;
+
+procedure TFNatureza.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FGeral.LiberaCadastro(Grid);
+end;
+
+function TFNatureza.GetES(Codigo: String): String;
+begin
+  Result:='';
+  if Trim(Codigo)<>'' then begin
+    if not Arq.TNatFisc.Active then Arq.TNatFisc.Open;
+    if Arq.TNatFisc.Locate('Natf_Codigo',Codigo,[]) then Result:=Arq.TNatFisc.FieldByName('Natf_ES').AsString;
+  end;
+end;
+
+procedure TFNatureza.InicializaNaturezasFiscaisSistema(Alterar, CodAntigos, CodNovos: Boolean);
+
+   procedure Cadastra(Codigo,Descricao,ES,Mov,Prod,Ut,Trib:String);
+   begin
+     Sistema.Insert('NatFisc');
+     Sistema.SetField('NatF_Codigo', Codigo);
+     Sistema.SetField('NatF_Descricao', Descricao);
+     Sistema.SetField('NatF_ES', ES);
+     Sistema.SetField('NatF_Movimento', Mov);
+     Sistema.SetField('NatF_Produtos', Prod);
+     Sistema.SetField('NatF_Utilizacao', Ut);
+     Sistema.SetField('NatF_RegimeTrib', Trib);
+     Sistema.Post;
+     Sistema.Commit;
+   end;
+
+   procedure Verifica(Codigo,Descricao,ES,Mov,Prod,Ut,Trib:String);
+   begin
+     if not FindKeySql('select natf_codigo from natfisc where natf_codigo = '+StringToSql(Codigo)) then begin
+        Cadastra(Codigo,Descricao,ES,Mov,Prod,Ut,Trib);
+     end else begin
+        Sistema.Edit('NatFisc');
+        Sistema.SetField('NatF_Descricao', Descricao);
+        Sistema.SetField('NatF_ES', ES);
+        Sistema.SetField('NatF_Movimento', Mov);
+        Sistema.SetField('NatF_Produtos', Prod);
+        Sistema.SetField('NatF_Utilizacao', Ut);
+        Sistema.SetField('NatF_RegimeTrib', Trib);
+        Sistema.Post('NatF_Codigo = '+StringToSql(Codigo));
+        Sistema.Commit;
+     end;
+   end;
+
+begin
+  if not Confirma('Confirma o processamento de naturezas fiscais') then exit;
+  Sistema.BeginProcess('processando naturezas fiscais');
+  if CodAntigos or (Sistema.Hoje<EncodeDate(2003,01,01)) then begin
+     Verifica('112','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('212','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('312','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('172','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('272','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('191','Compras Imobilizado','E','A','M','I','N');
+     Verifica('291','Compras Imobilizado','E','A','M','I','N');
+     Verifica('391','Compras Imobilizado','E','A','M','I','N');
+     Verifica('173','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('273','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('197','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('297','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('397','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('174','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('274','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('122','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('222','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('176','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('276','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('192','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('292','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('132','Devolução De Venda','E','D','M','C','N');
+     Verifica('232','Devolução De Venda','E','D','M','C','N');
+     Verifica('322','Devolução De Venda','E','D','M','C','N');
+     Verifica('178','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('278','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('163','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('263','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('199','Outras Entradas','E','O','M','C','N');
+     Verifica('299','Outras Entradas','E','O','M','C','N');
+     Verifica('399','Outras Entradas','E','O','M','C','N');
+     Verifica('198','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('298','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('512','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('612','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('712','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('574','Vendas De Merc Adquiridas Subst Trib','S','V','M','C','S');
+     Verifica('674','Vendas De Merc Adquiridas Subst Trib','S','V','M','C','S');
+     Verifica('573','Vendas a Terc De Merc Adq. Subst Trib','S','V','M','C','S');
+     Verifica('673','Vendas a Terc De Merc Adq. Subst Trib','S','V','M','C','S');
+     Verifica('522','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('622','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('576','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('676','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('575','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('675','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('532','Devolução De Compra','S','D','M','C','N');
+     Verifica('632','Devolução De Compra','S','D','M','C','N');
+     Verifica('732','Devolução De Compra','S','D','M','C','N');
+     Verifica('578','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('678','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('592','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('692','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('595','Devolução De Compra De Imob/Uso/Consumo','S','D','M','U','N');
+     Verifica('695','Devolução De Compra De Imob/Uso/Consumo','S','D','M','U','N');
+     Verifica('599','Outras Saidas','S','O','M','C','N');
+     Verifica('699','Outras Saidas','S','O','M','C','N');
+     Verifica('799','Outras Saidas','S','O','M','C','N');
+  end;
+  if CodNovos or ((Sistema.Hoje>=EncodeDate(2003,01,01)) and not CodAntigos) then begin
+     Verifica('1102','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('2102','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('3102','Compras Para Comercialização','E','A','M','C','N');
+     Verifica('1403','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('2403','Compras Para Comerc Subst Trib','E','A','M','C','S');
+     Verifica('1551','Compras Imobilizado','E','A','M','I','N');
+     Verifica('2551','Compras Imobilizado','E','A','M','I','N');
+     Verifica('3551','Compras Imobilizado','E','A','M','I','N');
+     Verifica('1406','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('2406','Compras Imobilizado Subst Trib','E','A','M','I','S');
+     Verifica('1556','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('2556','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('3556','Compras Uso/Consumo','E','A','M','U','N');
+     Verifica('1407','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('2407','Compras Uso/Consumo Subst Trib','E','A','M','U','S');
+     Verifica('1152','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('2152','Entradas Por Transferência','E','T','M','C','N');
+     Verifica('1409','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('2409','Entradas Por Transferência Subst Trib','E','T','M','C','S');
+     Verifica('1552','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('2552','Transferência De Imobilizado','E','T','M','I','N');
+     Verifica('1202','Devolução De Venda','E','D','M','C','N');
+     Verifica('2202','Devolução De Venda','E','D','M','C','N');
+     Verifica('3202','Devolução De Venda','E','D','M','C','N');
+     Verifica('1411','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('2411','Devolução De Venda Subst Trib','E','D','M','C','S');
+     Verifica('1353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('2353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('3353','Aquisição De Serviço De Transporte','E','A','T','S','N');
+     Verifica('1949','Outras Entradas','E','O','M','C','N');
+     Verifica('2949','Outras Entradas','E','O','M','C','N');
+     Verifica('3949','Outras Entradas','E','O','M','C','N');
+     Verifica('1557','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('2557','Transferência Uso/Consumo','E','T','M','U','N');
+     Verifica('5102','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('6102','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('7102','Vendas De Mercadorias Adquiridas','S','V','M','C','N');
+     Verifica('5403','Vendas De Merc Adq Subst Trib / Substituto','S','V','M','C','S');
+     Verifica('6403','Vendas De Merc Adq Subst Trib / Substituto','S','V','M','C','S');
+     Verifica('5405','Vendas De Merc Adq Subst Trib / Substituído','S','V','M','C','S');
+     Verifica('6405','Vendas De Merc Adq Subst Trib / Substituído','S','V','M','C','S');
+     Verifica('5152','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('6152','Transferência De Mercadorias Adquiridas','S','T','M','C','N');
+     Verifica('5409','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('6409','Transferência De Merc Adq. Subst Trib','S','T','M','C','S');
+     Verifica('5202','Devolução De Compra','S','D','M','C','N');
+     Verifica('6202','Devolução De Compra','S','D','M','C','N');
+     Verifica('7202','Devolução De Compra','S','D','M','C','N');
+     Verifica('5411','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('6411','Devolução De Compra Subst Trib','S','D','M','C','S');
+     Verifica('5552','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('6552','Transferência Imobilizado','S','T','M','I','N');
+     Verifica('5553','Devolução De Compra De Imobilizado','S','D','M','I','N');
+     Verifica('6553','Devolução De Compra De Imobilizado','S','D','M','I','N');
+     Verifica('5556','Devolução De Compra Material Uso/Consumo','S','D','M','U','N');
+     Verifica('6556','Devolução De Compra Material Uso/Consumo','S','D','M','U','N');
+     Verifica('5949','Outras Saidas','S','O','M','C','N');
+     Verifica('6949','Outras Saidas','S','O','M','C','N');
+     Verifica('7949','Outras Saidas','S','O','M','C','N');
+  end;
+  Sistema.EndProcess('Naturezas fiscais processadas com sucesso!');
+end;
+
+procedure TFNatureza.Execute;
+begin
+   Arq.TNatFisc.Open;
+   showmodal;
+end;
+
+procedure TFNatureza.bAlterarClick(Sender: TObject);
+begin
+   FGeral.Gravalog(9,'Alteração',true);
+end;
+
+procedure TFNatureza.SetaCfopsEmUso(Ed: TSqled);
+var Q:TSqlquery;
+begin
+  Q:=sqltoquery('select * from confmov order by comv_natf_estado');
+  Ed.Items.Clear;
+  while not Q.eof do begin
+    if trim(Q.fieldbyname('comv_natf_estado').asstring)<>'' then
+      Ed.Items.Add(Q.fieldbyname('comv_natf_estado').asstring);
+    if trim(Q.fieldbyname('comv_natf_foestado').asstring)<>'' then
+      Ed.Items.Add(Q.fieldbyname('comv_natf_foestado').asstring);
+    Q.Next;
+  end;
+  FGeral.FechaQuery(Q);
+end;
+
+end.

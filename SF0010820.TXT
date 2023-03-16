@@ -1,0 +1,3322 @@
+|0000|014|0|01082020|31082020|SEIP BRASIL INDUSTRIA DE PORTOES AUTOMATIZADOSLTDA|22627025000233||PR|9075136452|4128708|||A|0|
+|0001|0|
+|0002|02|
+|0005|SEIP BRASIL IND DE PORTOES AUTOMATIZADOS|85520000|Rod Pr 158 ,17400|17400||Zona Rural|4626040048||administrativo@seipbrasil.com.br|
+|0100|Daiana Michele Bett Wolker|02646834985|048909/O-1||00000000|||||||cleder@pollicontadores.com.br|4128708|
+|0150|1|Rodonaves Trans Encomendas Ltda|1058|44914992003820||9061706477|4125506||Rodovia Br 116 , 14219|1421||Costeira|
+|0150|2|Juliana Aparecida De Oliveira|1058|11350194000171||9079078309|4118501||Rua Fernando Ferrari, 1037|1037||Cristo Rei|
+|0150|3|Mafer Comercio De Combustiveis Ltda|1058|10688757000173||9048949158|4128708||Av Brasil Argentina, 030|030||Trevo Vitorino|
+|0150|4|Patoeste Eletro Instaladora Ltda|1058|77739290000114||3160175418|4118501||Rua Tamoio, 355|355||Centro|
+|0150|5|Mirvane Parafusos e Ferragens Ltda.|1058|18201743000195||9063512858|4118501||Av Tupi,, 4630|, 463||Pinheirinho|
+|0150|6|Auto Posto Tropical Ltda|1058|18266843000108||9072128408|4128708||Rod Prt 280, 000|000||Zona Rural|
+|0150|7|Com. De Embalagens Rita Ltda|1058|82466541000174||3160339380|4118501||Av Tupi, 1380|1380||Centro|
+|0150|8|V f Speranza Me|1058|25037273000131||9072528333|4128708||Rod Prt 280 Km 224,5, 1|5, 1||Rural|
+|0150|9|F. G. Sistemas De Seguranca Eireli|1058|37190573000135||9084840707|4118501||R Tocantins, 1733|1733||Baixada|
+|0150|10|Digiseg Distribuidora Ltda - Me|1058|26439227000121||9073475837|4118501||Rua Tocantins, 1733|1733||Baixada|
+|0150|11|Jandir Bortoluzzi Epp|1058|97374441000195||252852206|4216909||Rodovia Acesso Sul, 165|165||Santa Catarina|
+|0150|12|Aurus Industria Metalurgica Ltda-Me|1058|10993291000110||9048865809|4104808||Rua Paulo Leminski, 150|150||Nucleo De Producao|
+|0150|13|Zilio e Leonardi Ltda|1058|79845020000113||3180002129|4128708||Av Brasil Argentina, 701|701||Centro|
+|0150|14|A. S. Brinhgentti & Cia Ltda|1058|04966293000117||9025459803|4128708||Rua Dr. Munhoz Da Rocha, 17|17||Centro|
+|0150|15|Ronald Remondy Junior|1058||08272527812||3550308||Alameda Dos Aracas,154|154||Residencial Thermas Park|
+|0150|16|James Carlos Bernardi|1058||02616635933||4128708||Rua Dos Jasmins, 1890|1890||Araucaria  Parque|
+|0150|17|Elias Sato De Almeida|1058||01188683063||4314100||Est Do Trigo/C Vivenda Das Palmeiras1215|1215||Sao Jose|
+|0150|18|Condominio Ottilio Amadori|1058|09392924000155|||4118501||Rua Tocantins 2075|2075||Centro|
+|0150|19|Vernei Estevo Ordakowski|1058||30917581091||4309605||Rua Santa Catarina, 580|580||Jd Vila Nova|
+|0150|20|Quattor Esquadrias Ltda - Epp|1058|16992982000185||795306776110|3509502||Rua Salto Grande, 529|529||Jardim Do Trevo|
+|0150|21|Alumidex Esquadrias De Aluminio e Vidros Ltda Epp|1058|19702578000118||257270795|4204301||Senador Attitio Fran Xavier Fontana 4390|4390||Fragosos|
+|0150|22|Hoteis Sb Kindermann Ltda|1058|23779287000103|||4204202||Rua A. 250d|250d||Dom Geronimo|
+|0150|23|Lojacor Comercio De Tintas Ltda|1058|81704181000139||3160310722|4118501||Rua Caramuru, 020|020||Centro|
+|0150|24|Muller Comercio De Equipamentos Eletronicos Ltda|1058|11790804000158||256070962|4204202||Rua Lã­bano, 218|218||Passo Dos Fortes|
+|0150|25|Aguinaldo Rodrigues|1058||09495839874||3525904||Rua Horacio Soares De Oliveira 34cs, 25|25||Malota|
+|0150|26|Plinio Schenck Junior|1058||21323187863||3530607||Rua Agostinho Caporali 685|685||Jardim Armenia|
+|0150|27|Edson Pereira Junior|1058||29534333840||3526902||Rua Visconde Do Rio Branco, 191|191|Apto 131|Centro|
+|0150|28|Asl Ass e Locação De Equipamentos Ltda Me|1058|61410247000170|||3550308||Rua Guaçui, 94s3|94s3||Alto Da Mooca|
+|0150|29|Aristides De Conto|1058||01877062049||4216909||Rua Coronel Bertaso 1640|1640||Centro|
+|0150|30|Capa Comércio De Combustiveis Ltda|1058|18132244000193||9068350880|4104501||Rua Alagoas 2483|2483||Santa Cruz|
+|0150|31|Cesar Augusto Marchesan|1058||98938851087||4315503||Rua Edmundo Bischoff 204|204||Centro|
+|0150|32|Gabriela Cristina Lain|1058||80697704068||4305108||Rua Luiz Baldassarini Ap 601, 2032|2032||Panazzollo|
+|0150|33|Nazie Said  Zuhdi Yusuf Abboud|1058||93057334091||4316907||R Marechal Floriano Peixoto Sala 83,1000|1000||Centro|
+|0150|34|Mario Stahlke|1058||03319520920||4106902||R Coronel Pedro S. Sobrinho Ap5b262, 152|152||Cristo Rei|
+|0150|35|Alexandre Jose Rovani|1058||76154165072||4314100||Rua Harmonia 89|89||Lucas Araujo|
+|0150|36|Claudia Cristina De Lima|1058||84544074991||4311809||Rua c 25|25||Loteamento São Frncisco|
+|0150|37|Vitral Sul - Aluminios e Ferragens Ltda|1058|11083556000105||9049214160|4108403||Rodovia Contorno Leste, 471|471||Agua Branca|
+|0150|38|J & g Goulart Industria e Comercio Ltda|1058|18968005000178||257643028|4211900||Rua Papa Paulo V.I. 789|789||Ponte Do Imaruim|
+|0150|39|Luciana De Queiroz Batista|1058||30598462864||3505708||Alameda Munique 427|427||Resid. Zero, Alphaville|
+|0150|40|Emerson Y. Nomura|1058||45049157900||4216909||Rua Coronel Bertaso 1010|1010||Centro|
+|0150|41|Catusso & Saggin Ltda - Me|1058|08694768000114||9039806808|4118501||Av Tupi, 580, SN|580,||Bortot|
+|0150|42|Cipabra Com De Parafusos Ltda|1058|01200416000116||9010407882|4118501||Br 158 / Trevo Itacolomi, 8987|8987||Menino Deus|
+|0150|43|Gabriela Comin - Me|1058|27468340000106||9074692980|4118501||Rua Jacireta, 465|465||Parzianello|
+|0150|44|Noeli Melere Santian - Eireli|1058|11162448000128||9049567917|4128708||Avenida Belo Horizonte, 76|76||Industrial|
+|0150|45|Jose Luiz Di Iglia|1058||07874498810||3538709||Rua Virginia Zaia 459|459||Pauliceia|
+|0150|46|A. r De Freitas Esquadrias-Me|1058|08711110000173||407519440115|3525904||Av. Dr.Wady Badra 170|170||Sala 01- Jardim Tulipas|
+|0150|47|Clewerson Cezar Masnik|1058||99017539968||4128203||R Getulio Vargas Ap 602, 81|81||Centro|
+|0150|48|Center Pb Comercio De Papeis Eireli|1058|33853055000101||9081669810|4118501||Av Tupi, 4945|4945||Cristo Rei|
+|0150|49|Vila Rica Agropecuária Ltda|1058|04841261000195||137229585|5106372||Br 163,Km 81|Km 81||Interior|
+|0150|50|Valentos Esquadrias Eireli|1058|23793253000165||1130166195|4317509||Av Brasil 48 B.|48 B||Centro|
+|0150|51|Samira Dallanora|1058|07492289000152||9034463406|4118501||Tapajos 300, 300|300||Centro|
+|0150|52|Rodolfo Kusma|1058|75967711000139||3160270089|4118501||Av Tupi, 3036, SN|3036||Centro|
+|0190|000001|L|
+|0190|000002|PC|
+|0190|000003|UNID|
+|0190|000004|CT|
+|0190|000005|RL|
+|0190|000006|UN|
+|0190|000007|UND|
+|0190|000008|ML|
+|0190|000009|KG|
+|0190|000010|M|
+|0190|000011|BR|
+|0190|000012|MT|
+|0190|000013|UND.|
+|0190|000014|QT|
+|0190|000015|UN.|
+|0190|000016|PCT|
+|0190|000017|PAR|
+|0190|000018|LT|
+|0190|000019|1|
+|0190|000020|CX|
+|0190|000021|PÃ?|
+|0200|00462|Gasolina Comum|||000001|00|27101259||27||18,00|0600200|
+|0200|01379|Plug Femea 2p+t 20a 2147 Preto Fame|||000002|01|85369090||85||18,00||
+|0200|01378|Pezzi Plug Macho 2p+t 20a 1067-2 Preto|||000002|01|85366990||85||18,00||
+|0200|00582|Sch Dxn10051 Canaleta Dexson 20x12cm Bca 2m|||000002|01|39162000||39||18,00|1900200|
+|0200|01398|Paraf. Frances 5/16 x 3/4 Zb|7892261014031||000003|01|73181500||73||18,00||
+|0200|01397|Rebitadeira|7899384930538||000003|01|82032010||82||18,00||
+|0200|01396|Lamina De Estilete 18mm|7899009017408||000003|01|82119390||82||18,00||
+|0200|01018|Bucha Plast N. 8 Pol|7892261101687||000003|01|39269090||39||18,00|1301600|
+|0200|00530|Paraf. Dw Trombeta 3,5 x 25|7892261397011||000003|00|73181400||73||18,00||
+|0200|01399|Pa Sx Ac Rs 1/4 x 70 Rp Zb|7892261001758||000003|01|73181500||73||18,00||
+|0200|00730|Gasolina Aditivada|||000001|00|27101259||27||18,00|0600200|
+|0200|01400|Saco Zip N.4 - 8,5x12 e 8x12 C/100|||000004|01|39232110||39||18,00||
+|0200|00055|Bobina Palet.Stretch Manual 50x30|||000005|00|39201099||39||0,00||
+|0200|01401|Saco Zip N.7 - 14x20 e 15x23 - C/100|||000004|01|39232110||39||18,00||
+|0200|01402|Refeição|||000006|01|21069090||21||18,00|0301500|
+|0200|00496|Receptora Srx 102 Pulso Ou Retencao 12v a 24v "com Regime"|7898911419416||000007|01|||||18,00||
+|0200|00862|Bateria Chumbo Vrla 12v 2,3ah - Xb 1223-Intelbras|7896637681469||000002|00|85072010||85||18,00||
+|0200|00659|Etanol Hidratado Comum|||000001|00|22071090||22||18,00||
+|0200|00838|Diesel S-10 Comum|||000001|00|27101921||27||18,00||
+|0200|01403|Ct 06 Cantoneira 38x38 Branca|7894494017414||000008|01|76101000||76||18,00||
+|0200|01405|Roupeiro 08 Ptas Sobrep.Pitao 198x123x40|||000002|01|94031000||94||18,00||
+|0200|01404|Banqueta Alta Com Encosto Alto 0,70m|||000002|01|||||18,00||
+|0200|01410|Suco Purity Nectar 1lt Frutas Citricas Cocamar Un|7897001050447||000006|01|22029900||22||18,00||
+|0200|01409|Suco Purity Nectar 1lt Uva e Maca Cocamar Un|7897001050096||000006|01|||||18,00||
+|0200|01307|Aquecedor Ventisol Quartzo 127v 800w Ventisol Un|7898461962417||000006|01|||||18,00||
+|0200|01180|Leite Integral Latco 1l|7898133290015||000006|01|04012010||04||18,00|1701600|
+|0200|00772|Maionese Hellmanns Sache 400gr|7891150056916||000006|00|21039011||21||18,00|1703900|
+|0200|00744|Uau Multi Uso 500ml Rosas/Sed. Ingleza Un|7891242224025||000006|00|34022000||34||18,00|1100400|
+|0200|00611|Apresuntado Frireggio 150g|7898414311125||000006|00|16010000||16||18,00|1707600|
+|0200|00677|Queijo Muss. Frireggio 150g Frireggio Un|7898414311118||000006|00|04061010||04||18,00||
+|0200|00594|Mortadela Frimesa Bologna 200g Frimesa Un|7896275920838||000006|00|||||18,00||
+|0200|00489|Acucar Cristal Alto Alegre 2kg|7896508200027||000006|00|17019900||17||18,00|1709900|
+|0200|01412|Tigela Plasv.Oval Peq R.506 Plasvale Un|7891115005065||000006|01|39241000||39||18,00|1100900|
+|0200|01411|Suco Purity Nectar 1lt Laranja/Tangerina Cocamar Un|7897001050034||000006|01|22029900||22||18,00||
+|0200|00605|Wafer Minueto Brigadeiro 150gr|7896011105871||000006|00|19053200||19||18,00||
+|0200|00587|Pao Padero Fat. 450g Manteiga Padero Un|7898961276038||000006|00|19059010||19||18,00|1706000|
+|0200|00926|Apresuntado Frimesa Frilanche Fat. 200g Frimesa Un|7896275900984||000006|01|16024900||16||18,00||
+|0200|00613|Wafer  Minueto Morango115g|7896011103747||000006|00|19053200||19||18,00||
+|0200|00624|Pao De Manteiga 3 Palmeiras 500gr|7898944499119||000006|00|19059090||19||18,00|1703100|
+|0200|01406|Bisc. Parati 400g Francesinho Parati Un|7896011107837||000006|01|19059020||19||18,00|1705600|
+|0200|01317|Bisc. Cookies Parati 60g Tradicional Parati Un|7896011107851||000006|01|19053100||19||18,00||
+|0200|01316|Bisc. Cookies Parati 60g Chocolate Parati Un|7896011107868||000006|01|19053100||19||18,00||
+|0200|01315|Bisc. Parati H.Cracker 150g Int.P.P. Parati Un|7896011105536||000006|01|19059020||19||18,00|1705600|
+|0200|01179|Biscoito Rosca Chocolate Casaredo 330g|7896408440561||000006|01|19053100||19||18,00||
+|0200|01413|Pao De Queijo Doce Doce Kg Doce Doce Kg|||000009|01|19012000||19||18,00|1704600|
+|0200|01408|Cha Misto Dr.Oetker 10 Saq. Hib/C.V/Can. Dr.Oetker Un|7891048038482||000006|01|21069090||21||18,00|0301500|
+|0200|01407|Bala Dori 150g Yougurte Dori Un|7896058503128||000006|01|17049020||17||18,00||
+|0200|01415|Wafer Visconti Chocolate 120gr|7891962035529||000006|01|19053200||19||18,00||
+|0200|01294|Cafe Soluvel  Iguacu 200g|7896019201117||000006|01|21011110||21||18,00||
+|0200|01233|Leite Integral Santa Clara C/Tampa 1l|7896504305078||000006|01|04012010||04||18,00|1701600|
+|0200|01178|Papel Higienico Neve 4/30mt Neutro|7891172421174||000006|01|48181000||48||18,00|2004200|
+|0200|01050|Alcool Araucaria 92,8 1l|7898172662101||000006|01|22071090||22||18,00||
+|0200|00999|Guardanapo Mili 21x22|7896104999905||000006|01|48183000||48||18,00|2004600|
+|0200|00771|Maionese Hellmanns 1kg|7891150029002||000006|00|21039011||21||18,00|1703900|
+|0200|00741|Refresco Trink 25g Laranja/Mamao Parati Un|7896011106557||000006|00|21069010||21||18,00|0301200|
+|0200|00705|Pao Fatiado 500gr 3 Palmeiras|7898944499010||000006|00|19059090||19||18,00|1703100|
+|0200|00669|Deterg.Liq. Ype Clear 500ml Ype Mat. Limp. Un|7896098900253||000006|00|34022000||34||18,00|1100400|
+|0200|00634|Wafer Minueto Torta De Chocolate 115g|7896011108339||000006|00|19053200||19||18,00||
+|0200|00615|Melita Filtro De Papel103 c 30|7891021001946||000006|00|||||18,00||
+|0200|00614|Wafer Minueto Limao 115g|7896011103754||000006|00|19053200||19||18,00||
+|0200|00545|Apresuntado Frimesa 200gr|7896275900977||000006|00|||||18,00||
+|0200|01417|Bolacha De Nata Pintada Kg|||000009|01|19059020||19||18,00|1705600|
+|0200|01416|Mortadela Bambina Slicepack 200g|7898907632157||000006|01|16010000||16||18,00|1707600|
+|0200|01414|Wafer Isabela Limao 100gr|7896022086220||000006|01|19053200||19||18,00||
+|0200|01299|Refresco Trink Goiaba 25g|7896011126739||000006|01|21069010||21||18,00|0301200|
+|0200|01224|Alcool Gel Da Ilha 480g|7896017200341||000006|01|22072019||22||18,00||
+|0200|01010|Bolacha Rosca De Leite Condensado Kg|||000009|01|19059020||19||18,00|1705600|
+|0200|00906|Pilha Panasonic 3a Super Hyper 4un|7896067203033||000006|00|85061020||85||18,00||
+|0200|00897|Queijo Fatiado Tirol 150 Gr|7896256600544||000006|00|04061010||04||18,00||
+|0200|00742|Refresco Trink 25g Tangerina Parati Un|7896011127040||000006|00|21069010||21||18,00|0301200|
+|0200|00740|Refresco Trink 25g Limonada Suica Parati Un|7896011129358||000006|00|21069010||21||18,00|0301200|
+|0200|00738|Refresco Trink 25g Abacaxi Parati Un|7896011127057||000006|00|21069010||21||18,00|0301200|
+|0200|00675|Refresco Trink 25g Uva Parati Un|7896011127071||000006|00|21069010||21||18,00|0301200|
+|0200|00674|Cafe Melitta 500g Tradicional Melitta Un|7891021006125||000006|00|09012100||09||18,00||
+|0200|00598|Refresco Trink 25g Guarana Parati Un|7896011127064||000006|00|21069010||21||18,00|0301200|
+|0200|00597|Refresco Trink 25g Mix Lar/Ace , Parati Un|7896011129341||000006|00|21069010||21||18,00|0301200|
+|0200|00595|Refresco Trink 25g Morango/Limao Parati Un|7896011108445||000006|00|21069010||21||18,00|0301200|
+|0200|00538|Minueto Choc  Baunilha 115g|7896011103761||000006|00|||||18,00||
+|0200|00758|Vidro Fixo Com Aluminio Anod.|||000006|01|76101000||76||18,00||
+|0200|01420|Perfil Tubular Ref: Mn055:tmn055 6000-Pre|||000002|01|76042100||76||18,00||
+|0200|01421|Kit Portão Seccionado Automatizado Mod Michelangelo Claro Res 6.000l x 2.550a|||000006|01|73083000||73||18,00|1004700|
+|0200|00430|Preto Fosco Sintetico Spray Suvinil|||000006|00|32091010||32||18,00||
+|0200|01423|Branco Fosco Sintetico Spray Suvinil|||000006|01|32091010||32||18,00||
+|0200|00021|Tubo 95 x 50 Mm Preto|7894494009082||000010|01|76101000||76||0,00||
+|0200|01274|Nobreak Pra Portã?o Ppa  Volt Gate  (usa 2 Bateria 12v 7ah Nã?o Inclusas )  A21926/A21900|||000006|01|85044040||85||18,00|2103800|
+|0200|01427|Kit Portão Seccionado Automatizado Mod Da Vinci Grafite Res 5.963lx3.500a|||000006|01|73083000||73||0,00|1004700|
+|0200|01185|Preto-Perf.Alum.Tubo Retang 95 x 50,8  Ptg 070|||000011|01|76042100||76||18,00||
+|0200|01394|Bateria Moura 7ah|||000002|01|85072010||85||18,00||
+|0200|01430|Dobr Ps 3.1/2x3 Cr C/Bola|||000006|01|83021000||83||18,00|0102600|
+|0200|01431|Quebradedo 5/16x2|||000004|01|||||18,00||
+|0200|01432|Receptor 433 Hombrus|||000006|01|||||18,00||
+|0200|01434|Conector Adaptador P4 Femea Dc|||000006|01|85044029||85||18,00||
+|0200|01433|Transmissor 433 Mhz Code Learning Hombrus 2 Teclas|||000006|01|85269200||85||18,00||
+|0200|01435|Fechadura Eletrica Cilindro Fixo - Fx500|7896637685870||000002|01|83014000||83||18,00||
+|0200|01436|Conversor Aut. Ac/Dc 12,8v 1a - Ef1201|7896637679008||000002|01|||||18,00||
+|0200|01437|Sacos Plasticos 55x85x0,15 Unitario|||000006|01|39232110||39||18,00||
+|0200|00053|Bobina Papel Ondulado De 1 20cm.|||000009|01|||||0,00||
+|0200|00054|Bobina Plastico Bolhas 1,20cm. C/100 Mts|||000012|00|||||0,00||
+|0200|01293|Cabo De Rede 305mt|||000006|01|85444900||85||18,00||
+|0200|01380|Pã§s Cortadas No Plasma|||000013|01|||||18,00||
+|0200|01228|Desinfetante Pinho Bril Pinho 1l|7891022080049||000006|01|38089419||38||18,00|1100100|
+|0200|00683|Copo Copobel 180ml Transparente C/ 100 - Codigo Fabrica: 422|7896123402837||000006|00|39241000||39||18,00|1100900|
+|0200|01440|Alcool Gel 70% Super Vale Inpm 4,250kg - Codigo Fabrica: 23463|||000006|01|38089429||38||18,00||
+|0200|01439|Lixeira Eco P/ Copo Descartavel De Agua Branco - Codigo Fabrica: C19755|7898912019424||000006|01|39229000||39||18,00||
+|0200|01438|Dispenser P/ Copo Agua Easy Flex Branco - Codigo Fabrica: C19762|7898623581111||000006|01|39259090||39||18,00||
+|0200|01202|Plastico Bolha 1,20 Mt C/ 100 Mt|||000006|01|39232990||39||18,00||
+|0200|01441|Kit Portao Seccionado Automatizado Mod Botticelli ( Preto Fosco) 8.990l x 3.080 Al|||000006|01|73083000||73||0,00|1004700|
+|0200|01443|Kit Portão Seccionado Automatizado Mod Da Vinci  Branco Res 7.180l x 2.450a|||000006|01|73083000||73||0,00|1004700|
+|0200|01444|Camiseta Em Poliviscose Longa|||000007|01|61069000||61||18,00||
+|0200|00293|Camisa Gola Polo Com Bordado|||000007|00|61069000||61||18,00||
+|0200|01445|Calca Em Brim|||000007|01|61069000||61||18,00||
+|0200|01446|Fechadura Tubular Classi|7892327072838||000002|01|83014000||83||18,00||
+|0200|00001|Tubo 95 x 50 Mm Branco|7894494009105||000010|01|76101000||76||0,00||
+|0200|00002|Vidro Fixo Com Aluminio Anod|||000006|01|76101000||76||0,00||
+|0200|00008|Manual De Instrucoes Montagem|||000006|01|48209000||48||0,00|1902500|
+|0200|00012|Painel Grafite Da Vinci  Altura 500|||000008|00|72124010||72||0,00||
+|0200|00013|Perfil Omega Sp 1mm 7200 Branco|||000006|01|72124010||72||0,00||
+|0200|00015|Dispositivo Anti-Quebra Molas Para Eixo De 25,4 Mm Direto|||000006|01|73269090||73||0,00||
+|0200|00016|Dispositivo Anti-Quebra Molas Para Eixo De 25,4 Mm Esquerdo|||000006|01|73269090||73||0,00||
+|0200|00019|Componentes Eletricos Para Portas|||000006|01|85269200||85||0,00||
+|0200|00023|Folder - Portas Blindadas|||000006|01|||||0,00||
+|0200|00024|Capa Plastica Estetica Branca Parafuso 6.3mm|||000006|01|39235000||39||0,00||
+|0200|00025|Rodinha Em Nylon  x 200|||000014|01|39259090||39||0,00||
+|0200|00026|Came Cor Vermelha|||000006|01|39269090||39||0,00|1301600|
+|0200|00029|Painel Madeira Claro Michelangelo 500|||000008|00|72124010||72||18,00||
+|0200|00030|Painel Madeira Claro Michelangelo 610|||000008|00|72124010||72||0,00||
+|0200|00034|Perfil Inf/Sup Para Portao Seccionado Cor Preto Fosco|||000006|01|73089090||73||0,00|1005000|
+|0200|00035|Trava Quedas Para Portoes Seccionados Residenciais|||000006|01|73089090||73||0,00|1005000|
+|0200|00036|Perfis Para Porta Pedestre Quadro Externo Fixo  6,5 Metros|||000006|01|73089090||73||0,00|1005000|
+|0200|00037|Perfis Para Porta Pedestre Quadro Interior Movel 6,5 Metros|||000006|01|73089090||73||0,00|1005000|
+|0200|00038|Acessorios Para Instalacao De Porta Pedestre|||000006|01|73089090||73||0,00|1005000|
+|0200|00042|Destravador De Emergencia|||000006|01|73269090||73||0,00||
+|0200|00043|Juncao De Corrente|||000014|01|83026000||83||0,00||
+|0200|00045|Placa Eletronica 230v|||000006|01|90329010||90||18,00||
+|0200|00046|Plugue Receptor|||000006|01|90329099||90||0,00||
+|0200|00047|Kit Nobreaks|||000006|01|73269090||73||0,00||
+|0200|00048|Receptor De Externo Monocanal V2|||000006|01|90329099||90||0,00||
+|0200|00049|Receptor Pd22-230bv|||000006|01|90329099||90||0,00||
+|0200|00050|Folder - Portas De Garagem|||000006|01|49111090||49||0,00||
+|0200|00060|Painel Madeira Escuro Michelangelo 500|||000008|00|72124010||72||0,00||
+|0200|00065|Perfil Inf/Sup Aluminio Preto l 7000 Mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00067|Guarnicao Superior (metro)|||000006|01|40026000||40||0,00||
+|0200|00068|Guarnicao Inferior (metro)|||000006|01|40026000||40||0,00||
+|0200|00069|Juncao Eixo 4mm 25,4mm 110x70|||000006|01|73089090||73||0,00|1005000|
+|0200|00072|Tambor Para Porta M162|||000006|01|73089090||73||0,00|1005000|
+|0200|00073|Tambor Para Porta M146|||000006|01|73089090||73||0,00|1005000|
+|0200|00074|Trava Molas Direito|||000006|01|73089090||73||0,00|1005000|
+|0200|00075|Trava Molas Esquerdo|||000006|01|73089090||73||0,00|1005000|
+|0200|00077|Zmola De Torcao 50-5,5 l 3000 Mm Sx|||000006|01|73202010||73||0,00||
+|0200|00079|Receptor De Externo Bi-Canal V2|||000006|01|90329099||90||0,00||
+|0200|00080|Mola De Torcao 67-7 l 3000 Mm Direito|||000006|01|73202010||73||0,00||
+|0200|00081|Mola De Torcao 67-7 l 3000 Mm Esquerdo|||000006|01|73202010||73||0,00||
+|0200|00082|Caixilho Central Mod. Valida Sem Revestimento 90x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00083|Caixilho Central De Porta Mod. Valida Sem Revestim. 110x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00084|Porta Mod. Valida Revestida 90x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00085|Porta Mod.Valida Revestida 110x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00086|Caixilho Central De Porta Mod. Perseo Sem Revestim. 90x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00087|Caixilho Central De Porta Mod. Perseo Sem Revestim. 110x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00088|Porta Mod. Perseo Revestida 90x210|||000006|01|73089090||73||0,00|1005000|
+|0200|00089|Porta Mod. Perseo Revestida 110x210|||000006|01|73089090||73||18,00|1005000|
+|0200|00092|Tubo 50x50 Mm Branco|7894494008986||000010|01|76101000||76||0,00||
+|0200|00109|Carter Cobre Molas l 3300 Ral 9010|||000006|01|39259090||39||0,00||
+|0200|00110|Kit Mandril Per Mola 50|||000006|01|82041200||82||0,00||
+|0200|00111|Kit Mandril Per Mola 67|||000006|01|82041200||82||0,00||
+|0200|00112|Soleira Rebaixada Barra De 6 Mt|||000006|01|84831019||84||0,00||
+|0200|00113|Guarnicao Para Soleira Rebaixada|||000006|01|40026000||40||0,00||
+|0200|00114|Plastico Preto Para Soleira Rebaixada|||000006|01|39259090||39||0,00||
+|0200|00115|Guarnicao Mousse|||000006|01|40026000||40||0,00||
+|0200|00116|Folder Seip|||000006|01|49111090||49||0,00||
+|0200|00117|Folder Silverlox Do Brasil|||000006|01|49111090||49||0,00||
+|0200|00120|Guarnicao Inferior Porta Pedonal|||000006|01|40026000||40||0,00||
+|0200|00139|Painel Prata Tintoretto Altura 500|||000008|00|72124010||72||18,00||
+|0200|00140|Painel Prata Tintoretto Altura 610|||000008|00|72124010||72||18,00||
+|0200|00141|Painel Branco Giotto Altura 500|||000008|00|72124010||72||0,00||
+|0200|00142|Painel Branco Giotto Altura 610|||000008|00|72124010||72||18,00||
+|0200|00143|Painel Industrial Galileo Altura 500|||000008|00|72124010||72||0,00||
+|0200|00144|Painel Industrial Galileo Altura 610|||000008|00|72124010||72||18,00||
+|0200|00149|Pf Flange Ph 4,2x13 Pb Import|||000004|01|73181400||73||18,00||
+|0200|00150|Automatizador Seccional Marca: Mega Mod.: Mg-80 A-Ind 220v|||000006|01|||||18,00||
+|0200|00155|Par De Trava Quedas Residencial Até Portas De 20m2|||000006|01|73089090||73||18,00|1005000|
+|0200|00157|Dispositivo Anti-Quebra Molas Industrial - Kit|||000006|01|73269090||73||18,00||
+|0200|00159|Tambor Por Elevação  Para Portao M102 3125|||000006|01|73089090||73||0,00|1005000|
+|0200|00160|Tambor Para Porta M134|||000006|01|73089090||73||18,00|1005000|
+|0200|00161|Tambor Para Porta M155|||000006|01|73089090||73||18,00|1005000|
+|0200|00162|Tambor Para Porta M280|||000006|01|73089090||73||18,00|1005000|
+|0200|00163|Tambor Para Guilhotina|||000006|01|73089090||73||18,00|1005000|
+|0200|00165|Eixo Maciço 6 Mt|||000006|01|73089090||73||18,00|1005000|
+|0200|00167|Eixo Oco Redondo  6mt|||000006|01|73089090||73||18,00|1005000|
+|0200|00170|Mola De Torção 67-7,5 L3000 Direita|||000006|01|73202010||73||0,00||
+|0200|00171|Mola De Torção 67-7,5 L3000 Esquerda|||000006|01|73202010||73||18,00||
+|0200|00172|Mola De Torção 95-8,5 L1500 Direita|||000006|01|73202010||73||0,00||
+|0200|00173|Mola De Torção 95-8,5 L1500 Esquerda|||000006|01|73202010||73||18,00||
+|0200|00174|Mola De Torção 152-11,00 L1500 Direita|||000006|01|73202010||73||18,00||
+|0200|00175|Mola De Torção 152-11,00 L1500 Esquerda|||000006|01|73202010||73||18,00||
+|0200|00180|zCaixilho Central Mod. Perseo Sem Revestimento 90x210|||000006|01|73089090||73||18,00|1005000|
+|0200|00181|Zcaixilho Central Mod. Perseo Sem Revestimento 110x210|||000006|01|73089090||73||18,00|1005000|
+|0200|00185|Suporte Roda Superior Aço|||000006|01|73089090||73||18,00|1005000|
+|0200|00186|Suporte Roda Superior Industrial|||000006|01|73089090||73||18,00|1005000|
+|0200|00191|Guarnição Lateral *vertical|||000006|01|40026000||40||18,00||
+|0200|00193|Amortecedor Abertura Portão Industrial|||000006|01|73089090||73||18,00|1005000|
+|0200|00198|Dobradiça Residencial Central|||000006|01|83021000||83||18,00|0102600|
+|0200|00199|Dobradiça Residencial Lateral|||000006|01|83021000||83||18,00|0102600|
+|0200|00200|Dobradiça Industrial Central|||000006|01|83021000||83||18,00|0102600|
+|0200|00201|Dobradiça Industrial Lateral|||000006|01|83021000||83||18,00|0102600|
+|0200|00202|Talha a Corrente Para Portao Industrial|||000006|01|84251910||84||18,00||
+|0200|00203|Perfil Curvas Direita|||000006|01|72124010||72||18,00||
+|0200|00204|Perfil Curvas Esquerda|||000006|01|72124010||72||18,00||
+|0200|00205|Dispositivo Anti-Quebra Molas Residencial Direito|||000006|01|73269090||73||18,00||
+|0200|00206|Dispositivo Anti-Quebra Molas Residencial Esquerdo|||000006|01|73269090||73||18,00||
+|0200|00207|Tubo 100 x 50 Mm Branco|7894494009075||000010|01|76101000||76||18,00||
+|0200|00226|Grade De Ventilacao|||000006|01|39259090||39||18,00||
+|0200|00228|Painel Modelo Da Vinci Comprimento 9500 Mm Altura 500|||000006|01|72124010||72||18,00||
+|0200|00230|Painel Color Madeira Claro Rdr Comprimento 9500 Al 610|||000006|01|72124010||72||18,00||
+|0200|00231|Painel Color Madeira Rdr Comprimento 9500 Altura 500|||000006|01|72124010||72||18,00||
+|0200|00232|Trilho Segmento Unico Portao Seccionado De 3800mm|||000006|01|84831019||84||18,00||
+|0200|00233|Par Trilho Horizontal + Trilho Vertical Com Altura De 3250 Mm h 150 Mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00234|Par Trilho Horizontal + Trilho Vertical Com Altura De 2450 Mm 150 Mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00235|Par Trilho Horizontal + Trilho Vertical De 2900mm h 150mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00236|Par Trilho Horizontal + Trilho Vertical De 3500 Mm h 250mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00237|Parafuso Autoforante|||000006|01|73181400||73||18,00||
+|0200|00238|Capa Plastica Para Parafuso Autofurante|||000006|01|39259090||39||18,00||
+|0200|00239|Dobradica Lateral|||000006|01|83021000||83||18,00|0102600|
+|0200|00240|Dobradica Central|||000006|01|83021000||83||18,00|0102600|
+|0200|00241|Tubolar Aluminio 150x30x2,5 Simil Madeira Carvalho Claro Dl 6550 Mm|||000006|01|76041021||76||18,00||
+|0200|00242|Tubular Aluminio 100x30x2,0 Cor Simil Madeira Carvalho Claro Dl 89 l 3050 Mm|||000006|01|76041021||76||18,00||
+|0200|00243|Perfil Aluminio Ad u 20x45x20 l 6500 Carvalho Claro|||000006|01|76041021||76||18,00||
+|0200|00244|Perfil Aluminio Ad u 20x45x20 l 6500 9010 Branco|||000006|01|76041021||76||18,00||
+|0200|00245|Par De Trava Quedas Residencial|||000006|01|73089090||73||0,00|1005000|
+|0200|00246|Mola De Torcao 50-5,5 l 3000 Esquerdo|||000006|01|73202010||73||18,00||
+|0200|00247|Mola De Torcao 50-5,5 l 3000 Direitodx|||000006|01|73202010||73||18,00||
+|0200|00248|Mola De Torcao 50-6 l 3000 Direito|||000006|01|73202010||73||18,00||
+|0200|00249|Mola De Torcao 50-6 l 3000 Esquerdo|||000006|01|73202010||73||18,00||
+|0200|00250|Juncao De Corrente V2 Jedi-L|||000006|01|83026000||83||18,00||
+|0200|00251|Vistas Para Porta|||000006|01|73089090||73||18,00|1005000|
+|0200|00252|Kit Portas  Social Modelo a|||000006|01|73089090||73||18,00|1005000|
+|0200|00258|Rebite Porca 8mm Import|||000004|01|73181600||73||18,00||
+|0200|00272|Tg-510 Tubo 100,00 x 50,00 x 1,45 Com 3 Metros Branco|||000011|01|||||18,00||
+|0200|00297|Kit Stand Seip Brasil|||000006|01|48205000||48||0,00|1902400|
+|0200|00304|Controle Remoto Key|7896637625708||000007|01|85269200||85||17,00||
+|0200|00306|Kit Deslizante Semi Industrial Max 220v S/ Cremalheiras|||000007|01|84798999||84||18,00||
+|0200|00308|Folder Seip Brasil|||000006|01|49111090||49||18,00||
+|0200|00330|Painel Fixo De Veneziana|||000006|01|76101000||76||18,00||
+|0200|00331|Branco Brilhante Sintetico Spray Suvinil|||000006|01|||||18,00||
+|0200|00336|Cabo 4 Pares Multilan  24awg Cat5 Prysmian Cmx|||000012|01|85444900||85||18,00||
+|0200|00359|Pa Sx Ac Rs 1/4 x 50 Rp Zb|7892261000461||000015|01|73181500||73||18,00||
+|0200|00412|Trilho Segmento Unico Para Portão Seccioando|||000006|01|84831019||84||18,00||
+|0200|00429|Canaleta|||000006|01|73145000||73||18,00|0111000|
+|0200|00472|Sch Dxn10031 Canaleta Dexson 13x7mm C/ Adesivo|||000002|01|||||18,00||
+|0200|00481|Trilho Horizontal -Trilho Vertical 3250 Mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00500|Acm Tecnobond Chapa Polieter 3 Mm|7894494015847||000006|01|||||18,00||
+|0200|00519|Cabo Utp Cat5.E 4px24 Awg Cmx 305m Impact Lan Il5caz|7896637687317||000002|01|85444900||85||18,00||
+|0200|00559|Automatizador Seccional Marca: Mega Mod.Mg-100 - Res 220v|||000006|01|84798999||84||18,00||
+|0200|00560|Trilho Em Tubo De Aluminio Medida: 3,5 Metros Da Caixa De Transmissao Por Corrente Para|||000006|01|||||18,00||
+|0200|00647|Pf Sx Sob 6,3x19 S/Arr Fenda|||000004|01|73181100||73||18,00||
+|0200|00696|Aneis De Pistao|||000006|01|||||18,00||
+|0200|00699|Cabo Utp Cat5.E 4px24 Awg Cmx 305m Impact Lan Il5caz-Intelbras|||000002|01|85444900||85||18,00||
+|0200|00716|Painel Modelo Sao Paulo  Alt 500|||000006|00|72124010||72||18,00||
+|0200|00717|Par Fotocelulas V2|||000006|01|85269200||85||18,00||
+|0200|00718|Painel Modelo Sao Paulo  Alt 610|||000006|01|72107010||72||18,00||
+|0200|00719|Painel Color Madeira Claro Rdr|||000006|01|72107010||72||18,00||
+|0200|00728|Perfil Especial Industrializado|||000009|01|||||18,00||
+|0200|00797|Pf Sx Sob 6,3x25 S/Arr|||000004|01|73181100||73||18,00||
+|0200|00822|Painel Palno De Aço Nao Ligado Comp 8000mmx 500mm Al|||000012|01|72124010||72||0,00||
+|0200|00823|Painel Palno De Aço Nao Ligado Comp 5800mmx 500mm Al|||000012|01|72124010||72||0,00||
+|0200|00824|Suporte Tipo Garra Em Forma De Guancho-Com500mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00825|Kit Portas Social Modelo b|||000006|01|73089090||73||18,00|1005000|
+|0200|00826|Carter Ou Cobertura De Plastico Comp 3.300mm|||000006|01|39259090||39||18,00||
+|0200|00827|Perfil De Aço Nao Ligado Em Forma u Modelo Casseta- Comp 500mm Al 42 Mm|||000006|01|72161000||72||18,00||
+|0200|00828|Perfil De Aço Nao Ligado Em Forma U- Modelo Casseta Comp 610mm Al 42 Mm|||000006|01|72161000||72||18,00||
+|0200|00829|Perfil Com Forma Geometrica  U-600mm|||000006|01|72161000||72||18,00||
+|0200|00830|Ferramenta Para Roscar Ajustar Molas De Torçao De 50|||000006|01|82051000||82||18,00||
+|0200|00831|Ferramenta Para Roscar Ajustar Molas De Torçao De 67|||000006|01|82051000||82||18,00||
+|0200|00832|Mola De Torcao 98-8 l 3000 Mm Direito|||000006|01|73202010||73||18,00||
+|0200|00833|Mola De Torcao 98-8 l 3000 Mm Esquerdo|||000006|01|73202010||73||18,00||
+|0200|00834|Mola De Torcao 98-8,5 l 3000 Mm Direito|||000006|01|73202010||73||18,00||
+|0200|00835|Mola De Torcao 98-8,5 l 3000 Mm Esquerdo|||000006|01|73202010||73||18,00||
+|0200|00842|Movimentador B130 220v Af Mov..Corrente|||000006|01|84798999||84||18,00||
+|0200|00843|Fotocelula F30 Plus|||000006|01|||||18,00||
+|0200|00846|Calha Metro|||000006|01|84799090||84||18,00||
+|0200|00892|Telefone Intelbras Sem Fio - Ts2510 - Codigo Fabrica: 4122510|7896637678483||000006|01|||||18,00||
+|0200|00912|Thinner 82880 1lt|||000006|01|38140090||38||18,00||
+|0200|00913|Bucha Bnk 8 Mm|7892261447204||000003|01|39269090||39||18,00|1301600|
+|0200|00914|Ponteira Dupla Ph 1/4 x 65|7892261567841||000003|01|82079000||82||18,00||
+|0200|00915|Cola Instantaneo Worker 20 g|7899384989246||000003|01|35061090||35||18,00||
+|0200|00916|Aditivo Para Radiador Litro Radiex|||000001|01|27101932||27||18,00||
+|0200|00917|Sensor Do Filtro De Particulas|||000006|01|||||18,00||
+|0200|00918|Interruptor De Oleo|||000006|01|||||18,00||
+|0200|00919|Oleo 15 w 40 Top Turbo|||000001|01|27101932||27||18,00||
+|0200|00920|Cola De Silicone Para Vedacao|||000006|01|32141010||32||18,00||
+|0200|00921|Filtro Do Oleo h|||000006|01|||||18,00||
+|0200|00922|Vareta Nivel Oleo|||000006|01|||||18,00||
+|0200|00923|Convergedor De Vent|||000006|01|87089990||87||18,00||
+|0200|00924|Pf Fr Zb 5/16x 2.1/2 C/Po|||000004|01|73181500||73||18,00||
+|0200|00925|Veja Limpeza Pesada 500ml C.Ativo 20% D. Reckitt Benck. Un|7891035285196||000006|01|34022000||34||18,00|1100400|
+|0200|00927|Margarina Delicia 500g S/Sal Bunge Alimentos Un|7891080400070||000006|01|15171000||15||18,00|1702600|
+|0200|00928|Bisc. Parati Rosca 300g Milho Verde Parati Un|7896011100272||000006|01|19053100||19||18,00||
+|0200|00929|Refresco Trink 25g Maca Parati Un|7896011108469||000006|01|21069010||21||18,00|0301200|
+|0200|00930|Refresco Trink 25g Manga Parati Un|7896011127293||000006|01|21069010||21||18,00|0301200|
+|0200|00932|Regua Plastico 30cm Waleu - Codigo Fabrica: 488|7897294412328||000006|01|90172000||90||18,00|0802100|
+|0200|00933|Cola Bastao Maxprint 22g - Codigo Fabrica: 74 2329|7897975056674||000006|01|||||18,00||
+|0200|00934|Tesoura Escolar Acrilex Cabo Preto - Codigo Fabrica: 225270000|7891153096001||000006|01|82130000||82||18,00||
+|0200|00935|Extrator De Grampos Maxprint - Codigo Fabrica: 71 3177|||000006|01|82141000||82||18,00|2005400|
+|0200|00936|Env 162x229 Branco - Codigo Fabrica: 1360|7896212688234||000006|01|48171000||48||18,00||
+|0200|00937|Clips 2/0 500gr - Codigo Fabrica: 3115|7898636470051||000006|01|83059000||83||18,00||
+|0200|00938|Agenda Anual Cost 160f Percalux - Codigo Fabrica: 000000000000009806|7891321098066||000006|01|48201000||48||18,00|1902000|
+|0200|00939|Lixeira Plasvale Basculante 30l Branca - Codigo Fabrica: 3790|||000006|01|39249000||39||18,00|1100900|
+|0200|00940|Porta Lapis/Clips/Lembrete Cristal Waleu - Codigo Fabrica: 2845|7897294404538||000006|01|39261000||39||18,00|1900400|
+|0200|00941|Toalheiro Premisse Clean/Velox Branco - Codigo Fabrica: 4036|7898912018090||000006|01|39259090||39||18,00||
+|0200|00942|Copo Copobras 50ml Branco C/100un - Codigo Fabrica: 3699|||000016|01|39241000||39||18,00|1100900|
+|0200|00943|Cesto Telado Kit Aramado Preto - Codigo Fabrica: 7073|7890265917853||000006|01|73269090||73||18,00||
+|0200|00944|Saco P/ Lixo Rolo Preto 15l C/100 - Codigo Fabrica: 7213|7890905700012||000016|01|39232190||39||18,00||
+|0200|00945|Saco P/ Lixo Rolo Preto 40l Economico C/100 - Codigo Fabrica: 7208|7890905300014||000016|01|39232190||39||18,00||
+|0200|00946|Grampeador Cis C-10 P/25 Fls - Codigo Fabrica: 371|7896326926147||000006|01|84729040||84||18,00||
+|0200|00954|Cabo De Forca P/ Led - 9433 Gaya|||000002|01|||||18,00||
+|0200|00955|Conector Sindal 06.00mm Nylon|||000002|01|||||18,00||
+|0200|00956|Fio Paralelo 2x1.5mm|||000012|01|85444900||85||18,00||
+|0200|00957|Fita Dupla Face 12mm x 20m - 3m H0002317883|||000002|01|35061090||35||18,00||
+|0200|00958|Fita Isolante 20m Preta Fame|||000005|01|39191020||39||18,00||
+|0200|00959|Gaya Fita De Led 4,8w 127v 6500k Ip65 - 9414|||000012|01|||||18,00||
+|0200|00960|No Break 600va Ent. Bivolt Mini Saida 220v Nhs|||000002|01|85044040||85||18,00|2103800|
+|0200|00961|Pezzi Plug Femea 2p+t 20a 1097-3 Cinza|||000002|01|||||18,00||
+|0200|00962|Plug Te 3p 345pr Perlex|||000002|01|85366990||85||18,00||
+|0200|00963|Acm|||000006|01|76109000||76||18,00||
+|0200|00964|Lixeira Plasvale Basculante 30l Azul - Codigo Fabrica: 7434|7891115722436||000006|01|39249000||39||18,00|1100900|
+|0200|00965|Grampo Masterprint 26/6 Galvanizado C/5000 - Codigo Fabrica: 2662|7898119104312||000006|01|83052000||83||18,00||
+|0200|00966|Lamina P/ Estilete Largo Masterprint 18mm C/ 10 Mp452 - Codigo Fabrica: 308010002|7898119104589||000006|01|82119400||82||18,00||
+|0200|00967|Alcool Gel H2o Valvula Pump Neutro 6x440gr - Codigo Fabrica: 10500|7898201576546||000006|01|||||18,00||
+|0200|00968|Adocante Zero Cal Liq 100ml - Codigo Fabrica: 305381|7896094910904||000006|01|||||18,00||
+|0200|00969|Saco P/ Lixo Rolo Preto 30l C/100 - Codigo Fabrica: 7212|7890905800019||000016|01|39232190||39||18,00||
+|0200|00970|Mexedor Pequeno C/500 Msp-800|||000006|01|39241000||39||18,00|1100900|
+|0200|00971|Chave Comb Robust 13mm Import|||000006|01|||||18,00||
+|0200|00972|Estopa Cor 1|||000009|01|52021000||52||18,00||
+|0200|00973|Botina Elast.Bid.Preta C/Bic.Composite n 42 - Bracol|||000017|01|||||18,00||
+|0200|00974|Deseng Mp1 321ml 193g|||000006|01|38249941||38||18,00||
+|0200|00978|Balcao Sob Medida Comelli|||000007|01|94036000||94||18,00||
+|0200|00979|Pia Ghelplus Cuba 1 20 Conc|7895171000408||000006|01|||||18,00||
+|0200|00980|Pneu 185/60 r 14 Firehawk 700 Firestone|||000006|01|40111000||40||18,00|1600100|
+|0200|00981|Valvula De Bico Tr 414|||000006|01|84818099||84||18,00||
+|0200|00990|Par De Fotocélulas Modelo B-Key Utilizados Para Para Identificar Presenças De Pessoas|||000006|01|85269200||85||18,00||
+|0200|00992|Tampa Em Plastica Preto Para Perfil Omega|||000006|01|39259090||39||0,00||
+|0200|00993|Separador 5mm Rall 9006 Para Rodas De 11mm|||000006|01|39259090||39||18,00||
+|0200|00994|Manilha Em Plastico Preta|||000006|01|39259090||39||18,00||
+|0200|00998|Trink Refresco Maracuja 30g|7896011127033||000006|01|21069010||21||18,00|0301200|
+|0200|01000|Rede Forte Pao Fatiado Extra Macio 500gr|7898944499669||000006|01|||||18,00||
+|0200|01001|Presunto Cozido Fatiado Frireggio 150g|7898414311132||000006|01|||||18,00||
+|0200|01002|Papel Higienico Paloma Neutro 4 C/ 30m|7896026838245||000006|01|48181000||48||18,00|2004200|
+|0200|01003|Apontador Tris Un|7897476659602||000006|01|82141000||82||18,00|2005400|
+|0200|01004|Biscoito Polvilho Tick Titos Argolao 160g|7898933261017||000006|01|19059090||19||18,00|1703100|
+|0200|01005|Papel Higienico Personal Vip Fd L12 P11 30m|7896110008653||000006|01|48181000||48||18,00|2004200|
+|0200|01006|Rosca Cappuccino Casaredo 330g|7896408443999||000006|01|19053100||19||18,00||
+|0200|01007|Bala Pacoquinha Santa Helena 140g|7896336002824||000006|01|||||18,00||
+|0200|01008|Gel Adesivo Aplik Pinho 7g|7898937892248||000006|01|34022000||34||18,00|1100400|
+|0200|01009|Vassoura Paulistinha Popular|7898311540451||000006|01|96039000||96||18,00||
+|0200|01011|Biscoito Rosca De Coco Casaredo 650g|7896408439725||000006|01|19053100||19||18,00||
+|0200|01012|Esponja Multiuso Bombril L4p3|7891022859812||000006|01|68053090||68||18,00|1100900|
+|0200|01013|Balde Plastico Plasnew 13,6l|7897848701809||000006|01|39249000||39||18,00|1100900|
+|0200|01014|Alcool Araucaria 46 1l|7898172662149||000006|01|22071090||22||18,00||
+|0200|01015|Saco Xadrez Textilmax 90x65cm|7898558360164||000006|01|||||18,00||
+|0200|01016|Flanela Belmondi 39x59cm|7898919084173||000006|01|63071000||63||18,00||
+|0200|01017|Disco De Corte Inox 4"|||000003|01|||||18,00||
+|0200|01027|Branco-Perf.Alum.Tubo Retang 95 x 50,8  Ptg 070|||000011|01|76042100||76||18,00||
+|0200|01028|Preto-Perf.Alum.Tubo Retang 152,4 x 50,8  Ptg 041|||000006|01|76042100||76||18,00||
+|0200|01030|10.09 - Representacao De Qualquer Natureza, Inclusive Comercial - Pedido 700, Mms Participacoes|||000006|01|||||18,00||
+|0200|01032|Agua Min.Cristal Azul 510ml S/Gas Cristal Azul Un|7896813600239||000006|01|22011000||22||18,00|0300100|
+|0200|01033|Agua Min.Cristal Azul 510ml C/Gas Cristal Azul Un|7896813600246||000006|01|22011000||22||18,00|0300100|
+|0200|01034|Refr. Guarana Champ. Lata 350ml C/12 Antarctica Un|7891991002189||000006|01|22021000||22||18,00|0300700|
+|0200|01035|Copo Acrilico Cristal Martelado 350ml Xplast Un|||000006|01|39241000||39||18,00|1100900|
+|0200|01036|Flanela Panosul 34*50 R.002 Panosul Un|7896943200101||000006|01|63071000||63||18,00||
+|0200|01037|Refr. Coca Cola 2lt Coca Cola Un|7894900011517||000006|01|22021000||22||18,00|0300700|
+|0200|01038|Bisc. Casaredo 280g Rosca Brigadeiro Nutrisul Un|7896408443982||000006|01|19053100||19||18,00||
+|0200|01039|Pao Zl Frances Kg Zilio Leonardi Kg|||000009|01|19059090||19||18,00|1703100|
+|0200|01040|Apresuntado Perdigao Fat.200g Perdigao Un|7891515435134||000006|01|16024900||16||18,00||
+|0200|01041|Agua Min.Crystal Coca 500ml S/Gas Coca Cola Un|7894900530001||000006|01|22011000||22||18,00|0300100|
+|0200|01042|Agua Min.Crystal Coca 500ml C/Gas Coca Cola Un|7894900531008||000006|01|22011000||22||18,00|0300100|
+|0200|01043|Desinf. Pinho Bril 500ml Plus Bombril Un|7891022080025||000006|01|38089419||38||18,00|1100100|
+|0200|01044|Veja Multi-Uso 500ml 10% Desc. Campestre Reckitt Benck. Un|7891035285158||000006|01|34022000||34||18,00|1100400|
+|0200|01045|Bisc. Isabela 400g Kuki Isabela Un|7896022054359||000006|01|19053100||19||18,00||
+|0200|01046|Sabonete Liq. Tacto 700ml Acai/Fr. Tacto Un|7897331300052||000006|01|34013000||34||18,00|2003700|
+|0200|01048|Sazon Tempero Carnes 60gr|7891132019281||000006|01|21039021||21||18,00|1703500|
+|0200|01049|Escova P/Unhas Condor|7891055500903||000006|01|||||18,00||
+|0200|01051|Zaeli Pipoca  Americana 500g|7896183909123||000006|01|19059090||19||18,00|1703100|
+|0200|01052|Leite Integral Pia 1l|7896348841480||000006|01|04012010||04||18,00|1701600|
+|0200|01053|Sabao Alcool Cristo Rei 300gr|7898465050202||000006|01|28289011||28||18,00|1100100|
+|0200|01054|Wafer Minueto Doce De Leite 115g|7896011108346||000006|01|19053200||19||18,00||
+|0200|01107|D240  Desl. Europa Acopl 1 4 Cv Ip00 220|||000006|01|84798999||84||18,00||
+|0200|01108|Cremalheira Montada 1 5m Cantoneira Galv|||000006|01|84799090||84||18,00||
+|0200|01109|B500m Maquina Speedy  Portao Basc.Micro|||000006|01|84798999||84||18,00||
+|0200|01110|Calha Corrente Montada3 0m|||000006|01|84799090||84||18,00||
+|0200|01111|Broca Sds Plus 8 x 160 Mm|7892261454905||000003|01|82075011||82||18,00||
+|0200|01112|Broca Sds Plus 6 x 160|7892261454899||000003|01|82075011||82||18,00||
+|0200|01113|Tinta Preta Preto Fosco|7898543380917||000003|01|32082019||32||18,00||
+|0200|01114|Broca Aco Rap. 6 Mm|7892261538995||000003|01|82075011||82||18,00||
+|0200|01115|Broca Aco Rap. 4 Mm|7892261538339||000003|01|82075011||82||18,00||
+|0200|01116|Paraf. Fix.Ch. Ph 6,0 x 70 Bc|7892261320767||000003|01|73181200||73||18,00||
+|0200|01117|Pa Sx Ac Rs 5/16 x 50 Rp Zb|7892261000867||000003|01|73181500||73||18,00||
+|0200|01118|Batente 3,30m|||000006|01|73030000||73||18,00||
+|0200|01119|Trilho 7,5 m|||000006|01|73030000||73||18,00||
+|0200|01121|Cabo Pp 3x1.00mm 500v|||000012|01|85444900||85||18,00||
+|0200|01122|Fita Isolante 20m Preta 2000-En/Eb Enerbras|||000005|01|39191020||39||18,00||
+|0200|01123|Serra Copo 19mm Mtx Import|||000006|01|82029990||82||18,00||
+|0200|01124|Alicate Pressao Ged 137-10|||000006|01|82032010||82||18,00||
+|0200|01125|Rebitador Lusofix Rr20|||000006|01|82055900||82||18,00||
+|0200|01126|Lapis Carpinteiro Sparta Import|||000006|01|96091000||96||18,00||
+|0200|01127|Trena Gold 7,5x25 Emborrachada Import|||000006|01|||||18,00||
+|0200|01128|Chave Ph Lja 3x100|||000006|01|82054000||82||18,00||
+|0200|01129|Chave Ph Amar 3/16x6|||000006|01|82054000||82||18,00||
+|0200|01130|Chave Fenda Amar 1/8x 5|||000006|01|82054000||82||18,00||
+|0200|01131|Chave Fenda Gedore 1/4x 5|||000006|01|82054000||82||18,00||
+|0200|01132|Esquadro Aluminio 12 Mtx Import|||000006|01|90172000||90||18,00|0802100|
+|0200|01133|Cadeado Gold 35mm Latao|||000006|01|||||18,00||
+|0200|01134|Correia Alt|||000006|01|||||18,00||
+|0200|01135|Interruptor Temperatura|||000006|01|84835090||84||18,00||
+|0200|01136|Filtro Lubrificante Hr/ K2500/ Besta Gs2.7/3.0|||000006|01|84212300||84||18,00|0103700|
+|0200|01138|Regua Waleu 30cm New Line Cristal|||000006|01|90172000||90||18,00|0802100|
+|0200|01139|Porta Lapis/Clips/Lembrete Fume Waleu - Codigo Fabrica: 3185|7897294404446||000006|01|39261000||39||18,00|1900400|
+|0200|01140|Lixeira Plasvale 62l 177 - Codigo Fabrica: 177|||000006|01|39249000||39||18,00|1100900|
+|0200|01141|Dispensador Fita Larga Masterprint Mp901 - Codigo Fabrica: 327010002|||000006|01|84223029||84||18,00||
+|0200|01142|Calculadora Masterprint 12 Digitos Mp1086 - Codigo Fabrica: 301010024|7898119103605||000006|01|84701000||84||18,00||
+|0200|01143|Corretivo Liquido Brw 18ml - Codigo Fabrica: 3020|7898613211455||000006|01|||||18,00||
+|0200|01144|Pincel Atomico Compactor Az - Codigo Fabrica: 000882001|7896572013547||000006|01|96082000||96||18,00|1902800|
+|0200|01145|Pincel Atomico Compactor Pr - Codigo Fabrica: 000882004|7896572013523||000006|01|96082000||96||18,00|1902800|
+|0200|01146|Pincel Atomico Compactor Vm - Codigo Fabrica: 000882002|7896572013561||000006|01|96082000||96||18,00|1902800|
+|0200|01147|Prancheta Duratex Stalo Prend Zinco - Codigo Fabrica: 249|7898449082892||000006|01|44219900||44||18,00||
+|0200|01148|Saco Plastico Dac S/ Furo Fino (cx 1000) - Codigo Fabrica: 7795|7897237310698||000006|01|39232990||39||18,00||
+|0200|01149|Vassoura De Palha - Codigo Fabrica: 5974|||000006|01|||||18,00||
+|0200|01150|Pasta Ae Of Fume - Codigo Fabrica: 632|7896644715768||000006|01|42021210||42||18,00||
+|0200|01151|Lixeira Bralimpia 15l Pedal Branco - Codigo Fabrica: 9045|||000006|01|39229000||39||18,00||
+|0200|01152|Pa P/ Lixo Superpro Jeitosa C/Cabo - Codigo Fabrica: 9253c|7898509280824||000006|01|39249000||39||18,00|1100900|
+|0200|01153|Balde Superpro Oval 19l - Codigo Fabrica: 8040|7898509282514||000006|01|39249000||39||18,00|1100900|
+|0200|01154|Saco P/ Lixo Rolo Azul 60l 60 x 70 Econ C/100 - Codigo Fabrica: 3684|7891172500015||000016|01|39232190||39||18,00||
+|0200|01155|Saco P/ Lixo Rolo Azul 40l Economico C/100 - Codigo Fabrica: 7287|7891172600012||000016|01|39232190||39||18,00||
+|0200|01156|Marc. Retro Projetor Pilot 1.0 Pr - Codigo Fabrica: 1430006cx012pr|7897424006540||000006|01|96082000||96||18,00|1902800|
+|0200|01157|Tinta Brw P/ Pincel Atomico Preto 20m - Codigo Fabrica: Tr7002|7898613213275||000006|01|||||18,00||
+|0200|01159|Graxa Ca2 Alta Perf. 500 g|7899009011666||000003|01|||||18,00||
+|0200|01160|Nivel De Aluminio 30 Cm|||000003|01|||||18,00||
+|0200|01161|Estilete 18 Mm|7899009011116||000003|01|82119390||82||18,00||
+|0200|01162|Soquete Magnetico Sx 7/16 x 65|7892261535789||000003|01|82055900||82||18,00||
+|0200|01163|Chave Comb. 11 Mm|||000003|01|82041100||82||18,00||
+|0200|01164|Chave Comb. 10 Mm|||000003|01|82041100||82||18,00||
+|0200|01165|Broca Aco Rap. 8,5 Mm|7892261539053||000003|01|82075011||82||18,00||
+|0200|01166|Estopa Branca|7899384945020||000003|01|53050090||53||18,00||
+|0200|01167|Alicate Univ. 8" 856-200|7891504620909||000003|01|82032010||82||18,00||
+|0200|01168|Mini Grampo Rapido Quick- Grip 12"|||000003|01|82119390||82||18,00||
+|0200|01169|Alicate Univ. 8" Isolada|||000003|01|82032010||82||18,00||
+|0200|01170|Projetor De Led 100w Bivolt 6000k - 74100600 Blumenau|||000002|01|||||18,00||
+|0200|01171|Ima Industrial Unisystem-Garen|||000006|01|84799090||84||18,00||
+|0200|01172|Escada 1,20 Largura, Guarda Corpo e Corrimao Degrau 0,30 Espelho 0,18 Em Chapa Xadrez.|||000006|01|73030000||73||18,00||
+|0200|01176|Nescafe Tradicao Sache 50g|7891000010860||000006|01|||||18,00||
+|0200|01177|Agua Mineral Ipua 500ml|||000006|01|22011000||22||18,00|0300100|
+|0200|01181|Waffer Yupi Flocos 110g|7896408441728||000006|01|19053200||19||18,00||
+|0200|01182|Rodo Espuma 25cm|7898942535185||000006|01|96039000||96||18,00||
+|0200|01183|Bolacha De Milho Kg|||000009|01|19059020||19||18,00|1705600|
+|0200|01184|Papel Hig Duetto Valvet Neutro Folh Simp 30m C/4|7896026801096||000006|01|48181000||48||18,00|2004200|
+|0200|01186|Botina Elast.Bid.Preta C/Bic.Aco N41-Bracol|||000017|01|64059000||64||18,00||
+|0200|01187|Diesel s 10|||000018|01|27101921||27||18,00||
+|0200|01188|Pao De Mel Zapoli Mini 360g Nat. Zapoli Un|7898938087018||000006|01|||||18,00||
+|0200|01189|Chaleira Eletr.Cadence S. 127v 1lt Bca Cadence Un|7898221455227||000006|01|||||18,00||
+|0200|01190|Antiembacante Aromacar 60ml|7898104150157||000006|01|||||18,00||
+|0200|01191|Lamina De Serra Tct 185mm x 64|||000002|01|||||18,00||
+|0200|01193|Preto-Perf.Alum.Tubo Retang 76,2 x 38,10-Ptg 038|||000011|01|76042100||76||18,00||
+|0200|01194|Conjunto Fim De Curso Deslizante Unisystem-Garen|||000006|01|84799090||84||18,00||
+|0200|01201|Papel Ondulado  120cm|||000009|01|48081000||48||18,00|1901600|
+|0200|01203|Fita Adesiva 48mm x 50 m Rolo|||000006|01|39191090||39||18,00||
+|0200|01204|Saco Zip n 08 17x24 C/ 100|||000016|01|39232110||39||18,00||
+|0200|01205|Fita Adesiva 48mm x 100 m Rolo|||000006|01|39191090||39||18,00||
+|0200|01206|Macho Manual 3/16|7899885116882||000003|01|82074010||82||18,00||
+|0200|01207|Ponta Mont. A- 21 1/4 25 x 25|7899384930996||000003|01|68042211||68||18,00||
+|0200|01208|Bucha Com Anel 8 Mm|7899676016704||000003|01|39269090||39||18,00|1301600|
+|0200|01209|Extintor Pqs 4 Kg|||000019|01|84241000||84||18,00|0104000|
+|0200|01210|Extintor Ap 10 Lts|||000019|01|84241000||84||18,00|0104000|
+|0200|01212|Bateria Selada 12v 5a|||000006|01|85072010||85||18,00||
+|0200|01216|Ype Detergente Neutro 500ml|7896098900208||000006|01|34022000||34||18,00|1100400|
+|0200|01217|Papel Hig Personal Folha Dupla Neutro C4|7896110000176||000006|01|48181000||48||18,00|2004200|
+|0200|01218|Papel Higienico Mili Bianco 60m C/4|7896104998557||000006|01|48181000||48||18,00|2004200|
+|0200|01219|Querosene Petrus 800ml|7897631977794||000006|01|||||18,00||
+|0200|01220|Ninfa Biscoito Recheado Choc.Branco 110g|7896111421550||000006|01|19053100||19||18,00||
+|0200|01221|Lustra Moveis Bry Jasmim 200ml|7891242470033||000006|01|||||18,00||
+|0200|01222|Lustra Moveis Bry Lavanda 200ml|7891242470026||000006|01|34052000||34||18,00||
+|0200|01223|Leite Batavo Integral 1l|7891097018251||000006|01|04012010||04||18,00|1701600|
+|0200|01225|Harpic Lavanda 25gr 40% Desc|7891035524189||000006|01|34022000||34||18,00|1100400|
+|0200|01226|Rede Forte Saco Lixo 100lt|7898907847957||000006|01|39232110||39||18,00||
+|0200|01227|Veja X14 Tira Limo 2 Em 1 Squeeze 500ml|7891035800238||000006|01|34022000||34||18,00|1100400|
+|0200|01229|Panela De Aluminio Brisa Tonellos N26|7898620980542||000006|01|||||18,00||
+|0200|01230|Bolacha De Nata Pinhal 350g|7898906225060||000006|01|19053100||19||18,00||
+|0200|01231|Bala Zaza Sortida 250g|7896306613241||000006|01|17049020||17||18,00||
+|0200|01232|Vassoura Gran Mestra Limpamania|7898920552104||000006|01|96039000||96||18,00||
+|0200|01234|Lixa Papel Ferro Tatu N100|7898088927103||000006|01|68052000||68||18,00||
+|0200|01235|Sapolio Radium Cremoso Lavanda 250ml|7891022861068||000006|01|||||18,00||
+|0200|01236|Curativo Protetor Cicatrisan Transparente C/10un|7898108611616||000006|01|||||18,00||
+|0200|01237|Biscoito Recheado Glub Floresta Negra 115gr|7897426030055||000006|01|19053100||19||18,00||
+|0200|01238|Biscoito Rosca Parati Cafe 300g|7896011108704||000006|01|19053100||19||18,00||
+|0200|01239|Odorizante Lady Prime Bamboo 360ml|7898567702924||000006|01|33074900||33||18,00||
+|0200|01240|Pano De Copa Tk 40x65cm Primore Felpudo|7891228517455||000006|01|||||18,00||
+|0200|01241|Caixa Opaca 240x190x125 Cbox - 914056 Cemar|||000002|01|39259090||39||18,00||
+|0200|01245|Chapa 18 Fq|||000013|01|73145000||73||18,00|0111000|
+|0200|01246|Carenagem Bv Plastica Fundo Compatec|||000006|01|||||18,00||
+|0200|01247|Carenagem Plastica Frente Bv Basculante|||000006|01|85389090||85||18,00||
+|0200|01248|Taxa De Servico|||000006|01|00000000||00||18,00||
+|0200|01249|Agua Com Gas|||000006|01|22011000||22||18,00|0300100|
+|0200|01250|File Mignon a Cavalo|||000006|01|||||18,00||
+|0200|01251|Caipirinha|||000006|01|||||18,00||
+|0200|01252|Batata Sensacao|||000006|01|||||18,00||
+|0200|01253|Cafe Nespresso|||000006|01|21011200||21||18,00|1710900|
+|0200|01255|Salada Imperium|||000007|01|20019000||20||18,00||
+|0200|01256|Nobreak 1450va|||000006|01|85044040||85||18,00|2103800|
+|0200|01257|Bateria Powerec 12v 7a|||000006|01|||||18,00||
+|0200|01258|Chave Comb. Catraca 10 Mm|||000003|01|82041100||82||18,00||
+|0200|01259|Paraf. Fixer 3,5 x 25|7892261369247||000003|01|73181200||73||18,00||
+|0200|01260|Pa Sx Fl Pb Ac N,3 Ar Epdm N. 12 x 3/4 Ri Zb|7892261087523||000003|01|73181500||73||18,00||
+|0200|01261|Luva Malha Branca|||000003|01|||||18,00||
+|0200|01262|Cabo De Aco 1/8 Zb (6 x 7) Plast|||000012|01|73121090||73||18,00||
+|0200|01263|Prensa Cabos 1/8 Import|||000006|01|||||18,00||
+|0200|01264|Papel Toalha Center Seck 23x20 C/5000 - Codigo Fabrica: 4399|||000020|01|48182000||48||18,00|2004400|
+|0200|01265|Sabonete Premisse Morango e Hibiscus 1l - Codigo Fabrica: C10621|7898912019288||000006|01|34012010||34||18,00|2003600|
+|0200|01266|Calculadora De Mesa Maxprint Mx-C101 - Codigo Fabrica: 75 4613|7897975051259||000006|01|84701000||84||18,00||
+|0200|01267|Caneta Compactor 07 Preta - Codigo Fabrica: 3952|||000006|01|96081000||96||18,00|1902700|
+|0200|01268|Caneta Compactor 07 Azul - Codigo Fabrica: 2834|7896572000370||000006|01|96081000||96||18,00|1902700|
+|0200|01269|Caneta Compactor 07 Vermelha - Codigo Fabrica: 3953|||000006|01|96081000||96||18,00|1902700|
+|0200|01270|Saco P/ Lixo Rolo Preto 200l 90x105 Ref C/50 - Codigo Fabrica: 3676|7890906300013||000006|01|39232190||39||18,00||
+|0200|01271|Marc. Retro Projetor Pilot 2.0 Pr - Codigo Fabrica: 1430007cx012pr|7897424005642||000006|01|96082000||96||18,00|1902800|
+|0200|01272|Marc. Retro Projetor Pilot 2.0 Vm - Codigo Fabrica: 1430007cx012vm|7897424005666||000006|01|96082000||96||18,00|1902800|
+|0200|01275|Calha Completa 3.00mts  Cel-Tron|||000006|01|84799090||84||18,00||
+|0200|01276|Fotocelula F30 Plus - A22186|||000021|01|84799090||84||18,00||
+|0200|01277|Basculante Velocita 400 1/4 3.00 Mts Cel-Tron|||000021|01|84799090||84||18,00||
+|0200|01278|Trena Mtx 10mx25mm 3100055 Import|||000006|01|90178010||90||18,00||
+|0200|01279|Abrac Ny 3,6x200 Pta|||000004|01|39269090||39||18,00|1301600|
+|0200|01280|Femea 20a 1422 2pinos|||000006|01|85369090||85||18,00||
+|0200|01283|Paraf. Sx Rosca Sob. 1/4 x 70|7892261282461||000003|01|73181200||73||18,00||
+|0200|01284|Trinco Fio Redondo 6 Zb|||000006|01|||||18,00||
+|0200|01285|Cabo Pp 2x2,5 750v|||000012|01|85444900||85||18,00||
+|0200|01286|Graxa Unilit Blue-2 1 Kg P/Rolam|||000009|01|27101999||27||18,00||
+|0200|01287|Pino Prensa Cabo 10a 1412|||000006|01|85369090||85||18,00||
+|0200|01295|Cafe Melitta Extra Forte 500gr|7891021006934||000006|01|09012100||09||18,00||
+|0200|01296|Biscoito Isabela Gergelim 400g|7896022027322||000006|01|19053100||19||18,00||
+|0200|01297|Balas Simonetto Coffe King 175g|7897652602828||000006|01|17049020||17||18,00||
+|0200|01298|Toalha De Banho Belmndi 54x100cm|7898919083442||000006|01|||||18,00||
+|0200|01300|Biofleur Sabonete Liquido Erva Doce 1l|7898149358297||000006|01|34013000||34||18,00|2003700|
+|0200|01301|Mortadela Frimesa C/Gordura 1kg|7896275920678||000006|01|16010000||16||18,00|1707600|
+|0200|01302|Pato Pastilha Desiva Lavanda|7894650013502||000006|01|34022000||34||18,00|1100400|
+|0200|01303|Veja Multi Uso Tradicional 500ml|7891035800214||000006|01|34022000||34||18,00|1100400|
+|0200|01304|Sonho Kg|||000009|01|19059020||19||18,00|1705600|
+|0200|01305|Bolacha Maizena Pintada Kg|||000006|01|19059020||19||18,00|1705600|
+|0200|01306|Papel Hig Mili Folha Tripla Neutro 20m C/4un|7896104995129||000006|01|48181000||48||18,00|2004200|
+|0200|01308|Refr. Coca Cola Lata 220ml Coca Cola Un|7894900010398||000006|01|22021000||22||18,00|0300700|
+|0200|01309|Suco Del Valle Frut 1lt Uva Del Valle Un|7894900550030||000006|01|22021000||22||18,00|0300700|
+|0200|01310|Suco Del Valle Frut 1lt Laranja Del Valle Un|7894900556032||000006|01|22021000||22||18,00|0300700|
+|0200|01311|Acucareiro Ou Farinheiro Santana 1lt Santana Un|7896355700565||000006|01|39241000||39||18,00|1100900|
+|0200|01312|Bandeja Docesar Plast Ret G. C/Alca Docesar Un|7896943310435||000006|01|39241000||39||18,00|1100900|
+|0200|01313|Bisc. Marilan P.Stop 168g Integral Marilan Un|7896003706758||000006|01|19053100||19||18,00||
+|0200|01314|Bisc. Club Social 144g Original Nabisco Un|||000006|01|19059020||19||18,00|1705600|
+|0200|01318|Pano Atoalhado Panosul C/B.45*65cm Panosul Un|7896943200569||000006|01|63026000||63||18,00||
+|0200|01320|Cabo De Aco 1/8 Revestido|||000012|01|73121090||73||18,00||
+|0200|01321|Lamina De Serra Tct260x25.4mm 100t P/ Al|||000002|01|82023100||82||18,00||
+|0200|01322|Revestimento Portao De Garagem|||000009|01|||||18,00||
+|0200|01323|Disco De Corte 4".1/2|||000003|01|68042211||68||18,00||
+|0200|01324|Nobreak Carregador Agl 12v 2a|||000006|01|85044040||85||18,00|2103800|
+|0200|01327|Paraf. Sx Fl N12 x 2.1/2|7892261088049||000003|01|73181400||73||18,00||
+|0200|01328|Durepoxi 50 g|7891200007929||000003|01|32141010||32||18,00||
+|0200|01329|Cabo De Aco 3/16 Galv.|||000012|01|73121090||73||18,00||
+|0200|01330|Grampo Cb Aco 1/4|||000003|01|73269090||73||18,00||
+|0200|01331|Esticador P/ Cabo Aco 1/2|||000003|01|73269090||73||18,00||
+|0200|01332|Marca Texto Faber Tons Pastel Laranja - Codigo Fabrica: 12060|||000006|01|96082000||96||18,00|1902800|
+|0200|01333|Cart De Toner Compativel C/ 435a/436a/285a/278a 2k - Codigo Fabrica: 2702|||000006|01|84439933||84||18,00||
+|0200|01336|Placa De Eva 4mm|||000012|01|64062000||64||18,00||
+|0200|01337|Placa De Eva 8mm|||000012|01|64062000||64||18,00||
+|0200|01338|-Estopa Costurada Mecanico|||000009|01|52021000||52||18,00||
+|0200|01339|Abracadeira Nylon Natural 202x3,7mm Frontec F7020nyna|||000002|01|39269090||39||18,00|1301600|
+|0200|01340|Abracadeira Pvc Cinza 3/4 Tigre - 36005548|||000002|01|39259090||39||18,00||
+|0200|01341|Adaptador Para Condulete Pvc Cinza 3/4 Tigre - 36005297|||000002|01|39174090||39||18,00||
+|0200|01342|Blanc Tomada Dupla 2p+t 20a 1354 Fame|||000002|01|85366910||85||18,00||
+|0200|01343|Cabo Flexivel 4.00mm Azul 750v|||000012|01|85444900||85||18,00||
+|0200|01344|Cabo Flexivel 4.00mm Branco 750v|||000012|01|85444900||85||18,00||
+|0200|01345|Cabo Flexivel 4.00mm Preto 750v|||000012|01|85444900||85||18,00||
+|0200|01346|Cabo Flexivel 4.00mm Vermelho 750v|||000012|01|85444900||85||18,00||
+|0200|01347|Conduite Pvc Cinza 3/4" Tigre - 16002046|||000002|01|||||18,00||
+|0200|01348|Condulete Pvc Cinza Universal 05 Entradas Tigre - 36005319|||000002|01|39174090||39||18,00||
+|0200|01349|Exatron Sensor De Presenca Frontal Touch-Lesf4000|||000002|01|85365090||85||18,00||
+|0200|01350|Germer Porta Lamp P/ Tempo 7515|||000002|01|||||18,00||
+|0200|01351|Intral Lampada Led High Power 20w - 06653|||000002|01|85395000||85||18,00||
+|0200|01352|Intral Lampada Led High Power 50w - 06656|||000002|01|85395000||85||18,00||
+|0200|01353|Kian Lampada Led Alta Potencia 30w - 10881|||000002|01|85395000||85||18,00||
+|0200|01354|Kian Luminaria Led Sobr. 24w 6000k - 10383 Quadrada|||000002|01|94051093||94||18,00||
+|0200|01355|Luminaria Prato Bedd 16" Verde/Bco|||000002|01|||||18,00||
+|0200|01356|Mangueira Corrugada Amarela 1" Fortlev|||000012|01|39172300||39||18,00||
+|0200|01357|Prensa Cabo Pvc 3/8|||000002|01|39174090||39||18,00||
+|0200|01358|Tampa Para Condulete Pvc Cinza 3 Modulo Tigre - 36005491|||000002|01|39259090||39||18,00||
+|0200|01359|Rost Off Wurth 300 Ml|||000006|01|27101932||27||18,00||
+|0200|01360|Disco De Corte Premium Cut 115x1.2x22,2mm|||000006|01|||||18,00||
+|0200|01361|Rebite Repuxo Aluminio Branco 4x12mm|||000006|01|76161000||76||18,00||
+|0200|01362|Rebite Repuxo Aluminio Preto 4x12mm|||000006|01|76161000||76||18,00||
+|0200|01363|Nobreak Volt Gate 220v 50hz / 60hz (sem Bateria)|7897287462712||000002|01|85044040||85||18,00|2103800|
+|0200|01366|Pneu 185/65 r 14 Imp.  / Sunset/ Rapid|||000006|01|40111000||40||18,00|1600100|
+|0200|01367|Purificador De Pressao Press Libell Inox 110v|7898903556136||000002|01|||||18,00||
+|0200|01368|Blanc Interruptor 1t Simp + Tom 2p+t 20a 1358 Fame|||000002|01|85366910||85||18,00||
+|0200|01369|Sch Ez9f33210 Disjuntor Bif c 10a|||000006|01|85362000||85||18,00|0106700|
+|0200|01371|Transmissor Zap 4b (preto / Branco)|7897287478645||000002|01|85269200||85||18,00||
+|0200|01372|Conj. Auto. Mov. P. Bh Power Bolt 1/4 Jet Flex Facility 60hz (c/ Lumin|7897287470953||000002|01|84798999||84||18,00||
+|0200|01373|Acionamento Bh Power Bolt 3,50mts (aluminio Chapa U)|7897287498216||000002|01|84799090||84||18,00||
+|0200|01374|Tg-039br Tubo Retangular 50x95mm|||000006|01|76042100||76||18,00||
+|0200|01375|Respirador Pff2 C/ Valvula - Ksn|||000006|01|63079010||63||18,00||
+|0200|01376|Controle 433 Preto|||000002|01|85269200||85||18,00||
+|0200|01377|Srx 102 Receptora Pulso Ou Retencao 12v a 24v 433|||000002|01|||||18,00||
+|0200|01384|Cortes Especial De Plasma|||000007|01|73145000||73||18,00|0111000|
+|0200|01389|Lona 190g Preta Prata|||000006|01|54072000||54||18,00||
+|0200|01391|Silicone Acetico Premium Incolor 274g|||000006|01|32141010||32||18,00||
+|0200|01392|Silicone Acetico Premium Preto 280ml|7891799112417||000006|01|32141010||32||18,00||
+|0200|00099|Disco De Corte Merco 4,1/2x1,0 Import|||000006|00|||||0,00||
+|0200|00277|Protetor Auricular Concha C-200 - Camper|||000006|00|65061000||65||18,00|0101300|
+|0200|00279|Luva Raspa Punho 7cm - Mundial/Zanel/Schmitz/Gkg/Koch|||000017|00|42032900||42||18,00||
+|0200|00316|Lixa Flap 4.1/2 g 60 Merco Import|||000006|00|68053090||68||18,00|1100900|
+|0200|00345|Rebite 516 Rebitop 4.8x16|7893464000234||000000|00|83082000||83||18,00||
+|0200|00350|Flap G- 120|7892261538803||000006|00|68053090||68||18,00|1100900|
+|0200|00353|Abracadeira Naylon Branca 3,6 x 200|7892261555602||000006|00|39269090||39||18,00|1301600|
+|0200|00355|Desiengmp1 321 Ml|7898907527439||000006|00|38249941||38||0,00||
+|0200|00357|Arruela Lisa 1/4 Zincada B.|7892261001512||000015|00|||||18,00||
+|0200|00358|Paraf. Dry Wall Flan. 4.2 x 13|7892261089992||000015|00|73181500||73||18,00||
+|0200|00385|Plug Macho 2p+t 10a Bco 57402/003 Tramontina|||000002|00|85366910||85||18,00||
+|0200|00441|Wd- 40|7898193140435||000003|00|34031900||34||18,00||
+|0200|00445|Pa Ch Ph Aa 4.2 x 32 Ri Zb|7892261062797||000003|00|73181500||73||18,00||
+|0200|00449|Diesel S-500|||000001|00|27101921||27||18,00||
+|0200|00463|Fita Isolante 18mm x 10m 3m|7891040106363||000003|00|35061090||35||18,00||
+|0200|00464|Bucha Plast. C/ Anel 6 Mm|7892261493188||000003|00|39269090||39||18,00|1301600|
+|0200|00483|Diesel s 500|||000018|00|27101921||27||18,00||
+|0200|00485|Elastico Amarelo N.18 100grs C/120un Redbor|7896152355661||000002|00|||||18,00||
+|0200|00514|Broca Ar 6.00 Irw/Dorm|||000006|00|82075011||82||18,00||
+|0200|00517|Disco De Corte Turbinox 4.1/2x1,0x22,2 Import|||000006|00|68042211||68||18,00||
+|0200|00518|Disco P/Inox 41/2x1.0x7/8 A960tz Klingspor|||000003|00|68042211||68||18,00||
+|0200|00528|Silicone Aceptico Preto|7898904869525||000003|00|35061090||35||18,00||
+|0200|00531|Paraf. Sx Rs 1/4 x 65 Zb|7892261001888||000003|00|73181200||73||18,00||
+|0200|00533|Trink Refresco Limao 25gr|7896011127088||000006|00|21069010||21||18,00|0301200|
+|0200|00535|Refresco Trink Pessego 25g|7896011127026||000006|00|21069010||21||18,00|0301200|
+|0200|00536|Biscoito Salt Aguia Original 360g|7896105177050||000006|00|||||18,00||
+|0200|00539|Wafer Minueto Chocolate 115g|7896011103730||000006|00|19053200||19||18,00||
+|0200|00540|Waffer Yupi Morango 110g|7896408441711||000006|00|19053200||19||18,00||
+|0200|00543|Pilha Panasonic Alcalina 3a|7896067202265||000006|00|85061010||85||18,00||
+|0200|00544|Queijo Mussarela Frimesa 200gr|7896275970383||000006|00|||||18,00||
+|0200|00546|Pao Leite Fatiado Padeiro 450gr|7898961276021||000006|00|||||18,00||
+|0200|00548|Leite Integral Latco Crioulo 3% Gordura 1l|7898133290657||000006|00|||||18,00||
+|0200|00557|Lixa Flap 4.1/2 g 50 Starrett|||000006|00|68053090||68||18,00|1100900|
+|0200|00576|Deterg. Po Tixan Ype 1kg Maciez Ype Mat. Limp. Un|7896098900741||000006|00|34022000||34||18,00|1100400|
+|0200|00577|Agua Sanit. Qboa 1lt Anhembi Un|7896083800018||000006|00|28289011||28||18,00|1100100|
+|0200|00581|Pa Ch Ph Aa 4.8 x 38 Ri Zb|7892261063633||000003|00|73181500||73||18,00||
+|0200|00588|Pao 3 Palmeiras Fat. 500g Leite Alim. 3 Palmeiras Un|7898944499027||000006|00|19059010||19||18,00|1706000|
+|0200|00589|Wafer Minueto 115g Esp. Ch/Avela Parati Un|7896011104126||000006|00|19053200||19||18,00||
+|0200|00593|Presunto Frimesa 200g Frimesa Un|7896275900953||000006|00|16024900||16||18,00||
+|0200|00604|Trink Refresco Laranja 25gr|7896011127019||000006|00|21069010||21||18,00|0301200|
+|0200|00607|Tortinha Limao Isabela 160g|7896022056537||000006|00|19053100||19||18,00||
+|0200|00612|Desinfetante Pinho Trop 500ml|7891242151567||000006|00|||||18,00||
+|0200|00622|Biscoito Hot Cracker Parati Presunto 150g|7896011105505||000006|00|19059020||19||18,00|1705600|
+|0200|00623|Pao De Forma Fatiado 500gr 3 Palmeira|7898944499157||000006|00|||||18,00||
+|0200|00628|Queijo Mussarela Fatiado Frizzo 150gr|7897153000024||000006|00|||||18,00||
+|0200|00629|Pao Frances Cascudinho Kg|||000006|00|19059090||19||18,00|1703100|
+|0200|00655|Silicone Aceptico Branco|7898904869419||000003|00|35061090||35||18,00||
+|0200|00663|Energia Elétrica|||000000|00|||||18,00||
+|0200|00665|Rebitador Mtx 225mm 405159 Import|||000006|00|82055900||82||18,00||
+|0200|00672|Bisc. Isabela 360g Coquetel Isabela Un|7896022026325||000006|00|19053100||19||18,00||
+|0200|00676|Refresco Trink 25g Mix Aba/Hor , Parati Un|7896011129334||000006|00|21069010||21||18,00|0301200|
+|0200|00680|Pf Sx Sob 6,3x19 C/Arr|||000004|00|73181100||73||18,00||
+|0200|00684|Env 240x340 Branco - Codigo Fabrica: 1363|7896212688340||000006|00|||||18,00||
+|0200|00686|Saco Plastico Dac S/ Furo Medio (cx 600) - Codigo Fabrica: 3125|7897237300774||000006|00|||||18,00||
+|0200|00698|Jogo De Juntas Hr/K2500 2.5 8v C/ Jta Cab. Fibra 4 Pic C/ Re|||000006|00|||||18,00||
+|0200|00700|Papel A4 Center Papeis 210x297 75gr C/500 Fls - Codigo Fabrica: 7|||000006|00|48025610||48||18,00||
+|0200|00702|Maionese Hellmanns 500g Pet|7894000050034||000006|00|||||18,00||
+|0200|00706|Trink Refresco Laranja Bahia 30gr|7896011129396||000006|00|21069010||21||18,00|0301200|
+|0200|00709|Pedra Sanitaria Glade Lavanda  25%desc|7894650004241||000006|00|34022000||34||18,00|1100400|
+|0200|00710|Pedra Sanitaria Glade Pinho 25%desc|7894650013991||000006|00|34022000||34||18,00|1100400|
+|0200|00727|Lamina Larga P/Estilete 18mm C/10un Import|||000020|00|82119400||82||18,00||
+|0200|00729|Placa De Eva 10mm|||000012|00|||||18,00||
+|0200|00737|Refresco Trink 25g Melancia Parati Un|7896011107486||000006|00|21069010||21||18,00|0301200|
+|0200|00739|Refresco Trink 25g Morango 25g Parati Un|7896011127422||000006|00|21069010||21||18,00|0301200|
+|0200|00746|Plug Macho 2p+t 20a Preto 2143 Fame|||000002|00|||||18,00||
+|0200|00747|Broca Ar 5.00 Irw/Dorm|||000006|00|82075011||82||18,00||
+|0200|00766|Queijo Mussarela Crioulo 150g|7896077600778||000006|00|04061010||04||18,00||
+|0200|00778|Soquete Mag. 5/16|7892261186721||000003|00|82055900||82||18,00||
+|0200|00780|Paraf. Dry Wall Trombeta 3,5 x 35|7892261092695||000003|00|73181500||73||18,00||
+|0200|00802|Agua Sanit. Ype 1lt Ype Mat. Limp. Un|7896098904671||000006|00|28289011||28||18,00|1100100|
+|0200|00803|Pao Z.L. Fatiado Kg Zilio Leonardi Kg|||000009|00|19059090||19||18,00|1703100|
+|0200|00810|Fita Isolante 18mm x 5 m 3m|7891040106370||000003|00|35061090||35||18,00||
+|0200|00844|Fonte 12v 2a|||000006|00|||||18,00||
+|0200|00876|Disco De Corte 4.1/2|7892261538612||000003|00|68042211||68||18,00||
+|0200|00883|Bucha Plast N. 10 Pol|7892261101694||000003|00|39269090||39||18,00|1301600|
+|0200|00895|Havoline Semissintetico 15w40|||000006|00|27101932||27||18,00||
+|0200|00896|Parati Rosca De Coco 335g|7896011102696||000006|00|19053100||19||18,00||
+|0200|00898|Margarina Delicia c Sal 500g|7891080400087||000006|00|15171000||15||18,00|1702600|
+|0200|00899|Harpic Pinho|7891035524271||000006|00|34022000||34||18,00|1100400|
+|0200|00900|Biscoito Casaredo Rosca Leite 330g|7896408440592||000006|00|19053100||19||18,00||
+|0200|00901|Pilha Comum Panasonic Aa|7896067200032||000006|00|85061020||85||18,00||
+|0200|00902|Hortela Geriba 10gr|7896232801088||000006|00|09021000||09||18,00||
+|0200|00903|Limao Tahiti Kg|||000009|00|||||18,00||
+|0200|00904|Pao Fatiado Padero 480gr|7898947979397||000006|00|19059010||19||18,00|1706000|
+|0200|00905|Rosca De Coco Karina 350g|7896639900063||000006|00|19053100||19||18,00||
+|0200|00907|Odorizante Lady Prime Pitanga Preta 360ml|7898567702955||000006|00|||||18,00||
+|0200|00909|Terminal Tipo Femea 0.5 - 1.5mm Pre-Isolado Fe-0005|||000002|00|85369090||85||18,00||
+|0200|00107|Painel Branco Botticelli 610|||000008|00|72124010||72||0,00||
+|0200|00106|Painel Ch Aco Enr c Pu Ba Sao Paulo Branco Ral 9010 Mod Boticelli|||000008|00|72124010||72||0,00||
+|0200|00216|Tubulares Laterais|||000006|01|73083000||73||18,00|1004700|
+|0200|00033|Trilhos De Aço-Al 2450mm|||000006|01|73089090||73||18,00|1005000|
+|0200|00062|Trilhos De Aço-Al 2900 Mm|||000006|01|73089090||73||0,00|1005000|
+|0200|00188|Suporte Roda Superior 150 Direta|||000006|01|73089090||73||18,00|1005000|
+|0200|00189|Suporte Roda Superior 150 Esquerda|||000006|01|73089090||73||18,00|1005000|
+|0200|00066|Rodinha Em Nylon 46x11x115 Mm|||000006|00|39259090||39||0,00||
+|0200|00225|Garras De Ancoragem|||000006|01|73089090||73||18,00|1005000|
+|0200|00071|Angular Para Ampedinagem 500 Mm|||000006|01|73089090||73||0,00|1005000|
+|0200|00147|Rebite Branco 4 X12|||000008|01|83082000||83||18,00||
+|0200|00039|Parafuso De Perfuracao 6,3x19 Branco De Zinco|||000006|01|73181400||73||0,00||
+|0200|00153|Manilha|||000006|01|73089090||73||18,00|1005000|
+|0200|00090|Cobertura Estetica De Plastico|||000006|01|39235000||39||0,00||
+|0200|00018|Magnete Permanente Para Portao|||000009|01|85013110||85||0,00|0109700|
+|0200|00044|Placa Eletronica De Controle Para Movimentacao|||000006|01|85269200||85||0,00||
+|0200|00014|Suporte De Montagem Para Porta Seccionado|||000006|01|73089090||73||0,00|1005000|
+|0200|00017|Trilho Segmento Unico Para Portao Seccionado Long.3,8mts|||000006|01|84831019||84||0,00||
+|0200|00005|Fotocelula V2|||000006|00|85269200||85||0,00||
+|0200|00166|Eixo Oco 3mm Canaletado   6mt|||000006|01|73089090||73||18,00|1005000|
+|0200|00168|Mola De Torção 67-6,5 L3000 Direita|||000006|01|73202010||73||0,00||
+|0200|00169|Mola De Torção 67-6,5 L3000 Esquerda|||000006|01|73202010||73||18,00||
+|0200|00041|Mola Da Torcao 50 5.5 l 890 Mm|||000006|01|73202010||73||18,00||
+|0200|00040|Mola Da Torcao 50 5.5 l 3000 Direita|||000006|01|73202010||73||18,00||
+|0200|00154|Trilho De Aço-Al 3500 Mm|||000006|01|73089090||73||0,00|1005000|
+|0200|00032|Trilho Horizontal -Trilho Vertical 3660 m|||000006|01|73089090||73||18,00|1005000|
+|0200|00156|Par De Trava Quedas Residencial Acima De Portas De 20m2|||000006|01|73089090||73||18,00|1005000|
+|0200|00863|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 3600l x 2500 Al|||000006|01|73083000||73||18,00|1004700|
+|0200|00473|Kit Portão Seccionado Automatizado Mod Boticceli Res 8000l X3300a|||000006|01|73083000||73||0,00|1004700|
+|0200|00856|Kit Portão Seccionado Automatizado Mod Michelangelo Res 5600x2640a|||000006|01|73083000||73||18,00|1004700|
+|0200|00513|Kit Portão Seccionado Automatizado Mod Boticelli Res 3500lx2230a|||000006|01|73083000||73||18,00|1004700|
+|0200|00369|Kit Portão Seccionado Automatizado Mod Boticceli Res 4710x2484a|||000006|01|73083000||73||18,00|1004700|
+|0200|00886|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 7.500l x 2.500 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00521|Kit Portão Seccionado Automatizado Mod Botticelli Res 4790lx2315a|||000006|01|73083000||73||18,00|1004700|
+|0200|00884|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 5.800lx 2.600 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00861|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 4.919 Lx 2.425 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00854|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 5.800lx 2.400 a|||000006|04|73083000||73||18,00|1004700|
+|0200|00853|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 5.773l  x 2.610 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00475|Kit Portão Seccionado Automatizado Mod Michelangelo Res 2800l X2255a|||000006|01|73083000||73||18,00|1004700|
+|0200|00512|Kit Portão Seccionado Automatizado Mod Michelangelo Res 6120l x 2680a|||000006|01|73083000||73||18,00|1004700|
+|0200|00479|Kit Portão Seccionado Automatizado Mod Michelangelo 5574x2917|||000006|01|73083000||73||17,00|1004700|
+|0200|00477|Kit Portão Seccionado Automatizado Mod Botticelli 6000lx2500 a|||000006|01|73083000||73||0,00|1004700|
+|0200|00480|Kit Portão Seccionado Automatizado Mod Da Vinci Res 5400x2500|||000006|01|73083000||73||18,00|1004700|
+|0200|00885|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 5.000lx 2.400 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00583|Kit Portão Seccionado Automatizado Mod Boticelli Res 2500lx 2600a|||000006|01|73083000||73||18,00|1004700|
+|0200|00865|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 3.9100l x 2400 Al|||000006|01|73083000||73||17,00|1004700|
+|0200|00552|Kit Portão Seccionado Automatizado Mod Boticceli Res 8000l X2500a|||000006|01|73083000||73||18,00|1004700|
+|0200|00504|Kit Portão Seccionado Automatizado Mod Boticelli Res 4500lx2450a|||000006|01|73083000||73||18,00|1004700|
+|0200|00866|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 4.965 Lx 2.4400 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00497|Kit Portão Seccionado Automatizado Mod Botticelli Res 6000lx2500a|||000006|01|73083000||73||0,00|1004700|
+|0200|00476|Kit Portão Seccionado Automatizado Mod Da Vinci Res 3.500lx 2.500a|||000006|01|73083000||73||18,00|1004700|
+|0200|00864|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 5200l x 2500 a|||000006|01|73083000||73||18,00|1004700|
+|0200|00852|Kit Portao Seccionado Automatizado Mod Botticelli (branco) 5.700lx 2.600 a|||000006|01|73083000||73||18,00|1004700|
+|0400|1556|Compra De Material P/ Uso Ou Consumo|
+|0400|2556|Compra De Material P/ Uso Ou Consumo|
+|0400|6101|Venda Produção Estabelecimento|
+|0400|5101|Venda Produção Estabelecimento|
+|0990|829|
+|B001|1|
+|B990|2|
+|C001|0|
+|C100|0|1|3|55|00|2|000002389|41200710688757000173550020000023891163674350|08072020|03082020|50,00|1|0,00|0,00|50,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||12,22500|000001|50,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||50,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|50,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002499|41200810688757000173550020000024991538729115|03082020|03082020|211,45|1|0,00|0,00|211,45|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||49,98900|000001|211,45|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||211,45|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|211,45|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|4|55|00|1|000209972|41200877739290000114550010002099721162457413|04082020|04082020|604,93|1|0,00|0,00|604,93|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01379||3,00000|000002|23,97|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||23,97|0,00|0,00|99||||||99||||||||
+|C170|002|01378||3,00000|000002|27,96|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||27,96|0,00|0,00|99||||||99||||||||
+|C170|003|00582||100,00000|000002|553,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||553,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|604,93|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|5|55|00|1|000001370|41200818201743000195550010000013701000002449|04082020|04082020|647,51|1|0,00|0,00|647,51|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01398||100,00000|000003|28,00|0,00|0|103|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||28,00|0,00|0,00|99||||||99||||||||
+|C170|002|01397||1,00000|000003|30,25|0,00|0|103|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||30,25|0,00|0,00|99||||||99||||||||
+|C170|003|01396||1,00000|000003|7,80|0,00|0|103|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||7,80|0,00|0,00|99||||||99||||||||
+|C170|004|01018||1000,00000|000003|120,00|0,00|0|103|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||120,00|0,00|0,00|99||||||99||||||||
+|C170|005|00530||1000,00000|000003|65,00|0,00|0|103|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||65,00|0,00|0,00|99||||||99||||||||
+|C170|006|01399||922,00000|000003|396,46|0,00|0|103|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||396,46|0,00|0,00|99||||||99||||||||
+|C190|103|1556|0,00|647,51|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|6|55|00|4|000003290|41200818266843000108550040000032901010638269|04082020|04082020|509,97|1|0,00|0,00|509,97|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||73,34900|000001|308,80|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||308,80|0,00|0,00|99||||||99||||||||
+|C170|002|00730||11,70900|000001|51,17|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||51,17|0,00|0,00|99||||||99||||||||
+|C170|003|00462||35,46100|000001|150,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||150,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|509,97|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|7|55|00|1|000017504|41200882466541000174550010000175041002912730|04082020|05082020|288,50|1|0,00|0,00|288,50|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01400||1,00000|000004|15,50|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||15,50|0,00|0,00|99||||||99||||||||
+|C170|002|00055||45,00000|000005|243,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||243,00|0,00|0,00|99||||||99||||||||
+|C170|003|01401||1,00000|000004|30,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||30,00|0,00|0,00|99||||||99||||||||
+|C190|101|1556|0,00|288,50|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|8|55|00|1|000000567|41200825037273000131550010000005671744654827|06082020|07082020|100,80|1|0,00|0,00|100,80|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01402||2,00000|000006|100,80|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||100,80|0,00|0,00|99||||||99||||||||
+|C190|102|1556|0,00|100,80|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|9|55|00|1|000000234|41200837190573000135550010000002341439270348|07082020|10082020|138,90|1|0,00|0,00|138,90|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00496||3,00000|000007|138,90|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||138,90|0,00|0,00|99||||||99||||||||
+|C190|500|1556|0,00|138,90|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|10|55|00|1|000196517|41200826439227000121550010001965171019205184|10082020|10082020|139,84|1|0,00|0,00|139,84|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00862||2,00000|000002|139,84|0,00|0|051|1556|1556|139,84|18,00|25,17|0,00|0,00|0,00|0|01||139,84|0,00|0,00|99||||||99||||||||
+|C190|051|1556|18,00|139,84|139,84|25,17|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002520|41200810688757000173550020000025201468526763|07082020|10082020|125,00|1|0,00|0,00|125,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||29,55100|000001|125,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||125,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|125,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002519|41200810688757000173550020000025191272649470|07082020|10082020|42,17|1|0,00|0,00|42,17|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||9,97000|000001|42,17|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||42,17|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|42,17|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002528|41200810688757000173550020000025281267516092|10082020|10082020|150,00|1|0,00|0,00|150,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||35,46100|000001|150,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||150,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|150,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002529|41200810688757000173550020000025291168770222|10082020|10082020|100,00|1|0,00|0,00|100,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00659||34,60300|000001|100,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||100,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|100,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002525|41200810688757000173550020000025251480981854|08082020|10082020|219,92|1|0,00|0,00|219,92|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||51,99100|000001|219,92|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||219,92|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|219,92|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002517|41200810688757000173550020000025171257220510|07082020|10082020|355,17|1|0,00|0,00|355,17|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00838||106,02100|000001|355,17|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||355,17|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|355,17|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|11|55|00|3|000018055|42200897374441000195550030000180551007614922|10082020|10082020|135,18|1|0,00|0,00|135,18|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01403||6,00000|000008|135,18|0,00|0|101|2556|2556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||135,18|0,00|0,00|99||||||99||||||||
+|C190|101|2556|0,00|135,18|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|12|55|00|1|000005785|41200810993291000110550010000057851000055540|10082020|10082020|748,00|1|0,00|0,00|748,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01405||1,00000|000002|470,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||470,00|0,00|0,00|99||||||99||||||||
+|C170|002|01404||2,00000|000002|278,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||278,00|0,00|0,00|99||||||99||||||||
+|C190|101|1556|0,00|748,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002531|41200810688757000173550020000025311419995708|10082020|10082020|173,90|1|0,00|0,00|173,90|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||41,11200|000001|173,90|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||173,90|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|173,90|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|13|55|00|1|000007834|41200879845020000113550010000078341118801810|11082020|11082020|274,04|1|0,00|0,00|274,04|0|0,00|0,00|0,00|0,00|0,00|16,27|0,00|0,00|||||
+|C170|001|01410||1,00000|000006|3,99|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,99|0,00|0,00|99||||||99||||||||
+|C170|002|01409||1,00000|000006|3,99|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,99|0,00|0,00|99||||||99||||||||
+|C170|003|01307||1,00000|000006|93,40|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||93,40|0,00|0,00|99||||||99||||||||
+|C170|004|01180||2,00000|000006|6,78|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||6,78|0,00|0,00|99||||||99||||||||
+|C170|005|00772||1,00000|000006|5,35|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||5,35|0,00|0,00|99||||||99||||||||
+|C170|006|00744||2,00000|000006|7,98|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||7,98|0,00|0,00|99||||||99||||||||
+|C170|007|00611||2,00000|000006|5,58|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||5,58|0,00|0,00|99||||||99||||||||
+|C170|008|00677||4,00000|000006|24,76|0,00|0|040|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||24,76|0,00|0,00|99||||||99||||||||
+|C170|009|00594||2,00000|000006|8,98|0,00|0|040|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||8,98|0,00|0,00|99||||||99||||||||
+|C170|010|00489||1,00000|000006|4,98|0,00|0|040|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||4,98|0,00|0,00|99||||||99||||||||
+|C170|011|01412||1,00000|000006|4,90|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||4,90|0,00|0,00|99||||||99||||||||
+|C170|012|01411||1,00000|000006|3,99|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,99|0,00|0,00|99||||||99||||||||
+|C170|013|00605||1,00000|000006|1,59|0,00|0|000|1556|1556|1,59|12,00|0,19|0,00|0,00|0,00|0|01||1,59|0,00|0,00|99||||||99||||||||
+|C170|014|00587||2,00000|000006|10,58|0,00|0|020|1556|1556|10,58|12,00|1,27|0,00|0,00|0,00|0|01||10,58|0,00|0,00|99||||||99||||||||
+|C170|015|00926||1,00000|000006|1,59|0,00|0|000|1556|1556|1,59|12,00|0,19|0,00|0,00|0,00|0|01||1,59|0,00|0,00|99||||||99||||||||
+|C170|016|00613||1,00000|000006|1,59|0,00|0|000|1556|1556|1,59|12,00|0,19|0,00|0,00|0,00|0|01||1,59|0,00|0,00|99||||||99||||||||
+|C170|017|00624||1,00000|000006|5,69|0,00|0|020|1556|1556|5,69|12,00|0,68|0,00|0,00|0,00|0|01||5,69|0,00|0,00|99||||||99||||||||
+|C170|018|01406||1,00000|000006|4,79|0,00|0|000|1556|1556|4,79|12,00|0,57|0,00|0,00|0,00|0|01||4,79|0,00|0,00|99||||||99||||||||
+|C170|019|01317||4,00000|000006|7,16|0,00|0|000|1556|1556|7,16|12,00|0,86|0,00|0,00|0,00|0|01||7,16|0,00|0,00|99||||||99||||||||
+|C170|020|01316||4,00000|000006|7,16|0,00|0|000|1556|1556|7,16|12,00|0,86|0,00|0,00|0,00|0|01||7,16|0,00|0,00|99||||||99||||||||
+|C170|021|01315||1,00000|000006|3,98|0,00|0|000|1556|1556|3,98|12,00|0,48|0,00|0,00|0,00|0|01||3,98|0,00|0,00|99||||||99||||||||
+|C170|022|01179||1,00000|000006|4,45|0,00|0|000|1556|1556|4,45|12,00|0,53|0,00|0,00|0,00|0|01||4,45|0,00|0,00|99||||||99||||||||
+|C170|023|01413||2,26600|000009|42,60|0,00|0|000|1556|1556|42,60|18,00|7,67|0,00|0,00|0,00|0|01||42,60|0,00|0,00|99||||||99||||||||
+|C170|024|01408||1,00000|000006|4,89|0,00|0|000|1556|1556|4,89|18,00|0,88|0,00|0,00|0,00|0|01||4,89|0,00|0,00|99||||||99||||||||
+|C170|025|01407||1,00000|000006|3,29|0,00|0|000|1556|1556|3,29|18,00|0,59|0,00|0,00|0,00|0|01||3,29|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|135,96|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|040|1556|0,00|38,72|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|000|1556|12,00|32,31|32,31|3,88|0,00|0,00|0,00|0,00||
+|C190|020|1556|12,00|16,27|16,27|1,95|0,00|0,00|0,00|0,00||
+|C190|000|1556|18,00|50,78|50,78|9,14|0,00|0,00|0,00|0,00||
+|C100|0|1|14|55|00|1|000000298|41200804966293000117550010000002981078394180|05082020|12082020|317,23|1|0,00|0,00|317,23|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00605||1,00000|000006|1,79|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,79|0,00|0,00|99||||||99||||||||
+|C170|002|01415||1,00000|000006|1,49|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,49|0,00|0,00|99||||||99||||||||
+|C170|003|01294||1,00000|000006|11,99|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||11,99|0,00|0,00|99||||||99||||||||
+|C170|004|01233||1,00000|000006|3,89|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,89|0,00|0,00|99||||||99||||||||
+|C170|005|01178||2,00000|000006|14,58|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||14,58|0,00|0,00|99||||||99||||||||
+|C170|006|01050||3,00000|000006|32,97|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||32,97|0,00|0,00|99||||||99||||||||
+|C170|007|00999||1,00000|000006|1,99|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,99|0,00|0,00|99||||||99||||||||
+|C170|008|00772||2,00000|000006|9,96|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||9,96|0,00|0,00|99||||||99||||||||
+|C170|009|00771||1,00000|000006|11,99|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||11,99|0,00|0,00|99||||||99||||||||
+|C170|010|00741||2,00000|000006|1,70|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,70|0,00|0,00|99||||||99||||||||
+|C170|011|00741||1,00000|000006|1,49|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,49|0,00|0,00|99||||||99||||||||
+|C170|012|00705||1,00000|000006|5,49|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||5,49|0,00|0,00|99||||||99||||||||
+|C170|013|00669||1,00000|000006|1,99|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,99|0,00|0,00|99||||||99||||||||
+|C170|014|00634||1,00000|000006|1,79|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,79|0,00|0,00|99||||||99||||||||
+|C170|015|00615||1,00000|000006|4,49|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||4,49|0,00|0,00|99||||||99||||||||
+|C170|016|00614||1,00000|000006|1,49|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,49|0,00|0,00|99||||||99||||||||
+|C170|017|00611||3,00000|000006|10,47|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||10,47|0,00|0,00|99||||||99||||||||
+|C170|018|00545||2,00000|000006|10,38|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||10,38|0,00|0,00|99||||||99||||||||
+|C170|019|01417||0,37600|000009|8,26|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||8,26|0,00|0,00|99||||||99||||||||
+|C170|020|01416||1,00000|000006|5,49|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||5,49|0,00|0,00|99||||||99||||||||
+|C170|021|01414||1,00000|000006|1,49|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,49|0,00|0,00|99||||||99||||||||
+|C170|022|01299||2,00000|000006|1,98|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,98|0,00|0,00|99||||||99||||||||
+|C170|023|01299||2,00000|000006|1,70|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,70|0,00|0,00|99||||||99||||||||
+|C170|024|01224||1,00000|000006|11,99|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||11,99|0,00|0,00|99||||||99||||||||
+|C170|025|01010||0,43000|000009|6,01|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||6,01|0,00|0,00|99||||||99||||||||
+|C170|026|00906||1,00000|000006|6,49|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||6,49|0,00|0,00|99||||||99||||||||
+|C170|027|00897||4,00000|000006|24,76|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||24,76|0,00|0,00|99||||||99||||||||
+|C170|028|00897||3,00000|000006|17,37|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||17,37|0,00|0,00|99||||||99||||||||
+|C170|029|00742||4,00000|000006|3,40|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,40|0,00|0,00|99||||||99||||||||
+|C170|030|00742||3,00000|000006|2,97|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||2,97|0,00|0,00|99||||||99||||||||
+|C170|031|00740||2,00000|000006|1,98|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,98|0,00|0,00|99||||||99||||||||
+|C170|032|00738||3,00000|000006|2,97|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||2,97|0,00|0,00|99||||||99||||||||
+|C170|033|00738||2,00000|000006|1,70|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,70|0,00|0,00|99||||||99||||||||
+|C170|034|00705||2,00000|000006|1,70|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,70|0,00|0,00|99||||||99||||||||
+|C170|035|00675||5,00000|000006|4,25|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||4,25|0,00|0,00|99||||||99||||||||
+|C170|036|00675||3,00000|000006|2,97|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||2,97|0,00|0,00|99||||||99||||||||
+|C170|037|00674||3,00000|000006|29,85|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||29,85|0,00|0,00|99||||||99||||||||
+|C170|038|00624||3,00000|000006|16,47|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||16,47|0,00|0,00|99||||||99||||||||
+|C170|039|00614||2,00000|000006|9,98|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||9,98|0,00|0,00|99||||||99||||||||
+|C170|040|00613||2,00000|000006|3,58|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,58|0,00|0,00|99||||||99||||||||
+|C170|041|00598||2,00000|000006|1,70|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,70|0,00|0,00|99||||||99||||||||
+|C170|042|00597||2,00000|000006|1,70|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1,70|0,00|0,00|99||||||99||||||||
+|C170|043|00595||3,00000|000006|2,97|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||2,97|0,00|0,00|99||||||99||||||||
+|C170|044|00594||2,00000|000006|9,98|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||9,98|0,00|0,00|99||||||99||||||||
+|C170|045|00538||2,00000|000006|3,58|0,00|0|400|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3,58|0,00|0,00|99||||||99||||||||
+|C190|500|1556|0,00|129,94|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|400|1556|0,00|187,29|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|15|55|00|1|000000802|41200822627025000233550010000008021000001245|13082020|13082020|360,00|1|0,00|0,00|360,00|0|0,00|0,00|0,00|360,00|43,20|0,00|0,00|0,00|||||
+|C190|000|6102|12,00|360,00|360,00|43,20|0,00|0,00|0,00|0,00||
+|C100|1|0|16|55|00|1|000000803|41200822627025000233550010000008031000000262|13082020|13082020|8129,77|2|0,00|0,00|8129,77|0|0,00|0,00|0,00|8129,77|1463,36|0,00|0,00|0,00|||||
+|C190|300|5116|18,00|8129,77|8129,77|1463,36|0,00|0,00|0,00|0,00||
+|C100|1|0|17|55|00|1|000000804|41200822627025000233550010000008041000003196|14082020|14082020|3000,00|2|0,00|0,00|3000,00|0|0,00|0,00|0,00|3000,00|120,00|0,00|0,00|0,00|||||
+|C190|300|6949|4,00|3000,00|3000,00|120,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002545|41200810688757000173550020000025451769460400|12082020|13082020|90,00|1|0,00|0,00|90,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||21,27700|000001|90,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||90,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|90,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002546|41200810688757000173550020000025461512941372|12082020|13082020|26,61|1|0,00|0,00|26,61|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||6,29100|000001|26,61|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||26,61|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|26,61|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|11|55|00|3|000018080|42200897374441000195550030000180801029965127|14082020|17082020|898,19|1|0,00|0,00|898,19|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00758||8,00000|000006|898,19|0,00|0|101|2556|2556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||898,19|0,00|0,00|99||||||99||||||||
+|C190|101|2556|0,00|898,19|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002555|41200810688757000173550020000025551644435880|14082020|17082020|125,00|1|0,00|0,00|125,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||29,55100|000001|125,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||125,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|125,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002558|41200810688757000173550020000025581410921489|16082020|17082020|224,19|1|0,00|0,00|224,19|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||53,00000|000001|224,19|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||224,19|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|224,19|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|18|55|00|1|000000805|41200822627025000233550010000008051000000712|17082020|17082020|2800,00|1|0,00|0,00|2800,00|0|0,00|0,00|0,00|2800,00|504,00|0,00|0,00|0,00|||||
+|C190|300|5101|18,00|2800,00|2800,00|504,00|0,00|0,00|0,00|0,00||
+|C100|1|0|19|55|00|1|000000806|41200822627025000233550010000008061000002771|18082020|18082020|1780,00|1|0,00|0,00|1780,00|0|0,00|0,00|0,00|1780,00|213,60|0,00|0,00|0,00|||||
+|C190|000|6102|12,00|1780,00|1780,00|213,60|0,00|0,00|0,00|0,00||
+|C100|0|1|20|55|00|1|000000374|35200816992982000185550010000003741000288366|18082020|18082020|3863,10|1|0,00|0,00|3863,10|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01420||6,00000|000002|3863,10|0,00|0|102|2556|2556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||3863,10|0,00|0,00|99||||||99||||||||
+|C190|102|2556|0,00|3863,10|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|21|55|00|1|000000807|41200822627025000233550010000008071000001195|19082020|19082020|16000,00|2|0,00|0,00|16000,00|0|0,00|0,00|0,00|16000,00|640,00|0,00|0,00|0,00|||||
+|C190|300|6922|4,00|16000,00|16000,00|640,00|0,00|0,00|0,00|0,00||
+|C100|1|0|21|01|00|3|000000807||19082020|19082020|16000,00|1|0,00|0,00|16000,00|0|0,00|0,00|0,00|0,00|640,00|0,00|0,00|0,00|||||
+|C140|0|00||807|02|16000,00|
+|C141|1|19082020|8000,00|
+|C141|2|05102020|8000,00|
+|C160|||0|0,00|0,00||
+|C170|001|01421||1,00000|000006|16000,00|0,00|0|300|6101|6101|16000,00|4,00|640,00|0,00|0,00|0,00|0|51||16000,00|0,00|0,00|99||||||99||||||||
+|C190|300|6101|4,00|16000,00|16000,00|640,00|0,00|0,00|0,00|0,00||
+|C100|1|0|22|55|00|1|000000808|41200822627025000233550010000008081000003128|19082020|19082020|26000,00|2|0,00|0,00|26000,00|0|0,00|0,00|0,00|26000,00|1040,00|0,00|0,00|0,00|||||
+|C190|300|6116|4,00|26000,00|26000,00|1040,00|0,00|0,00|0,00|0,00||
+|C100|0|1|23|55|00|2|000013735|41200881704181000139550020000137351015127954|18082020|19082020|387,00|1|42,48|0,00|429,48|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00430||12,00000|000006|176,04|17,41|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||176,04|0,00|0,00|99||||||99||||||||
+|C170|002|01423||6,00000|000006|126,72|12,53|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||126,72|0,00|0,00|99||||||99||||||||
+|C170|003|00430||6,00000|000006|126,72|12,53|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||126,72|0,00|0,00|99||||||99||||||||
+|C190|102|1556|0,00|158,63|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|500|1556|0,00|228,38|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002563|41200810688757000173550020000025631958281160|17082020|18082020|150,00|1|0,00|0,00|150,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||35,46100|000001|150,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||150,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|150,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|11|55|00|3|000018107|42200897374441000195550030000181071003834020|18082020|19082020|2812,20|1|0,00|0,00|2812,20|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00021||72,00000|000010|2812,20|0,00|0|101|2556|2556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||2812,20|0,00|0,00|99||||||99||||||||
+|C190|101|2556|0,00|2812,20|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|24|55|00|0|000016146|42200811790804000158550000000161461999838531|14082020|19082020|4337,92|1|0,00|0,00|3945,00|0|0,00|0,00|0,00|0,00|0,00|4812,90|392,92|0,00|||||
+|C170|001|01274||5,00000|000006|3945,00|0,00|0|202|2556|2556|0,00|0,00|0,00|0,00|0,00|392,92|0|01||3945,00|0,00|0,00|99||||||99||||||||
+|C190|202|2556|0,00|3945,00|0,00|0,00|0,00|392,92|0,00|0,00||
+|C100|1|0|25|55|00|1|000000809|41200822627025000233550010000008091000003095|20082020|20082020|18000,00|2|0,00|0,00|18000,00|0|0,00|0,00|0,00|18000,00|720,00|0,00|0,00|0,00|||||
+|C190|300|6116|4,00|18000,00|18000,00|720,00|0,00|0,00|0,00|0,00||
+|C100|1|0|26|55|00|1|000000810|41200822627025000233550010000008101000003339|20082020|20082020|28000,00|2|0,00|0,00|28000,00|0|0,00|0,00|0,00|28000,00|1120,00|0,00|0,00|0,00|||||
+|C190|300|6116|4,00|28000,00|28000,00|1120,00|0,00|0,00|0,00|0,00||
+|C100|1|0|27|55|00|1|000000811|41200822627025000233550010000008111000002720|20082020|20082020|14880,00|2|0,00|0,00|14880,00|0|0,00|0,00|0,00|14880,00|595,20|0,00|0,00|0,00|||||
+|C190|300|6116|4,00|14880,00|14880,00|595,20|0,00|0,00|0,00|0,00||
+|C100|1|0|28|55|00|1|000000812|41200822627025000233550010000008121000002663|20082020|20082020|18000,00|2|0,00|0,00|18000,00|0|0,00|0,00|0,00|18000,00|720,00|0,00|0,00|0,00|||||
+|C190|300|6116|4,00|18000,00|18000,00|720,00|0,00|0,00|0,00|0,00||
+|C100|1|0|29|55|00|1|000000813|41200822627025000233550010000008131000003250|20082020|20082020|20000,00|2|0,00|0,00|20000,00|0|0,00|0,00|0,00|20000,00|800,00|0,00|0,00|0,00|||||
+|C190|300|6116|4,00|20000,00|20000,00|800,00|0,00|0,00|0,00|0,00||
+|C100|1|0|30|55|00|1|000000814|41200822627025000233550010000008141000003281|20082020|20082020|16200,00|2|0,00|0,00|16200,00|0|0,00|0,00|0,00|16200,00|2916,00|0,00|0,00|0,00|||||
+|C190|300|5116|18,00|16200,00|16200,00|2916,00|0,00|0,00|0,00|0,00||
+|C100|1|0|31|55|00|1|000000815|41200822627025000233550010000008151000003343|21082020|21082020|19000,00|2|0,00|0,00|19000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|19000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|32|55|00|1|000000816|41200822627025000233550010000008161000003359|21082020|21082020|18252,00|2|0,00|0,00|18252,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|18252,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|33|55|00|1|000000817|41200822627025000233550010000008171000003364|21082020|21082020|15000,00|2|0,00|0,00|15000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|15000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|34|55|00|1|000000818|41200822627025000233550010000008181000003370|21082020|21082020|27347,00|2|0,00|0,00|27347,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|5922|0,00|27347,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|34|01|00|3|000000818||21082020|21082020|27347,00|1|0,00|0,00|27347,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C140|0|00||818|04|27347,00|
+|C141|1|21082020|8204,00|
+|C141|2|18092020|6381,00|
+|C141|3|18102020|6381,00|
+|C141|4|18112020|6381,00|
+|C160|||0|0,00|0,00||
+|C170|001|01427||1,00000|000006|27347,00|0,00|0|300|5101|5101|0,00|0,00|0,00|0,00|0,00|0,00|0|51||27347,00|0,00|0,00|99||||||99||||||||
+|C190|300|5101|0,00|27347,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|35|55|00|1|000000819|41200822627025000233550010000008191000003385|21082020|21082020|14000,00|2|0,00|0,00|14000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|14000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|36|55|00|1|000000820|41200822627025000233550010000008201000003394|21082020|21082020|15000,00|2|0,00|0,00|15000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|15000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|37|55|00|1|000193732|41200811083556000105550010001937321484273670|21082020|24082020|1874,20|1|0,00|0,00|1874,20|0|0,00|0,00|0,00|1874,20|337,36|1874,20|0,00|0,00|||||
+|C170|001|01185||10,00000|000011|1874,20|0,00|0|051|1556|1556|1874,20|18,00|337,36|0,00|0,00|0,00|0|01||1874,20|0,00|0,00|99||||||99||||||||
+|C190|051|1556|18,00|1874,20|1874,20|337,36|0,00|0,00|0,00|0,00||
+|C100|0|1|11|55|00|3|000018129|42200897374441000195550030000181291002952965|20082020|24082020|135,09|1|0,00|0,00|135,09|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01403||6,00000|000008|135,09|0,00|0|101|2556|2556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||135,09|0,00|0,00|99||||||99||||||||
+|C190|101|2556|0,00|135,09|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002570|41200810688757000173550020000025701957375999|19082020|20082020|87,72|1|0,00|0,00|87,72|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||20,44800|000001|87,72|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||87,72|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|87,72|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002573|41200810688757000173550020000025731129054544|21082020|24082020|100,00|1|0,00|0,00|100,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||23,31100|000001|100,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||100,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|100,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002581|41200810688757000173550020000025811267843236|22082020|24082020|94,96|1|0,00|0,00|94,96|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||22,13600|000001|94,96|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||94,96|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|94,96|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002580|41200810688757000173550020000025801162632068|22082020|24082020|234,23|1|0,00|0,00|234,23|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||54,60000|000001|234,23|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||234,23|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|234,23|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002579|41200810688757000173550020000025791749384200|21082020|24082020|402,03|1|0,00|0,00|402,03|0|0,00|0,00|0,00|-1135,98|0,00|0,00|0,00|0,00|||||
+|C170|001|00838||116,53100|000001|402,03|1538,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||402,03|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|402,03|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|38|55|00|1|000000821|41200822627025000233550010000008211000000503|24082020|24082020|70,00|2|0,00|0,00|70,00|1|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|040|6911|0,00|70,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|39|55|00|1|000000822|41200822627025000233550010000008221000003402|24082020|24082020|5,00|2|0,00|0,00|5,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|040|6911|0,00|5,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0||55|05||000000823||||||||||||||||||||||
+|C100|1|0|40|55|00|1|000000824|41200822627025000233550010000008241000003415|24082020|24082020|2400,00|1|0,00|0,00|2400,00|0|0,00|0,00|0,00|2400,00|288,00|0,00|0,00|0,00|||||
+|C190|000|6102|12,00|2400,00|2400,00|288,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002584|41200810688757000173550020000025841981880652|24082020|24082020|150,00|1|0,00|0,00|150,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||34,96600|000001|150,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||150,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|150,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|41|55|00|3|000001693|41200808694768000114550030000016931003843976|24082020|25082020|1000,00|1|0,00|0,00|1000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01394||10,00000|000002|1000,00|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||1000,00|0,00|0,00|99||||||99||||||||
+|C190|500|1556|0,00|1000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|42|55|00|4|000054158|41200801200416000116550040000541581021609243|19082020|25082020|48,15|1|0,00|0,00|48,15|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01430||3,00000|000006|40,89|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||40,89|0,00|0,00|99||||||99||||||||
+|C170|002|01431||0,02000|000004|7,26|0,00|0|051|1556|1556|7,26|18,00|1,31|0,00|0,00|0,00|0|01||7,26|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|40,89|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|051|1556|18,00|7,26|7,26|1,31|0,00|0,00|0,00|0,00||
+|C100|0|1|9|55|00|1|000000354|41200837190573000135550010000003541460742987|21082020|25082020|113,76|1|0,00|0,00|113,76|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01432||2,00000|000006|60,96|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||60,96|0,00|0,00|99||||||99||||||||
+|C170|002|01434||1,00000|000006|2,80|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||2,80|0,00|0,00|99||||||99||||||||
+|C170|003|01433||4,00000|000006|50,00|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||50,00|0,00|0,00|99||||||99||||||||
+|C190|500|1556|0,00|113,76|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|10|55|00|1|000196950|41200826439227000121550010001969501733424830|21082020|25082020|151,31|1|0,00|0,00|151,31|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01435||1,00000|000002|103,77|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||103,77|0,00|0,00|99||||||99||||||||
+|C170|002|01436||2,00000|000002|47,54|0,00|0|051|1556|1556|47,54|18,00|8,56|0,00|0,00|0,00|0|01||47,54|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|103,77|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|051|1556|18,00|47,54|47,54|8,56|0,00|0,00|0,00|0,00||
+|C100|0|1|7|55|00|1|000017600|41200882466541000174550010000176001002912736|19082020|25082020|842,00|1|0,00|0,00|842,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01437||10,00000|000006|13,50|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||13,50|0,00|0,00|99||||||99||||||||
+|C170|002|00053||43,80000|000009|236,50|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||236,50|0,00|0,00|99||||||99||||||||
+|C170|003|00055||8,00000|000005|504,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||504,00|0,00|0,00|99||||||99||||||||
+|C170|004|00054||100,00000|000012|88,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||88,00|0,00|0,00|99||||||99||||||||
+|C190|101|1556|0,00|842,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|43|55|00|1|000001213|41200827468340000106550010000012131475826510|25082020|26082020|490,00|1|0,00|0,00|490,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01293||2,00000|000006|490,00|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||490,00|0,00|0,00|99||||||99||||||||
+|C190|102|1556|0,00|490,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002591|41200810688757000173550020000025911723394245|25082020|26082020|90,06|1|0,00|0,00|90,06|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00659||30,12100|000001|90,06|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||90,06|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|90,06|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|44|55|00|1|000000760|41200811162448000128550010000007601050700602|25082020|26082020|170,00|1|0,00|0,00|170,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01380||20,00000|000013|170,00|0,00|0|101|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||170,00|0,00|0,00|99||||||99||||||||
+|C190|101|1556|0,00|170,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|45|55|00|1|000000825|41200822627025000233550010000008251000003439|28082020|28082020|20,00|2|0,00|0,00|20,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|040|6911|0,00|20,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|46|55|00|1|000000826|41200822627025000233550010000008261000003428|28082020|28082020|35,00|2|0,00|0,00|35,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|040|6911|0,00|35,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|47|55|00|1|000000827|41200822627025000233550010000008271000003301|28082020|28082020|20864,00|2|0,00|0,00|20864,00|0|0,00|0,00|0,00|20864,00|3755,52|0,00|0,00|0,00|||||
+|C190|300|5116|18,00|20864,00|20864,00|3755,52|0,00|0,00|0,00|0,00||
+|C100|0|1|48|55|00|1|000002092|41200833853055000101550010000020921000949955|27082020|28082020|563,80|1|0,00|0,00|563,80|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01228||1,00000|000006|19,90|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||19,90|0,00|0,00|99||||||99||||||||
+|C170|002|00683||4,00000|000006|11,00|0,00|0|500|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||11,00|0,00|0,00|99||||||99||||||||
+|C170|003|01440||1,00000|000006|39,90|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||39,90|0,00|0,00|99||||||99||||||||
+|C170|004|01439||1,00000|000006|19,90|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||19,90|0,00|0,00|99||||||99||||||||
+|C170|005|01438||2,00000|000006|53,80|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||53,80|0,00|0,00|99||||||99||||||||
+|C170|006|01202||7,00000|000006|419,30|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||419,30|0,00|0,00|99||||||99||||||||
+|C190|102|1556|0,00|552,80|0,00|0,00|0,00|0,00|0,00|0,00||
+|C190|500|1556|0,00|11,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|49|01|00|3|000000828||28082020|28082020|46500,00|1|0,00|0,00|46500,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C140|0|00||828|02|46500,00|
+|C141|1|28082020|25000,00|
+|C141|2|15112020|21500,00|
+|C160|||0|0,00|0,00||
+|C170|001|01441||1,00000|000006|46500,00|0,00|0|300|6101|6101|0,00|0,00|0,00|0,00|0,00|0,00|0|51||46500,00|0,00|0,00|99||||||99||||||||
+|C190|300|6101|0,00|46500,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|49|55|00|1|000000828|41200822627025000233550010000008281000003449|28082020|28082020|25000,00|2|0,00|0,00|25000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6116|0,00|25000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|50|55|00|1|000000829|41200822627025000233550010000008291000003080|31082020|31082020|8000,00|2|0,00|0,00|8000,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|8000,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|25|55|00|1|000000830|41200822627025000233550010000008301000003099|31082020|31082020|28700,00|2|0,00|0,00|28700,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C190|300|6922|0,00|28700,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|1|0|25|01|00|3|000000830||31082020|31082020|17220,00|1|0,00|0,00|17220,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C140|0|00||830|03|17220,00|
+|C141|3|28112020|5740,00|
+|C141|2|28102020|5740,00|
+|C141|1|28092020|5740,00|
+|C160|||0|0,00|0,00||
+|C170|001|01443||1,00000|000006|17220,00|0,00|0|300|6101|6101|0,00|0,00|0,00|0,00|0,00|0,00|0|51||17220,00|0,00|0,00|99||||||99||||||||
+|C190|300|6101|0,00|17220,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002611|41200810688757000173550020000026111347588764|31082020|31082020|126,64|1|0,00|0,00|126,64|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00659||42,35500|000001|126,64|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||126,64|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|126,64|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002606|41200810688757000173550020000026061508531360|31082020|31082020|150,00|1|0,00|0,00|150,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00462||34,16900|000001|150,00|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||150,00|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|150,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|3|55|00|2|000002603|41200810688757000173550020000026031221442505|29082020|31082020|121,83|1|0,00|0,00|121,83|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|00659||40,74600|000001|121,83|0,00|0|060|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||121,83|0,00|0,00|99||||||99||||||||
+|C190|060|1556|0,00|121,83|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|51|55|00|1|000002208|41200807492289000152550010000022081038362455|26082020|31082020|2140,00|1|0,00|0,00|2140,00|0|0,00|0,00|0,00|0,00|0,00|0,00|0,00|0,00|||||
+|C170|001|01444||13,00000|000007|455,00|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||455,00|0,00|0,00|99||||||99||||||||
+|C170|002|00293||17,00000|000007|765,00|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||765,00|0,00|0,00|99||||||99||||||||
+|C170|003|01444||10,00000|000007|380,00|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||380,00|0,00|0,00|99||||||99||||||||
+|C170|004|01445||12,00000|000007|540,00|0,00|0|102|1556|1556|0,00|0,00|0,00|0,00|0,00|0,00|0|01||540,00|0,00|0,00|99||||||99||||||||
+|C190|102|1556|0,00|2140,00|0,00|0,00|0,00|0,00|0,00|0,00||
+|C100|0|1|52|55|00|2|000071871|41200875967711000139550020000718711019456167|27082020|31082020|95,00|1|0,00|0,00|100,00|0|0,00|0,00|0,00|95,00|17,10|0,00|0,00|0,00|||||
+|C170|001|01446||2,00000|000002|100,00|0,00|0|000|1556|1556|100,00|18,00|18,00|0,00|0,00|0,00|0|01||100,00|0,00|0,00|99||||||99||||||||
+|C190|000|1556|18,00|100,00|100,00|18,00|0,00|0,00|0,00|0,00||
+|C100|0|1|37|55|00|1|000194621|41200811083556000105550010001946211177236080|28082020|31082020|975,45|1|0,00|0,00|975,45|0|0,00|0,00|0,00|975,45|175,58|975,45|0,00|0,00|||||
+|C170|001|01185||5,00000|000011|975,45|0,00|0|051|1556|1556|975,45|18,00|175,58|0,00|0,00|0,00|0|01||975,45|0,00|0,00|99||||||99||||||||
+|C190|051|1556|18,00|975,45|975,45|175,58|0,00|0,00|0,00|0,00||
+|C990|355|
+|D001|0|
+|D100|0|1|1|57|00|1||004859727|41200744914992003820570020048597271048597272|23072020|05082020|0||95,48|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|95,48|0,00|0,00|0,00||
+|D100|0|1|1|57|00|1||004859850|41200744914992003820570020048598501048598507|23072020|05082020|0||158,07|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|158,07|0,00|0,00|0,00||
+|D100|0|1|1|57|00|1||004860054|41200744914992003820570020048600541048600542|23072020|05082020|0||87,30|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|87,30|0,00|0,00|0,00||
+|D100|0|1|2|57|00|1||000000413|41200811350194000171570010000004131000041399|20082020|21082020|0||5500,00|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|5500,00|0,00|0,00|0,00||
+|D100|0|1|1|57|00|1||005045195|41200844914992003820570020050451951050451955|24082020|25082020|0||128,82|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|128,82|0,00|0,00|0,00||
+|D100|0|1|1|57|00|1||005079184|41200844914992003820570020050791841050791840|28082020|31082020|0||70,99|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|70,99|0,00|0,00|0,00||
+|D100|0|1|1|57|00|1||005079686|41200844914992003820570020050796861050796860|28082020|31082020|0||95,50|0,00|0|0,00|0,00|0,00|0,00||||4128708|
+|D190|000|1353|0,00|95,50|0,00|0,00|0,00||
+|D990|16|
+|E001|0|
+|E100|01082020|31082020|
+|E110|15578,88|0,00|0,00|0,00|580,94|0,00|0,00|0,00|0,00|14997,94|0,00|14997,94|0,00|0,00|
+|E116|000|14997,94|15092020|1015|||||082020|
+|E500|0|01082020|31082020|
+|E510|1556|01|16268,75|16268,75|0,00|
+|E510|2556|01|11788,76|11788,76|0,00|
+|E510|6102|01|4540,00|4540,00|0,00|
+|E510|5116|01|45193,77|45193,77|0,00|
+|E510|6949|01|3000,00|3000,00|0,00|
+|E510|5101|01|2800,00|2800,00|0,00|
+|E510|6922|01|133952,00|133952,00|0,00|
+|E510|6101|51|79720,00|79720,00|0,00|
+|E510|6116|01|149880,00|149880,00|0,00|
+|E510|5922|01|27347,00|27347,00|0,00|
+|E510|5101|51|27347,00|27347,00|0,00|
+|E510|6911|01|130,00|130,00|0,00|
+|E520|0,00|0,00|0,00|0,00|0,00|0,00|0,00|
+|E990|19|
+|G001|1|
+|G990|2|
+|H001|0|
+|H005|31082020|683135,81|01|
+|H010|00001|000010|60,000|39,060000|2343,60|0|||2534|0,00|
+|H010|00002|000006|474,000|41,330000|19590,42|0|||2534|0,00|
+|H010|00008|000006|14,000|56,550000|791,70|0|||2534|0,00|
+|H010|00012|000008|212,000|98,120000|20801,44|0|||2534|0,00|
+|H010|00013|000006|5,000|141,430000|707,15|0|||2534|0,00|
+|H010|00015|000006|42,000|24,380000|1023,96|0|||2534|0,00|
+|H010|00016|000006|42,000|24,380000|1023,96|0|||2534|0,00|
+|H010|00019|000006|215,100|47,320000|10178,53|0|||2534|0,00|
+|H010|00021|000010|144,000|38,720000|5575,68|0|||2534|0,00|
+|H010|00023|000006|1800,000|1,930000|3474,00|0|||2534|0,00|
+|H010|00024|000006|2440,000|0,150000|366,00|0|||2534|0,00|
+|H010|00025|000014|20,000|3,560000|71,20|0|||2534|0,00|
+|H010|00026|000006|20,000|1,570000|31,40|0|||2534|0,00|
+|H010|00029|000008|169,500|93,710000|15883,84|0|||2534|0,00|
+|H010|00030|000008|422,300|111,270000|46989,32|0|||2534|0,00|
+|H010|00034|000006|24,000|121,910000|2925,84|0|||2534|0,00|
+|H010|00035|000006|107,620|29,760000|3202,77|0|||2534|0,00|
+|H010|00036|000006|2,000|286,770000|573,54|0|||2534|0,00|
+|H010|00037|000006|5,000|286,770000|1433,85|0|||2534|0,00|
+|H010|00038|000006|5,000|50,310000|251,55|0|||2534|0,00|
+|H010|00042|000006|6,000|52,070000|312,42|0|||2534|0,00|
+|H010|00043|000014|30,000|10,240000|307,20|0|||2534|0,00|
+|H010|00045|000006|3,000|438,480000|1315,44|0|||2534|0,00|
+|H010|00046|000006|4,000|65,040000|260,16|0|||2534|0,00|
+|H010|00047|000006|6,000|313,030000|1878,18|0|||2534|0,00|
+|H010|00048|000006|5,000|189,150000|945,75|0|||2534|0,00|
+|H010|00049|000006|8,000|270,410000|2163,28|0|||2534|0,00|
+|H010|00050|000006|7000,000|1,670000|11690,00|0|||2534|0,00|
+|H010|00053|000009|764,800|5,370000|4106,98|0|||2534|0,00|
+|H010|00060|000008|86,000|93,710000|8059,06|0|||2534|0,00|
+|H010|00065|000006|85,000|130,720000|11111,20|0|||2534|0,00|
+|H010|00067|000006|353,600|3,330000|1177,49|0|||2534|0,00|
+|H010|00068|000006|828,400|7,010000|5807,08|0|||2534|0,00|
+|H010|00069|000006|37,000|11,260000|416,62|0|||2534|0,00|
+|H010|00072|000006|6,000|290,430000|1742,58|0|||2534|0,00|
+|H010|00073|000006|16,000|52,420000|838,72|0|||2534|0,00|
+|H010|00074|000006|221,220|25,720000|5689,78|0|||2534|0,00|
+|H010|00075|000006|221,220|25,720000|5689,78|0|||2534|0,00|
+|H010|00077|000006|76,000|0,000000|0,00|0|||2534|0,00|
+|H010|00079|000006|2,000|207,270000|414,54|0|||2534|0,00|
+|H010|00080|000006|6,000|430,440000|2582,64|0|||2534|0,00|
+|H010|00081|000006|6,000|430,440000|2582,64|0|||2534|0,00|
+|H010|00082|000006|4,000|1222,590000|4890,36|0|||2534|0,00|
+|H010|00083|000006|1,000|1262,010000|1262,01|0|||2534|0,00|
+|H010|00084|000006|2,000|1724,660000|3449,32|0|||2534|0,00|
+|H010|00085|000006|2,000|1942,950000|3885,90|0|||2534|0,00|
+|H010|00086|000006|4,000|2947,090000|11788,36|0|||2534|0,00|
+|H010|00087|000006|1,000|3034,400000|3034,40|0|||2534|0,00|
+|H010|00088|000006|2,000|2816,110000|5632,22|0|||2534|0,00|
+|H010|00089|000006|2,000|3907,560000|7815,12|0|||2534|0,00|
+|H010|00092|000010|24,000|25,970000|623,28|0|||2534|0,00|
+|H010|00109|000006|38,000|118,360000|4497,68|0|||2534|0,00|
+|H010|00110|000006|320,000|11,340000|3628,80|0|||2534|0,00|
+|H010|00111|000006|270,000|16,930000|4571,10|0|||2534|0,00|
+|H010|00112|000006|5,000|21,270000|106,35|0|||2534|0,00|
+|H010|00113|000006|60,000|37,910000|2274,60|0|||2534|0,00|
+|H010|00114|000006|11,000|32,710000|359,81|0|||2534|0,00|
+|H010|00115|000006|5,000|131,160000|655,80|0|||2534|0,00|
+|H010|00116|000006|4655,000|1,740000|8099,70|0|||2534|0,00|
+|H010|00117|000006|2700,000|1,730000|4671,00|0|||2534|0,00|
+|H010|00120|000006|50,000|49,350000|2467,50|0|||2534|0,00|
+|H010|00139|000008|179,600|57,610000|10346,76|0|||2534|0,00|
+|H010|00140|000008|0,400|67,690000|27,08|0|||2534|0,00|
+|H010|00141|000008|82,000|47,260000|3875,32|0|||2534|0,00|
+|H010|00142|000008|110,000|55,300000|6083,00|0|||2534|0,00|
+|H010|00143|000008|107,000|47,260000|5056,82|0|||2534|0,00|
+|H010|00144|000008|104,000|55,300000|5751,20|0|||2534|0,00|
+|H010|00149|000004|51,500|13,850000|713,28|0|||2534|0,00|
+|H010|00150|000006|2,000|1630,560000|3261,12|0|||2534|0,00|
+|H010|00155|000006|46,000|30,390000|1397,94|0|||2534|0,00|
+|H010|00157|000006|1,000|45,920000|45,92|0|||2534|0,00|
+|H010|00159|000006|32,400|11,940000|386,86|0|||2534|0,00|
+|H010|00160|000006|18,000|37,790000|680,22|0|||2534|0,00|
+|H010|00161|000006|20,000|97,810000|1956,20|0|||2534|0,00|
+|H010|00162|000006|12,000|186,730000|2240,76|0|||2534|0,00|
+|H010|00163|000006|40,000|25,770000|1030,80|0|||2534|0,00|
+|H010|00165|000006|200,000|73,310000|14662,00|0|||2534|0,00|
+|H010|00167|000006|30,000|41,090000|1232,70|0|||2534|0,00|
+|H010|00170|000006|6,000|486,210000|2917,26|0|||2534|0,00|
+|H010|00171|000006|6,000|486,210000|2917,26|0|||2534|0,00|
+|H010|00172|000006|15,000|242,420000|3636,30|0|||2534|0,00|
+|H010|00173|000006|15,000|242,420000|3636,30|0|||2534|0,00|
+|H010|00174|000006|8,000|1235,660000|9885,28|0|||2534|0,00|
+|H010|00175|000006|8,000|1235,660000|9885,28|0|||2534|0,00|
+|H010|00180|000006|4,000|0,000000|0,00|0|||2534|0,00|
+|H010|00181|000006|1,000|0,000000|0,00|0|||2534|0,00|
+|H010|00185|000006|30,000|42,120000|1263,60|0|||2534|0,00|
+|H010|00186|000006|30,000|42,120000|1263,60|0|||2534|0,00|
+|H010|00191|000006|940,000|13,080000|12295,20|0|||2534|0,00|
+|H010|00193|000006|67,000|93,600000|6271,20|0|||2534|0,00|
+|H010|00198|000006|1480,000|3,150000|4662,00|0|||2534|0,00|
+|H010|00199|000006|374,000|7,090000|2651,66|0|||2534|0,00|
+|H010|00200|000006|500,000|17,630000|8815,00|0|||2534|0,00|
+|H010|00201|000006|200,000|14,790000|2958,00|0|||2534|0,00|
+|H010|00202|000006|12,000|163,800000|1965,60|0|||2534|0,00|
+|H010|00203|000006|17,000|21,990000|373,83|0|||2534|0,00|
+|H010|00204|000006|17,000|21,990000|373,83|0|||2534|0,00|
+|H010|00205|000006|73,000|38,980000|2845,54|0|||2534|0,00|
+|H010|00206|000006|73,000|38,980000|2845,54|0|||2534|0,00|
+|H010|00207|000010|6,000|37,770000|226,62|0|||2534|0,00|
+|H010|00226|000006|188,000|0,000000|0,00|0|||2534|0,00|
+|H010|00228|000006|152,000|0,000000|0,00|0|||2534|0,00|
+|H010|00230|000006|1230,530|10,510000|12932,87|0|||2534|0,00|
+|H010|00231|000006|152,000|0,000000|0,00|0|||2534|0,00|
+|H010|00232|000006|1030,000|13,160000|13554,80|0|||2534|0,00|
+|H010|00233|000006|25,000|0,000000|0,00|0|||2534|0,00|
+|H010|00234|000006|25,000|0,000000|0,00|0|||2534|0,00|
+|H010|00235|000006|25,000|0,000000|0,00|0|||2534|0,00|
+|H010|00236|000006|15,000|0,000000|0,00|0|||2534|0,00|
+|H010|00237|000006|9910,000|4,620000|45784,20|0|||2534|0,00|
+|H010|00238|000006|15005,000|0,350000|5251,75|0|||2534|0,00|
+|H010|00239|000006|909,000|0,270000|245,43|0|||2534|0,00|
+|H010|00240|000006|3947,200|0,330000|1302,58|0|||2534|0,00|
+|H010|00241|000006|143,400|0,000000|0,00|0|||2534|0,00|
+|H010|00242|000006|97,800|0,000000|0,00|0|||2534|0,00|
+|H010|00243|000006|12,000|0,000000|0,00|0|||2534|0,00|
+|H010|00244|000006|12,000|0,000000|0,00|0|||2534|0,00|
+|H010|00245|000006|126,151|0,250000|31,54|0|||2534|0,00|
+|H010|00246|000006|649,114|8,200000|5322,73|0|||2534|0,00|
+|H010|00247|000006|649,115|8,200000|5322,74|0|||2534|0,00|
+|H010|00248|000006|503,195|8,200000|4126,20|0|||2534|0,00|
+|H010|00249|000006|503,200|7,730000|3889,74|0|||2534|0,00|
+|H010|00250|000006|50,400|5,300000|267,12|0|||2534|0,00|
+|H010|00251|000006|1,000|0,000000|0,00|0|||2534|0,00|
+|H010|00252|000006|51,000|0,000000|0,00|0|||2534|0,00|
+|H010|00258|000004|4,700|93,950000|441,56|0|||2534|0,00|
+|H010|00272|000011|1,000|220,000000|220,00|0|||2534|0,00|
+|H010|00297|000006|1,000|1153,850000|1153,85|0|||2534|0,00|
+|H010|00304|000007|48,000|52,350000|2512,80|0|||2534|0,00|
+|H010|00306|000007|6,000|716,270000|4297,62|0|||2534|0,00|
+|H010|00308|000006|4629,000|1,790000|8285,91|0|||2534|0,00|
+|H010|00330|000006|6,000|89,590000|537,54|0|||2534|0,00|
+|H010|00331|000006|46,000|19,030000|875,38|0|||2534|0,00|
+|H010|00336|000012|346,000|1,850000|640,10|0|||2534|0,00|
+|H010|00359|000015|1200,000|0,300000|360,00|0|||2534|0,00|
+|H010|00412|000006|64,000|0,000000|0,00|0|||2534|0,00|
+|H010|00429|000006|1,000|973,600000|973,60|0|||2534|0,00|
+|H010|00472|000002|100,000|4,920000|492,00|0|||2534|0,00|
+|H010|00481|000006|555,000|5,450000|3024,75|0|||2534|0,00|
+|H010|00496|000007|9,000|41,370000|372,33|0|||2534|0,00|
+|H010|00500|000006|32,000|70,870000|2267,84|0|||2534|0,00|
+|H010|00519|000002|2,000|344,640000|689,28|0|||2534|0,00|
+|H010|00559|000006|5,000|606,720000|3033,60|0|||2534|0,00|
+|H010|00560|000006|5,000|235,100000|1175,50|0|||2534|0,00|
+|H010|00582|000002|850,000|5,310000|4513,50|0|||2534|0,00|
+|H010|00647|000004|10,000|27,440000|274,40|0|||2534|0,00|
+|H010|00696|000006|1,000|432,000000|432,00|0|||2534|0,00|
+|H010|00699|000002|6,000|358,590000|2151,54|0|||2534|0,00|
+|H010|00716|000006|4168,060|0,000000|0,00|0|||2534|0,00|
+|H010|00717|000006|7,250|0,000000|0,00|0|||2534|0,00|
+|H010|00718|000006|1206,235|0,000000|0,00|0|||2534|0,00|
+|H010|00719|000006|1206,235|0,000000|0,00|0|||2534|0,00|
+|H010|00728|000009|530,184|13,400000|7104,47|0|||2534|0,00|
+|H010|00758|000006|46,000|98,100000|4512,60|0|||2534|0,00|
+|H010|00797|000004|12,000|32,930000|395,16|0|||2534|0,00|
+|H010|00822|000012|426,400|5,180000|2208,75|0|||2534|0,00|
+|H010|00823|000012|587,366|8,570000|5033,73|0|||2534|0,00|
+|H010|00824|000006|148,000|0,350000|51,80|0|||2534|0,00|
+|H010|00825|000006|52,000|0,000000|0,00|0|||2534|0,00|
+|H010|00826|000006|12,000|0,440000|5,28|0|||2534|0,00|
+|H010|00827|000006|738,400|0,310000|228,90|0|||2534|0,00|
+|H010|00828|000006|409,000|0,370000|151,33|0|||2534|0,00|
+|H010|00829|000006|118,656|0,000000|0,00|0|||2534|0,00|
+|H010|00830|000006|122,800|0,430000|52,80|0|||2534|0,00|
+|H010|00831|000006|124,100|0,430000|53,36|0|||2534|0,00|
+|H010|00832|000006|717,150|0,000000|0,00|0|||2534|0,00|
+|H010|00833|000006|717,150|0,000000|0,00|0|||2534|0,00|
+|H010|00834|000006|15,000|735,840000|11037,60|0|||2534|0,00|
+|H010|00835|000006|15,000|735,840000|11037,60|0|||2534|0,00|
+|H010|00842|000006|3,000|890,000000|2670,00|0|||2534|0,00|
+|H010|00843|000006|3,000|28,000000|84,00|0|||2534|0,00|
+|H010|00846|000006|6,000|38,000000|228,00|0|||2534|0,00|
+|H010|00892|000006|2,000|129,900000|259,80|0|||2534|0,00|
+|H010|00912|000006|8,000|3,020000|24,16|0|||2534|0,00|
+|H010|00913|000003|178,000|0,300000|53,40|0|||2534|0,00|
+|H010|00914|000003|2,000|5,900000|11,80|0|||2534|0,00|
+|H010|00915|000003|2,000|7,250000|14,50|0|||2534|0,00|
+|H010|00916|000001|1,000|25,000000|25,00|0|||2534|0,00|
+|H010|00917|000006|1,000|87,000000|87,00|0|||2534|0,00|
+|H010|00918|000006|1,000|74,000000|74,00|0|||2534|0,00|
+|H010|00919|000001|12,000|19,170000|230,04|0|||2534|0,00|
+|H010|00920|000006|1,000|20,000000|20,00|0|||2534|0,00|
+|H010|00921|000006|1,000|55,000000|55,00|0|||2534|0,00|
+|H010|00922|000006|1,000|80,000000|80,00|0|||2534|0,00|
+|H010|00923|000006|1,000|290,000000|290,00|0|||2534|0,00|
+|H010|00924|000004|0,200|91,750000|18,35|0|||2534|0,00|
+|H010|00925|000006|1,000|7,690000|7,69|0|||2534|0,00|
+|H010|00926|000006|8,000|3,580000|28,64|0|||2534|0,00|
+|H010|00927|000006|1,000|3,980000|3,98|0|||2534|0,00|
+|H010|00928|000006|3,000|4,500000|13,50|0|||2534|0,00|
+|H010|00929|000006|4,000|0,820000|3,28|0|||2534|0,00|
+|H010|00930|000006|2,000|0,850000|1,70|0|||2534|0,00|
+|H010|00932|000006|1,000|0,750000|0,75|0|||2534|0,00|
+|H010|00933|000006|1,000|2,990000|2,99|0|||2534|0,00|
+|H010|00934|000006|1,000|3,490000|3,49|0|||2534|0,00|
+|H010|00935|000006|1,000|3,500000|3,50|0|||2534|0,00|
+|H010|00936|000006|21,000|0,200000|4,20|0|||2534|0,00|
+|H010|00937|000006|1,000|6,990000|6,99|0|||2534|0,00|
+|H010|00938|000006|1,000|19,900000|19,90|0|||2534|0,00|
+|H010|00939|000006|1,000|49,900000|49,90|0|||2534|0,00|
+|H010|00940|000006|1,000|9,900000|9,90|0|||2534|0,00|
+|H010|00941|000006|1,000|29,900000|29,90|0|||2534|0,00|
+|H010|00942|000016|2,000|2,490000|4,98|0|||2534|0,00|
+|H010|00943|000006|1,000|19,900000|19,90|0|||2534|0,00|
+|H010|00944|000016|1,000|8,000000|8,00|0|||2534|0,00|
+|H010|00945|000016|1,000|10,900000|10,90|0|||2534|0,00|
+|H010|00946|000006|3,000|23,900000|71,70|0|||2534|0,00|
+|H010|00954|000002|1,000|6,240000|6,24|0|||2534|0,00|
+|H010|00955|000002|24,000|1,550000|37,20|0|||2534|0,00|
+|H010|00956|000012|30,000|1,610000|48,30|0|||2534|0,00|
+|H010|00957|000002|1,000|27,310000|27,31|0|||2534|0,00|
+|H010|00958|000005|1,000|6,240000|6,24|0|||2534|0,00|
+|H010|00959|000012|8,000|8,290000|66,32|0|||2534|0,00|
+|H010|00960|000002|1,000|401,650000|401,65|0|||2534|0,00|
+|H010|00961|000002|3,000|9,500000|28,50|0|||2534|0,00|
+|H010|00962|000002|1,000|5,670000|5,67|0|||2534|0,00|
+|H010|00963|000006|1,000|2566,000000|2566,00|0|||2534|0,00|
+|H010|00964|000006|2,000|49,900000|99,80|0|||2534|0,00|
+|H010|00965|000006|2,000|3,290000|6,58|0|||2534|0,00|
+|H010|00966|000006|3,000|2,500000|7,50|0|||2534|0,00|
+|H010|00967|000006|6,000|13,270000|79,62|0|||2534|0,00|
+|H010|00968|000006|1,000|7,490000|7,49|0|||2534|0,00|
+|H010|00969|000016|1,000|12,900000|12,90|0|||2534|0,00|
+|H010|00970|000006|1,000|6,000000|6,00|0|||2534|0,00|
+|H010|00971|000006|2,000|13,000000|26,00|0|||2534|0,00|
+|H010|00972|000009|3,000|4,120000|12,36|0|||2534|0,00|
+|H010|00973|000017|1,000|59,000000|59,00|0|||2534|0,00|
+|H010|00974|000006|16,000|7,240000|115,84|0|||2534|0,00|
+|H010|00978|000007|1,000|565,000000|565,00|0|||2534|0,00|
+|H010|00979|000006|1,000|200,000000|200,00|0|||2534|0,00|
+|H010|00980|000006|2,000|220,000000|440,00|0|||2534|0,00|
+|H010|00981|000006|4,000|5,000000|20,00|0|||2534|0,00|
+|H010|00990|000006|25,200|0,480000|12,10|0|||2534|0,00|
+|H010|00992|000006|99,600|0,440000|43,82|0|||2534|0,00|
+|H010|00993|000006|499,000|0,440000|219,56|0|||2534|0,00|
+|H010|00994|000006|39,900|0,490000|19,55|0|||2534|0,00|
+|H010|00998|000006|16,000|0,790000|12,64|0|||2534|0,00|
+|H010|00999|000006|2,000|1,990000|3,98|0|||2534|0,00|
+|H010|01000|000006|2,000|3,980000|7,96|0|||2534|0,00|
+|H010|01001|000006|5,000|4,430000|22,15|0|||2534|0,00|
+|H010|01002|000006|2,000|2,750000|5,50|0|||2534|0,00|
+|H010|01003|000006|1,000|1,150000|1,15|0|||2534|0,00|
+|H010|01004|000006|1,000|7,990000|7,99|0|||2534|0,00|
+|H010|01005|000006|1,000|15,990000|15,99|0|||2534|0,00|
+|H010|01006|000006|4,000|4,170000|16,68|0|||2534|0,00|
+|H010|01007|000006|1,000|3,980000|3,98|0|||2534|0,00|
+|H010|01008|000006|1,000|4,690000|4,69|0|||2534|0,00|
+|H010|01009|000006|1,000|7,990000|7,99|0|||2534|0,00|
+|H010|01010|000009|2,608|13,980000|36,46|0|||2534|0,00|
+|H010|01011|000006|2,000|7,220000|14,44|0|||2534|0,00|
+|H010|01012|000006|1,000|3,990000|3,99|0|||2534|0,00|
+|H010|01013|000006|1,000|7,990000|7,99|0|||2534|0,00|
+|H010|01014|000006|99,088|2,900000|287,36|0|||2534|0,00|
+|H010|01015|000006|1,000|7,990000|7,99|0|||2534|0,00|
+|H010|01016|000006|1,000|2,990000|2,99|0|||2534|0,00|
+|H010|01017|000003|20,000|3,500000|70,00|0|||2534|0,00|
+|H010|01018|000003|3412,000|0,140000|477,68|0|||2534|0,00|
+|H010|01027|000011|4,000|144,480000|577,92|0|||2534|0,00|
+|H010|01028|000006|7,000|380,010000|2660,07|0|||2534|0,00|
+|H010|01030|000006|1,000|4526,390000|4526,39|0|||2534|0,00|
+|H010|01032|000006|105,000|1,150000|120,75|0|||2534|0,00|
+|H010|01033|000006|87,000|1,260000|109,62|0|||2534|0,00|
+|H010|01034|000006|2,000|30,000000|60,00|0|||2534|0,00|
+|H010|01035|000006|1,000|6,950000|6,95|0|||2534|0,00|
+|H010|01036|000006|11,000|2,380000|26,18|0|||2534|0,00|
+|H010|01037|000006|2,000|6,290000|12,58|0|||2534|0,00|
+|H010|01038|000006|1,000|3,920000|3,92|0|||2534|0,00|
+|H010|01039|000009|0,382|6,490000|2,48|0|||2534|0,00|
+|H010|01040|000006|1,000|4,390000|4,39|0|||2534|0,00|
+|H010|01041|000006|20,000|1,990000|39,80|0|||2534|0,00|
+|H010|01042|000006|1,000|1,990000|1,99|0|||2534|0,00|
+|H010|01043|000006|1,000|2,700000|2,70|0|||2534|0,00|
+|H010|01044|000006|1,000|5,750000|5,75|0|||2534|0,00|
+|H010|01045|000006|1,000|4,740000|4,74|0|||2534|0,00|
+|H010|01046|000006|1,000|6,990000|6,99|0|||2534|0,00|
+|H010|01048|000006|2,000|3,990000|7,98|0|||2534|0,00|
+|H010|01049|000006|4,000|2,990000|11,96|0|||2534|0,00|
+|H010|01050|000006|5,000|9,790000|48,95|0|||2534|0,00|
+|H010|01051|000006|2,000|2,790000|5,58|0|||2534|0,00|
+|H010|01052|000006|7,000|3,630000|25,41|0|||2534|0,00|
+|H010|01053|000006|4,000|4,490000|17,96|0|||2534|0,00|
+|H010|01054|000006|5,000|1,790000|8,95|0|||2534|0,00|
+|H010|01107|000006|1,000|455,000000|455,00|0|||2534|0,00|
+|H010|01108|000006|1,000|45,000000|45,00|0|||2534|0,00|
+|H010|01109|000006|2,000|965,000000|1930,00|0|||2534|0,00|
+|H010|01110|000006|2,000|335,000000|670,00|0|||2534|0,00|
+|H010|01111|000003|1,000|32,950000|32,95|0|||2534|0,00|
+|H010|01112|000003|1,000|29,980000|29,98|0|||2534|0,00|
+|H010|01113|000003|1,000|14,200000|14,20|0|||2534|0,00|
+|H010|01114|000003|2,000|7,540000|15,08|0|||2534|0,00|
+|H010|01115|000003|5,000|3,640000|18,20|0|||2534|0,00|
+|H010|01116|000003|20,000|0,330000|6,60|0|||2534|0,00|
+|H010|01117|000003|20,000|0,620000|12,40|0|||2534|0,00|
+|H010|01118|000006|1,000|180,000000|180,00|0|||2534|0,00|
+|H010|01119|000006|1,000|70,000000|70,00|0|||2534|0,00|
+|H010|01121|000012|32,000|2,290000|73,28|0|||2534|0,00|
+|H010|01122|000005|5,000|6,120000|30,60|0|||2534|0,00|
+|H010|01123|000006|2,000|16,180000|32,36|0|||2534|0,00|
+|H010|01124|000006|1,000|48,990000|48,99|0|||2534|0,00|
+|H010|01125|000006|1,000|75,080000|75,08|0|||2534|0,00|
+|H010|01126|000006|3,000|1,890000|5,67|0|||2534|0,00|
+|H010|01127|000006|3,000|21,820000|65,46|0|||2534|0,00|
+|H010|01128|000006|1,000|7,270000|7,27|0|||2534|0,00|
+|H010|01129|000006|1,000|6,490000|6,49|0|||2534|0,00|
+|H010|01130|000006|1,000|5,210000|5,21|0|||2534|0,00|
+|H010|01131|000006|1,000|11,260000|11,26|0|||2534|0,00|
+|H010|01132|000006|2,000|45,080000|90,16|0|||2534|0,00|
+|H010|01133|000006|2,000|15,870000|31,74|0|||2534|0,00|
+|H010|01134|000006|1,000|110,000000|110,00|0|||2534|0,00|
+|H010|01135|000006|1,000|65,000000|65,00|0|||2534|0,00|
+|H010|01136|000006|1,000|55,000000|55,00|0|||2534|0,00|
+|H010|01138|000006|2,000|1,500000|3,00|0|||2534|0,00|
+|H010|01139|000006|2,000|9,900000|19,80|0|||2534|0,00|
+|H010|01140|000006|1,000|44,900000|44,90|0|||2534|0,00|
+|H010|01141|000006|1,000|24,900000|24,90|0|||2534|0,00|
+|H010|01142|000006|1,000|15,900000|15,90|0|||2534|0,00|
+|H010|01143|000006|1,000|1,500000|1,50|0|||2534|0,00|
+|H010|01144|000006|5,000|2,990000|14,95|0|||2534|0,00|
+|H010|01145|000006|5,000|2,990000|14,95|0|||2534|0,00|
+|H010|01146|000006|6,000|2,990000|17,94|0|||2534|0,00|
+|H010|01147|000006|4,000|3,500000|14,00|0|||2534|0,00|
+|H010|01148|000006|50,000|0,100000|5,00|0|||2534|0,00|
+|H010|01149|000006|4,000|18,900000|75,60|0|||2534|0,00|
+|H010|01150|000006|10,000|1,750000|17,50|0|||2534|0,00|
+|H010|01151|000006|1,000|37,900000|37,90|0|||2534|0,00|
+|H010|01152|000006|1,000|19,900000|19,90|0|||2534|0,00|
+|H010|01153|000006|1,000|39,900000|39,90|0|||2534|0,00|
+|H010|01154|000016|1,000|17,900000|17,90|0|||2534|0,00|
+|H010|01155|000016|1,000|11,900000|11,90|0|||2534|0,00|
+|H010|01156|000006|2,000|5,500000|11,00|0|||2534|0,00|
+|H010|01157|000006|1,000|2,250000|2,25|0|||2534|0,00|
+|H010|01159|000003|1,000|17,020000|17,02|0|||2534|0,00|
+|H010|01160|000003|1,000|24,560000|24,56|0|||2534|0,00|
+|H010|01161|000003|1,000|12,080000|12,08|0|||2534|0,00|
+|H010|01162|000003|3,000|14,500000|43,50|0|||2534|0,00|
+|H010|01163|000003|1,000|10,100000|10,10|0|||2534|0,00|
+|H010|01164|000003|1,000|11,680000|11,68|0|||2534|0,00|
+|H010|01165|000003|1,000|16,450000|16,45|0|||2534|0,00|
+|H010|01166|000003|4,000|7,440000|29,76|0|||2534|0,00|
+|H010|01167|000003|1,000|36,780000|36,78|0|||2534|0,00|
+|H010|01168|000003|1,000|85,990000|85,99|0|||2534|0,00|
+|H010|01169|000003|1,000|61,490000|61,49|0|||2534|0,00|
+|H010|01170|000002|1,000|155,000000|155,00|0|||2534|0,00|
+|H010|01171|000006|2,000|29,900000|59,80|0|||2534|0,00|
+|H010|01172|000006|1,000|7300,000000|7300,00|0|||2534|0,00|
+|H010|01176|000006|1,000|3,990000|3,99|0|||2534|0,00|
+|H010|01177|000006|24,000|1,100000|26,40|0|||2534|0,00|
+|H010|01178|000006|3,000|7,190000|21,57|0|||2534|0,00|
+|H010|01179|000006|2,000|4,080000|8,16|0|||2534|0,00|
+|H010|01180|000006|8,000|3,580000|28,64|0|||2534|0,00|
+|H010|01181|000006|5,000|3,140000|15,70|0|||2534|0,00|
+|H010|01182|000006|1,000|7,990000|7,99|0|||2534|0,00|
+|H010|01183|000009|1,364|17,980000|24,52|0|||2534|0,00|
+|H010|01184|000006|1,000|6,990000|6,99|0|||2534|0,00|
+|H010|01185|000011|39,000|155,710000|6072,69|0|||2534|0,00|
+|H010|01186|000017|1,000|70,000000|70,00|0|||2534|0,00|
+|H010|01187|000018|588,578|3,460000|2036,48|0|||2534|0,00|
+|H010|01188|000006|1,000|4,380000|4,38|0|||2534|0,00|
+|H010|01189|000006|1,000|104,800000|104,80|0|||2534|0,00|
+|H010|01190|000006|1,000|8,900000|8,90|0|||2534|0,00|
+|H010|01191|000002|2,000|629,500000|1259,00|0|||2534|0,00|
+|H010|01193|000011|9,000|112,210000|1009,89|0|||2534|0,00|
+|H010|01194|000006|3,000|15,000000|45,00|0|||2534|0,00|
+|H010|01201|000009|71,000|4,750000|337,25|0|||2534|0,00|
+|H010|01202|000006|21,000|63,860000|1341,06|0|||2534|0,00|
+|H010|01203|000006|30,000|3,750000|112,50|0|||2534|0,00|
+|H010|01204|000016|3,000|29,000000|87,00|0|||2534|0,00|
+|H010|01205|000006|77,000|5,440000|418,88|0|||2534|0,00|
+|H010|01206|000003|1,000|39,650000|39,65|0|||2534|0,00|
+|H010|01207|000003|1,000|3,920000|3,92|0|||2534|0,00|
+|H010|01208|000003|2000,000|0,040000|80,00|0|||2534|0,00|
+|H010|01209|000019|1,000|60,000000|60,00|0|||2534|0,00|
+|H010|01210|000019|1,000|60,000000|60,00|0|||2534|0,00|
+|H010|01212|000006|14,000|93,710000|1311,94|0|||2534|0,00|
+|H010|01216|000006|2,000|1,990000|3,98|0|||2534|0,00|
+|H010|01217|000006|2,000|6,990000|13,98|0|||2534|0,00|
+|H010|01218|000006|1,000|5,990000|5,99|0|||2534|0,00|
+|H010|01219|000006|2,000|10,990000|21,98|0|||2534|0,00|
+|H010|01220|000006|1,000|1,250000|1,25|0|||2534|0,00|
+|H010|01221|000006|1,000|5,990000|5,99|0|||2534|0,00|
+|H010|01222|000006|1,000|5,990000|5,99|0|||2534|0,00|
+|H010|01223|000006|3,000|3,490000|10,47|0|||2534|0,00|
+|H010|01224|000006|4,000|11,740000|46,96|0|||2534|0,00|
+|H010|01225|000006|2,000|2,890000|5,78|0|||2534|0,00|
+|H010|01226|000006|1,000|12,990000|12,99|0|||2534|0,00|
+|H010|01227|000006|1,000|11,690000|11,69|0|||2534|0,00|
+|H010|01228|000006|2,000|12,700000|25,40|0|||2534|0,00|
+|H010|01229|000006|1,000|35,990000|35,99|0|||2534|0,00|
+|H010|01230|000006|2,000|6,790000|13,58|0|||2534|0,00|
+|H010|01231|000006|1,000|3,290000|3,29|0|||2534|0,00|
+|H010|01232|000006|1,000|10,990000|10,99|0|||2534|0,00|
+|H010|01233|000006|3,000|3,400000|10,20|0|||2534|0,00|
+|H010|01234|000006|3,000|1,250000|3,75|0|||2534|0,00|
+|H010|01235|000006|1,000|5,990000|5,99|0|||2534|0,00|
+|H010|01236|000006|2,000|2,990000|5,98|0|||2534|0,00|
+|H010|01237|000006|1,000|0,990000|0,99|0|||2534|0,00|
+|H010|01238|000006|1,000|4,850000|4,85|0|||2534|0,00|
+|H010|01239|000006|1,000|8,990000|8,99|0|||2534|0,00|
+|H010|01240|000006|3,000|4,890000|14,67|0|||2534|0,00|
+|H010|01241|000002|1,000|39,360000|39,36|0|||2534|0,00|
+|H010|01245|000013|50,000|9,500000|475,00|0|||2534|0,00|
+|H010|01246|000006|1,000|29,900000|29,90|0|||2534|0,00|
+|H010|01247|000006|1,000|29,900000|29,90|0|||2534|0,00|
+|H010|01248|000006|1,000|8,400000|8,40|0|||2534|0,00|
+|H010|01249|000006|3,000|4,000000|12,00|0|||2534|0,00|
+|H010|01250|000006|1,000|35,000000|35,00|0|||2534|0,00|
+|H010|01251|000006|3,000|13,330000|39,99|0|||2534|0,00|
+|H010|01252|000006|1,000|6,000000|6,00|0|||2534|0,00|
+|H010|01253|000006|1,000|5,000000|5,00|0|||2534|0,00|
+|H010|01255|000007|1,000|20,750000|20,75|0|||2534|0,00|
+|H010|01256|000006|1,000|600,000000|600,00|0|||2534|0,00|
+|H010|01257|000006|3,000|75,000000|225,00|0|||2534|0,00|
+|H010|01258|000003|1,000|0,250000|0,25|0|||2534|0,00|
+|H010|01259|000003|1000,000|0,040000|40,00|0|||2534|0,00|
+|H010|01260|000003|200,000|0,260000|52,00|0|||2534|0,00|
+|H010|01261|000003|3,000|4,150000|12,45|0|||2534|0,00|
+|H010|01262|000012|80,000|1,730000|138,40|0|||2534|0,00|
+|H010|01263|000006|80,000|0,700000|56,00|0|||2534|0,00|
+|H010|01264|000020|1,000|69,900000|69,90|0|||2534|0,00|
+|H010|01265|000006|1,000|12,900000|12,90|0|||2534|0,00|
+|H010|01266|000006|2,000|29,900000|59,80|0|||2534|0,00|
+|H010|01267|000006|5,000|1,250000|6,25|0|||2534|0,00|
+|H010|01268|000006|5,000|1,250000|6,25|0|||2534|0,00|
+|H010|01269|000006|5,000|1,250000|6,25|0|||2534|0,00|
+|H010|01270|000006|1,000|49,900000|49,90|0|||2534|0,00|
+|H010|01271|000006|15,000|3,300000|49,50|0|||2534|0,00|
+|H010|01272|000006|2,000|3,500000|7,00|0|||2534|0,00|
+|H010|01274|000006|11,000|789,000000|8679,00|0|||2534|0,00|
+|H010|01275|000006|3,000|237,270000|711,81|0|||2534|0,00|
+|H010|01276|000021|3,000|59,910000|179,73|0|||2534|0,00|
+|H010|01277|000021|3,000|892,650000|2677,95|0|||2534|0,00|
+|H010|01278|000006|1,000|34,620000|34,62|0|||2534|0,00|
+|H010|01279|000004|2,000|17,380000|34,76|0|||2534|0,00|
+|H010|01280|000006|7,000|4,590000|32,13|0|||2534|0,00|
+|H010|01283|000003|500,000|0,390000|195,00|0|||2534|0,00|
+|H010|01284|000006|1,000|9,990000|9,99|0|||2534|0,00|
+|H010|01285|000012|20,000|4,790000|95,80|0|||2534|0,00|
+|H010|01286|000009|1,000|27,770000|27,77|0|||2534|0,00|
+|H010|01287|000006|3,000|4,200000|12,60|0|||2534|0,00|
+|H010|01293|000006|4,000|231,000000|924,00|0|||2534|0,00|
+|H010|01294|000006|3,000|11,990000|35,97|0|||2534|0,00|
+|H010|01295|000006|1,000|9,950000|9,95|0|||2534|0,00|
+|H010|01296|000006|1,000|5,990000|5,99|0|||2534|0,00|
+|H010|01297|000006|1,000|3,750000|3,75|0|||2534|0,00|
+|H010|01298|000006|1,000|7,990000|7,99|0|||2534|0,00|
+|H010|01299|000006|6,000|0,890000|5,34|0|||2534|0,00|
+|H010|01300|000006|1,000|12,900000|12,90|0|||2534|0,00|
+|H010|01301|000006|1,000|8,990000|8,99|0|||2534|0,00|
+|H010|01302|000006|1,000|8,990000|8,99|0|||2534|0,00|
+|H010|01303|000006|1,000|6,790000|6,79|0|||2534|0,00|
+|H010|01304|000009|0,302|19,980000|6,03|0|||2534|0,00|
+|H010|01305|000006|0,285|21,980000|6,26|0|||2534|0,00|
+|H010|01306|000006|2,000|6,990000|13,98|0|||2534|0,00|
+|H010|01307|000006|2,000|93,400000|186,80|0|||2534|0,00|
+|H010|01308|000006|24,000|1,690000|40,56|0|||2534|0,00|
+|H010|01309|000006|2,000|3,390000|6,78|0|||2534|0,00|
+|H010|01310|000006|2,000|3,390000|6,78|0|||2534|0,00|
+|H010|01311|000006|1,000|6,500000|6,50|0|||2534|0,00|
+|H010|01312|000006|1,000|25,900000|25,90|0|||2534|0,00|
+|H010|01313|000006|2,000|2,900000|5,80|0|||2534|0,00|
+|H010|01314|000006|2,000|3,510000|7,02|0|||2534|0,00|
+|H010|01315|000006|2,000|3,500000|7,00|0|||2534|0,00|
+|H010|01316|000006|14,000|1,580000|22,12|0|||2534|0,00|
+|H010|01317|000006|14,000|1,580000|22,12|0|||2534|0,00|
+|H010|01318|000006|1,000|3,770000|3,77|0|||2534|0,00|
+|H010|01320|000012|97,000|3,190000|309,43|0|||2534|0,00|
+|H010|01321|000002|1,000|190,000000|190,00|0|||2534|0,00|
+|H010|01322|000009|1,000|1736,100000|1736,10|0|||2534|0,00|
+|H010|01323|000003|25,000|2,500000|62,50|0|||2534|0,00|
+|H010|01324|000006|1,000|390,000000|390,00|0|||2534|0,00|
+|H010|01327|000003|50,000|0,630000|31,50|0|||2534|0,00|
+|H010|01328|000003|1,000|6,940000|6,94|0|||2534|0,00|
+|H010|01329|000012|30,000|4,260000|127,80|0|||2534|0,00|
+|H010|01330|000003|6,000|1,480000|8,88|0|||2534|0,00|
+|H010|01331|000003|1,000|18,260000|18,26|0|||2534|0,00|
+|H010|01332|000006|1,000|3,200000|3,20|0|||2534|0,00|
+|H010|01333|000006|2,000|39,900000|79,80|0|||2534|0,00|
+|H010|01336|000012|78,000|0,150000|11,70|0|||2534|0,00|
+|H010|01337|000012|104,000|0,200000|20,80|0|||2534|0,00|
+|H010|01338|000009|10,000|6,000000|60,00|0|||2534|0,00|
+|H010|01339|000002|100,000|0,160000|16,00|0|||2534|0,00|
+|H010|01340|000002|15,000|1,790000|26,85|0|||2534|0,00|
+|H010|01341|000002|5,000|0,520000|2,60|0|||2534|0,00|
+|H010|01342|000002|6,000|14,530000|87,18|0|||2534|0,00|
+|H010|01343|000012|20,000|2,450000|49,00|0|||2534|0,00|
+|H010|01344|000012|20,000|2,450000|49,00|0|||2534|0,00|
+|H010|01345|000012|20,000|2,450000|49,00|0|||2534|0,00|
+|H010|01346|000012|20,000|2,450000|49,00|0|||2534|0,00|
+|H010|01347|000002|3,000|15,910000|47,73|0|||2534|0,00|
+|H010|01348|000002|6,000|5,330000|31,98|0|||2534|0,00|
+|H010|01349|000002|2,000|29,860000|59,72|0|||2534|0,00|
+|H010|01350|000002|11,000|7,670000|84,37|0|||2534|0,00|
+|H010|01351|000002|1,000|31,450000|31,45|0|||2534|0,00|
+|H010|01352|000002|3,000|73,580000|220,74|0|||2534|0,00|
+|H010|01353|000002|1,000|29,860000|29,86|0|||2534|0,00|
+|H010|01354|000002|6,000|44,730000|268,38|0|||2534|0,00|
+|H010|01355|000002|5,000|27,790000|138,95|0|||2534|0,00|
+|H010|01356|000012|25,000|1,540000|38,50|0|||2534|0,00|
+|H010|01357|000002|11,000|3,370000|37,07|0|||2534|0,00|
+|H010|01358|000002|7,000|4,080000|28,56|0|||2534|0,00|
+|H010|01359|000006|24,000|8,840000|212,16|0|||2534|0,00|
+|H010|01360|000006|50,000|2,980000|149,00|0|||2534|0,00|
+|H010|01361|000006|1000,000|0,050000|50,00|0|||2534|0,00|
+|H010|01362|000006|1000,000|0,060000|60,00|0|||2534|0,00|
+|H010|01363|000002|4,000|571,080000|2284,32|0|||2534|0,00|
+|H010|01366|000006|2,000|235,000000|470,00|0|||2534|0,00|
+|H010|01367|000002|1,000|630,410000|630,41|0|||2534|0,00|
+|H010|01368|000002|1,000|15,170000|15,17|0|||2534|0,00|
+|H010|01369|000006|1,000|40,130000|40,13|0|||2534|0,00|
+|H010|01371|000002|12,000|17,340000|208,08|0|||2534|0,00|
+|H010|01372|000002|1,000|414,830000|414,83|0|||2534|0,00|
+|H010|01373|000002|1,000|231,920000|231,92|0|||2534|0,00|
+|H010|01374|000006|2,000|160,600000|321,20|0|||2534|0,00|
+|H010|01375|000006|23,000|4,500000|103,50|0|||2534|0,00|
+|H010|01376|000002|5,000|13,000000|65,00|0|||2534|0,00|
+|H010|01377|000002|2,000|58,000000|116,00|0|||2534|0,00|
+|H010|01378|000002|7,000|9,320000|65,24|0|||2534|0,00|
+|H010|01379|000002|7,000|5,610000|39,27|0|||2534|0,00|
+|H010|01380|000013|220,000|2,010000|442,20|0|||2534|0,00|
+|H010|01384|000007|24,000|8,330000|199,92|0|||2534|0,00|
+|H010|01389|000006|1,000|700,000000|700,00|0|||2534|0,00|
+|H010|01391|000006|25,000|14,390000|359,75|0|||2534|0,00|
+|H010|01392|000006|25,000|14,390000|359,75|0|||2534|0,00|
+|H010|01394|000002|20,000|100,000000|2000,00|0|||2534|0,00|
+|H010|01396|000003|1,000|7,800000|7,80|0|||2534|0,00|
+|H010|01397|000003|1,000|30,250000|30,25|0|||2534|0,00|
+|H010|01398|000003|100,000|0,280000|28,00|0|||2534|0,00|
+|H010|01399|000003|922,000|0,430000|396,46|0|||2534|0,00|
+|H010|01400|000004|1,000|15,500000|15,50|0|||2534|0,00|
+|H010|01401|000004|1,000|30,000000|30,00|0|||2534|0,00|
+|H010|01402|000006|2,000|50,400000|100,80|0|||2534|0,00|
+|H010|01403|000008|12,000|22,520000|270,24|0|||2534|0,00|
+|H010|01404|000002|2,000|139,000000|278,00|0|||2534|0,00|
+|H010|01405|000002|1,000|470,000000|470,00|0|||2534|0,00|
+|H010|01406|000006|1,000|4,220000|4,22|0|||2534|0,00|
+|H010|01407|000006|1,000|2,700000|2,70|0|||2534|0,00|
+|H010|01408|000006|1,000|4,010000|4,01|0|||2534|0,00|
+|H010|01409|000006|1,000|3,990000|3,99|0|||2534|0,00|
+|H010|01410|000006|1,000|3,990000|3,99|0|||2534|0,00|
+|H010|01411|000006|1,000|3,990000|3,99|0|||2534|0,00|
+|H010|01412|000006|1,000|4,900000|4,90|0|||2534|0,00|
+|H010|01413|000009|2,266|15,420000|34,94|0|||2534|0,00|
+|H010|01414|000006|1,000|1,490000|1,49|0|||2534|0,00|
+|H010|01415|000006|1,000|1,490000|1,49|0|||2534|0,00|
+|H010|01416|000006|1,000|5,490000|5,49|0|||2534|0,00|
+|H010|01417|000009|0,376|21,980000|8,26|0|||2534|0,00|
+|H010|01420|000002|6,000|643,850000|3863,10|0|||2534|0,00|
+|H010|01423|000006|6,000|19,030000|114,18|0|||2534|0,00|
+|H010|01430|000006|3,000|13,630000|40,89|0|||2534|0,00|
+|H010|01431|000004|0,020|297,660000|5,95|0|||2534|0,00|
+|H010|01432|000006|2,000|30,480000|60,96|0|||2534|0,00|
+|H010|01433|000006|4,000|12,500000|50,00|0|||2534|0,00|
+|H010|01434|000006|1,000|2,800000|2,80|0|||2534|0,00|
+|H010|01435|000002|1,000|103,770000|103,77|0|||2534|0,00|
+|H010|01436|000002|2,000|19,490000|38,98|0|||2534|0,00|
+|H010|01437|000006|10,000|1,350000|13,50|0|||2534|0,00|
+|H010|01438|000006|2,000|26,900000|53,80|0|||2534|0,00|
+|H010|01439|000006|1,000|19,900000|19,90|0|||2534|0,00|
+|H010|01440|000006|1,000|39,900000|39,90|0|||2534|0,00|
+|H010|01444|000007|23,000|35,000000|805,00|0|||2534|0,00|
+|H010|01445|000007|12,000|45,000000|540,00|0|||2534|0,00|
+|H010|01446|000002|2,000|38,950000|77,90|0|||2534|0,00|
+|H990|565|
+|K001|0|
+|K100|01082020|31082020|
+|K200|31082020|00001|60,000|0||
+|K200|31082020|00002|474,000|0||
+|K200|31082020|00008|14,000|0||
+|K200|31082020|00012|212,000|0||
+|K200|31082020|00013|5,000|0||
+|K200|31082020|00015|42,000|0||
+|K200|31082020|00016|42,000|0||
+|K200|31082020|00019|215,100|0||
+|K200|31082020|00021|144,000|0||
+|K200|31082020|00023|1800,000|0||
+|K200|31082020|00024|2440,000|0||
+|K200|31082020|00025|20,000|0||
+|K200|31082020|00026|20,000|0||
+|K200|31082020|00029|169,500|0||
+|K200|31082020|00030|422,300|0||
+|K200|31082020|00034|24,000|0||
+|K200|31082020|00035|107,620|0||
+|K200|31082020|00036|2,000|0||
+|K200|31082020|00037|5,000|0||
+|K200|31082020|00038|5,000|0||
+|K200|31082020|00042|6,000|0||
+|K200|31082020|00043|30,000|0||
+|K200|31082020|00045|3,000|0||
+|K200|31082020|00046|4,000|0||
+|K200|31082020|00047|6,000|0||
+|K200|31082020|00048|5,000|0||
+|K200|31082020|00049|8,000|0||
+|K200|31082020|00050|7000,000|0||
+|K200|31082020|00053|764,800|0||
+|K200|31082020|00054|1300,000|0||
+|K200|31082020|00055|127,400|0||
+|K200|31082020|00060|86,000|0||
+|K200|31082020|00065|85,000|0||
+|K200|31082020|00067|353,600|0||
+|K200|31082020|00068|828,400|0||
+|K200|31082020|00069|37,000|0||
+|K200|31082020|00072|6,000|0||
+|K200|31082020|00073|16,000|0||
+|K200|31082020|00074|221,220|0||
+|K200|31082020|00075|221,220|0||
+|K200|31082020|00077|76,000|0||
+|K200|31082020|00079|2,000|0||
+|K200|31082020|00080|6,000|0||
+|K200|31082020|00081|6,000|0||
+|K200|31082020|00082|4,000|0||
+|K200|31082020|00083|1,000|0||
+|K200|31082020|00084|2,000|0||
+|K200|31082020|00085|2,000|0||
+|K200|31082020|00086|4,000|0||
+|K200|31082020|00087|1,000|0||
+|K200|31082020|00088|2,000|0||
+|K200|31082020|00089|2,000|0||
+|K200|31082020|00092|24,000|0||
+|K200|31082020|00099|25,000|0||
+|K200|31082020|00109|38,000|0||
+|K200|31082020|00110|320,000|0||
+|K200|31082020|00111|270,000|0||
+|K200|31082020|00112|5,000|0||
+|K200|31082020|00113|60,000|0||
+|K200|31082020|00114|11,000|0||
+|K200|31082020|00115|5,000|0||
+|K200|31082020|00116|4655,000|0||
+|K200|31082020|00117|2700,000|0||
+|K200|31082020|00120|50,000|0||
+|K200|31082020|00139|179,600|0||
+|K200|31082020|00140|0,400|0||
+|K200|31082020|00141|82,000|0||
+|K200|31082020|00142|110,000|0||
+|K200|31082020|00143|107,000|0||
+|K200|31082020|00144|104,000|0||
+|K200|31082020|00149|51,500|0||
+|K200|31082020|00150|2,000|0||
+|K200|31082020|00155|46,000|0||
+|K200|31082020|00157|1,000|0||
+|K200|31082020|00159|32,400|0||
+|K200|31082020|00160|18,000|0||
+|K200|31082020|00161|20,000|0||
+|K200|31082020|00162|12,000|0||
+|K200|31082020|00163|40,000|0||
+|K200|31082020|00165|200,000|0||
+|K200|31082020|00167|30,000|0||
+|K200|31082020|00170|6,000|0||
+|K200|31082020|00171|6,000|0||
+|K200|31082020|00172|15,000|0||
+|K200|31082020|00173|15,000|0||
+|K200|31082020|00174|8,000|0||
+|K200|31082020|00175|8,000|0||
+|K200|31082020|00180|4,000|0||
+|K200|31082020|00181|1,000|0||
+|K200|31082020|00185|30,000|0||
+|K200|31082020|00186|30,000|0||
+|K200|31082020|00191|940,000|0||
+|K200|31082020|00193|67,000|0||
+|K200|31082020|00198|1480,000|0||
+|K200|31082020|00199|374,000|0||
+|K200|31082020|00200|500,000|0||
+|K200|31082020|00201|200,000|0||
+|K200|31082020|00202|12,000|0||
+|K200|31082020|00203|17,000|0||
+|K200|31082020|00204|17,000|0||
+|K200|31082020|00205|73,000|0||
+|K200|31082020|00206|73,000|0||
+|K200|31082020|00207|6,000|0||
+|K200|31082020|00226|188,000|0||
+|K200|31082020|00228|152,000|0||
+|K200|31082020|00230|1230,530|0||
+|K200|31082020|00231|152,000|0||
+|K200|31082020|00232|1030,000|0||
+|K200|31082020|00233|25,000|0||
+|K200|31082020|00234|25,000|0||
+|K200|31082020|00235|25,000|0||
+|K200|31082020|00236|15,000|0||
+|K200|31082020|00237|9910,000|0||
+|K200|31082020|00238|15005,000|0||
+|K200|31082020|00239|909,000|0||
+|K200|31082020|00240|3947,200|0||
+|K200|31082020|00241|143,400|0||
+|K200|31082020|00242|97,800|0||
+|K200|31082020|00243|12,000|0||
+|K200|31082020|00244|12,000|0||
+|K200|31082020|00245|126,151|0||
+|K200|31082020|00246|649,114|0||
+|K200|31082020|00247|649,115|0||
+|K200|31082020|00248|503,195|0||
+|K200|31082020|00249|503,200|0||
+|K200|31082020|00250|50,400|0||
+|K200|31082020|00251|1,000|0||
+|K200|31082020|00252|51,000|0||
+|K200|31082020|00258|4,700|0||
+|K200|31082020|00272|1,000|0||
+|K200|31082020|00277|5,000|0||
+|K200|31082020|00279|5,000|0||
+|K200|31082020|00293|17,000|0||
+|K200|31082020|00297|1,000|0||
+|K200|31082020|00304|48,000|0||
+|K200|31082020|00306|6,000|0||
+|K200|31082020|00308|4629,000|0||
+|K200|31082020|00316|10,000|0||
+|K200|31082020|00330|6,000|0||
+|K200|31082020|00331|46,000|0||
+|K200|31082020|00336|346,000|0||
+|K200|31082020|00345|2,000|0||
+|K200|31082020|00350|1,000|0||
+|K200|31082020|00353|1,000|0||
+|K200|31082020|00355|15,000|0||
+|K200|31082020|00357|800,000|0||
+|K200|31082020|00358|1000,000|0||
+|K200|31082020|00359|1200,000|0||
+|K200|31082020|00385|20,000|0||
+|K200|31082020|00412|64,000|0||
+|K200|31082020|00429|1,000|0||
+|K200|31082020|00430|38,000|0||
+|K200|31082020|00441|3,000|0||
+|K200|31082020|00445|10,000|0||
+|K200|31082020|00449|116,362|0||
+|K200|31082020|00462|3430,612|0||
+|K200|31082020|00463|4,000|0||
+|K200|31082020|00464|1000,000|0||
+|K200|31082020|00472|100,000|0||
+|K200|31082020|00481|555,000|0||
+|K200|31082020|00483|175,180|0||
+|K200|31082020|00485|2,000|0||
+|K200|31082020|00489|2,000|0||
+|K200|31082020|00496|9,000|0||
+|K200|31082020|00500|32,000|0||
+|K200|31082020|00514|5,000|0||
+|K200|31082020|00517|25,000|0||
+|K200|31082020|00518|200,000|0||
+|K200|31082020|00519|2,000|0||
+|K200|31082020|00528|10,000|0||
+|K200|31082020|00530|1263,000|0||
+|K200|31082020|00531|1400,000|0||
+|K200|31082020|00533|2,000|0||
+|K200|31082020|00535|3,000|0||
+|K200|31082020|00536|2,000|0||
+|K200|31082020|00538|9,000|0||
+|K200|31082020|00539|3,000|0||
+|K200|31082020|00540|1,000|0||
+|K200|31082020|00543|1,000|0||
+|K200|31082020|00544|2,000|0||
+|K200|31082020|00545|37,000|0||
+|K200|31082020|00546|9,000|0||
+|K200|31082020|00548|9,000|0||
+|K200|31082020|00557|12,000|0||
+|K200|31082020|00559|5,000|0||
+|K200|31082020|00560|5,000|0||
+|K200|31082020|00576|1,000|0||
+|K200|31082020|00577|6,000|0||
+|K200|31082020|00581|10,000|0||
+|K200|31082020|00582|850,000|0||
+|K200|31082020|00587|6,000|0||
+|K200|31082020|00588|4,000|0||
+|K200|31082020|00589|5,000|0||
+|K200|31082020|00593|1,000|0||
+|K200|31082020|00594|7,000|0||
+|K200|31082020|00595|16,000|0||
+|K200|31082020|00597|17,000|0||
+|K200|31082020|00598|6,000|0||
+|K200|31082020|00604|17,000|0||
+|K200|31082020|00605|3,000|0||
+|K200|31082020|00607|2,000|0||
+|K200|31082020|00611|39,000|0||
+|K200|31082020|00612|1,000|0||
+|K200|31082020|00613|21,000|0||
+|K200|31082020|00614|30,000|0||
+|K200|31082020|00615|9,000|0||
+|K200|31082020|00622|1,000|0||
+|K200|31082020|00623|1,000|0||
+|K200|31082020|00624|13,000|0||
+|K200|31082020|00628|14,000|0||
+|K200|31082020|00629|0,680|0||
+|K200|31082020|00634|3,000|0||
+|K200|31082020|00647|10,000|0||
+|K200|31082020|00655|8,000|0||
+|K200|31082020|00659|263,954|0||
+|K200|31082020|00663|120,000|0||
+|K200|31082020|00665|1,000|0||
+|K200|31082020|00669|8,000|0||
+|K200|31082020|00672|2,000|0||
+|K200|31082020|00674|19,000|0||
+|K200|31082020|00675|26,000|0||
+|K200|31082020|00676|7,000|0||
+|K200|31082020|00677|26,000|0||
+|K200|31082020|00680|10,000|0||
+|K200|31082020|00683|14,000|0||
+|K200|31082020|00684|20,000|0||
+|K200|31082020|00686|50,000|0||
+|K200|31082020|00696|1,000|0||
+|K200|31082020|00698|2,000|0||
+|K200|31082020|00699|6,000|0||
+|K200|31082020|00700|20,000|0||
+|K200|31082020|00702|6,000|0||
+|K200|31082020|00705|19,000|0||
+|K200|31082020|00706|7,000|0||
+|K200|31082020|00709|1,000|0||
+|K200|31082020|00710|1,000|0||
+|K200|31082020|00716|4168,060|0||
+|K200|31082020|00717|7,250|0||
+|K200|31082020|00718|1206,235|0||
+|K200|31082020|00719|1206,235|0||
+|K200|31082020|00727|1,000|0||
+|K200|31082020|00728|530,184|0||
+|K200|31082020|00729|78,000|0||
+|K200|31082020|00730|692,050|0||
+|K200|31082020|00737|4,000|0||
+|K200|31082020|00738|9,000|0||
+|K200|31082020|00739|9,000|0||
+|K200|31082020|00740|17,000|0||
+|K200|31082020|00741|25,000|0||
+|K200|31082020|00742|8,000|0||
+|K200|31082020|00744|5,000|0||
+|K200|31082020|00746|77,000|0||
+|K200|31082020|00747|5,000|0||
+|K200|31082020|00758|46,000|0||
+|K200|31082020|00766|32,000|0||
+|K200|31082020|00771|3,000|0||
+|K200|31082020|00772|6,000|0||
+|K200|31082020|00778|3,000|0||
+|K200|31082020|00780|1000,000|0||
+|K200|31082020|00797|12,000|0||
+|K200|31082020|00802|1,000|0||
+|K200|31082020|00803|2,044|0||
+|K200|31082020|00810|2,000|0||
+|K200|31082020|00822|426,400|0||
+|K200|31082020|00823|587,366|0||
+|K200|31082020|00824|148,000|0||
+|K200|31082020|00825|52,000|0||
+|K200|31082020|00826|12,000|0||
+|K200|31082020|00827|738,400|0||
+|K200|31082020|00828|409,000|0||
+|K200|31082020|00829|118,656|0||
+|K200|31082020|00830|122,800|0||
+|K200|31082020|00831|124,100|0||
+|K200|31082020|00832|717,150|0||
+|K200|31082020|00833|717,150|0||
+|K200|31082020|00834|15,000|0||
+|K200|31082020|00835|15,000|0||
+|K200|31082020|00838|874,324|0||
+|K200|31082020|00842|3,000|0||
+|K200|31082020|00843|3,000|0||
+|K200|31082020|00844|4,000|0||
+|K200|31082020|00846|6,000|0||
+|K200|31082020|00862|4,000|0||
+|K200|31082020|00876|10,000|0||
+|K200|31082020|00883|20,000|0||
+|K200|31082020|00892|2,000|0||
+|K200|31082020|00895|89,789|0||
+|K200|31082020|00896|4,000|0||
+|K200|31082020|00897|17,000|0||
+|K200|31082020|00898|1,000|0||
+|K200|31082020|00899|4,000|0||
+|K200|31082020|00900|1,000|0||
+|K200|31082020|00901|1,000|0||
+|K200|31082020|00902|1,000|0||
+|K200|31082020|00903|0,770|0||
+|K200|31082020|00904|7,000|0||
+|K200|31082020|00905|2,000|0||
+|K200|31082020|00906|2,000|0||
+|K200|31082020|00907|2,000|0||
+|K200|31082020|00909|200,000|0||
+|K200|31082020|00912|8,000|0||
+|K200|31082020|00913|178,000|0||
+|K200|31082020|00914|2,000|0||
+|K200|31082020|00915|2,000|0||
+|K200|31082020|00916|1,000|0||
+|K200|31082020|00917|1,000|0||
+|K200|31082020|00918|1,000|0||
+|K200|31082020|00919|12,000|0||
+|K200|31082020|00920|1,000|0||
+|K200|31082020|00921|1,000|0||
+|K200|31082020|00922|1,000|0||
+|K200|31082020|00923|1,000|0||
+|K200|31082020|00924|0,200|0||
+|K200|31082020|00925|1,000|0||
+|K200|31082020|00926|8,000|0||
+|K200|31082020|00927|1,000|0||
+|K200|31082020|00928|3,000|0||
+|K200|31082020|00929|4,000|0||
+|K200|31082020|00930|2,000|0||
+|K200|31082020|00932|1,000|0||
+|K200|31082020|00933|1,000|0||
+|K200|31082020|00934|1,000|0||
+|K200|31082020|00935|1,000|0||
+|K200|31082020|00936|21,000|0||
+|K200|31082020|00937|1,000|0||
+|K200|31082020|00938|1,000|0||
+|K200|31082020|00939|1,000|0||
+|K200|31082020|00940|1,000|0||
+|K200|31082020|00941|1,000|0||
+|K200|31082020|00942|2,000|0||
+|K200|31082020|00943|1,000|0||
+|K200|31082020|00944|1,000|0||
+|K200|31082020|00945|1,000|0||
+|K200|31082020|00946|3,000|0||
+|K200|31082020|00954|1,000|0||
+|K200|31082020|00955|24,000|0||
+|K200|31082020|00956|30,000|0||
+|K200|31082020|00957|1,000|0||
+|K200|31082020|00958|1,000|0||
+|K200|31082020|00959|8,000|0||
+|K200|31082020|00960|1,000|0||
+|K200|31082020|00961|3,000|0||
+|K200|31082020|00962|1,000|0||
+|K200|31082020|00963|1,000|0||
+|K200|31082020|00964|2,000|0||
+|K200|31082020|00965|2,000|0||
+|K200|31082020|00966|3,000|0||
+|K200|31082020|00967|6,000|0||
+|K200|31082020|00968|1,000|0||
+|K200|31082020|00969|1,000|0||
+|K200|31082020|00970|1,000|0||
+|K200|31082020|00971|2,000|0||
+|K200|31082020|00972|3,000|0||
+|K200|31082020|00973|1,000|0||
+|K200|31082020|00974|16,000|0||
+|K200|31082020|00978|1,000|0||
+|K200|31082020|00979|1,000|0||
+|K200|31082020|00980|2,000|0||
+|K200|31082020|00981|4,000|0||
+|K200|31082020|00990|25,200|0||
+|K200|31082020|00992|99,600|0||
+|K200|31082020|00993|499,000|0||
+|K200|31082020|00994|39,900|0||
+|K200|31082020|00998|16,000|0||
+|K200|31082020|00999|2,000|0||
+|K200|31082020|01000|2,000|0||
+|K200|31082020|01001|5,000|0||
+|K200|31082020|01002|2,000|0||
+|K200|31082020|01003|1,000|0||
+|K200|31082020|01004|1,000|0||
+|K200|31082020|01005|1,000|0||
+|K200|31082020|01006|4,000|0||
+|K200|31082020|01007|1,000|0||
+|K200|31082020|01008|1,000|0||
+|K200|31082020|01009|1,000|0||
+|K200|31082020|01010|2,608|0||
+|K200|31082020|01011|2,000|0||
+|K200|31082020|01012|1,000|0||
+|K200|31082020|01013|1,000|0||
+|K200|31082020|01014|99,088|0||
+|K200|31082020|01015|1,000|0||
+|K200|31082020|01016|1,000|0||
+|K200|31082020|01017|20,000|0||
+|K200|31082020|01018|3412,000|0||
+|K200|31082020|01027|4,000|0||
+|K200|31082020|01028|7,000|0||
+|K200|31082020|01030|1,000|0||
+|K200|31082020|01032|105,000|0||
+|K200|31082020|01033|87,000|0||
+|K200|31082020|01034|2,000|0||
+|K200|31082020|01035|1,000|0||
+|K200|31082020|01036|11,000|0||
+|K200|31082020|01037|2,000|0||
+|K200|31082020|01038|1,000|0||
+|K200|31082020|01039|0,382|0||
+|K200|31082020|01040|1,000|0||
+|K200|31082020|01041|20,000|0||
+|K200|31082020|01042|1,000|0||
+|K200|31082020|01043|1,000|0||
+|K200|31082020|01044|1,000|0||
+|K200|31082020|01045|1,000|0||
+|K200|31082020|01046|1,000|0||
+|K200|31082020|01048|2,000|0||
+|K200|31082020|01049|4,000|0||
+|K200|31082020|01050|5,000|0||
+|K200|31082020|01051|2,000|0||
+|K200|31082020|01052|7,000|0||
+|K200|31082020|01053|4,000|0||
+|K200|31082020|01054|5,000|0||
+|K200|31082020|01107|1,000|0||
+|K200|31082020|01108|1,000|0||
+|K200|31082020|01109|2,000|0||
+|K200|31082020|01110|2,000|0||
+|K200|31082020|01111|1,000|0||
+|K200|31082020|01112|1,000|0||
+|K200|31082020|01113|1,000|0||
+|K200|31082020|01114|2,000|0||
+|K200|31082020|01115|5,000|0||
+|K200|31082020|01116|20,000|0||
+|K200|31082020|01117|20,000|0||
+|K200|31082020|01118|1,000|0||
+|K200|31082020|01119|1,000|0||
+|K200|31082020|01121|32,000|0||
+|K200|31082020|01122|5,000|0||
+|K200|31082020|01123|2,000|0||
+|K200|31082020|01124|1,000|0||
+|K200|31082020|01125|1,000|0||
+|K200|31082020|01126|3,000|0||
+|K200|31082020|01127|3,000|0||
+|K200|31082020|01128|1,000|0||
+|K200|31082020|01129|1,000|0||
+|K200|31082020|01130|1,000|0||
+|K200|31082020|01131|1,000|0||
+|K200|31082020|01132|2,000|0||
+|K200|31082020|01133|2,000|0||
+|K200|31082020|01134|1,000|0||
+|K200|31082020|01135|1,000|0||
+|K200|31082020|01136|1,000|0||
+|K200|31082020|01138|2,000|0||
+|K200|31082020|01139|2,000|0||
+|K200|31082020|01140|1,000|0||
+|K200|31082020|01141|1,000|0||
+|K200|31082020|01142|1,000|0||
+|K200|31082020|01143|1,000|0||
+|K200|31082020|01144|5,000|0||
+|K200|31082020|01145|5,000|0||
+|K200|31082020|01146|6,000|0||
+|K200|31082020|01147|4,000|0||
+|K200|31082020|01148|50,000|0||
+|K200|31082020|01149|4,000|0||
+|K200|31082020|01150|10,000|0||
+|K200|31082020|01151|1,000|0||
+|K200|31082020|01152|1,000|0||
+|K200|31082020|01153|1,000|0||
+|K200|31082020|01154|1,000|0||
+|K200|31082020|01155|1,000|0||
+|K200|31082020|01156|2,000|0||
+|K200|31082020|01157|1,000|0||
+|K200|31082020|01159|1,000|0||
+|K200|31082020|01160|1,000|0||
+|K200|31082020|01161|1,000|0||
+|K200|31082020|01162|3,000|0||
+|K200|31082020|01163|1,000|0||
+|K200|31082020|01164|1,000|0||
+|K200|31082020|01165|1,000|0||
+|K200|31082020|01166|4,000|0||
+|K200|31082020|01167|1,000|0||
+|K200|31082020|01168|1,000|0||
+|K200|31082020|01169|1,000|0||
+|K200|31082020|01170|1,000|0||
+|K200|31082020|01171|2,000|0||
+|K200|31082020|01172|1,000|0||
+|K200|31082020|01176|1,000|0||
+|K200|31082020|01177|24,000|0||
+|K200|31082020|01178|3,000|0||
+|K200|31082020|01179|2,000|0||
+|K200|31082020|01180|8,000|0||
+|K200|31082020|01181|5,000|0||
+|K200|31082020|01182|1,000|0||
+|K200|31082020|01183|1,364|0||
+|K200|31082020|01184|1,000|0||
+|K200|31082020|01185|39,000|0||
+|K200|31082020|01186|1,000|0||
+|K200|31082020|01187|588,578|0||
+|K200|31082020|01188|1,000|0||
+|K200|31082020|01189|1,000|0||
+|K200|31082020|01190|1,000|0||
+|K200|31082020|01191|2,000|0||
+|K200|31082020|01193|9,000|0||
+|K200|31082020|01194|3,000|0||
+|K200|31082020|01201|71,000|0||
+|K200|31082020|01202|21,000|0||
+|K200|31082020|01203|30,000|0||
+|K200|31082020|01204|3,000|0||
+|K200|31082020|01205|77,000|0||
+|K200|31082020|01206|1,000|0||
+|K200|31082020|01207|1,000|0||
+|K200|31082020|01208|2000,000|0||
+|K200|31082020|01209|1,000|0||
+|K200|31082020|01210|1,000|0||
+|K200|31082020|01212|14,000|0||
+|K200|31082020|01216|2,000|0||
+|K200|31082020|01217|2,000|0||
+|K200|31082020|01218|1,000|0||
+|K200|31082020|01219|2,000|0||
+|K200|31082020|01220|1,000|0||
+|K200|31082020|01221|1,000|0||
+|K200|31082020|01222|1,000|0||
+|K200|31082020|01223|3,000|0||
+|K200|31082020|01224|4,000|0||
+|K200|31082020|01225|2,000|0||
+|K200|31082020|01226|1,000|0||
+|K200|31082020|01227|1,000|0||
+|K200|31082020|01228|2,000|0||
+|K200|31082020|01229|1,000|0||
+|K200|31082020|01230|2,000|0||
+|K200|31082020|01231|1,000|0||
+|K200|31082020|01232|1,000|0||
+|K200|31082020|01233|3,000|0||
+|K200|31082020|01234|3,000|0||
+|K200|31082020|01235|1,000|0||
+|K200|31082020|01236|2,000|0||
+|K200|31082020|01237|1,000|0||
+|K200|31082020|01238|1,000|0||
+|K200|31082020|01239|1,000|0||
+|K200|31082020|01240|3,000|0||
+|K200|31082020|01241|1,000|0||
+|K200|31082020|01245|50,000|0||
+|K200|31082020|01246|1,000|0||
+|K200|31082020|01247|1,000|0||
+|K200|31082020|01248|1,000|0||
+|K200|31082020|01249|3,000|0||
+|K200|31082020|01250|1,000|0||
+|K200|31082020|01251|3,000|0||
+|K200|31082020|01252|1,000|0||
+|K200|31082020|01253|1,000|0||
+|K200|31082020|01255|1,000|0||
+|K200|31082020|01256|1,000|0||
+|K200|31082020|01257|3,000|0||
+|K200|31082020|01258|1,000|0||
+|K200|31082020|01259|1000,000|0||
+|K200|31082020|01260|200,000|0||
+|K200|31082020|01261|3,000|0||
+|K200|31082020|01262|80,000|0||
+|K200|31082020|01263|80,000|0||
+|K200|31082020|01264|1,000|0||
+|K200|31082020|01265|1,000|0||
+|K200|31082020|01266|2,000|0||
+|K200|31082020|01267|5,000|0||
+|K200|31082020|01268|5,000|0||
+|K200|31082020|01269|5,000|0||
+|K200|31082020|01270|1,000|0||
+|K200|31082020|01271|15,000|0||
+|K200|31082020|01272|2,000|0||
+|K200|31082020|01274|11,000|0||
+|K200|31082020|01275|3,000|0||
+|K200|31082020|01276|3,000|0||
+|K200|31082020|01277|3,000|0||
+|K200|31082020|01278|1,000|0||
+|K200|31082020|01279|2,000|0||
+|K200|31082020|01280|7,000|0||
+|K200|31082020|01283|500,000|0||
+|K200|31082020|01284|1,000|0||
+|K200|31082020|01285|20,000|0||
+|K200|31082020|01286|1,000|0||
+|K200|31082020|01287|3,000|0||
+|K200|31082020|01293|4,000|0||
+|K200|31082020|01294|3,000|0||
+|K200|31082020|01295|1,000|0||
+|K200|31082020|01296|1,000|0||
+|K200|31082020|01297|1,000|0||
+|K200|31082020|01298|1,000|0||
+|K200|31082020|01299|6,000|0||
+|K200|31082020|01300|1,000|0||
+|K200|31082020|01301|1,000|0||
+|K200|31082020|01302|1,000|0||
+|K200|31082020|01303|1,000|0||
+|K200|31082020|01304|0,302|0||
+|K200|31082020|01305|0,285|0||
+|K200|31082020|01306|2,000|0||
+|K200|31082020|01307|2,000|0||
+|K200|31082020|01308|24,000|0||
+|K200|31082020|01309|2,000|0||
+|K200|31082020|01310|2,000|0||
+|K200|31082020|01311|1,000|0||
+|K200|31082020|01312|1,000|0||
+|K200|31082020|01313|2,000|0||
+|K200|31082020|01314|2,000|0||
+|K200|31082020|01315|2,000|0||
+|K200|31082020|01316|14,000|0||
+|K200|31082020|01317|14,000|0||
+|K200|31082020|01318|1,000|0||
+|K200|31082020|01320|97,000|0||
+|K200|31082020|01321|1,000|0||
+|K200|31082020|01322|1,000|0||
+|K200|31082020|01323|25,000|0||
+|K200|31082020|01324|1,000|0||
+|K200|31082020|01327|50,000|0||
+|K200|31082020|01328|1,000|0||
+|K200|31082020|01329|30,000|0||
+|K200|31082020|01330|6,000|0||
+|K200|31082020|01331|1,000|0||
+|K200|31082020|01332|1,000|0||
+|K200|31082020|01333|2,000|0||
+|K200|31082020|01336|78,000|0||
+|K200|31082020|01337|104,000|0||
+|K200|31082020|01338|10,000|0||
+|K200|31082020|01339|100,000|0||
+|K200|31082020|01340|15,000|0||
+|K200|31082020|01341|5,000|0||
+|K200|31082020|01342|6,000|0||
+|K200|31082020|01343|20,000|0||
+|K200|31082020|01344|20,000|0||
+|K200|31082020|01345|20,000|0||
+|K200|31082020|01346|20,000|0||
+|K200|31082020|01347|3,000|0||
+|K200|31082020|01348|6,000|0||
+|K200|31082020|01349|2,000|0||
+|K200|31082020|01350|11,000|0||
+|K200|31082020|01351|1,000|0||
+|K200|31082020|01352|3,000|0||
+|K200|31082020|01353|1,000|0||
+|K200|31082020|01354|6,000|0||
+|K200|31082020|01355|5,000|0||
+|K200|31082020|01356|25,000|0||
+|K200|31082020|01357|11,000|0||
+|K200|31082020|01358|7,000|0||
+|K200|31082020|01359|24,000|0||
+|K200|31082020|01360|50,000|0||
+|K200|31082020|01361|1000,000|0||
+|K200|31082020|01362|1000,000|0||
+|K200|31082020|01363|4,000|0||
+|K200|31082020|01366|2,000|0||
+|K200|31082020|01367|1,000|0||
+|K200|31082020|01368|1,000|0||
+|K200|31082020|01369|1,000|0||
+|K200|31082020|01371|12,000|0||
+|K200|31082020|01372|1,000|0||
+|K200|31082020|01373|1,000|0||
+|K200|31082020|01374|2,000|0||
+|K200|31082020|01375|23,000|0||
+|K200|31082020|01376|5,000|0||
+|K200|31082020|01377|2,000|0||
+|K200|31082020|01378|7,000|0||
+|K200|31082020|01379|7,000|0||
+|K200|31082020|01380|220,000|0||
+|K200|31082020|01384|24,000|0||
+|K200|31082020|01389|1,000|0||
+|K200|31082020|01391|25,000|0||
+|K200|31082020|01392|25,000|0||
+|K200|31082020|01394|20,000|0||
+|K200|31082020|01396|1,000|0||
+|K200|31082020|01397|1,000|0||
+|K200|31082020|01398|100,000|0||
+|K200|31082020|01399|922,000|0||
+|K200|31082020|01400|1,000|0||
+|K200|31082020|01401|1,000|0||
+|K200|31082020|01402|2,000|0||
+|K200|31082020|01403|12,000|0||
+|K200|31082020|01404|2,000|0||
+|K200|31082020|01405|1,000|0||
+|K200|31082020|01406|1,000|0||
+|K200|31082020|01407|1,000|0||
+|K200|31082020|01408|1,000|0||
+|K200|31082020|01409|1,000|0||
+|K200|31082020|01410|1,000|0||
+|K200|31082020|01411|1,000|0||
+|K200|31082020|01412|1,000|0||
+|K200|31082020|01413|2,266|0||
+|K200|31082020|01414|1,000|0||
+|K200|31082020|01415|1,000|0||
+|K200|31082020|01416|1,000|0||
+|K200|31082020|01417|0,376|0||
+|K200|31082020|01420|6,000|0||
+|K200|31082020|01423|6,000|0||
+|K200|31082020|01430|3,000|0||
+|K200|31082020|01431|0,020|0||
+|K200|31082020|01432|2,000|0||
+|K200|31082020|01433|4,000|0||
+|K200|31082020|01434|1,000|0||
+|K200|31082020|01435|1,000|0||
+|K200|31082020|01436|2,000|0||
+|K200|31082020|01437|10,000|0||
+|K200|31082020|01438|2,000|0||
+|K200|31082020|01439|1,000|0||
+|K200|31082020|01440|1,000|0||
+|K200|31082020|01444|23,000|0||
+|K200|31082020|01445|12,000|0||
+|K200|31082020|01446|2,000|0||
+|K230|31082020|31082020|698|00475|1,000000|
+|K235|31082020|00107|9,000000||
+|K235|31082020|00106|18,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|12,000000||
+|K235|31082020|00198|36,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|260,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|260,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|696|00473|1,000000|
+|K235|31082020|00107|9,000000||
+|K235|31082020|00106|18,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|12,000000||
+|K235|31082020|00198|36,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|260,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|260,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|694|00552|1,000000|
+|K235|31082020|00041|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|200,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|200,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|28,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00106|24,000000||
+|K230|31082020|31082020|692|00369|1,000000|
+|K235|31082020|00012|27,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|32,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|220,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|220,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|2,000000||
+|K235|31082020|00169|2,000000||
+|K230|31082020|31082020|690|00886|1,000000|
+|K235|31082020|00107|17,000000||
+|K235|31082020|00106|12,500000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|36,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00071|8,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|250,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|250,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|2,000000||
+|K235|31082020|00169|2,000000||
+|K230|31082020|31082020|688|00885|1,000000|
+|K235|31082020|00041|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|260,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|260,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|8,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|12,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|40,000000||
+|K235|31082020|00199|10,000000||
+|K235|31082020|00156|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00012|32,000000||
+|K230|31082020|31082020|686|00884|1,000000|
+|K235|31082020|00107|6,000000||
+|K235|31082020|00106|29,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00154|2,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00156|1,000000||
+|K235|31082020|00199|10,000000||
+|K235|31082020|00198|45,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|8,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|270,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|270,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00040|1,000000||
+|K235|31082020|00041|1,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|684|00583|1,000000|
+|K235|31082020|00041|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|190,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|190,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00066|12,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|28,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00106|25,500000||
+|K230|31082020|31082020|682|00866|1,000000|
+|K235|31082020|00041|1,000000||
+|K235|31082020|00040|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|125,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|125,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|8,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|12,000000||
+|K235|31082020|00199|6,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00106|10,500000||
+|K230|31082020|31082020|680|00865|1,000000|
+|K235|31082020|00029|14,500000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|16,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00071|8,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|150,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|150,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|678|00864|1,000000|
+|K235|31082020|00041|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|180,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|180,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00066|8,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|21,000000||
+|K235|31082020|00199|6,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00106|19,000000||
+|K230|31082020|31082020|716|00521|1,000000|
+|K235|31082020|00169|1,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|185,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|185,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|24,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00012|22,000000||
+|K230|31082020|31082020|714|00513|1,000000|
+|K235|31082020|00106|15,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|16,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|150,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|150,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|712|00512|1,000000|
+|K235|31082020|00106|15,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|16,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|150,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|150,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|710|00504|1,000000|
+|K235|31082020|00169|1,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|280,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|280,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|40,000000||
+|K235|31082020|00199|10,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00106|31,000000||
+|K230|31082020|31082020|708|00497|1,000000|
+|K235|31082020|00106|38,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|16,000000||
+|K235|31082020|00198|44,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|320,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|320,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|2,000000||
+|K235|31082020|00169|2,000000||
+|K230|31082020|31082020|706|00480|1,000000|
+|K235|31082020|00107|19,000000||
+|K235|31082020|00106|13,000000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|36,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|240,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|240,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|2,000000||
+|K235|31082020|00169|2,000000||
+|K230|31082020|31082020|704|00479|1,000000|
+|K235|31082020|00107|7,500000||
+|K235|31082020|00106|11,500000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00033|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|20,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|4,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|170,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|170,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|702|00477|1,000000|
+|K235|31082020|00198|24,000000||
+|K235|31082020|00199|10,000000||
+|K235|31082020|00106|18,000000||
+|K230|31082020|31082020|700|00476|1,000000|
+|K235|31082020|00169|1,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|200,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|200,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|14,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|24,000000||
+|K235|31082020|00199|8,000000||
+|K230|31082020|31082020|676|00863|1,000000|
+|K235|31082020|00169|2,000000||
+|K235|31082020|00168|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|210,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|210,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|32,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00060|27,500000||
+|K230|31082020|31082020|674|00861|1,000000|
+|K235|31082020|00107|5,500000||
+|K235|31082020|00106|21,500000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00001|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|28,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|10,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|210,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|210,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00041|2,000000||
+|K230|31082020|31082020|672|00856|1,000000|
+|K235|31082020|00107|16,000000||
+|K235|31082020|00106|5,500000||
+|K235|31082020|00216|2,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|6,000000||
+|K235|31082020|00198|21,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|8,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|160,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|160,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00041|2,000000||
+|K230|31082020|31082020|670|00854|1,000000|
+|K235|31082020|00060|29,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00062|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00198|32,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00039|220,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00024|220,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00040|1,000000||
+|K235|31082020|00041|1,000000||
+|K235|31082020|00168|1,000000||
+|K235|31082020|00169|1,000000||
+|K230|31082020|31082020|668|00853|1,000000|
+|K235|31082020|00041|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|220,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|220,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|32,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00029|30,000000||
+|K230|31082020|31082020|666|00852|1,000000|
+|K235|31082020|00041|2,000000||
+|K235|31082020|00040|2,000000||
+|K235|31082020|00166|2,000000||
+|K235|31082020|00005|1,000000||
+|K235|31082020|00017|1,000000||
+|K235|31082020|00008|1,000000||
+|K235|31082020|00014|1,000000||
+|K235|31082020|00044|1,000000||
+|K235|31082020|00018|1,000000||
+|K235|31082020|00090|1,000000||
+|K235|31082020|00024|200,000000||
+|K235|31082020|00153|1,000000||
+|K235|31082020|00039|200,000000||
+|K235|31082020|00147|1,000000||
+|K235|31082020|00071|12,000000||
+|K235|31082020|00225|6,000000||
+|K235|31082020|00066|10,000000||
+|K235|31082020|00189|1,000000||
+|K235|31082020|00188|1,000000||
+|K235|31082020|00198|28,000000||
+|K235|31082020|00199|8,000000||
+|K235|31082020|00155|1,000000||
+|K235|31082020|00206|1,000000||
+|K235|31082020|00205|1,000000||
+|K235|31082020|00154|1,000000||
+|K235|31082020|00032|1,000000||
+|K235|31082020|00159|1,000000||
+|K235|31082020|00069|1,000000||
+|K235|31082020|00106|11,000000||
+|K235|31082020|00107|16,000000||
+|K990|1477|
+|1001|0|
+|1010|N|N|N|N|N|N|N|N|N|N|N|N|N|
+|1990|3|
+|9001|0|
+|9900|0000|1|
+|9900|0001|1|
+|9900|0002|1|
+|9900|0005|1|
+|9900|0100|1|
+|9900|0150|52|
+|9900|0190|21|
+|9900|0200|746|
+|9900|0400|4|
+|9900|0990|1|
+|9900|B001|1|
+|9900|B990|1|
+|9900|C001|1|
+|9900|C100|86|
+|9900|C140|4|
+|9900|C141|11|
+|9900|C160|4|
+|9900|C170|154|
+|9900|C190|94|
+|9900|C990|1|
+|9900|D001|1|
+|9900|D100|7|
+|9900|D190|7|
+|9900|D990|1|
+|9900|E001|1|
+|9900|E100|1|
+|9900|E110|1|
+|9900|E116|1|
+|9900|E500|1|
+|9900|E510|12|
+|9900|E520|1|
+|9900|E990|1|
+|9900|G001|1|
+|9900|G990|1|
+|9900|H001|1|
+|9900|H005|1|
+|9900|H010|562|
+|9900|H990|1|
+|9900|K001|1|
+|9900|K100|1|
+|9900|K200|689|
+|9900|K230|26|
+|9900|K235|759|
+|9900|K990|1|
+|9900|1001|1|
+|9900|1010|1|
+|9900|1990|1|
+|9900|9001|1|
+|9900|9900|51|
+|9900|9990|1|
+|9900|9999|1|
+|9990|54|
+|9999|3322|

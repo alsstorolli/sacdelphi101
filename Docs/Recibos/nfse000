@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><Nfse versao="2.03">
+    <InfNfse Id="07869417000134_202100000000629">
+      <Numero>202100000000629</Numero>
+      <CodigoVerificacao>c5ce9a928</CodigoVerificacao>
+      <DataEmissao>2021-09-01T09:50:00</DataEmissao>
+      <OutrasInformacoes>
+Reg. Especial de Tributação: Estimativa Fixa
+Lei 12741/2012: Mun: R$4,10; Est: R$0,00; Fed: R$16,14; Total Aprox: R$20,24. Fonte: IBPT.</OutrasInformacoes>
+      <ValoresNfse>
+        <BaseCalculo>120.00</BaseCalculo>
+        <Aliquota>2.00</Aliquota>
+        <ValorIss>0</ValorIss>
+        <ValorLiquidoNfse>120.00</ValorLiquidoNfse>
+      </ValoresNfse>
+      <PrestadorServico>
+        <IdentificacaoPrestador>
+          <CpfCnpj>
+            <Cnpj>07869417000134</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>306039</InscricaoMunicipal>
+        </IdentificacaoPrestador>
+        <RazaoSocial>MARCIO ANTONIO DOS SANTOS SERVIÇOS MÉDICOS S/S</RazaoSocial>
+        <NomeFantasia>CLINICA OFTALMOLOGICA SANTOS</NomeFantasia>
+        <Endereco>
+          <Endereco>AV BRASIL</Endereco>
+          <Numero>450</Numero>
+          <Complemento>SALAS 503/506</Complemento>
+          <Bairro>CENTRO DA CIDADE</Bairro>
+          <CodigoMunicipio>4118501</CodigoMunicipio>
+          <Uf>PR</Uf>
+          <CodigoPais>1058</CodigoPais>
+          <Cep>85501071</Cep>
+        </Endereco>
+        <Contato>
+          <Telefone>4630257300</Telefone>
+          <Email>MARCIOANTONIODOSSANTOS@YAHOO.COM.BR</Email>
+        </Contato>
+      </PrestadorServico>
+      <OrgaoGerador>
+        <CodigoMunicipio>4118501</CodigoMunicipio>
+        <Uf>PR</Uf>
+      </OrgaoGerador>
+      <DeclaracaoPrestacaoServico>
+        <InfDeclaracaoPrestacaoServico>
+          <Competencia>2021-09-01</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>120.00</ValorServicos>
+              <ValorDeducoes>0.00</ValorDeducoes>
+              <ValorPis>0.00</ValorPis>
+              <ValorCofins>0.00</ValorCofins>
+              <ValorInss>0.00</ValorInss>
+              <ValorIr>0.00</ValorIr>
+              <ValorCsll>0.00</ValorCsll>
+              <OutrasRetencoes>0.00</OutrasRetencoes>
+              <ValTotTributos>20.24</ValTotTributos>
+              <ValorIss>0</ValorIss>
+              <Aliquota>2.00</Aliquota>
+              <DescontoIncondicionado>0.00</DescontoIncondicionado>
+              <DescontoCondicionado>0.00</DescontoCondicionado>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ItemListaServico>04.03</ItemListaServico>
+            <CodigoTributacaoMunicipio>8630502</CodigoTributacaoMunicipio>
+            <Discriminacao>Consulta em especialista oftalmologista.</Discriminacao>
+            <CodigoMunicipio>4118501</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>4118501</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>07869417000134</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>306039</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>05153432939</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>Cleuza Fortes</RazaoSocial>
+            <Endereco>
+              <Endereco>Deodora Kogi</Endereco>
+              <Numero>88</Numero>
+              <Bairro>Planalto</Bairro>
+              <CodigoMunicipio>4118501</CodigoMunicipio>
+              <Uf>PR</Uf>
+              <Cep>85509201</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>46991061351</Telefone>
+            </Contato>
+          </Tomador>
+          <RegimeEspecialTributacao>2</RegimeEspecialTributacao>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </DeclaracaoPrestacaoServico>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="SMF_07869417000134_202100000000629">
+        <SignedInfo>
+          <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <Reference URI="#07869417000134_202100000000629">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+              <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>ZK+UrO0KoeG7ShT34UqDxfLRREg=</DigestValue>
+          </Reference>
+        </SignedInfo>
+        <SignatureValue>rAIA+y3O3ncU7YJkF+nNzQiVjGz5CtB5MnLhnULDPiT4xlMH4U35ZzJk5ruIYY+9WyIEFWC9oh9Z4lMmXEIFru3MfenhOdKKRxxmGEC/BRVp1qrnTGbchg+msQaGhBpN+T8hiapGrTKJxBi3vyI+EEGtgdb/ivmJZFD7OCP2flWip56KYiQN2Bm644ODNkxb+ps8CffcCRN6mnHTpsFjc+qElQcPI6/M8V6XFb6XavQ8OXY8ONF5TwsOaU8KsaMIX1pAmUlTWHKLj3qNz7b5FwNcwZmlUF5qK6zNzIV4p2LiBvcTKsWQEEOtj3KaEuHO7WfcGe1vDpFpKfuYCUtQUQ==</SignatureValue>
+        <KeyInfo>
+          <X509Data>
+            <X509Certificate>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</X509Certificate>
+          </X509Data>
+        </KeyInfo>
+      </Signature>
+    </InfNfse>
+  </Nfse>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/11/17 11:51:54.000.466,D:\Delphixe7Projetos\Sac\Programa\visualizaimp.pas=</Transaction>
+    <Transaction>2016/11/19 19:39:11.000.827,D:\Delphixe7Projetos\Sac\Programa\ACbr\Ecf\ECFTeste1.pas=</Transaction>
+    <Transaction>2017/01/30 10:12:51.000.127,=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+    <Transaction>2017/01/30 10:14:00.000.776,D:\Delphixe7Projetos\Sac\Programa\Unit1.pas=D:\Delphixe7Projetos\Sac\Programa\pesagemcaminhao2.pas</Transaction>
+    <Transaction>2017/01/30 10:14:00.000.776,D:\Delphixe7Projetos\Sac\Programa\Unit1.dfm=D:\Delphixe7Projetos\Sac\Programa\pesagemcaminhao2.dfm</Transaction>
+    <Transaction>2017/01/30 12:02:02.000.701,D:\Delphixe7Projetos\Sac\Programa\pesagemcaminhao2.pas=</Transaction>
+    <Transaction>2017/02/01 14:54:42.000.533,=D:\Delphixe7Projetos\Sac\Programa\pesagemcaminhao2.pas</Transaction>
+    <Transaction>2017/02/08 13:37:12.000.104,=D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrNFeDANFeRLClass.pas</Transaction>
+    <Transaction>2017/02/08 17:56:08.000.258,D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrDANFCeFortesFrA4RM.pas=</Transaction>
+    <Transaction>2017/02/21 09:19:19.000.814,D:\Delphixe7Projetos\Sac\Programa\Sac.dproj=D:\Delphixe7Projetos\Sac\Programa\Sacxe7.dproj</Transaction>
+    <Transaction>2017/03/01 18:59:58.000.231,=D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrDANFCeFortesFrPC.pas</Transaction>
+    <Transaction>2017/03/01 20:23:34.000.105,D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrDANFCeFortesFrPCcopia.pas=D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrDANFCeFortesFrPC.pas</Transaction>
+    <Transaction>2017/03/01 20:23:34.000.105,D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrDANFCeFortesFrPCcopia.dfm=D:\Delphixe7Projetos\Sac\Programa\ACbr\ACBrDANFCeFortesFrPC.dfm</Transaction>
+    <Transaction>2017/03/20 08:25:19.000.320,=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+    <Transaction>2017/03/20 08:27:35.000.553,D:\Delphixe7Projetos\Sac\Programa\Unit1.dfm=D:\Delphixe7Projetos\Sac\Programa\agenda.dfm</Transaction>
+    <Transaction>2017/03/20 08:27:35.000.553,D:\Delphixe7Projetos\Sac\Programa\Unit1.pas=D:\Delphixe7Projetos\Sac\Programa\agenda.pas</Transaction>
+    <Transaction>2017/04/25 11:55:22.000.135,=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+    <Transaction>2017/04/25 12:05:02.000.696,=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+    <Transaction>2017/04/25 12:05:38.000.372,D:\Delphixe7Projetos\Sac\Programa\Unit1.pas=D:\Delphixe7Projetos\Sac\Programa\expnfse.pas</Transaction>
+    <Transaction>2017/04/25 12:05:38.000.372,D:\Delphixe7Projetos\Sac\Programa\Unit1.dfm=D:\Delphixe7Projetos\Sac\Programa\expnfse.dfm</Transaction>
+    <Transaction>2017/06/07 19:45:13.000.117,D:\Delphixe7Projetos\Sac\Programa\expnfse.pas=</Transaction>
+    <Transaction>2017/06/08 08:46:34.000.353,=D:\Delphixe7Projetos\Sac\Programa\expnfse.pas</Transaction>
+    <Transaction>2017/06/08 13:59:24.000.551,D:\Delphixe7Projetos\Sac\Programa\expnfse.pas=</Transaction>
+    <Transaction>2017/06/21 08:10:42.000.775,=D:\Delphixe7Projetos\Sac\Programa\expnfse.pas</Transaction>
+    <Transaction>2017/06/21 16:34:25.000.831,D:\Delphixe7Projetos\Sac\Programa\expnfse.pas=</Transaction>
+    <Transaction>2017/06/26 16:19:44.000.120,=D:\Delphixe7Projetos\Sac\Programa\expnfse.pas</Transaction>
+    <Transaction>2017/07/13 09:12:13.000.095,=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+    <Transaction>2017/07/13 09:14:43.000.487,D:\Delphixe7Projetos\Sac\Programa\Unit1.pas=D:\Delphixe7Projetos\Sac\Programa\nfedestinadas.pas</Transaction>
+    <Transaction>2017/07/13 09:14:43.000.487,D:\Delphixe7Projetos\Sac\Programa\Unit1.dfm=D:\Delphixe7Projetos\Sac\Programa\nfedestinadas.dfm</Transaction>
+    <Transaction>2017/10/05 10:32:12.000.290,=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+    <Transaction>2017/10/05 10:33:26.000.874,D:\Delphixe7Projetos\Sac\Programa\pesagemdevolucao.dfm=D:\Delphixe7Projetos\Sac\Programa\Unit1.dfm</Transaction>
+    <Transaction>2017/10/05 10:33:26.000.874,D:\Delphixe7Projetos\Sac\Programa\pesagemdevolucao.pas=D:\Delphixe7Projetos\Sac\Programa\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

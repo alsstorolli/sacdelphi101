@@ -1,0 +1,459 @@
+unit baixapagamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ACBrBase, ACBrBoleto, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.Mask, SQLEd, Vcl.Grids, SqlDtg, SQLBtn, alabel, Vcl.ExtCtrls,
+  SQLGrid, SqlExpr;
+
+type
+  TFBaixaPagamentos = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bbaixar: TSQLBtn;
+    bSair: TSQLBtn;
+    bpendentes: TSQLBtn;
+    bexclui: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    EdSeunumero: TSQLEd;
+    Edvencimento: TSQLEd;
+    PAcerto: TSQLPanelGrid;
+    bprocurar: TSQLBtn;
+    EdArquivo: TSQLEd;
+    EdValorpago: TSQLEd;
+    EdDataBaixa: TSQLEd;
+    Edbanco: TSQLEd;
+    EdBanco_descricao: TSQLEd;
+    OpenDialog1: TOpenDialog;
+    procedure EdDataBaixaValidate(Sender: TObject);
+    procedure EdbancoValidate(Sender: TObject);
+    procedure EdArquivoValidate(Sender: TObject);
+    procedure bprocurarClick(Sender: TObject);
+    procedure bpendentesClick(Sender: TObject);
+    procedure bexcluiClick(Sender: TObject);
+    procedure bbaixarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute;
+
+  end;
+
+var
+  FBaixaPagamentos: TFBaixaPagamentos;
+  unidadetituloachado,
+  sqldatacont,
+  numerobanco         :string;
+  DataBaixa           :Tdatetime;
+  QBanco              :TSqlquery;
+
+implementation
+
+uses sqlfun , Geral, Sqlsis , plano, relfinan, Unidades, cadcli;
+
+
+{$R *.dfm}
+
+{ TFBaixaPagamentos }
+
+procedure TFBaixaPagamentos.bbaixarClick(Sender: TObject);
+//////////////////////////////////////////////////////////////
+var ContaBanco,
+    p,
+    TipoCodigo,
+    ContaJuros,
+    ContaDescontos,
+    npag,
+    ContaDesrec :integer;
+    complemento,descjuros,descdescontos,ocorrencia,
+    transacao,
+    codbarra,
+    numerodoc   :string;
+    valor,
+    juros,
+    descontos   :currency;
+
+
+begin
+
+  if Edarquivo.isempty then exit;
+  ContaBanco := EdBanco.AsInteger;
+  if contabanco=0 then begin
+    Avisoerro('Não encontrado reduzido do banco '+numerobanco+' nas contas gerenciais');
+    exit;
+  end;
+
+  DataBaixa:=EdDatabaixa.asdate;
+
+  if not confirma('Confirma baixa dos pagamentos com o CODIGO DE BARRAS e FORNECEDOR informado ?') then exit;
+
+  Sistema.BeginProcess('Baixando pagamentos');
+  Transacao:=FGeral.gettransacao;
+  npag := 0;
+
+  descjuros     :=' Juros Pagos';
+  descdescontos :=' Descontos Obtidos';
+  ContaJuros    :=Global.ContaJurosPagos;
+  ContaDescontos:=FGEral.getconfig1asinteger('Ctadescobtidos');
+  ContaDesrec   :=FGeral.GetConfig1AsInteger('Ctabaixapag');
+
+
+  for p:=0 to Grid.rowcount do begin
+
+     ocorrencia := copy( Grid.cells[Grid.getcolumn('ocorrencia'),p],1,2);
+     codbarra   := trim( Grid.cells[Grid.getcolumn('pend_codbarra'),p]  );
+//     codbarra := copy( codbarra,1,3 ) + '4' + copy( codbarra,5,40 );
+     valor      := Texttovalor( Grid.cells[Grid.getcolumn('pend_valor'),p] );
+     DataBaixa  :=EdDatabaixa.asdate;
+     numerodoc  :=  Grid.cells[Grid.getcolumn('pend_numerodcto'),p];
+
+     if (trim(codbarra)<>'')
+        and (trim(Grid.cells[Grid.getcolumn('clie_nome'),p])<>'')
+        and (trim(Grid.cells[Grid.getcolumn('clie_nome'),p])<>'JÁ BAIXADO')
+        and (valor>0)  and ( trim(numerodoc)<>'' )
+        then begin
+
+      juros         :=texttovalor( Grid.cells[Grid.getcolumn('juros'),p] );
+      descontos     :=texttovalor( Grid.cells[Grid.getcolumn('descontos'),p] );
+      TipoCodigo    :=StrtoINtdef( Grid.cells[Grid.getcolumn('pend_tipo_codigo'),p],0 );
+
+      Sistema.Edit('Pendencias');
+          Sistema.SetField('pend_status','B');
+          Sistema.SetField('pend_mora',Juros);
+          Sistema.SetField('pend_descontos',Descontos);
+          Sistema.SetField('pend_transbaixa',Transacao);
+          Sistema.SetField('pend_contabaixa',ContaBanco);
+          Sistema.SetField('pend_databaixa',DataBaixa);
+          Sistema.SetField('pend_observacao','FORNECEDOR');
+          Sistema.SetField('pend_usubaixa',Global.Usuario.codigo);
+      Sistema.Post('pend_codbarra = '+Stringtosql( trim(codbarra))+
+                        sqldatacont+
+                        ' and pend_status=''N'''+
+                        ' and pend_rp=''P'''+
+                        ' and pend_numerodcto = '+stringtosql(trim(numerodoc))+
+                        ' and pend_valor = ' +Valortosql(valor)+
+                        ' and '+FGeral.GetIN('pend_unid_codigo',global.usuario.UnidadesMvto,'C') );
+
+          complemento:='NF '+trim(numerodoc)+' '+Grid.cells[Grid.getcolumn('clie_nome'),p];
+
+          FGeral.GravaMovfin(Transacao,Global.codigoUnidade,'S',complemento,
+                             DAtaBaixa,DataBaixa,
+                             DAtaBaixa,strtoint(numerodoc),999,0,contabanco,valor,ContaDesrec,Global.CodPendenciaFinanceira,
+                             0,tipocodigo,'C','N','1','');
+
+         if Juros>0 then
+             FGeral.GravaMovfin(Transacao,Global.codigoUnidade,'S',complemento+descjuros,DAtaBaixa,DataBaixa,
+                             DAtaBaixa,strtoint(Numerodoc),999,0,contabanco,Juros,ContaJuros,Global.CodJurosRecebidos,
+                             0,tipocodigo,'C','N','1','')
+        else if Descontos>0 then
+             FGeral.GravaMovfin(Transacao,Global.codigoUnidade,'E',complemento+descdescontos,DAtaBaixa,DataBaixa,
+                             DAtaBaixa,strtoint(Numerodoc),999,0,contabanco,Descontos,ContaDescontos,Global.CodDescontosDados,
+                             0,tipocodigo,'C','N','1','');
+
+      inc(npag);
+
+    end;
+
+  end;   // for do grid dos pagamentos
+
+  if npag > 0 then begin
+
+     Sistema.Commit;
+     Sistema.endprocess('Baixado '+inttostr(npag)+' pagamentos');
+     Grid.Clear;
+
+  end else
+
+     Sistema.endprocess('NENHUM documento baixado ');
+
+
+
+end;
+
+procedure TFBaixaPagamentos.bexcluiClick(Sender: TObject);
+////////////////////////////////////////////////////////////
+var valor:currency;
+    seunumero:string;
+begin
+
+  seunumero:=Grid.cells[Grid.getcolumn('pend_numerodcto'),Grid.row];
+  if not confirma('Confirma a exclusão do boleto ref. documento '+seunumero+' ?') then exit;
+
+   valor:= Texttovalor( Grid.cells[Grid.getcolumn('pend_valor'),Grid.row] );
+   EdValorpago.setvalue(EdValorpago.ascurrency-valor);
+   Grid.DeleteRow(Grid.row);
+   Grid.Refresh;
+
+end;
+
+procedure TFBaixaPagamentos.bpendentesClick(Sender: TObject);
+/////////////////////////////////////////////////////////////////////
+begin
+
+  if not Sistema.Processando then FRelFinan_Pendentes('P'); ;
+
+end;
+
+procedure TFBaixaPagamentos.bprocurarClick(Sender: TObject);
+///////////////////////////////////////////////////////////////////
+begin
+
+   if opendialog1.execute then begin
+
+     EdArquivo.text:=Opendialog1.FileName;
+     EdArquivo.valid;
+     Grid.setfocus;
+
+   end;
+
+end;
+
+procedure TFBaixaPagamentos.EdArquivoValidate(Sender: TObject);
+//////////////////////////////////////////////////////////////////
+var cnab240400,
+    numerobanco,
+    g_erro,
+    xcodbarra   : string ;
+    Mat         : TStringList;
+    p,tamnossonum,colparcela,tamparcela,
+    coldecimais,colvencimento,tamvencimento,tamnumerodoc,colnumerodoc,colocorrencia,colmotivo,
+    tammotivo,tamdataocor,coldataocor,coljuros,tamjuros,coldescontos,tamdescontos,
+    colcodbarra, tamcodbarra,
+    x,tamocorrencia :integer;
+    condicao        :boolean;
+    Q               :TSqlquery;
+    valor,
+    valortotalpago  :currency;
+
+    Function GetOcorrencia( xoco:string ) : string;
+    ///////////////////////////////////////////////
+    begin
+
+      if xoco = '00' then result := 'PAGAMENTO EFETUADO'
+      else if xoco  = 'AE' then result := 'DATA DE PAGAMENTO ALTERADA'
+      else if xoco  = 'AG' then result := 'NÚMERO DO LOTE INVÁLIDO'
+      else if xoco  = 'AH' then result := 'NÚMERO SEQUENCIAL DO REGISTRO NO LOTE INVÁLIDO'
+      else if xoco  = 'AI' then result := 'PRODUTO DEMONSTRATIVO DE PAGAMENTO NÃO CONTRATADO'
+      else if xoco  = 'AJ' then result := 'TIPO DE MOVIMENTO INVÁLIDO'
+      else if xoco  = 'AL' then result := 'CÓDIGO DO BANCO FAVORECIDO INVÁLIDO'
+      else if xoco  = 'AM' then result := 'AGÊNCIA DO FAVORECIDO INVÁLIDA'
+      else if xoco  = 'AN' then result := 'CONTA CORRENTE DO FAVORECIDO INVÁLIDA / CONTA INVESTIMENTO EXTINTA EM 30/04/2011'
+      else if xoco  = 'AO' then result := 'NOME DO FAVORECIDO INVÁLIDO'
+      else if xoco  = 'AP' then result := 'DATA DE PAGAMENTO / DATA DE VALIDADE / HORA DE LANÇAMENTO / ARRECADAÇÃO / APURAÇÃO INVÁLIDA'
+      else if xoco  = 'AQ' then result := 'QUANTIDADE DE REGISTROS MAIOR QUE 999999'
+      else if xoco  = 'AR' then result := 'VALOR ARRECADADO / LANÇAMENTO INVÁLIDO'
+      else if xoco  = 'BC' then result := 'NOSSO NÚMERO INVÁLIDO'
+      else if xoco  = 'BD' then result := 'PAGAMENTO AGENDADO'
+      else if xoco  = 'BE' then result := 'PAGAMENTO AGENDADO COM FORMA ALTEARADA PARA OP'
+      else if xoco  = 'BI' then result := 'CNPJ/CPF DO BENEFICIÁRIO INVÁLIDO NO SEGMENTO J-52 ou B INVÁLIDO'
+      else if xoco  = 'BL'then result := ' VALOR DA PARCELA INVÁLIDO'
+      else result := 'VIDE MANUAL DO BANCO';
+
+    end;
+
+
+begin
+
+   if not Fileexists( EdArquivo.text ) then begin
+     EdArquivo.INvalid('Arquivo '+EdArquivo.text+' não encontrado');
+     exit;
+   end;
+
+   cnab240400:='240';
+
+   Sistema.BeginProcess('Lendo arquivo '+EdArquivo.Text);
+
+   Mat:=TStringList.Create;
+   Mat.LoadFromFile(EdArquivo.text);
+
+   Try
+  		g_erro := copy( Mat.Strings[0],10,1 );
+   Except
+      Sistema.EndProcess('Arquivo de retorno inválido');
+      Mat.Free;
+      exit;
+   End;
+   Grid.clear;
+   if copy( Mat[0],143,1 ) <> '2' then begin
+
+      Sistema.EndProcess('Arquivo não é de retorno');
+      Mat.Free;
+      exit;
+
+   End;
+
+   numerobanco:=copy( Mat.Strings[0],001,03 );
+
+   if  AnsiPos(  copy( Mat.Strings[0],001,03 ),'341;104;001;422') > 0 then cnab240400:='240';
+
+   colcodbarra   :=18;
+   tamcodbarra   :=44;
+   colparcela    :=100;
+   tamparcela    :=13;
+   coldecimais   :=113;
+   colvencimento :=92;
+   tamvencimento :=8;
+   tamnumerodoc  :=20;
+   colnumerodoc  :=183;
+   colocorrencia :=231;
+   tamocorrencia :=10;
+   colmotivo     :=0;
+   coldataocor   :=145;
+   tamdataocor   :=8;
+   coljuros      :=130;
+   tamjuros      :=15;
+   coldescontos  :=115;
+   tamdescontos  :=15;
+
+    for p:=0 to Mat.count-1 do begin
+
+      condicao:=true;
+      if numerobanco='341' then
+        condicao:=( AnsiPos( copy( Mat.Strings[p],14,1 ),'J')>0 ) and
+                   ( copy( Mat.Strings[p],18,2 ) <> '52' ) ;
+
+      if ( condicao ) and ( p>0 ) then begin
+
+        if p=0 then
+           x:=1
+        else
+           inc(x);
+
+        xcodbarra := trim( copy( Mat.Strings[p],colcodbarra,tamcodbarra ) );
+        xcodbarra := copy( xcodbarra,1,3 ) + '4' + copy( xcodbarra,5,40 );
+        Grid.Cells[grid.getcolumn('pend_codbarra'),abs(x)]:= xcodbarra;
+
+        if colnumerodoc>0 then
+           Grid.Cells[grid.getcolumn('pend_numerodcto'),abs(x)]:=trim( copy( Mat.Strings[p],colnumerodoc,tamnumerodoc ) );
+
+        Grid.Cells[grid.getcolumn('pend_valor'),abs(x)]:=fGeral.formatavalor( texttovalor( copy(Mat.Strings[p],colparcela,tamparcela)+'.'+copy(Mat.Strings[p],coldecimais,02) ) ,f_cr);
+        valor := texttovalor( copy(Mat.Strings[p],colparcela,tamparcela)+'.'+copy(Mat.Strings[p],coldecimais,02));
+        valortotalpago:=valortotalpago+valor;
+
+        if colvencimento>0 then
+           Grid.Cells[grid.getcolumn('pend_datavcto'),abs(x)]:=FGeral.formatadata( Texttodate(copy( Mat.Strings[p],colvencimento,tamvencimento )) );
+
+        Grid.Cells[grid.getcolumn('ocorrencia'),abs(x)] := copy( Mat.Strings[p],colocorrencia,tamocorrencia );
+        Grid.Cells[grid.getcolumn('data'),abs(x)]:=FGeral.formatadata( Texttodate( copy(Mat.Strings[p],coldataocor,tamdataocor) ) );
+
+//        + '-' +GetOcorrencia(copy( Mat.Strings[p],colocorrencia,2 ));
+//       Grid.Cells[grid.getcolumn('motivo'),abs(x)]:=copy( Mat.Strings[p],colmotivo,tammotivo ) +  '-'+
+//                                                                 GetMotivo(copy( Mat.Strings[p],colmotivo,tammotivo ));
+        if coljuros > 0 then
+             Grid.Cells[grid.getcolumn('juros'),abs(x)]:=FGeral.formatavalor( TextToValor(copy( Mat.Strings[p],coljuros,tamjuros) ),f_cr);
+        if coldescontos>0 then
+             Grid.Cells[grid.getcolumn('descontos'),abs(x)]:=FGeral.formatavalor(TextToValor(copy( Mat.Strings[p],coldescontos,tamdescontos) ),f_cr);
+
+        Q:=sqltoquery('select pend_numerodcto,pend_tipo_codigo,pend_tipo_codigo,port_descricao,'+
+                       ' pend_unid_codigo,pend_datavcto,pend_status from pendencias'+
+                        ' left join portadores on ( port_codigo=pend_port_codigo )'+
+                        ' where pend_codbarra = '+
+                        Stringtosql( trim(xcodbarra))+
+                        sqldatacont+
+                        ' and '+FGEral.GetIN('pend_status','N;B','C')+
+                        ' and pend_rp=''P'''+
+                        ' and pend_numerodcto = '+stringtosql(trim(copy( Mat.Strings[p],colnumerodoc,tamnumerodoc )))+
+                        ' and pend_valor='+Valortosql(valor)+
+                        ' and '+FGeral.GetIN('pend_unid_codigo',global.usuario.UnidadesMvto,'C') );
+        if not Q.Eof then begin
+
+           if Q.FieldByName('pend_status').AsString = 'N' then begin
+
+             Grid.Cells[grid.getcolumn('portador'),abs(x)]:=Q.fieldbyname('port_descricao').asstring;
+             Grid.Cells[grid.getcolumn('pend_unid_codigo'),abs(x)]:=Q.fieldbyname('pend_unid_codigo').asstring;
+             Grid.Cells[grid.getcolumn('pend_tipo_codigo'),abs(x)]:=inttostr(Q.fieldbyname('pend_tipo_codigo').asinteger);
+             Grid.Cells[grid.getcolumn('clie_nome'),abs(x)]:=FGeral.GetNomeRazaoSocialEntidade(Q.fieldbyname('pend_tipo_codigo').asinteger,
+                                                           'C','N');
+
+          end else begin
+
+//             Grid.Cells[grid.getcolumn('portador'),abs(x)]:=Q.fieldbyname('port_descricao').asstring;
+             Grid.Cells[grid.getcolumn('pend_unid_codigo'),abs(x)]:=Q.fieldbyname('pend_unid_codigo').asstring;
+             Grid.Cells[grid.getcolumn('pend_tipo_codigo'),abs(x)]:=inttostr(Q.fieldbyname('pend_tipo_codigo').asinteger);
+             Grid.Cells[grid.getcolumn('clie_nome'),abs(x)]:='JÁ BAIXADO';
+
+          end;
+
+        end;
+
+        FGeral.FechaQuery(Q);
+
+      end; // ( condicao ) and ( p>0 ) then begin
+
+      Grid.AppendRow;
+
+    end; // for mat.count-1
+
+    EdValorpago.setvalue(valortotalpago);
+
+    Sistema.EndProcess('');
+
+
+end;
+
+procedure TFBaixaPagamentos.EdbancoValidate(Sender: TObject);
+////////////////////////////////////////////////////////////////////
+begin
+
+ QBanco:=sqltoquery('select * from plano where plan_conta='+EdBanco.assql);
+ if not QBanco.eof then begin
+
+    EdBanco_descricao.text:=QBanco.fieldbyname('plan_descricao').asstring;
+    if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='' then begin
+      EdBAnco.invalid('Codigo do Banco não configurado nas contas gerenciais');
+      exit;
+    end;
+
+    opendialog1.filterindex:=1 ;
+
+    if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='422' then begin
+
+       opendialog1.filterindex:=3
+
+    end else if trim(QBanco.fieldbyname('Plan_codigobanco').asstring)='748' then begin
+
+       opendialog1.filterindex:=2
+
+    end;
+
+ end else
+
+    EdBAnco.invalid('Banco não encontrado');
+
+end;
+
+procedure TFBaixaPagamentos.EdDataBaixaValidate(Sender: TObject);
+//////////////////////////////////////////////////////////////////////
+begin
+
+   if not FGeral.ValidaMvto(EdDAtaBaixa) then EdDataBaixa.Invalid('');
+
+end;
+
+procedure TFBaixaPagamentos.Execute;
+///////////////////////////////////////
+begin
+   show;
+   Grid.clear;
+   FGeral.ConfiguraColorEditsNaoEnabled(FBaixaPagamentos);
+   FPlano.SetaItems(EdBanco,EdBanco_descricao,'B','','','S');
+   EdDataBaixa.SetFocus;
+   unidadetituloachado:=Global.CodigoUnidade;
+   DataBaixa:=Sistema.Hoje;
+   EdDataBaixa.setdate(sistema.hoje);
+    if Global.Usuario.OutrosAcessos[0721] then
+      sqldatacont:=''
+    else
+      sqldatacont:=' and pend_datacont > '+DatetoSql(Global.DataMenorBanco);
+
+end;
+
+end.

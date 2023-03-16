@@ -1,0 +1,724 @@
+unit fichatecnica;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, Grids, SqlDtg, Buttons, SQLBtn, alabel,
+  ExtCtrls, SQLGrid, SqlExpr;
+
+type
+  TFFichatecnica = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bGravar: TSQLBtn;
+    bSair: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bIncluiritem: TSQLBtn;
+    bExcluiritem: TSQLBtn;
+    bCancelaritem: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    SQLPanelGrid3: TSQLPanelGrid;
+    SQLPanelGrid4: TSQLPanelGrid;
+    PInicial: TSQLPanelGrid;
+    Grid: TSqlDtGrid;
+    PRemessa: TSQLPanelGrid;
+    Edunid_codigo: TSQLEd;
+    SetEdUNID_NOME: TSQLEd;
+    EdEqui_codigo: TSQLEd;
+    SetEdCLIE_NOME: TSQLEd;
+    EdDtemissao: TSQLEd;
+    EdTotalRemessa: TSQLEd;
+    EdNumeroDoc: TSQLEd;
+    PIns: TSQLPanelGrid;
+    EdProduto: TSQLEd;
+    SetEdESTO_DESCRICAO: TSQLEd;
+    EdQtde: TSQLEd;
+    EdUnitario: TSQLEd;
+    PManutencao: TSQLPanelGrid;
+    EdEqui_oleomotor: TSQLEd;
+    EdEqui_filtromotor: TSQLEd;
+    EdEqui_oleohidra: TSQLEd;
+    EdEqui_filtrohidra: TSQLEd;
+    EdEqui_oleodiesel: TSQLEd;
+    EdEqui_filtrodiesel: TSQLEd;
+    EdEqui_filtroar: TSQLEd;
+    EdEqui_oleotransmissao: TSQLEd;
+    EdEqui_horimetro: TSQLEd;
+    StaticText1: TStaticText;
+    EdQtdeproduto: TSQLEd;
+    Edequi_oleogiro: TSQLEd;
+    Edequi_odometro: TSQLEd;
+    Edobs: TSQLEd;
+    Edobs1: TSQLEd;
+    procedure EdNumeroDocValidate(Sender: TObject);
+    procedure bIncluiritemClick(Sender: TObject);
+    procedure EdUnitarioExitEdit(Sender: TObject);
+    procedure bSairClick(Sender: TObject);
+    procedure EdDtemissaoExitEdit(Sender: TObject);
+    procedure EdProdutoValidate(Sender: TObject);
+    procedure bCancelaritemClick(Sender: TObject);
+    procedure EdProdutoKeyPress(Sender: TObject; var Key: Char);
+    procedure bGravarClick(Sender: TObject);
+    procedure bExcluiritemClick(Sender: TObject);
+    procedure bCancelarClick(Sender: TObject);
+    procedure EdEqui_codigoValidate(Sender: TObject);
+    procedure EdQtdeValidate(Sender: TObject);
+    procedure EdEqui_horimetroExitEdit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Execute(xop:string;xtransacaonota:string='';xcodequi:string='');
+    procedure PreencheCampos;
+    procedure Limpacampos;
+    procedure Editstogrid;
+    procedure TotalGrid;
+    procedure GravaItemConsignacao;
+    procedure AtualizaEquipamento;
+    procedure ChecaPrecisaTrocar( kmhora:currency );
+    procedure ChecaPassouTroca( kmhora:currency );
+    procedure TravaLancamento( Equi_codigo:string;xtrava:boolean );
+    function EquipamentoTravado:boolean;
+// 01.10.2021
+    procedure  SetaNumerosdeManutencoes(Ed:TSqled);
+
+  end;
+
+var
+  FFichatecnica: TFFichatecnica;
+  Q            :TSqlquery;
+  OP,
+  Transacao,
+  TransacaoNota,
+  codequi:string;
+
+implementation
+
+uses Geral,SqlFun,SqlSis, Arquiv, equipamentos, Estoque;
+
+{$R *.dfm}
+
+{ TFFichatecnica }
+
+procedure TFFichatecnica.Execute(xOP:string;xtransacaonota:string='';xcodequi:string='');
+/////////////////////////////////////////////////////////////////////////////////////////
+var QP : Tsqlquery;
+
+      procedure PreencheGridProdutos;
+      //////////////////////////////
+      var lin  : integer;
+
+      begin
+
+          if trim(transacaonota)='' then exit;
+
+          QP:=sqltoquery('select move_esto_codigo, move_qtde,move_venda from movestoque'+
+                         ' where move_transacao = '+Stringtosql( transacaonota ) +
+                         ' and move_status <> ''C''');
+          FFichaTecnica.Grid.clear;
+          lin:=1;
+          while not QP.eof do  begin
+
+             Grid.Cells[Grid.GetColumn('move_esto_codigo'),lin] := Qp.FieldByName('move_esto_codigo').AsString;
+             Grid.Cells[Grid.GetColumn('esto_descricao'),lin]   := FEstoque.GetDescricao( Qp.FieldByName('move_esto_codigo').AsString);
+//             Grid.Cells[Grid.GetColumn('move_qtde'),lin]        := Qp.FieldByName('move_qtde').AsString;
+             Grid.Cells[Grid.GetColumn('move_pecas'),lin]        := Qp.FieldByName('move_qtde').AsString;
+             Grid.Cells[Grid.GetColumn('esto_unidade'),lin]     := FEstoque.GetUnidade( Qp.FieldByName('move_esto_codigo').AsString);
+             Grid.Cells[Grid.GetColumn('move_venda'),lin]       := Qp.FieldByName('move_venda').AsString;
+             Grid.Cells[Grid.GetColumn('total'),lin]            := Valortosql(Qp.FieldByName('move_venda').AsCurrency*
+                                                                   Qp.FieldByName('move_qtde').AsCurrency) ;
+
+             Grid.AppendRow;
+             inc( lin );
+             QP.Next;
+
+          end;
+
+      end;
+
+
+
+begin
+/////////////////////////////////////////////////////
+///
+   if FFichatecnica=nil then FGeral.CreateForm(TFFichatecnica,FFichatecnica);
+   FGeral.ConfiguraColorEditsNaoEnabled(FFichatecnica,0);
+   FGeral.ConfiguraTamanhoEditsEnabled(FFichatecnica,0);
+   EdUnid_codigo.text := Global.CodigoUnidade;
+   EdNumerodoc.enabled:=(xOP='A');
+   OP:=xOP;
+   LimpaCampos;
+   if not Arq.TEstoque.Active then Arq.TEstoque.Open;
+   transacaonota:=xtransacaonota;
+   codequi      :=xcodequi;
+//   if trim(transacaonota)<>'' then
+//      ShowModal
+//   else
+     Show;
+
+   if OP='A' then begin
+
+     Caption:='ALTERAÇÃO de lançamentos na Ficha Técnica do Equipamento';
+     transacaonota:='';
+// 01.10.2021
+     SetaNumerosdeManutencoes(EdNumerodoc);
+     EdNumerodoc.setfocus;
+
+   end else begin
+
+     EdEqui_codigo.SetFocus;
+     if trim(codequi)<>'' then Edequi_codigo.Text:=codequi;
+     PreencheGridProdutos;
+
+   end;
+
+end;
+
+procedure TFFichatecnica.EdNumeroDocValidate(Sender: TObject);
+////////////////////////////////////////////////////////////////
+begin
+
+  Q:=sqltoquery('select movestoque.*,movesto.*,esto_descricao from movestoque inner join movesto on '+
+                ' ((move_transacao=moes_transacao) and (move_tipomov=moes_tipomov))'+
+                ' inner join estoque on ( esto_codigo=move_esto_codigo )'+
+                ' where move_tipomov='+Stringtosql(Global.CodManutencaoEquipamento)+
+                ' and move_numerodoc='+EdNumerodoc.assql+
+//                ' and move_unid_codigo='+EdUnid_codigo.assql+
+// 23.09.2021 Leila A2z
+                ' and '+FGEral.Getin('move_unid_codigo',Global.Usuario.UnidadesRelatorios,'C')+
+                ' and move_status='+Stringtosql('N') );
+  if OP='A' then begin
+
+    if not Q.eof then PreencheCampos else begin
+
+       Limpacampos;
+       EdNumerodoc.Invalid('Não encontrado');
+
+    end;
+
+  end else
+    if Q.eof then Limpacampos else EdNumerodoc.Invalid('Numero já digitado');
+end;
+
+procedure TFFichatecnica.Limpacampos;
+/////////////////////////////////////////////
+begin
+
+   EdEqui_codigo.Clear;
+   EdDtEmissao.Clear;
+   Grid.clear;
+   EdDtemissao.setdate(date);
+   EdObs.Clear;
+   EdObs1.Clear;
+   EdEqui_oleomotor.clearall( FFichaTecnica,0 );
+   EdUnid_codigo.text:=Global.CodigoUnidade;
+
+end;
+
+procedure TFFichatecnica.PreencheCampos;
+//////////////////////////////////////////
+var p:integer;
+begin
+/////////////////////////////////////////////
+  EdDtemissao.SetDate(Q.fieldbyname('moes_dataemissao').asdatetime);
+//  EdEqui_codigo.text:=Q.fieldbyname('moes_cola_codigo').asstring;
+  EdEqui_codigo.text:=strzero( Q.fieldbyname('moes_tipo_codigo').asinteger,Edequi_codigo.MaxLength);
+  EdEqui_codigo.valid;
+// 11.07.19
+  EdObs.Text:=Q.FieldByName('moes_mensagem').AsString;
+// 06.10.2021
+  EdObs1.Text:=Q.FieldByName('moes_devolucoes').AsString;
+
+  Grid.Clear;
+  p:=1;
+  while not Q.eof do begin
+
+    Grid.Cells[Grid.GetColumn('move_esto_codigo'),p]:=Q.fieldbyname('move_esto_codigo').asstring;
+    Grid.Cells[Grid.GetColumn('esto_descricao'),p]:=Q.fieldbyname('esto_descricao').asstring;
+    Grid.Cells[Grid.GetColumn('move_qtde'),p]:=Q.fieldbyname('move_qtde').asstring;
+    Grid.Cells[Grid.GetColumn('move_pecas'),p]:=Q.fieldbyname('move_pecas').asstring;
+    Grid.Cells[Grid.GetColumn('move_venda'),p]:=Q.fieldbyname('move_venda').asstring;
+    Grid.Cells[Grid.GetColumn('total'),p]:=FGeral.Formatavalor( Q.fieldbyname('move_venda').ascurrency*
+                              Q.fieldbyname('move_qtde').ascurrency,f_cr);
+    Grid.AppendRow;
+    inc(p);
+    Q.Next;
+
+  end;
+
+  Q.First;
+
+end;
+
+// 01.10.2021
+procedure TFFichatecnica.SetaNumerosdeManutencoes(Ed: TSqled);
+///////////////////////////////////////////////////////////////
+var Q,
+    Qe          :TSqlquery;
+    sqlperiodo,
+    linha      : string ;
+
+begin
+
+   Ed.Items.clear;
+   sqlperiodo:='and moes_dataemissao>='+Datetosql(Sistema.hoje-60);
+
+   Q := sqltoquery('select moes_numerodoc,moes_dataemissao,moes_tipo_codigo from movesto'+
+                  ' where moes_status=''N'''+
+                  ' and moes_tipomov = '+Stringtosql(Global.CodManutencaoEquipamento)+
+                  sqlperiodo );
+   while not Q.eof do begin
+
+       Qe := sqltoquery('select equi_descricao from equipamentos where equi_codigo = '+
+                        stringtosql( strzero( Q.fieldbyname('moes_tipo_codigo').asinteger,4)  ) );
+       linha := strzero(Q.fieldbyname('moes_numerodoc').asinteger,6)+' | '+
+                FGeral.FormataData(Q.fieldbyname('moes_dataemissao').asdatetime,true)+' | '+
+                Qe.fieldbyname('equi_descricao').asstring;
+       Ed.Items.add( linha );
+       Q.Next;
+       FGEral.FechaQuery( Qe );
+
+   end;
+   FGEral.FechaQuery( Q );
+
+end;
+
+procedure TFFichatecnica.bIncluiritemClick(Sender: TObject);
+///////////////////////////////////////////////////////////////////
+begin
+   Pins.Visible:=true;;
+   EdProduto.setfocus;
+end;
+
+procedure TFFichatecnica.EdUnitarioExitEdit(Sender: TObject);
+/////////////////////////////////////////////////////////////////////////////
+begin
+  Editstogrid;
+  TotalGrid;
+  if op='A' then begin
+      GravaItemConsignacao;
+      FGeral.GravaMestreConsignacao(EdDtEmissao.AsDate,EdEqui_codigo,1,EdUnid_codigo.text,
+             Global.CodManutencaoEquipamento,Transacao,EdNumerodoc.AsInteger,
+             EdTotalRemessa.AsCurrency,0,OP,'N',transacaonota);
+      Sistema.Commit;
+  end;
+  Edproduto.ClearAll(FFichatecnica,99);
+  EdProduto.SetFocus;
+end;
+
+procedure TFFichatecnica.Editstogrid;
+///////////////////////////////////////////
+var x:integer;
+    aqtde:currency;
+begin
+  x:=FGeral.ProcuraGrid(Grid.getcolumn('move_esto_codigo'),EdProduto.Text,Grid,0,0,0,0,0,0);
+  if x<=0 then begin
+    if (Grid.RowCount=2) and (Trim(Grid.Cells[Grid.getcolumn('move_esto_codigo'),1])='') then begin
+       x:=1;
+    end else begin
+       Grid.RowCount:=Grid.RowCount+1;
+       x:=Grid.RowCount-1;
+    end;
+    Grid.Cells[Grid.getcolumn('move_esto_codigo'),Abs(x)]:=EdProduto.Text;
+    Grid.Cells[Grid.getcolumn('esto_descricao'),Abs(x)]:=SetEdEsto_descricao.text;
+//    Grid.Cells[Grid.getcolumn('esto_unidade'),Abs(x)]:=EdQtde.title;
+    Grid.Cells[Grid.getcolumn('move_qtde'),Abs(x)]:=EdQTde.AsSql;
+    Grid.Cells[Grid.getcolumn('move_pecas'),Abs(x)]:=EdQTdeproduto.AsSql;
+    Grid.Cells[Grid.getcolumn('move_venda'),Abs(x)]:=EdUnitario.AsSql;
+    Grid.Cells[Grid.getcolumn('total'),Abs(x)]:=TRansform(EdQTde.AsCurrency*EdUnitario.AsCurrency,f_cr);
+  end else begin
+    Grid.Cells[Grid.getcolumn('move_esto_codigo'),x]:=EdProduto.Text;
+    Grid.Cells[Grid.getcolumn('esto_descricao'),x]:=SetEdEsto_descricao.text;
+//    Grid.Cells[Grid.getcolumn('esto_unidade'),Abs(x)]:=EdQtde.title;
+    aqtde:=EdQTde.Ascurrency+texttovalor(Grid.Cells[Grid.getcolumn('move_qtde'),x]);
+    Grid.Cells[Grid.getcolumn('move_qtde'),x]:=Transform(EdQTde.Ascurrency+texttovalor(Grid.Cells[Grid.getcolumn('move_qtde'),x]),f_cr);
+    Grid.Cells[Grid.getcolumn('move_pecas'),Abs(x)]:=EdQTdeproduto.AsSql;
+    Grid.Cells[Grid.getcolumn('move_venda'),x]:=Transform(EdUnitario.Ascurrency,f_cr);
+    Grid.Cells[Grid.getcolumn('total'),x]:=TRansform(aQTde*EdUnitario.AsCurrency,f_cr);
+  end;
+  Grid.Refresh;
+end;
+
+procedure TFFichatecnica.bSairClick(Sender: TObject);
+////////////////////////////////////////////////////////////////
+begin
+  Grid.Clear;
+  Close;
+
+end;
+
+procedure TFFichatecnica.EdDtemissaoExitEdit(Sender: TObject);
+//////////////////////////////////////////////////////////////////
+begin
+  bIncluiritemClick(self);
+end;
+
+procedure TFFichatecnica.EdProdutoValidate(Sender: TObject);
+////////////////////////////////////////////////////////////
+var QBusca:TSqlquery;
+begin
+    QBusca:=sqltoquery('select * from estoque where esto_Codigo='+EdProduto.AsSql);
+    if QBusca.Eof then begin
+      EdProduto.Invalid('Codigo não encontrado');
+      exit;
+    end;
+    SetEdESTO_DESCRICAO.text:=QBusca.fieldbyname('esto_descricao').AsString;
+//    EdQTde.Title:=QBusca.fieldbyname('esto_unidade').AsString
+end;
+
+procedure TFFichatecnica.bCancelaritemClick(Sender: TObject);
+//////////////////////////////////////////////////////////////////
+begin
+   Pins.Visible:=false;
+
+end;
+
+procedure TFFichatecnica.EdProdutoKeyPress(Sender: TObject; var Key: Char);
+/////////////////////////////////////////////////////////
+begin
+  if key=#27 then begin
+    bcancelaritemclick(FFichatecnica);
+    EdEqui_oleomotor.setfocus;
+//    bgravarclick(FFichatecnica);
+  end;
+
+end;
+
+procedure TFFichatecnica.bGravarClick(Sender: TObject);
+//////////////////////////////////////////////////////
+var Q2:TSqlquery;
+begin
+  if (EdDtemissao.AsDate<=1) or (EdEqui_codigo.isempty)
+    or (Grid.RowCount<=1)then
+    exit;
+// 25.09.14
+  if EquipamentoTravado then exit;
+
+  if confirma('Confirma gravação ?') then begin
+
+    if OP='I' then begin
+      Sistema.BeginProcess('Gravando');
+      EdNumerodoc.setvalue( FGeral.GetContador('MANUT'+EdUnid_codigo.text,false) );
+      Transacao:=FGeral.GetTransacao;
+        if EdNumerodoc.asinteger=0 then begin
+          Avisoerro('Numero zerado.    Não gravado.  Tente novamente !');
+          exit;
+        end;
+
+        FGeral.GravaMestreConsignacao(EdDtEmissao.AsDate,EdEqui_codigo,1,EdUnid_codigo.text,
+             Global.CodManutencaoEquipamento,Transacao,EdNumerodoc.asinteger,
+             EdTotalRemessa.AsCurrency,0,op,'N',transacaonota,EdObs.Text,EdObs1.text);
+        FGeral.GravaItensConsignacao(EdDtEmissao.AsDate,EdEqui_codigo,1,EdUnid_codigo.text,
+              Global.CodManutencaoEquipamento,Transacao,EdNumerodoc.asinteger,Grid);
+        AtualizaEquipamento;
+      try
+        Sistema.Commit;
+      except
+        Avisoerro('Problemas na gravação.  Conferir se foi gravado.');
+      end;
+
+    end else if OP='A' then begin
+
+      Q2:=sqltoquery('select moes_transacao from movesto where moes_numerodoc='+EdNumerodoc.assql+
+                     ' and moes_unid_codigo='+EdUnid_codigo.assql+
+                     ' and moes_tipomov='+stringtosql(Global.CodManutencaoEquipamento) );
+//                     ' and moes_dataemissao='+EdDtemissao.assql
+//                     ' and moes_cola_codigo='+EdEqui_codigo.assql );
+      transacao:=Q2.fieldbyname('moes_transacao').asstring;
+      FGeral.GravaMestreConsignacao(EdDtEmissao.AsDate,EdEqui_codigo,1,EdUnid_codigo.text,
+             Global.CodManutencaoEquipamento,Transacao,EdNumerodoc.AsInteger,
+             EdTotalRemessa.AsCurrency,1,Op,'N',transacaonota,EdObs.Text);
+      AtualizaEquipamento;
+      Sistema.Commit;
+    end;
+    Sistema.EndProcess('');
+    LimpaCampos;
+    EdDtEmissao.setdate(sistema.hoje);
+    Grid.Clear;
+    if OP='I' then
+      EdEqui_codigo.Setfocus
+    else
+      EdNumerodoc.SetFocus;
+
+  end;
+
+
+end;
+
+procedure TFFichatecnica.TotalGrid;
+////////////////////////////////////////
+var p:integer;
+    vlrtotal,vlrtotalitem:currency;
+begin
+  vlrtotal:=0;
+  for p:= 1 to Grid.RowCount do begin
+    if trim(Grid.cells[Grid.getcolumn('move_esto_codigo'),p])<>'' then begin
+      vlrtotalitem:=Texttovalor(Grid.cells[Grid.getcolumn('move_qtde'),p]) *
+                    Texttovalor(Grid.cells[Grid.getcolumn('move_venda'),p]);
+      vlrtotal:=vlrtotal+vlrtotalitem;
+    end;
+  end;
+  EdTotalRemessa.SetValue(vlrtotal);
+end;
+
+procedure TFFichatecnica.bExcluiritemClick(Sender: TObject);
+///////////////////////////////////////////////////
+var codigoestoque:string;
+    Q2:TSqlquery;
+begin
+  if trim(Grid.Cells[0,Grid.row])='' then exit;
+  if confirma('Confirma exclusão ?') then begin
+    codigoestoque:=Grid.Cells[Grid.getcolumn('move_esto_codigo'),Grid.row];
+    Grid.DeleteRow(Grid.Row);
+    totalgrid;
+    if OP='A' then begin
+      Q2:=sqltoquery('select moes_transacao from movesto where moes_numerodoc='+EdNumerodoc.assql+
+                     ' and moes_unid_codigo='+EdUnid_codigo.assql+
+                     ' and moes_tipomov='+stringtosql(Global.CodManutencaoEquipamento) );
+//                     ' and moes_dataemissao='+EdDtemissao.assql+
+//                     ' and moes_cola_codigo='+EdEqui_codigo.assql );
+      transacao:=Q2.fieldbyname('moes_transacao').asstring;
+      ExecuteSql('Update movestoque set move_status=''C'' where move_status=''N'''+
+          ' and move_numerodoc='+EdNumerodoc.AsSql+
+          ' and move_tipomov='+Stringtosql(Global.CodManutencaoEquipamento)+
+          ' and move_unid_codigo='+Stringtosql(EdUnid_codigo.text)+
+//          ' and move_tipo_codigo='+EdCliente.AsSql+
+          ' and move_esto_codigo='+Stringtosql(codigoestoque) );
+      FGeral.GravaMestreConsignacao(EdDtEmissao.AsDate,EdEqui_codigo,1,EdUnid_codigo.text,
+             Global.CodManutencaoEquipamento,Transacao,EdNumerodoc.AsInteger,
+             EdTotalRemessa.AsCurrency,1,Op,'N',transacaonota);
+      FGeral.fechaquery(Q2);
+    end;
+    Sistema.Commit;
+  end;
+end;
+
+procedure TFFichatecnica.bCancelarClick(Sender: TObject);
+//////////////////////////////////////////////////////////////////
+var QBusca:TSqlquery;
+begin
+   if (EdDtemissao.Asdate<=1) or (Edequi_codigo.IsEmpty) and (OP='I') then
+     exit;
+   QBusca:=sqltoquery('select * from movesto where moes_numerodoc='+inttostr(EdNumeroDoc.AsInteger)+
+            ' and moes_status=''N'' and moes_tipomov='+stringtosql(Global.CodManutencaoEquipamento)+
+            ' and moes_unid_codigo='+Stringtosql(Edunid_codigo.text)+
+            ' and moes_status='+Stringtosql('N') );
+
+   if QBusca.eof then
+     Aviso('Numero não encontrado')
+   else begin
+     if confirma('Confirma exclusão ?') then begin
+       ExecuteSql('Update movesto set moes_status=''C'' where moes_numerodoc='+inttostr(EdNumeroDoc.AsInteger)+
+                  ' and moes_status=''N'' and moes_tipomov='+stringtosql(Global.CodManutencaoEquipamento)+
+                  ' and moes_unid_codigo='+Stringtosql(Edunid_codigo.text) );
+       ExecuteSql('Update movestoque set move_status=''C'' where move_numerodoc='+inttostr(EdNumeroDoc.AsInteger)+
+                  ' and move_status=''N'' and move_tipomov='+stringtosql(Global.CodManutencaoEquipamento) +
+                  ' and move_unid_codigo='+Stringtosql(Edunid_codigo.text) ) ;
+       Sistema.Commit;
+       EdNumerodoc.ClearAll(FFichaTecnica,99);
+       Grid.Clear;
+     end;
+   end;
+   QBusca.Free;
+   EdNumeroDoc.Setfocus;
+end;
+
+procedure TFFichatecnica.GravaItemConsignacao;
+//////////////////////////////////////////////////
+var Q2:TSqlquery;
+begin
+   Q2:=Sqltoquery('select moes_status,moes_transacao from movesto where moes_status=''N'''+
+          ' and moes_numerodoc='+EdNumerodoc.AsSql+
+          ' and moes_tipomov='+Stringtosql(Global.CodManutencaoEquipamento)+
+          ' and moes_unid_codigo='+Stringtosql(EdUnid_codigo.text) );
+//          ' and moes_tipo_codigo='+EdCliente.AsSql+
+//          ' and moes_tipocad=''C''' );
+   if Q2.Eof then begin
+      Avisoerro('Não encontrado este documento para incluir este item');
+      exit;
+   end else begin
+//      codigograde:=FEstoque.GetCodigoGrade(EdProduto.Text);
+      Arq.TEstoque.Locate('esto_codigo',EdProduto.text,[]);
+      Transacao:=Q2.fieldbyname('moes_transacao').Asstring;
+      Sistema.Insert('Movestoque');
+      Sistema.SetField('move_esto_codigo',EdProduto.Text);
+{
+      Sistema.SetField('move_core_codigo',Edcodcor.asinteger);
+      Sistema.SetField('move_tama_codigo',Edcodtamanho.asinteger);
+      Sistema.SetField('move_copa_codigo',Edcodcopa.asinteger);
+}
+      Sistema.SetField('move_transacao',transacao);
+      Sistema.SetField('move_operacao',FGeral.GetOperacao);
+      Sistema.SetField('move_numerodoc',Ednumerodoc.Asinteger);
+      Sistema.SetField('move_status','N');
+      Sistema.SetField('move_tipomov',Global.CodManutencaoEquipamento);
+      Sistema.SetField('move_unid_codigo',EdUnid_codigo.text);
+      Sistema.SetField('move_tipo_codigo',EdEqui_codigo.asinteger);
+      Sistema.SetField('move_tipocad','C');
+      Sistema.SetField('move_repr_codigo',1);
+      Sistema.SetField('move_qtde',EdQtde.AsCurrency);
+      Sistema.SetField('move_datalcto',Sistema.Hoje);
+      Sistema.SetField('move_datamvto',Sistema.Hoje);
+      Sistema.SetField('move_qtderetorno',0);
+      Sistema.SetField('move_venda',EdUnitario.AsCurrency);
+      Sistema.SetField('move_grup_codigo',Arq.TEstoque.fieldbyname('esto_grup_codigo').AsInteger);
+      Sistema.SetField('move_sugr_codigo',Arq.TEstoque.fieldbyname('esto_sugr_codigo').AsInteger);
+      Sistema.SetField('move_fami_codigo',Arq.TEstoque.fieldbyname('esto_fami_codigo').AsInteger);
+      Sistema.SetField('move_usua_codigo',Global.Usuario.codigo);
+      Sistema.Post('');
+      Sistema.Commit;
+   end;
+   Q2.close;
+   Freeandnil(Q2);
+end;
+
+procedure TFFichatecnica.EdEqui_codigoValidate(Sender: TObject);
+////////////////////////////////////////////////////////////////////////
+begin
+  if EdEqui_codigo.resultfind<>nil then begin
+
+    EdEqui_oleomotor.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_oleomotor').ascurrency);
+    EdEqui_oleohidra.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_oleohidra').ascurrency);
+    EdEqui_oleodiesel.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_oleodiesel').ascurrency);
+    EdEqui_oleotransmissao.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_oleotransmissao').ascurrency);
+    EdEqui_filtromotor.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_filtromotor').ascurrency);
+    EdEqui_filtrohidra.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_filtrohidra').ascurrency);
+    EdEqui_filtrodiesel.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_filtrodiesel').ascurrency);
+    EdEqui_filtroar.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_filtroar').ascurrency);
+    EdEqui_horimetro.SetValue(EdEqui_codigo.resultfind.fieldbyname('equi_horimetro').ascurrency);
+    EdEqui_odometro.SetValue(EdEqui_codigo.resultfind.fieldbyname('equi_odometro').ascurrency);
+    EdEqui_oleogiro.SetValue(Edequi_codigo.resultfind.fieldbyname('equi_oleogiro').ascurrency);
+    if Equipamentotravado then EdEqui_codigo.Invalid('');
+
+  end;
+
+end;
+
+procedure TFFichatecnica.AtualizaEquipamento;
+///////////////////////////////////////////////////
+begin
+   Sistema.Edit('equipamentos');
+   Sistema.SetField('Equi_oleomotor',EdEqui_oleomotor.ascurrency);
+   Sistema.SetField('Equi_oleohidra',EdEqui_oleohidra.ascurrency);
+   Sistema.SetField('Equi_oleodiesel',EdEqui_oleodiesel.ascurrency);
+   Sistema.SetField('Equi_oleotransmissao',EdEqui_oleotransmissao.ascurrency);
+   Sistema.SetField('Equi_filtromotor',EdEqui_filtromotor.ascurrency);
+   Sistema.SetField('Equi_filtrohidra',EdEqui_filtrohidra.ascurrency);
+   Sistema.SetField('Equi_filtrodiesel',EdEqui_filtrodiesel.ascurrency);
+   Sistema.SetField('Equi_filtroar',EdEqui_filtroar.ascurrency);
+   Sistema.SetField('Equi_horimetro',EdEqui_horimetro.ascurrency);
+   Sistema.SetField('Equi_datahorimetro',Eddtemissao.asdate);
+   Sistema.SetField('Equi_oleogiro',EdEqui_oleogiro.ascurrency);
+// Sistema.SetField('Equi_odometro',EdEqui_odometro.ascurrency);
+   Sistema.Post('equi_codigo='+EdEqui_codigo.AsSql);
+end;
+
+procedure TFFichatecnica.EdQtdeValidate(Sender: TObject);
+/////////////////////////////////////////////////////////////////
+begin
+
+ ChecaPrecisaTrocar( EdQTde.ascurrency );
+ ChecaPassouTroca( EdQTde.ascurrency );
+ EdEqui_horimetro.text:=EdQtde.text;
+
+end;
+
+procedure TFFichatecnica.ChecaPrecisaTrocar(kmhora: currency);
+////////////////////////////////////////////////////////////////////
+var p:integer;
+begin
+  for p:=0 to ComponentCount-1 do begin
+    if Components[p] is TSqlEd then
+      if (TSqled( Components[p] ).AsCurrency>0) and (TSqled( Components[p] ).Group=45) then
+        if (kmhora+50 > TSqled( Components[p] ).AsCurrency) and ( TSqled( Components[p] ).AsCurrency>0 ) and
+           ( TSqled( Components[p] ).Name<>'EdEqui_horimetro' ) and ( TSqled( Components[p] ).Name<>'Edequi_odometro' )
+        then
+          Aviso('Checar '+TSqled( Components[p] ).Title);
+  end;
+end;
+
+procedure TFFichatecnica.EdEqui_horimetroExitEdit(Sender: TObject);
+///////////////////////////////////////////////////////////////////
+var p : integer;
+begin
+
+   if trim(transacaonota) <> '' then begin
+
+      for p := 1 to Grid.rowcount do begin
+
+         if trim( Grid.Cells[Grid.GetColumn('move_esto_codigo'),p] ) <> '' then
+
+            Grid.Cells[Grid.GetColumn('move_qtde'),p] := EdEqui_horimetro.Text;
+
+      end;
+
+   end;
+
+   bgravarclick(self);
+
+end;
+
+// 25.09.14
+procedure TFFichatecnica.ChecaPassouTroca(kmhora: currency);
+///////////////////////////////////////////////////////////////
+var p:integer;
+begin
+  for p:=0 to ComponentCount-1 do begin
+    if Components[p] is TSqlEd then
+      if (TSqled( Components[p] ).AsCurrency>0) and (TSqled( Components[p] ).Group=45) then
+        if (kmhora > TSqled( Components[p] ).AsCurrency) and ( TSqled( Components[p] ).AsCurrency>0 ) and
+           ( TSqled( Components[p] ).Name<>'EdEqui_horimetro' ) and ( TSqled( Components[p] ).Name<>'Edequi_odometro' )
+        then begin
+          Aviso('Passou da TROCA - Checar '+TSqled( Components[p] ).Title);
+          if not Confirma('Troca para mes seguinte ?') then begin
+            FGeral.Gravalog(31,'Equipamento '+EdEqui_codigo.text+' - '+FEquipamentos.GetDescricao(EdEqui_codigo.Text),True,'',
+                          Global.Usuario.Codigo,TSqled( Components[p] ).Title);
+            TravaLancamento( EdEqui_codigo.Text,true );
+            break
+          end else
+            FGeral.Gravalog(31,'Equipamento '+EdEqui_codigo.text+' - '+FEquipamentos.GetDescricao(EdEqui_codigo.Text),True,'',
+                          Global.Usuario.Codigo,'Troca mes seguinte');
+        end;
+  end;
+end;
+
+// 25.09.14
+procedure TFFichatecnica.TravaLancamento(Equi_codigo: string;  xtrava: boolean);
+////////////////////////////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+begin
+  Sistema.Edit('equipamentos');
+  if xtrava then
+    Sistema.SetField('equi_usua_codigo',999)
+  else
+    Sistema.SetField('equi_usua_codigo',Global.Usuario.Codigo);
+  Sistema.Post('equi_codigo='+stringtosql(equi_codigo));
+  try
+    Sistema.Commit;
+    if not xtrava then
+      Aviso('Equipamento liberado');
+  except
+  end;
+end;
+
+// 25.09.14
+function TFFichatecnica.EquipamentoTravado: boolean;
+/////////////////////////////////////////////////////
+var Q:Tsqlquery;
+begin
+
+  Q:=sqltoquery('select equi_usua_codigo,equi_codigo,equi_descricao from equipamentos where equi_usua_codigo='+inttostr(999));
+  if not Q.Eof then begin
+
+    Aviso('Liberar equipamento '+Q.fieldbyname('equi_codigo').AsString+' - '+Q.fieldbyname('equi_descricao').AsString);
+    result:=true;
+
+  end else result:=false;
+
+  FGeral.FechaQuery(Q);
+
+end;
+
+end.

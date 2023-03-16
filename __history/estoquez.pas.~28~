@@ -1,0 +1,544 @@
+unit estoquez;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, zGrid, Vcl.ExtCtrls, SQLGrid,
+  Vcl.StdCtrls, Vcl.Buttons, SQLBtn, alabel, SqlEd, Vcl.Mask,zEnv;
+
+type
+  TFEstoquez = class(TForm)
+    SQLPanelGrid1: TSQLPanelGrid;
+    Grid: TzGrid;
+    PBotoes: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    bIncluir: TSQLBtn;
+    bAlterar: TSQLBtn;
+    bExcluir: TSQLBtn;
+    bCancelar: TSQLBtn;
+    bbuscar: TSQLBtn;
+    bduplicar: TSQLBtn;
+    bPesquisar: TSQLBtn;
+    bSair: TSQLBtn;
+    bExpColumn: TSQLBtn;
+    Bevel1: TBevel;
+    bRedColumn: TSQLBtn;
+    bMoveLeft: TSQLBtn;
+    bMoveRight: TSQLBtn;
+    bDelColumn: TSQLBtn;
+    bRestColumn: TSQLBtn;
+    bLoadGrid: TSQLBtn;
+    bSaveGrid: TSQLBtn;
+    Btgravar: TSQLBtn;
+    bdigitargrade: TSQLBtn;
+    bterminargrade: TSQLBtn;
+    bDadosgrade: TSQLBtn;
+    bimpcodbarra: TSQLBtn;
+    batuvenda: TSQLBtn;
+    balteracampo: TSQLBtn;
+    blocaliza: TSQLBtn;
+    bsimilares: TSQLBtn;
+    bimagem: TSQLBtn;
+    benviabalanca: TSQLBtn;
+    Label1: TLabel;
+    Label2: TLabel;
+    bdetalhes: TSQLBtn;
+    PEmEstoque: TSQLPanelGrid;
+    Pprecovenda: TSQLPanelGrid;
+    PEdits: TSQLPanelGrid;
+    EdEsto_codigo: TSQLEd;
+    EdEsto_descricao: TSQLEd;
+    EdEsto_unidade: TSQLEd;
+    EdEsto_qtde: TSQLEd;
+    EdEsto_Pecas: TSQLEd;
+    EdEsto_embalagem: TSQLEd;
+    EdEsto_categoria: TSQLEd;
+    SetEdesto_categoria: TSQLEd;
+    EdEsto_grup_codigo: TSQLEd;
+    SetEdgrup_codigo: TSQLEd;
+    EdEsto_sugr_codigo: TSQLEd;
+    SetEdsugr_descricao: TSQLEd;
+    EdEsto_fami_codigo: TSQLEd;
+    Edesto_fami_descricao: TSQLEd;
+    EdEsto_sisvendas: TSQLEd;
+    Setedsisvendas: TSQLEd;
+    EdEsto_sitt_codestado: TSQLEd;
+    SetEdsitt_cst: TSQLEd;
+    EdEsto_sitt_forestado: TSQLEd;
+    SetEd: TSQLEd;
+    EdEsto_faix_codigo: TSQLEd;
+    EdEsto_faix_codigo002: TSQLEd;
+    EdEsto_qtdeprev: TSQLEd;
+    EdEsto_cfis_codigoest: TSQLEd;
+    EdEsto_icmsestado: TSQLEd;
+    Edesqt_cfis_codestsemie: TSQLEd;
+    SetEdcfis_aliquota: TSQLEd;
+    EdEsto_cfis_codigoforaest: TSQLEd;
+    EdEsto_icmsforaestado: TSQLEd;
+    EdEsto_peso: TSQLEd;
+    EdEsto_custo: TSQLEd;
+    EdEsto_custoger: TSQLEd;
+    EdEsto_customedio: TSQLEd;
+    EdEsto_customeger: TSQLEd;
+    Edesto_precocompra: TSQLEd;
+    EdEsto_dtultvenda: TSQLEd;
+    EdEsto_vendavis: TSQLEd;
+    EdEsto_dtultcompra: TSQLEd;
+    EdEsto_codbarra: TSQLEd;
+    EdEsto_referencia: TSQLEd;
+    Edesto_emlinha: TSQLEd;
+    Edesto_cipi_codigo: TSQLEd;
+    SetEddescriipi: TSQLEd;
+    EdMomedio: TSQLEd;
+    EdEsto_basecomissao: TSQLEd;
+    EdEsto_Vendamin: TSQLEd;
+    Edmobra: TSQLEd;
+    EdEsto_nutr_codigo: TSQLEd;
+    EdEsto_ingr_codigo: TSQLEd;
+    EdEsto_cons_codigo: TSQLEd;
+    EdEsto_cons_codigo1: TSQLEd;
+    Edesto_tara: TSQLEd;
+    Edesto_qbalanca: TSQLEd;
+    Edesto_validade: TSQLEd;
+    Edesto_qetiqbalanca: TSQLEd;
+    Edesto_taracf: TSQLEd;
+    Edesto_taraperc: TSQLEd;
+    PVenda: TSQLPanelGrid;
+    EdVenda: TSQLEd;
+    Edsaldo: TSQLEd;
+    Edcompra: TSQLEd;
+    EdMargemBruta: TSQLEd;
+    procedure bIncluirClick(Sender: TObject);
+    procedure GridKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure bSairClick(Sender: TObject);
+    procedure GridNewLine(Sender: TObject);
+    procedure GridNewRecord(Sender: TObject);
+    procedure GridEnterFind(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+   Function GetProximoCodigo(tabela,campo,tipocampo:string; tamvariavel:boolean=false):variant;
+   procedure ConfiguraEdits( hab:boolean );
+   procedure Execute;
+
+  end;
+
+type TListaCest=record
+     cest,ncm:string;
+end;
+
+
+var
+  FEstoquez: TFEstoquez;
+  OP,
+  codigosuni       :string;
+  ListaporUnidade,
+  ListaAuxCest     :TStringList;
+  AtuVenda,
+  campo,
+  campotara,
+  campotaraperc,
+  campofaixa,
+  campofaixa002    :boolean;
+  ListaCest        :TList;
+  PListaCest       :^TListaCest;
+
+
+implementation
+
+uses Sqlfun, GEral, zFun, Menuinicial;
+
+
+{$R *.dfm}
+
+procedure TFEstoquez.bIncluirClick(Sender: TObject);
+//////////////////////////////////////////////////////
+begin
+
+  Op:='I';
+  EdEsto_codigo.SetStatusEdits(Self,99,seEdit);
+  Grid.Cancel;
+  PEdits.Visible:=true;
+  PEdits.EnableEdits;
+  EdEsto_Codigo.ClearAll(Self,99);
+  if Global.Topicos[1203] then
+    EdEsto_codigo.Text:= GetProximoCodigo('estoque','esto_codigo','C',true);
+
+  EdEsto_codigo.enabled:= not Global.Topicos[1203];
+  EdEsto_descricao.CharUpperLower:= not Global.Topicos[1207];
+  if Global.Topicos[1212] then
+    EdEsto_descricao.CharCase:=ecUpperCase;
+  EdEsto_embalagem.Text:='1';
+
+  EdEsto_dtultvenda.Setdate(SistemaZeos.Hoje);
+  EdEsto_dtultcompra.Setdate(SistemaZeos.Hoje);
+
+  bSair.enabled:=false;
+
+    EdEsto_sitt_codestado.setvalue(GetSittDentro(Global.CodigoUnidade));
+    EdEsto_sitt_codestado.ValidFind;
+    EdEsto_sitt_forestado.setvalue(GetSittFora(Global.CodigoUnidade));
+    EdEsto_sitt_forestado.ValidFind;
+    EdEsto_cfis_codigoest.text:=GetFiscalDentro(Global.CodigoUnidade);
+    EdEsto_cfis_codigoest.ValidFind;
+    EdEsto_cfis_codigoforaest.text:=GetFiscalFora(Global.CodigoUnidade);
+    EdEsto_cfis_codigoforaest.ValidFind;
+
+  if Global.Topicos[1203] then
+    EdEsto_descricao.setfocus
+  else
+    EdEsto_Codigo.SetFocus;
+
+  if Global.Topicos[1208] then
+    EdEsto_descricao.MaxLength:=100
+  else
+    EdEsto_descricao.MaxLength:=50;
+  ConfiguraEdits( Global.topicos[1218] );
+  bPesquisar.Enabled:=false;
+
+end;
+
+////////////////////////////////////////////////////////////////////////
+procedure TFEstoquez.bSairClick(Sender: TObject);
+////////////////////////////////////////////////////
+begin
+
+   Close;
+
+end;
+
+procedure TFEstoquez.ConfiguraEdits(hab: boolean);
+//////////////////////////////////////////////////////
+begin
+
+  EdEsto_categoria.enabled:=hab;
+  EdEsto_sisvendas.enabled:=hab;
+
+  EdEsto_custo.enabled:=hab;
+  EdEsto_custoger.enabled:=hab;
+  EdEsto_customedio.enabled:=hab;
+  EdEsto_customeger.enabled:=hab;
+  EdEsto_precocompra.enabled:=hab;
+  EdEsto_dtultvenda.enabled:=hab;
+  EdEsto_dtultcompra.enabled:=hab;
+  EdMObra.enabled:=hab;
+  EdMomedio.enabled:=hab;
+  EdEsto_basecomissao.Enabled:=hab;
+  EdEsto_Vendamin.Enabled:=hab;
+  EdEsto_sitt_codestado.Enabled:=hab;
+  EdEsto_sitt_forestado.Enabled:=hab;
+  EdEsto_cfis_codigoest.Enabled:=hab;
+  Edesqt_cfis_codestsemie.Enabled:=hab;
+  EdEsto_cfis_codigoforaest.Enabled:=hab;
+{
+  if Global.topicos[1226] then begin
+    EdEsto_sitt_codestadonc.Enabled:=hab;
+    EdEsto_sitt_forestadonc.Enabled:=hab;
+    Edcfis_codestnc.Enabled:=hab;
+    Edcfis_codigoforaestnc.Enabled:=hab;
+  end;
+}
+
+end;
+
+procedure TFEstoquez.Execute;
+//////////////////////////////
+var Lista:TStringlist;
+    p:integer;
+    QE:TzQ;
+begin
+
+///////////////////////////////////////////////////
+  if Global.Topicos[1025] then begin
+
+      ListaporUnidade:=TStringList.Create;
+      Qe:=SistemaZeos.sqltoquery('select esqt_esto_codigo from estoqueqtde where esqt_unid_codigo='+Stringtosql(Global.CodigoUnidade)+
+                     ' and esqt_status = ''N'' order by esqt_esto_codigo');
+      codigosuni:='';
+      while not Qe.eof do begin
+        ListaporUnidade.Add(qe.fieldbyname('esqt_esto_codigo').asstring);
+        codigosuni:=codigosuni+qe.fieldbyname('esqt_esto_codigo').asstring+';';
+        Qe.Next;
+      end;
+      Qe.Close;
+
+    Grid.FCondicaoBasica:=FGeral.GetIN('esto_codigo',codigosuni,'C');
+
+  end else
+
+    Grid.FCondicaoBasica:='';
+////////////////////////////////////////////////////
+
+//  PEdits.Visible:=false;
+  PEdits.DisableEdits;
+
+  Atuvenda:=false;
+  FGeral.SetaItemsSisVenda(EdEsto_sisvendas);
+  FGeral.SetaItemsCategoria(EdEsto_categoria);
+  bimagem.Visible:=Global.Topicos[1214];
+  bimagem.Enabled:=Global.Topicos[1214];
+///////////////////////
+{
+  EdEsto_sitt_codestadonc.Enabled:=false;
+  EdEsto_sitt_forestadonc.Enabled:=false;
+  Edcfis_codestnc.Enabled:=false;
+  Edcfis_codigoforaestnc.Enabled:=false;
+  if Global.Topicos[1226] then begin
+    EdEsto_sitt_codestadonc.Enabled:=true;
+    EdEsto_sitt_forestadonc.Enabled:=true;
+    Edcfis_codestnc.Enabled:=true;
+    Edcfis_codigoforaestnc.Enabled:=true;
+  end;
+///////////////////////
+}
+
+  FGeral.ConfiguraTamanhoEditsEnabled(FEstoquez,FGeral.GetConfig1AsInteger('tamanholetra'));
+  FGeral.ConfiguraColorEditsNaoEnabled(FEstoquez);
+  if Global.Usuario.OutrosAcessos[0053] then
+     PEdits.Visible:=true
+  else
+     PEdits.Visible:=false;
+///////////////////
+
+  ShowModal;
+  EdEsto_codigo.enabled:= not Global.Topicos[1203];
+
+  campo:=FMain.GetDicionario('estoqueqtde','esqt_cfis_codestsemie');
+  if Campo then begin
+    Edesqt_cfis_codestsemie.Enabled:=true;
+    Edesqt_cfis_codestsemie.TableName:='estoqueqtde';
+  end else begin
+    Edesqt_cfis_codestsemie.Enabled:=false;
+    Edesqt_cfis_codestsemie.TableName:='';
+  end;
+
+  campo:=FMain.GetDicionario('estoque','esto_nutr_codigo');
+  campotara:=FMain.GetDicionario('estoque','esto_tara');
+  campotaraperc:=FMain.GetDicionario('estoque','esto_taraperc');
+  campofaixa:=FMain.GetDicionario('estoque','esto_faix_codigo');
+  campofaixa002:=FMain.GetDicionario('estoque','esto_faix_codigo002');
+
+  if Campo then begin
+    Edesto_nutr_codigo.Enabled:=true;
+    Edesto_nutr_codigo.TableName:='estoque';
+    Edesto_ingr_codigo.Enabled:=true;
+    Edesto_ingr_codigo.TableName:='estoque';
+    Edesto_cons_codigo.Enabled:=true;
+    Edesto_cons_codigo.TableName:='estoque';
+    Edesto_cons_codigo1.Enabled:=true;
+    Edesto_cons_codigo1.TableName:='estoque';
+  end else begin
+    Edesto_nutr_codigo.Enabled:=false;
+    Edesto_nutr_codigo.TableName:='';
+    Edesto_ingr_codigo.Enabled:=false;
+    Edesto_ingr_codigo.TableName:='';
+    Edesto_cons_codigo.Enabled:=false;
+    Edesto_cons_codigo.TableName:='';
+    Edesto_cons_codigo1.Enabled:=false;
+    Edesto_cons_codigo1.TableName:='';
+  end;
+
+  if CampoTara then begin
+    Edesto_tara.Enabled:=true;
+    Edesto_tara.TableName:='estoque';
+    Edesto_qbalanca.Enabled:=true;
+    Edesto_qbalanca.TableName:='estoque';
+    Edesto_validade.Enabled:=true;
+    Edesto_validade.TableName:='estoque';
+    Edesto_qetiqbalanca.Enabled:=true;
+    Edesto_qetiqbalanca.TableName:='estoque';
+  end else begin
+    Edesto_tara.Enabled:=false;
+    Edesto_tara.TableName:='';
+    Edesto_qbalanca.Enabled:=false;
+    Edesto_qbalanca.TableName:='';
+    Edesto_validade.Enabled:=false;
+    Edesto_validade.TableName:='';
+    Edesto_qetiqbalanca.Enabled:=false;
+    Edesto_qetiqbalanca.TableName:='';
+  end;
+// 22.09.16
+  if CampoTaraperc then begin
+    Edesto_taraperc.Enabled:=true;
+    Edesto_taraperc.TableName:='estoque';
+    Edesto_taracf.Enabled:=true;
+    Edesto_taracf.TableName:='estoque';
+  end else begin
+    Edesto_taraperc.Enabled:=false;
+    Edesto_taraperc.TableName:='';
+    Edesto_taracf.Enabled:=false;
+    Edesto_taracf.TableName:='';
+  end;
+
+{
+    campo:=FMain.GetDicionario('estoque','esto_fami_descricao');
+    if Campo then Edesto_fami_descricao.text:= Arq.TEstoque.fieldbyname('esto_fami_descricao').Asstring;
+// 15.03.16
+    campo:=FMain.GetDicionario('estoque','esto_faix_codigo');
+    if Campo then Edesto_faix_codigo.text:= Arq.TEstoque.fieldbyname('esto_faix_codigo').Asstring;
+}
+// 02.04.12
+  if Global.Topicos[1025] then begin
+    bPesquisar.Operation:=(fbNone);
+    bPesquisar.AutoAction:=false;
+    bPesquisar.Tag:=1;
+//    bPesquisar.Grid:=nil;
+  end else begin
+    bPesquisar.Operation:=(fbFind);
+    bPesquisar.AutoAction:=true;
+    bPesquisar.Tag:=0;
+//    bPesquisar.Grid:=Grid;
+  end;
+// 26.03.16
+  ListaCest:=Tlist.create;
+  if FileExists('tabelacestncm.csv') then begin
+    ListaAuxCest:=TStringList.create;
+    ListaAuxCest.LoadFromFile('tabelacestncm.csv');
+    for p:=0 to LIstaAuxCest.count-1 do begin
+      Lista:=TStringlist.create;
+      strtolista(Lista,ListaAuxCest[p],';',true);
+      New(PListaCest);
+      PListaCest.cest:=Lista[0];
+      pListaCest.ncm:=Lista[1];
+      ListaCest.Add(PListaCest);
+      Lista.free;
+    end;
+    ListaAuxCest.Free;
+  end;
+
+
+end;
+
+function TFEstoquez.GetProximoCodigo(tabela, campo, tipocampo: string;
+  tamvariavel: boolean): variant;
+////////////////////////////////////////////////////////////////////////////////
+var Q:TzQ;
+    tam:integer;
+    ListaCodigos:TStringList;
+    versaobanco:integer;
+
+begin
+
+  tam:=FGeral.GetConfig1AsInteger('TAMESTOQUE');
+
+  if (tamvariavel) or ( Global.Topicos[1236]) then begin
+    ListaCodigos:=tStringList.create;
+    Q:=SistemaZeos.sqltoquery('select esto_codigo from estoque');
+    if tam=0 then tam:=7;
+// 24.03.16
+    if Q.Eof then begin
+       result:=strzero(1,tam);
+       exit;
+    end;
+    while not Q.eof do begin
+      ListaCodigos.add( strzero(strtointdef(Q.fieldbyname('esto_codigo').asstring,0),tam) );
+      Q.Next;
+    end;
+    Q.Close;
+    ListaCodigos.Sort;
+    result:=strtointdef(ListaCodigos[Listacodigos.count-1],0)+1;
+
+  end else begin
+
+    Q:=SistemaZeos.sqltoquery('select count(*) as quantos from '+tabela);
+    if Q.fieldbyname('quantos').asinteger=0 then begin
+
+      if tabela<>'estoque' then
+        result:=1
+      else
+        result:=strzero(1,tam);
+
+    end else begin
+
+      Q.Close;
+      if tam=0 then
+        Q:=SistemaZeos.sqltoquery('select max('+campo+') as ultimo from '+tabela)
+      else
+//        Q:=sqltoquery('select max( cast('+campo+' as integer ) ) as ultimo from '+tabela+
+//                      ' where substr('+campo+','+inttostr(tam+1)+',1 ) = ''''' );
+// 29.09.18
+      if Global.VersaoBanco >= 90300 then
+
+        Q:=SistemaZeos.sqltoquery('select max( cast('+campo+' as integer ) ) as ultimo from '+tabela)
+
+      else
+// 25.09.18
+        Q:=SistemaZeos.sqltoquery('select max( cast('+campo+' as integer ) ) as ultimo from '+tabela+
+                      ' where '+campo+' ~ ''[-0-9]'' and length('+campo+') = '+inttostr(tam) );
+
+      if tipocampo='C' then
+        result:=strtoint(Q.FieldByName('ultimo').AsString)+1
+      else
+        result:=Q.FieldByName('ultimo').AsInteger+1;
+      if tabela<>'estoque' then
+       tam:=0;
+      if tipocampo='C' then begin
+        if tam>0 then
+          result:=strzero(result,tam)
+        else
+          result:=strzero(result,8);
+      end;
+    end;
+    Q.Close;
+  end;
+
+end;
+
+procedure TFEstoquez.GridEnterFind(Sender: TObject);
+begin
+
+   showmessage( 'entrou no onenterfind');
+
+end;
+
+procedure TFEstoquez.GridKeyDown(Sender: TObject; var Key: Word;  Shift: TShiftState);
+////////////////////////////////////////////////////////////////////////////////////////
+var QEstoque:Tzq;
+
+begin
+
+//   showmessage( 'tecla '+inttostr( key ) );
+{
+   if ( key = 38 ) or ( key =  40 ) then begin
+       EdEsto_codigo.text:=Grid.Cells[Grid.GetColumn('esto_codigo'),Grid.Row];
+       QEstoque:=Sistemazeos.SqlToQuery('select esqt_qtde,esqt_vendavis from estoqueqtde'+
+                 ' where esqt_esto_codigo = '+EdEsto_codigo.AsSql+
+                 ' and esqt_unid_codigo = '+stringtosql(Global.CodigoUnidade)+
+                 ' and esqt_status = ''N'''  );
+
+       Pprecovenda.Caption:=FGeral.Formatavalor(QEstoque.fieldbyname('esqt_vendavis').ascurrency,f_cr);
+       Pprecovenda.Update;
+       QEstoque.Close;
+
+   end;
+}
+
+end;
+
+procedure TFEstoquez.GridNewLine(Sender: TObject);
+//////////////////////////////////////////////////////
+var QEstoque:Tzq;
+begin
+//   showmessage( 'entrou no onnewline');
+       EdEsto_codigo.text:=Grid.Cells[Grid.GetColumn('esto_codigo'),Grid.Row];
+       QEstoque:=Sistemazeos.SqlToQuery('select esqt_qtde,esqt_vendavis from estoqueqtde'+
+                 ' where esqt_esto_codigo = '+EdEsto_codigo.AsSql+
+                 ' and esqt_unid_codigo = '+stringtosql(Global.CodigoUnidade)+
+                 ' and esqt_status = ''N'''  );
+
+       Pprecovenda.Caption:=FGeral.Formatavalor(QEstoque.fieldbyname('esqt_vendavis').ascurrency,f_cr);
+       Pprecovenda.Update;
+       PEmEstoque.Caption:=FGeral.Formatavalor(QEstoque.fieldbyname('esqt_qtde').ascurrency,f_integer);
+       PEmEstoque.Update;
+       QEstoque.Close;
+end;
+
+procedure TFEstoquez.GridNewRecord(Sender: TObject);
+begin
+   showmessage( 'entrou no onnewrecord');
+
+end;
+
+end.

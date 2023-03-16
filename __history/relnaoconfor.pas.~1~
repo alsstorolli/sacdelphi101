@@ -1,0 +1,707 @@
+unit relnaoconfor;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Mask, SQLEd, Buttons, SQLBtn, alabel, ExtCtrls,
+  SQLGrid;
+
+type
+  TFRelNaoConf = class(TForm)
+    PRel: TSQLPanelGrid;
+    SQLPanelGrid2: TSQLPanelGrid;
+    APHeadLabel1: TAPHeadLabel;
+    baplicar: TSQLBtn;
+    bSair: TSQLBtn;
+    PMens: TSQLPanelGrid;
+    Eddatai: TSQLEd;
+    Eddataf: TSQLEd;
+    Edunid_codigo: TSQLEd;
+    EdPendentes: TSQLEd;
+    EdNumerodoc: TSQLEd;
+    EdUsua_codigo: TSQLEd;
+    EdUsua_nome: TSQLEd;
+    EdEncerrai: TSQLEd;
+    EdEncerraf: TSQLEd;
+    procedure baplicarClick(Sender: TObject);
+    procedure EdNumerodocExitEdit(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+    SaiOk:Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  FRelNaoConf: TFRelNaoConf;
+  sqlunidade,sqlperiodo,sqlnumerodoc,sqlpendentes,sqltipo,sqlusuario,sqlresponsavel,
+  sqlencerramento:string;
+
+procedure FRelNaoConforme_PlanosdeAcao(tipos:string);                // 1
+procedure FRelNaoConforme_IndicadorResultado;       // 3 - 25.06.09    2 - 30.07.10
+procedure FRelNaoConforme_Rncs;                                      // 3 - 30.07.10
+
+
+implementation
+
+uses Geral, Unidades, SQLRel, SqlExpr, Sqlsis, Sqlfun , Usuarios, setores,
+  relestoque;
+
+{$R *.dfm}
+
+function FRelNaoConforme_Execute(Tp:Integer):Boolean;
+begin
+  if FRelNaoConf=nil then FGeral.CreateForm(TFRelNaoConf, FRelNaoConf);
+  result:=true;
+  if FRelNaoConf.EdDatai.isempty then begin
+    FRelNaoConf.EdDatai.setdate(sistema.hoje);
+    FRelNaoConf.EdDataf.setdate(sistema.hoje);
+  end;
+  if FRelNaoConf.EdEncerrai.isempty then begin
+    FRelNaoConf.EdEncerrai.setdate(sistema.hoje);
+    FRelNaoConf.EdEncerraf.setdate(sistema.hoje);
+  end;
+  sqlunidade:='';
+  sqlnumerodoc:='';
+  sqlpendentes:='';
+  with FRelNaoConf do begin
+    FUnidades.SetaItems(EdUnid_codigo,nil,Global.Usuario.UnidadesRelatorios);
+    EdDatai.enabled:=true;
+    EdDataf.enabled:=true;
+    EdUnid_codigo.enabled:=true;
+    EdPendentes.enabled:=true;
+    EdNumerodoc.enabled:=true;
+    EdUsua_codigo.enabled:=false;
+    EdEncerrai.enabled:=false;
+    EdEncerraf.enabled:=false;
+    if tp=1 then begin
+      Caption:='Planos de Ação';
+      EdEncerrai.enabled:=true;
+      EdEncerraf.enabled:=true;
+//    end else if tp=2 then  // 30.07.10 - ainda nao foi feito...
+//      Caption:='Relatório de Não Conformidades'
+// 30.07.10
+    if Global.Usuario.OutrosAcessos[0401] then
+      EdUsua_codigo.enabled:=true;
+    end else if tp=2 then begin
+      Caption:='Relatório de Indicadores de Resultado';
+      EdPendentes.enabled:=false;
+      EdNumerodoc.enabled:=false;
+      EdUnid_codigo.enabled:=false;
+      EdUsua_codigo.enabled:=true;
+    end;
+
+    SaiOk:=False;
+    FRelNaoConf.ShowModal;
+    Result:=SaiOk;
+  end;
+
+end;
+
+procedure FRelNaoConforme_PlanosdeAcao(tipos:string);                // 1
+/////////////////////////////////////////////////////////////////////////
+var Q:TSqlquery;
+    titulo:string;
+    atraso:integer;
+begin
+
+  with FRelNaoConf do begin
+    sqltipo:=' and '+FGeral.Getin('paca_tipoplano',Tipos,'C');
+    if not FRelNaoConforme_Execute(1) then Exit;
+    Sistema.beginprocess('Pesquisando planos de ação');
+    if trim(EdUnid_codigo.text)<>'' then begin
+      sqlunidade:=' and '+FGeral.getin('paca_unid_codigo',EdUnid_codigo.text,'C');
+    end else begin
+      sqlunidade:='';
+    end;
+    if pos(EdPendentes.text,'S')>0 then
+      sqlpendentes:=' and '+FGeral.getin('paca_situacao','P','C',)
+    else if pos(EdPendentes.text,'N')>0 then
+      sqlpendentes:=' and '+FGeral.getin('paca_situacao','E','C',)
+    else
+      sqlpendentes:='';
+    if not EdNumerodoc.isempty  then
+      sqlnumerodoc:=' and paca_numeroata='+EdNumerodoc.assql
+    else
+      sqlnumerodoc:='';
+    sqlperiodo:='';
+    if ( not EdDatai.isempty ) and ( not EdDataf.isempty ) then
+//      sqlperiodo:='and paca_data>='+EdDatai.assql+' and paca_data<='+EdDataf.assql;
+      sqlperiodo:='and paca_quando>='+EdDatai.assql+' and paca_quando<='+EdDataf.assql;
+    sqlencerramento:='';
+    if ( not EdEncerrai.isempty ) and ( not EdEncerraf.isempty ) then
+      sqlencerramento:='and paca_dtencerra>='+EdEncerrai.assql+' and paca_dtencerra<='+EdEncerraf.assql;
+// 18.03.10
+    if EdPendentes.text='S' then
+      sqlencerramento:='';
+    sqlusuario:=' and paca_usua_quem='+inttostr(Global.Usuario.Codigo)+' and paca_usua_quem>0';
+    if (EdUsua_codigo.IsEmpty) and (Global.Usuario.OutrosAcessos[0401]) then
+        sqlusuario:='';
+//    if Global.Usuario.OutrosAcessos[0401] then
+//      sqlusuario:='';
+    if (not EdUsua_codigo.isempty) and (EdUsua_codigo.Enabled) then
+      sqlusuario:=' and paca_Usua_Resp='+EdUsua_codigo.AsSql;
+    Q:=sqltoquery('select * from planoacao'+
+                  ' inner join setores on ( seto_codigo=paca_seto_codigo )'+
+                  ' where '+FGeral.getin('paca_status','N','C')+
+                    sqlunidade+sqlpendentes+sqlnumerodoc+sqlperiodo+sqltipo+sqlusuario+
+                    sqlencerramento+sqlusuario+
+//                  ' order by paca_unid_codigo,paca_data,paca_numeroata,paca_seq');
+                  ' order by paca_unid_codigo,paca_quando,paca_numeroata,paca_seq');
+    if Q.eof then begin
+      Avisoerro('Nada encontrado para impressão');
+      Q.close;
+      Freeandnil(Q);
+      Sistema.EndProcess('');
+      exit;
+    end;
+    FRel.Init('RelPlanosdeAcao');
+    FRel.AddTit('Relatório de Plano de Ação - Período ref. Previsão: '+FGeral.formatadata(EdDatai.Asdate)+' a '+FGeral.formatadata(EdDataf.asdate));
+//    FRel.AddTit(FGeral.TituloRelUnidade(EdUnid_codigo.Text) );
+    FRel.AddTit('Unidade(s):'+EdUnid_codigo.Text +' - Período ref. Encerramento: '+FGeral.formatadata(Edencerrai.Asdate)+' a '+FGeral.formatadata(Edencerraf.asdate));
+    titulo:='';
+    if not EdNumerodoc.isempty then
+      titulo:='Plano de Ação '+EdNumerodoc.text;
+    if EdPendentes.text='S' then
+      titulo:=titulo+' - Somente Pendentes'
+    else if EdPendentes.text='N' then
+      titulo:=titulo+' - Somente Encerrados'
+    else
+      titulo:=titulo+' - Pendentes e Encerrados';
+    if trim(titulo)<>'' then
+      FRel.AddTit(titulo);
+    FRel.AddCol( 35,2,'C','' ,''              ,'Unid'         ,''         ,'',false);
+    FRel.AddCol( 60,1,'D','' ,''              ,'Data'    ,''         ,'',false);
+    FRel.AddCol( 50,3,'N','' ,''              ,'Numero'     ,''         ,'',False);
+    FRel.AddCol(100,1,'C','' ,''              ,'Responsável'            ,''         ,'',false);
+    FRel.AddCol(050,1,'C','' ,''              ,'Seq.'         ,''         ,'',False);
+    FRel.AddCol(090,1,'C','' ,''              ,'O que Fazer ?'       ,''         ,'',false);
+    FRel.AddCol(150,1,'C','' ,''              ,'Como ?'       ,''         ,'',false);
+    FRel.AddCol(150,1,'C','' ,''              ,'Quem ?'       ,''         ,'',false);
+    FRel.AddCol( 60,1,'D','' ,''              ,'Quando ?' ,''         ,'',false);
+    FRel.AddCol( 60,1,'N','' ,''              ,'Atraso' ,''         ,'',false);
+    FRel.AddCol( 60,1,'D','' ,''              ,'Encerramento' ,''         ,'',false);
+    FRel.AddCol(150,1,'C','' ,''              ,'Por Que ?'       ,''         ,'',false);
+    FRel.AddCol( 80,3,'N','+' ,f_cr            ,'Valor'     ,''         ,'',False);
+    FRel.AddCol(150,1,'C','' ,''              ,'Objetivo'       ,''         ,'',false);
+    FRel.AddCol(100,1,'C','' ,''              ,'Setor'       ,''         ,'',false);
+    while not Q.eof do begin
+        FRel.AddCel(Q.FieldByName('paca_unid_codigo').AsString);
+        FRel.AddCel(Q.FieldByName('paca_data').AsString);
+        FRel.AddCel(Q.FieldByName('paca_numeroata').AsString);
+        FRel.AddCel(FUsuarios.GetNome(Q.fieldbyname('paca_usua_resp').asinteger));
+        FRel.AddCel(Q.fieldbyname('paca_seq').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_oque').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_como').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_quem').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_quando').asstring);
+        if Q.fieldbyname('paca_dtencerra').asdatetime>1 then
+          atraso:=trunc(Q.fieldbyname('paca_dtencerra').asdatetime-Q.fieldbyname('paca_quando').asdatetime)
+        else
+          atraso:=trunc(Sistema.hoje-Q.fieldbyname('paca_quando').asdatetime);
+        FRel.AddCel(inttostr(atraso));
+        FRel.AddCel(Q.fieldbyname('paca_dtencerra').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_porque').asstring);
+        FRel.AddCel( floattostr(Q.fieldbyname('paca_valor').ascurrency) );
+        FRel.AddCel(Q.fieldbyname('paca_objetivo').asstring);
+        FRel.AddCel( FSetores.getDescricao(Q.fieldbyname('paca_seto_codigo').asstring) );
+        Q.Next;
+    end;
+    FRel.Video;
+
+    Sistema.EndProcess('');
+    FGeral.FechaQuery(Q);
+  end;
+
+  FRelNaoConforme_PlanosdeAcao(tipos);         // 1
+end;
+
+procedure FRelNaoConforme_Rncs;                                      // 2
+// relat. ainda por fazer...10.12.09
+var Q:TSqlquery;
+    titulo:string;
+begin
+
+  with FRelNaoConf do begin
+    sqltipo:='';
+    if not FRelNaoConforme_Execute(2) then Exit;
+    Sistema.beginprocess('Pesquisando não conformidades');
+    if trim(EdUnid_codigo.text)<>'' then begin
+      sqlunidade:=' and '+FGeral.getin('mrnc_unid_codigo',EdUnid_codigo.text,'C');
+    end else begin
+      sqlunidade:='';
+    end;
+    if pos(EdPendentes.text,'S')>0 then
+      sqlpendentes:=' and '+FGeral.getin('mrnc_situacao','P','C',)
+    else if pos(EdPendentes.text,'N')>0 then
+      sqlpendentes:=' and '+FGeral.getin('mrnc_situacao','E','C',)
+    else
+      sqlpendentes:='';
+//    if not EdNumerodoc.isempty  then
+//      sqlnumerodoc:=' and paca_numeroata='+EdNumerodoc.assql
+//    else
+      sqlnumerodoc:='';
+    sqlperiodo:='';
+    if ( not EdDatai.isempty ) and ( not EdDataf.isempty ) then
+//      sqlperiodo:='and paca_data>='+EdDatai.assql+' and paca_data<='+EdDataf.assql;
+      sqlperiodo:='and mrnc_data>='+EdDatai.assql+' and mrnc_data<='+EdDataf.assql;
+    sqlusuario:=' and mrnc_usua_resp='+inttostr(Global.Usuario.Codigo)+' and mrnc_usua_resp>0';
+    if Global.Usuario.OutrosAcessos[0401] then
+      sqlusuario:='';
+    Q:=sqltoquery('select * from movrnc'+
+                  ' inner join setores on ( seto_codigo=mrnc_seto_codigo )'+
+                  ' where '+FGeral.getin('mrnc_status','N','C')+
+                    sqlunidade+sqlpendentes+sqlnumerodoc+sqlperiodo+sqltipo+sqlusuario+
+//                  ' order by paca_unid_codigo,paca_data,paca_numeroata,paca_seq');
+                  ' order by mrnc_unid_codigo,paca_quando,paca_numeroata,paca_seq');
+    if Q.eof then begin
+      Avisoerro('Nada encontrado para impressão');
+      Q.close;
+      Freeandnil(Q);
+      Sistema.EndProcess('');
+      exit;
+    end;
+    FRel.Init('RelPlanosdeAcao');
+    FRel.AddTit('Relatório de Plano de Ação - Período : '+FGeral.formatadata(EdDatai.Asdate)+' a '+FGeral.formatadata(EdDataf.asdate));
+//    FRel.AddTit(FGeral.TituloRelUnidade(EdUnid_codigo.Text) );
+    FRel.AddTit('Unidade(s):'+EdUnid_codigo.Text );
+    titulo:='';
+    if not EdNumerodoc.isempty then
+      titulo:='Plano de Ação '+EdNumerodoc.text;
+    if EdPendentes.text='S' then
+      titulo:=titulo+' - Somente Pendentes'
+    else if EdPendentes.text='N' then
+      titulo:=titulo+' - Somente Encerrados'
+    else
+      titulo:=titulo+' - Pendentes e Encerrados';
+    if trim(titulo)<>'' then
+      FRel.AddTit(titulo);
+    FRel.AddCol( 35,2,'C','' ,''              ,'Unid'         ,''         ,'',false);
+    FRel.AddCol( 60,1,'D','' ,''              ,'Data'    ,''         ,'',false);
+    FRel.AddCol( 50,3,'N','' ,''              ,'Numero'     ,''         ,'',False);
+    FRel.AddCol(100,1,'C','' ,''              ,'Responsável'            ,''         ,'',false);
+    FRel.AddCol(050,1,'C','' ,''              ,'Seq.'         ,''         ,'',False);
+    FRel.AddCol(090,1,'C','' ,''              ,'O que Fazer ?'       ,''         ,'',false);
+    FRel.AddCol(150,1,'C','' ,''              ,'Como ?'       ,''         ,'',false);
+    FRel.AddCol(150,1,'C','' ,''              ,'Quem ?'       ,''         ,'',false);
+    FRel.AddCol( 60,1,'D','' ,''              ,'Quando ?' ,''         ,'',false);
+    FRel.AddCol( 60,1,'D','' ,''              ,'Encerramento' ,''         ,'',false);
+    FRel.AddCol(150,1,'C','' ,''              ,'Por Que ?'       ,''         ,'',false);
+    FRel.AddCol( 80,3,'N','+' ,f_cr            ,'Valor'     ,''         ,'',False);
+    FRel.AddCol(150,1,'C','' ,''              ,'Objetivo'       ,''         ,'',false);
+    FRel.AddCol(100,1,'C','' ,''              ,'Setor'       ,''         ,'',false);
+    while not Q.eof do begin
+        FRel.AddCel(Q.FieldByName('paca_unid_codigo').AsString);
+        FRel.AddCel(Q.FieldByName('paca_data').AsString);
+        FRel.AddCel(Q.FieldByName('paca_numeroata').AsString);
+        FRel.AddCel(FUsuarios.GetNome(Q.fieldbyname('paca_usua_resp').asinteger));
+        FRel.AddCel(Q.fieldbyname('paca_seq').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_oque').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_como').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_quem').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_quando').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_dtencerra').asstring);
+        FRel.AddCel(Q.fieldbyname('paca_porque').asstring);
+        FRel.AddCel( floattostr(Q.fieldbyname('paca_valor').ascurrency) );
+        FRel.AddCel(Q.fieldbyname('paca_objetivo').asstring);
+        FRel.AddCel( FSetores.getDescricao(Q.fieldbyname('paca_seto_codigo').asstring) );
+        Q.Next;
+    end;
+    FRel.Video;
+
+    Sistema.EndProcess('');
+    FGeral.FechaQuery(Q);
+  end;
+
+  FRelNaoConforme_Rncs;         // 2
+end;
+
+//////////////////////////////////////////////
+procedure FRelNaoConforme_IndicadorResultado;            // 3 - 25.06.09
+//////////////////////////////////////////////
+type TConsumo=record
+    produto,descricao,referencia:string;
+    mesano01,mesano02,mesano03,mesano04,mesano05,mesano06,mesano07,mesano08,mesano09,mesano10,mesano11,mesano12:string;
+    valor01,valor02,valor03,valor04,valor05,valor06,valor07,valor08,valor09,valor10,valor11,valor12:currency;
+    qtde01,qtde02,qtde03,qtde04,qtde05,qtde06,qtde07,qtde08,qtde09,qtde10,qtde11,qtde12:currency;
+end;
+
+var PConsumo:^TConsumo;
+    Lista:TList;
+    sqlinicio,sqltermino,sqlcor,sqltamanho,sqlstatus:string;
+    i:integer;
+    perc:currency;
+
+    procedure AtualizaLista;
+    var p:integer;
+        achou:boolean;
+
+        procedure ConfiguraMesano;
+        var data:TDatetime;
+        begin
+          data:=TExttodate( strzero(Datetodia(FRelNaoConf.EdDataf.asdate),2)+strzero(Datetomes(FRelNaoConf.EdDatai.asdate),2)+Strzero(Datetoano(FRelNaoConf.EdDatai.asdate,true),4) );
+          PConsumo.mesano01:=strzero(Datetomes(FRelNaoConf.EdDatai.asdate),2)+'/'+Strzero(Datetoano(FRelNaoConf.EdDatai.asdate,true),4);
+          PConsumo.mesano02:='';PConsumo.mesano03:='';PConsumo.mesano04:='';PConsumo.mesano05:='';PConsumo.mesano06:='';
+          PConsumo.mesano07:='';PConsumo.mesano08:='';PConsumo.mesano09:='';PConsumo.mesano10:='';PConsumo.mesano11:='';
+          PConsumo.mesano12:='';
+          PConsumo.valor01:=0;PConsumo.valor02:=0;PConsumo.valor03:=0;PConsumo.valor04:=0;PConsumo.valor05:=0;PConsumo.valor06:=0;
+          PConsumo.valor07:=0;PConsumo.valor08:=0;PConsumo.valor09:=0;PConsumo.valor10:=0;PConsumo.valor11:=0;PConsumo.valor12:=0;
+          PConsumo.qtde01:=0;PConsumo.qtde02:=0;PConsumo.qtde03:=0;PConsumo.qtde04:=0;PConsumo.qtde05:=0;PConsumo.qtde06:=0;
+          PConsumo.qtde07:=0;PConsumo.qtde08:=0;PConsumo.qtde09:=0;PConsumo.qtde10:=0;PConsumo.qtde11:=0;PConsumo.qtde12:=0;
+          data:=DateToDateMesPos(data,1);
+//          PConsumo.valor01:=0;
+          while data<=FRelNaoConf.EdDataf.asdate do begin
+            if trim(PConsumo.mesano02)='' then
+              PConsumo.mesano02:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano03)='' then
+              PConsumo.mesano03:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano04)='' then
+              PConsumo.mesano04:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano05)='' then
+              PConsumo.mesano05:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano06)='' then
+              PConsumo.mesano06:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano07)='' then
+              PConsumo.mesano07:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano08)='' then
+              PConsumo.mesano08:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano09)='' then
+              PConsumo.mesano09:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano10)='' then
+              PConsumo.mesano10:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano11)='' then
+              PConsumo.mesano11:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4)
+            else if trim(PConsumo.mesano12)='' then
+              PConsumo.mesano12:=strzero(Datetomes(data),2)+'/'+Strzero(Datetoano(data,true),4);
+            data:=DateToDateMesPos(data,1);
+          end;
+
+        end;
+
+        procedure AtualizaDadosMesano;
+        var mesano:string;
+            previsto,realizado:currency;
+        begin
+            mesano:=strzero(Datetomes(Q.fieldbyname('mind_dataind').asdatetime),2)+'/'+Strzero(Datetoano(Q.fieldbyname('mind_dataind').asdatetime,true),4);
+
+            previsto:=Q.fieldbyname('mind_indiprevi').ascurrency;
+            realizado:=Q.fieldbyname('mind_indireal').ascurrency;
+            if PConsumo.mesano01=mesano then begin
+              PConsumo.valor01:=PConsumo.valor01+(previsto);
+              PConsumo.qtde01:=PConsumo.qtde01+realizado;
+            end;
+            if PConsumo.mesano02=mesano then begin
+              PConsumo.valor02:=PConsumo.valor02+(previsto);
+              PConsumo.qtde02:=PConsumo.qtde02+realizado;
+            end;
+            if PConsumo.mesano03=mesano then begin
+              PConsumo.valor03:=PConsumo.valor03+(previsto);
+              PConsumo.qtde03:=PConsumo.qtde03+realizado;
+            end;
+            if PConsumo.mesano04=mesano then begin
+              PConsumo.valor04:=PConsumo.valor04+(previsto);
+              PConsumo.qtde04:=PConsumo.qtde04+realizado;
+            end;
+            if PConsumo.mesano05=mesano then begin
+              PConsumo.valor05:=PConsumo.valor05+(previsto);
+              PConsumo.qtde05:=PConsumo.qtde05+realizado;
+            end;
+            if PConsumo.mesano06=mesano then begin
+              PConsumo.valor06:=PConsumo.valor06+(previsto);
+              PConsumo.qtde06:=PConsumo.qtde06+realizado;
+            end;
+            if PConsumo.mesano07=mesano then begin
+              PConsumo.valor07:=PConsumo.valor07+(previsto);
+              PConsumo.qtde07:=PConsumo.qtde07+realizado;
+            end;
+            if PConsumo.mesano08=mesano then begin
+              PConsumo.valor08:=PConsumo.valor08+(previsto);
+              PConsumo.qtde08:=PConsumo.qtde08+realizado;
+            end;
+            if PConsumo.mesano09=mesano then begin
+              PConsumo.valor09:=PConsumo.valor09+(previsto);
+              PConsumo.qtde09:=PConsumo.qtde09+realizado;
+            end;
+            if PConsumo.mesano10=mesano then begin
+              PConsumo.valor10:=PConsumo.valor10+(previsto);
+              PConsumo.qtde10:=PConsumo.qtde10+realizado;
+            end;
+            if PConsumo.mesano11=mesano then begin
+              PConsumo.valor11:=PConsumo.valor11+(previsto);
+              PConsumo.qtde11:=PConsumo.qtde11+realizado;
+            end;
+            if PConsumo.mesano12=mesano then begin
+              PConsumo.valor12:=PConsumo.valor12+(previsto);
+              PConsumo.qtde12:=PConsumo.qtde12+realizado;
+            end;
+
+        end;
+
+    begin
+
+      achou:=false;
+      for p:=0 to Lista.Count-1 do begin
+        PConsumo:=Lista[p];
+        if PConsumo.produto=Q.FieldByName('mind_indi_codigo').asstring then begin
+          achou:=true;
+          break
+        end;
+      end;
+
+      if not achou then begin
+        New(PConsumo);
+        PConsumo.produto:=Q.FieldByName('mind_indi_codigo').asstring;
+        PConsumo.descricao:=Q.FieldByName('indi_descricao').asstring;
+        PConsumo.referencia:='';
+        ConfiguraMesano;
+        AtualizaDadosMesano;
+        Lista.add(Pconsumo);
+      end else begin
+        AtualizaDadosMesano;
+      end;
+
+    end;
+
+
+begin
+
+  with FRelNaoConf do begin
+//    if not FRelNaoConforme_Execute(03) then Exit;
+    if not FRelNaoConforme_Execute(2) then Exit;
+    Sistema.BeginProcess('Pesquisando');
+    sqlinicio:=' and mind_dataind>='+Datetosql(EdDatai.AsDate);
+    if EdDAtaf.isempty then
+       sqltermino:=''
+    else
+       sqltermino:=' and mind_dataind<='+Datetosql(EdDataf.Asdate);
+    if EdDAtai.isempty then
+       sqlinicio:=''
+    else
+       sqlinicio:=sqlinicio;
+    sqlresponsavel:='';
+    if not EdUsua_codigo.isempty then
+      sqlresponsavel:=' and Indi_Usua_Resp='+EdUsua_codigo.AsSql;
+    sqlstatus:=FGeral.Getin('mind_status','N','C');
+    Q:=sqltoquery('select * from movindicadores '+
+                     ' inner join indicadores on (indi_codigo=mind_indi_codigo) '+
+                     ' where '+sqlstatus+
+//                     ' and '+FGeral.Getin('move_unid_codigo',EdUnid_codigo.text,'C')+
+                     sqlinicio+
+                     sqltermino+
+                     sqlresponsavel+
+                     ' order by mind_dataind' );
+    if Q.eof then begin
+      Avisoerro('Nada encontrado para impressão');
+      Sistema.EndProcess('');
+      Q.close;
+      Freeandnil(Q);
+      exit;
+    end;
+    Lista:=TList.create;
+    while not Q.eof do begin
+      AtualizaLista;
+      Q.Next;
+    end;
+    Sistema.BeginProcess('Gerando Relatório');
+    FRel.Init('RelMovimentoIndicadores');
+    FRel.AddTit('Relatório de Indicadores de Qualidade');
+//    FRel.AddTit('Unidade : '+Unidade+' - '+FUnidades.Getnome(Unidade)+FGeral.TituloRelCliRepre(EdCodtipo.asinteger,EdTipocad.text));
+    FRel.AddTit('Periodo : '+formatdatetime('dd/mm/yy',EdDatai.AsDate)+' a '+formatdatetime('dd/mm/yy',EdDataf.AsDate) );
+    if not EdUsua_codigo.isempty then
+      FRel.AddTit('Responsável : '+EdUsua_codigo.text+' - '+Edusua_nome.text );
+    FRel.AddCol( 60,1,'N','' ,''              ,'Codigo'          ,''         ,'',false);
+    FRel.AddCol(220,1,'C','' ,''              ,'Descrição'       ,''         ,'',false);
+    PConsumo:=Lista[0];
+    FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano01       ,''         ,'',false);
+    FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+    FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    if trim(PConsumo.mesano02)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano02       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano03)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano03       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano04)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano04       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano05)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano05       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano06)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano06       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano07)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano07       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano08)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano08       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano09)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano09       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano10)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano10       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano11)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano11       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+    if trim(PConsumo.mesano12)<>'' then begin
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,PConsumo.mesano12       ,''         ,'',false);
+      FRel.AddCol( 65,3,'N','+' ,f_cr              ,'Previsto'          ,''         ,'',false);
+      FRel.AddCol( 50,3,'N',''  ,f_cr              ,'%'          ,''         ,'',false);
+    end;
+
+    for i:=0 to LIsta.count-1 do begin
+      Pconsumo:=Lista[i];
+      FRel.AddCel(PConsumo.produto);
+      FRel.AddCel(PConsumo.descricao);
+      FRel.AddCel(floattostr(PConsumo.qtde01));
+      FRel.AddCel(floattostr(PConsumo.valor01));
+      perc:=0;
+      if PConsumo.valor01>0 then
+        perc:=(PConsumo.qtde01/PConsumo.valor01)*100;
+      FRel.AddCel(floattostr(perc));
+      if trim(PConsumo.mesano02)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde02));
+        FRel.AddCel(floattostr(PConsumo.valor02));
+        perc:=0;
+        if PConsumo.valor02>0 then
+          perc:=(PConsumo.qtde02/PConsumo.valor02)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano03)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde03));
+        FRel.AddCel(floattostr(PConsumo.valor03));
+        perc:=0;
+        if PConsumo.valor03>0 then
+          perc:=(PConsumo.qtde03/PConsumo.valor03)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano04)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde04));
+        FRel.AddCel(floattostr(PConsumo.valor04));
+        perc:=0;
+        if PConsumo.valor04>0 then
+          perc:=(PConsumo.qtde04/PConsumo.valor04)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano05)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde05));
+        FRel.AddCel(floattostr(PConsumo.valor05));
+        perc:=0;
+        if PConsumo.valor05>0 then
+          perc:=(PConsumo.qtde05/PConsumo.valor05)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano06)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde06));
+        FRel.AddCel(floattostr(PConsumo.valor06));
+        perc:=0;
+        if PConsumo.valor06>0 then
+          perc:=(PConsumo.qtde06/PConsumo.valor06)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano07)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde07));
+        FRel.AddCel(floattostr(PConsumo.valor07));
+        perc:=0;
+        if PConsumo.valor07>0 then
+          perc:=(PConsumo.qtde07/PConsumo.valor07)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano08)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde08));
+        FRel.AddCel(floattostr(PConsumo.valor08));
+        perc:=0;
+        if PConsumo.valor08>0 then
+          perc:=(PConsumo.qtde08/PConsumo.valor08)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano09)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde09));
+        FRel.AddCel(floattostr(PConsumo.valor09));
+        perc:=0;
+        if PConsumo.valor09>0 then
+          perc:=(PConsumo.qtde09/PConsumo.valor09)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano10)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde10));
+        FRel.AddCel(floattostr(PConsumo.valor10));
+        perc:=0;
+        if PConsumo.valor11>0 then
+          perc:=(PConsumo.qtde11/PConsumo.valor11)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano11)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde11));
+        FRel.AddCel(floattostr(PConsumo.valor11));
+        perc:=0;
+        if PConsumo.valor11>0 then
+          perc:=(PConsumo.qtde11/PConsumo.valor11)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+      if trim(PConsumo.mesano12)<>'' then begin
+        FRel.AddCel(floattostr(PConsumo.qtde12));
+        FRel.AddCel(floattostr(PConsumo.valor12));
+        perc:=0;
+        if PConsumo.valor12>0 then
+          perc:=(PConsumo.qtde12/PConsumo.valor12)*100;
+        FRel.AddCel(floattostr(perc));
+      end;
+    end;
+    FRel.Video();
+    Sistema.EndProcess('');
+    Q.close;
+    Freeandnil(Q);
+
+  end;
+
+  FRelNaoConforme_IndicadorResultado            // 3 - 25.06.09
+
+end;
+
+
+procedure TFRelNaoConf.baplicarClick(Sender: TObject);
+begin
+  if not EdDAtai.ValidEdiAll(FRelnaoConf,99) then exit;
+  Saiok:=true;
+  close;
+
+end;
+
+procedure TFRelNaoConf.EdNumerodocExitEdit(Sender: TObject);
+begin
+  baplicarclick(self);
+
+end;
+
+procedure TFRelNaoConf.FormActivate(Sender: TObject);
+begin
+    EdDAtai.setfocus;
+
+end;
+
+end.
